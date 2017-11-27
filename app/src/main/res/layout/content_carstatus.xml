@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <ImageView
+            android:id="@+id/icItem1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+            android:contentDescription=""
+            android:src="@drawable/ic_mileage"
+            app:srcCompat="@drawable/ic_mileage"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvOriginAdress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/icItem1"
+            android:text="Mileage"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_mileage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icItem7"
+            android:layout_toEndOf="@+id/icItem1"
+            android:text="Mileage"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="12sp"
+            tools:ignore="HardcodedText"
+            tools:text="Mileage" />
+
+        <ImageView
+            android:id="@+id/icItem7"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignTop="@+id/icItem1"
+            android:layout_marginStart="86dp"
+            android:layout_toEndOf="@+id/tvOriginAdress"
+            android:cropToPadding="false"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_location"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvMileage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@id/icItem7"
+            android:text="Average Distance"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="14sp"
+            tools:text="Average Distance" />
+
+        <TextView
+            android:id="@+id/tv_av_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvOriginAdress"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/icItem7"
+            android:text="Average Distance"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="12sp"
+            tools:ignore="HardcodedText"
+            tools:text="Average Distance" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <ImageView
+            android:id="@+id/icItem2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:cropToPadding="false"
+            android:visibility="visible"
+            app:srcCompat="@drawable/fuel_icon"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvFuelType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/icItem2"
+            android:text="Remaining Fuel"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_fuel_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvFuelType"
+            android:layout_below="@+id/tvFuelType"
+            android:text="FUEL"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/icItem4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="39dp"
+            android:layout_toEndOf="@+id/tvFuelType"
+            android:cropToPadding="false"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_battery_icon"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvBatteryType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="end"
+            android:layout_marginStart="17dp"
+            android:layout_toEndOf="@+id/icItem4"
+            android:text="Battery Voltage"
+            android:textAlignment="textEnd"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_battery_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvBatteryType"
+            android:layout_below="@+id/tvBatteryType"
+            android:text="Battery"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/group_item_divider" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <ImageView
+            android:id="@+id/icItem3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            app:srcCompat="@drawable/blackbmw"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvInformationsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@id/icItem3"
+            android:layout_toRightOf="@id/icItem3"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Information"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/tvDayPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Next Service Distance"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_next_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvDayPrice"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            tools:ignore="HardcodedText"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/tvNightPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="ECO Active Time"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_eco_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNightPrice"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            tools:ignore="HardcodedText"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/tvKmPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="Fuel Consumption"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="11sp"
+            tools:ignore="RelativeOverlap" />
+
+        <TextView
+            android:id="@+id/tv_fuel_consumption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tvKmPrice"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            tools:ignore="HardcodedText"
+            tools:text="0" />
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
+
+
+
+    <!--
+    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/telematicList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="200dp"
+        android:background="@android:color/background_light"
+
+        android:padding="@dimen/activity_horizontal_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </ListView>
+    -->
+

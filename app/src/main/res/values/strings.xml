@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Born 2 Be Innovative!</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Not a member yet? Sign Up </string>
+    <string name="username">User Name</string>
+    <string name="password">Password</string>
+    <string name="createAccount">Create Account</string>
+    <string name="fullname">Full Name</string>
+    <string name="email">E-Mail</string>
+    <string name="title_activity_singup">SingupActivity</string>
+    <string name="fullName">Cagatay Akin Baser</string>
+    <string name="companyName">BMW</string>
+    <string name="department">Connected Drive</string>
+
+
+    <string name="navigation_carStatus">Vehicle Status</string>
+    <string name="navigation_myDriving">My Driving</string>
+    <string name="navigation_highScores">High Scores</string>
+    <string name="navigation_userDetails">Account</string>
+    <string name="navigation_logout">Log Out</string>
+
+
+    <string name="additionalInfo">Additional Information comes here..</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+</resources>

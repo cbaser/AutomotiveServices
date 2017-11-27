@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/profPic"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:adjustViewBounds="false"
+        android:padding="10dp"
+        android:src="@drawable/profile_picture"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/txtfullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profPic"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:text="@string/fullName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtCompany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtfullName"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        android:text="@string/companyName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/txtDepartment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/department"
+        android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
+        android:layout_below="@id/txtCompany"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/light_blue"
+        android:paddingTop="10dp"
+        app:layout_anchorGravity="bottom|center"
+        tools:layout_gravity="bottom|center" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+
+        android:src="@drawable/blackbmw"
+        tools:ignore="ContentDescription" />
+
+
+
+    <include layout="@layout/content_userdetails"/>
+
+</RelativeLayout>
+
+
+
+
