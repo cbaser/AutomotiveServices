@@ -27,8 +27,7 @@ public class FriendsListAdapter extends BaseExpandableListAdapter{
     private Activity context;
      final LayoutInflater layoutInflater;
     private Map<String, List<String>> friendsCollections;
-    private ArrayList<String> challenges;
-    private List<String> friends;
+        private List<String> friends;
     public FriendsListAdapter(Activity context, List<String> friends,
                               Map<String, List<String>> friendsCollections) {
         this.context = context;

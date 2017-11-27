@@ -54,13 +54,16 @@ return root;
 
         friendsListView = (ExpandableListView) view.findViewById(R.id.friends_list);
         challengesListView = (ListView) view.findViewById(R.id.challenges_listview);
-        currentUser.getChallenges().add("HOP");
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,android.R.id.text1,new String[]{"Send a Challenge!"});
-        challengesListView.setAdapter(adapter);
 
         final FriendsListAdapter friendsListAdapter = new FriendsListAdapter(getActivity(), groupList, friendsCollection);
-        friendsListView.setAdapter(friendsListAdapter);
         friendsListAdapter.setCurrentUser(currentUser);
+        friendsListView.setAdapter(friendsListAdapter);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,android.R.id.text1,currentUser.getChallenges());
+        challengesListView.setAdapter(adapter);
+
+
+
 
         friendsListView.setGroupIndicator(null);
 
