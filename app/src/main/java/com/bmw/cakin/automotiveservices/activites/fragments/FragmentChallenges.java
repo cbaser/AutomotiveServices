@@ -59,9 +59,18 @@ return root;
         friendsListAdapter.setCurrentUser(currentUser);
         friendsListView.setAdapter(friendsListAdapter);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,android.R.id.text1,currentUser.getChallenges());
-        challengesListView.setAdapter(adapter);
 
+
+
+    //    final ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,android.R.id.text1,currentUser.getChallenges());
+    //    challengesListView.setAdapter(adapter);
+//        friendsListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+//            @Override
+//            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+//            //    adapter.notifyDataSetChanged();
+//                return false;
+//            }
+//        });
 
 
 

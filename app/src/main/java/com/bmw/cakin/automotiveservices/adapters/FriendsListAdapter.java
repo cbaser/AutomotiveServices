@@ -1,9 +1,12 @@
 package com.bmw.cakin.automotiveservices.adapters;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
+import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,6 +21,9 @@ import com.bmw.cakin.automotiveservices.datamodel.CurrentUser;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 /**
  * Created by cakin on 11/23/2017.
  */
@@ -119,7 +125,18 @@ public class FriendsListAdapter extends BaseExpandableListAdapter{
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 currentUser.getChallenges().add(item.getText().toString());
-
+                                Notification n  = new Notification.Builder(context)
+                                        .setContentTitle("Challenge!")
+                                        .setContentText(item.getText().toString() )
+                                        .setSmallIcon(R.drawable.blackbmw)
+                                        .setAutoCancel(true)
+                                          .build();
+                                NotificationManager notificationManager = (NotificationManager)
+                                        context.getSystemService(NOTIFICATION_SERVICE);
+                                notificationManager.notify(0, n);
+//                                NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
+//                                notificationBuilder.setContentTitle("Challenge!");
+//                                notificationBuilder.setContentText(item.getText().toString());
                             }
                         });
                 builder.setNegativeButton("No",
