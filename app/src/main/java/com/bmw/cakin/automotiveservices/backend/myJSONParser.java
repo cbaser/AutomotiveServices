@@ -31,9 +31,9 @@ public class myJSONParser {
 
 
     public CurrentCar convertToCarData(){
-        BMWCarData[] bmwCarData=null;
+        BMWCarData[] bmwCarData;
         CurrentCar currentCar = new CurrentCar();
-       // Telematics[] telematics=null;
+
         try{
 
            JsonParser parser = new JsonParser();
@@ -46,33 +46,34 @@ public class myJSONParser {
             bmwCarData = gson.fromJson(jsonElement,BMWCarData[].class);
             int lastIndex = 0;
             String i3VINCode = carVINs.getBMWi3();
-            ArrayList<String> telematicValues = new ArrayList<>();
+           List<BMWCarData> telematicValues = Arrays.asList(bmwCarData);
+
             for (int i=0;i<bmwCarData.length;i++){
                if( bmwCarData[i].getVIN().equals(i3VINCode))
                {
                 lastIndex = i;
-                telematicValues.add(bmwCarData[i].getTelematics());
+
                }
             }
 
 
             currentCar.setVIN(bmwCarData[lastIndex].getVIN());
 
-            for (int i=0;i<telematicValues.size();i++){
-                if(telematicValues.get(i).contains("bmwcardata_mileage"))
-                currentCar.setMileage( getTelematicValue("bmwcardata_mileage",telematicValues.get(i)));
-                if(telematicValues.get(i).contains("bmwcardata_averageDistance"))
-                currentCar.setAverage_distance_per_week(getTelematicValue("bmwcardata_averageDistance",telematicValues.get(i)));
-                if(telematicValues.get(i).contains("bmwcardata_remainingFuel"))
-                currentCar.setRemaining_fuel(getTelematicValue("bmwcardata_remainingFuel",telematicValues.get(i)));
-                if(telematicValues.get(i).contains("bmwcardata_batteryVoltage"))
-                currentCar.setBatteryVoltage(getTelematicValue("bmwcardata_batteryVoltage",telematicValues.get(i)));
-                if(telematicValues.get(i).contains("bmwcardata_nextServiceDistance"))
-                currentCar.setNextServiceDistance(getTelematicValue("bmwcardata_nextServiceDistance",telematicValues.get(i)));
-                if(telematicValues.get(i).contains("bmwcardata_SegmentLastTripECOTimeOfActivation"))
-                currentCar.setActive_time_of_eco_mode(getTelematicValue("bmwcardata_SegmentLastTripECOTimeOfActivation",telematicValues.get(i)));
-                if(telematicValues.get(i).contains("bmwcardata_SegmentLastTripFuelConsumption"))
-                currentCar.setFuel_consumption(getTelematicValue("bmwcardata_SegmentLastTripFuelConsumption",telematicValues.get(i)));
+            for (int i=0;i<bmwCarData.length;i++){
+                if(telematicValues.get(i).getTelematics().contains("bmwcardata_mileage"))
+                currentCar.setMileage( getTelematicValue("bmwcardata_mileage",telematicValues.get(i).getTelematics()));
+                if(telematicValues.get(i).getTelematics().contains("bmwcardata_averageDistance"))
+                currentCar.setAverage_distance_per_week(getTelematicValue("bmwcardata_averageDistance",telematicValues.get(i).getTelematics()));
+                if(telematicValues.get(i).getTelematics().contains("bmwcardata_remainingFuel"))
+                currentCar.setRemaining_fuel(getTelematicValue("bmwcardata_remainingFuel",telematicValues.get(i).getTelematics()));
+                if(telematicValues.get(i).getTelematics().contains("bmwcardata_batteryVoltage"))
+                currentCar.setBatteryVoltage(getTelematicValue("bmwcardata_batteryVoltage",telematicValues.get(i).getTelematics()));
+                if(telematicValues.get(i).getTelematics().contains("bmwcardata_nextServiceDistance"))
+                currentCar.setNextServiceDistance(getTelematicValue("bmwcardata_nextServiceDistance",telematicValues.get(i).getTelematics()));
+                if(telematicValues.get(i).getTelematics().contains("bmwcardata_SegmentLastTripECOTimeOfActivation"))
+                currentCar.setActive_time_of_eco_mode(getTelematicValue("bmwcardata_SegmentLastTripECOTimeOfActivation",telematicValues.get(i).getTelematics()));
+                if(telematicValues.get(i).getTelematics().contains("bmwcardata_SegmentLastTripFuelConsumption"))
+                currentCar.setFuel_consumption(getTelematicValue("bmwcardata_SegmentLastTripFuelConsumption",telematicValues.get(i).getTelematics()));
 
 
             }
