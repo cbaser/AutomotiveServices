@@ -59,22 +59,24 @@ public class myJSONParser {
 
             currentCar.setVIN(bmwCarData[lastIndex].getVIN());
 
-            for (int i=0;i<bmwCarData.length;i++){
-                if(telematicValues.get(i).getTelematics().contains("bmwcardata_mileage"))
-                currentCar.setMileage( getTelematicValue("bmwcardata_mileage",telematicValues.get(i).getTelematics()));
-                if(telematicValues.get(i).getTelematics().contains("bmwcardata_averageDistance"))
-                currentCar.setAverage_distance_per_week(getTelematicValue("bmwcardata_averageDistance",telematicValues.get(i).getTelematics()));
-                if(telematicValues.get(i).getTelematics().contains("bmwcardata_remainingFuel"))
-                currentCar.setRemaining_fuel(getTelematicValue("bmwcardata_remainingFuel",telematicValues.get(i).getTelematics()));
-                if(telematicValues.get(i).getTelematics().contains("bmwcardata_batteryVoltage"))
-                currentCar.setBatteryVoltage(getTelematicValue("bmwcardata_batteryVoltage",telematicValues.get(i).getTelematics()));
-                if(telematicValues.get(i).getTelematics().contains("bmwcardata_nextServiceDistance"))
-                currentCar.setNextServiceDistance(getTelematicValue("bmwcardata_nextServiceDistance",telematicValues.get(i).getTelematics()));
-                if(telematicValues.get(i).getTelematics().contains("bmwcardata_SegmentLastTripECOTimeOfActivation"))
-                currentCar.setActive_time_of_eco_mode(getTelematicValue("bmwcardata_SegmentLastTripECOTimeOfActivation",telematicValues.get(i).getTelematics()));
-                if(telematicValues.get(i).getTelematics().contains("bmwcardata_SegmentLastTripFuelConsumption"))
-                currentCar.setFuel_consumption(getTelematicValue("bmwcardata_SegmentLastTripFuelConsumption",telematicValues.get(i).getTelematics()));
+            for (int i=0;i<telematicValues.size();i++){
+                if(telematicValues.get(i).getVIN().equals(i3VINCode)){
+                    if(telematicValues.get(i).getTelematics().contains("bmwcardata_mileage"))
+                        currentCar.setMileage( getTelematicValue("bmwcardata_mileage",telematicValues.get(i).getTelematics()));
+                    if(telematicValues.get(i).getTelematics().contains("bmwcardata_averageDistance"))
+                        currentCar.setAverage_distance_per_week(getTelematicValue("bmwcardata_averageDistance",telematicValues.get(i).getTelematics()));
+                    if(telematicValues.get(i).getTelematics().contains("bmwcardata_remainingFuel"))
+                        currentCar.setRemaining_fuel(getTelematicValue("bmwcardata_remainingFuel",telematicValues.get(i).getTelematics()));
+                    if(telematicValues.get(i).getTelematics().contains("bmwcardata_batteryVoltage"))
+                        currentCar.setBatteryVoltage(getTelematicValue("bmwcardata_batteryVoltage",telematicValues.get(i).getTelematics()));
+                    if(telematicValues.get(i).getTelematics().contains("bmwcardata_nextServiceDistance"))
+                        currentCar.setNextServiceDistance(getTelematicValue("bmwcardata_nextServiceDistance",telematicValues.get(i).getTelematics()));
+                    if(telematicValues.get(i).getTelematics().contains("bmwcardata_SegmentLastTripECOTimeOfActivation"))
+                        currentCar.setActive_time_of_eco_mode(getTelematicValue("bmwcardata_SegmentLastTripECOTimeOfActivation",telematicValues.get(i).getTelematics()));
+                    if(telematicValues.get(i).getTelematics().contains("bmwcardata_SegmentLastTripFuelConsumption"))
+                        currentCar.setFuel_consumption(getTelematicValue("bmwcardata_SegmentLastTripFuelConsumption",telematicValues.get(i).getTelematics()));
 
+                }
 
             }
 
@@ -87,11 +89,12 @@ public class myJSONParser {
     }
 
     private String getTelematicValue(String searchedString, String where){
-        String telematicString = null;
+        String telematicString = "";
         if(where.contains(searchedString)) {
             int position = where.indexOf(searchedString);
             int valuePos = where.indexOf("value", position);
             int endPos = where.indexOf("}", valuePos);
+            if(valuePos!= -1 && endPos!= -1)
             telematicString   = where.substring(valuePos, endPos);
         }
 
