@@ -128,7 +128,7 @@ public class FriendsListAdapter extends BaseExpandableListAdapter{
                                 Notification n  = new Notification.Builder(context)
                                         .setContentTitle("Challenge!")
                                         .setContentText(item.getText().toString() )
-                                        .setSmallIcon(R.drawable.blackbmw)
+                                        .setSmallIcon(R.drawable.ic_stat_b2b)
                                         .setAutoCancel(true)
                                           .build();
                                 NotificationManager notificationManager = (NotificationManager)
