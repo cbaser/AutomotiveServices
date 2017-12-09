@@ -15,6 +15,7 @@ import com.bmw.cakin.automotiveservices.R;
 import com.bmw.cakin.automotiveservices.activites.LoginActivity;
 import com.bmw.cakin.automotiveservices.activites.fragments.FragmentCarstatus;
 import com.bmw.cakin.automotiveservices.activites.fragments.FragmentChallenges;
+import com.bmw.cakin.automotiveservices.activites.fragments.FragmentHome;
 import com.bmw.cakin.automotiveservices.activites.fragments.FragmentDriving;
 
 /**
@@ -24,7 +25,7 @@ import com.bmw.cakin.automotiveservices.activites.fragments.FragmentDriving;
 public class TransitionController implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar toolbar;
     private TabLayout tabLayout;
-    private String[] pageTitles = {"My Challenges","Car Status","My Driving","User Details"};
+    private String[] pageTitles = {"Home","Challenges","Achievements"};
     private ViewPagerAdapter viewPagerAdapter;
     private DrawerLayout drawer;
     private ViewPager viewPager;
@@ -77,9 +78,11 @@ public class TransitionController implements NavigationView.OnNavigationItemSele
     }
     private void setupViewPager(ViewPager viewPager) {
         viewPagerAdapter = new ViewPagerAdapter(activity.getSupportFragmentManager());
-        viewPagerAdapter.addFrag(new FragmentChallenges(), "ONE");
-        viewPagerAdapter.addFrag(new FragmentCarstatus(), "TWO");
+        viewPagerAdapter.addFrag(new FragmentHome(), "ONE");
+        viewPagerAdapter.addFrag(new FragmentChallenges(), "TWO");
         viewPagerAdapter.addFrag(new FragmentDriving(),"THREE");
+        viewPagerAdapter.addFrag(new FragmentCarstatus(),"FOUR");
+        viewPagerAdapter.addFrag(new FragmentCarstatus(),"FIVE");
         viewPager.setAdapter(viewPagerAdapter);
     }
     @SuppressWarnings("StatementWithEmptyBody")
@@ -88,17 +91,21 @@ public class TransitionController implements NavigationView.OnNavigationItemSele
 
         int id = item.getItemId();
 
-        if (id == R.id.nav_challenges) {
+        if (id == R.id.nav_home) {
             viewPager.setCurrentItem(0);
-        } else if (id == R.id.nav_carStatus) {
+        }
+        else if (id == R.id.nav_challenges) {
             viewPager.setCurrentItem(1);
-        } else if (id == R.id.nav_myDriving) {
+
+        }
+        else if (id == R.id.nav_myDriving) {
             viewPager.setCurrentItem(2);
 
-        } else if (id == R.id.nav_highScores) {
+        } else if (id == R.id.nav_carStatus) {
+            viewPager.setCurrentItem(3);
         }
         else if(id==R.id.nav_userDetails){
-            viewPager.setCurrentItem(3);
+            viewPager.setCurrentItem(4);
         }
 
 

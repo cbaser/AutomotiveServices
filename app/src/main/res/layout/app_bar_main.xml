@@ -9,16 +9,15 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.NoActionBar.AppBarOverlay"
-        android:background="@color/black">
+        android:background="@color/light_green"
+        android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/black"
-            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
-        />
+            android:background="@color/light_green"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
@@ -28,7 +27,7 @@
             app:tabIndicatorColor="@color/white"
             app:tabMode="fixed"
             app:tabTextColor="@color/white" />
-      </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.AppBarLayout>
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"

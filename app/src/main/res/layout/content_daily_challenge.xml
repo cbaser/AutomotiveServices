@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_innerlayout"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@color/light_yellow">
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:text="Today's Daily Challenge!"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Reduce average fuel consumption by 0.5"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        tools:text="Reduce average fuel consumption by 0.5" />
+
+    <Button
+        android:id="@+id/playChallengeButton"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/light_green"
+        android:text="Play Challenge!"
+        android:textColor="@color/cardview_light_background"
+        android:textStyle="bold" />
+
+</RelativeLayout>

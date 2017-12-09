@@ -8,7 +8,7 @@
     android:padding="16dp">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/achievements_cardview"
+        android:id="@+id/description_cardview"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    >
+
+    <ImageView
+        android:id="@+id/profPic"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignEnd="@+id/txtCompany"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="false"
+        android:padding="10dp"
+        android:src="@drawable/profile_picture"
+        tools:ignore="ContentDescription" />
+    <TextView
+        android:id="@+id/txtfullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fullName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_below="@id/profPic"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/txtCompany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtfullName"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        android:text="Level: Newbie"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/txtDepartment"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignEnd="@+id/txtfullName"
+        android:layout_alignStart="@+id/txtfullName"
+        android:layout_below="@+id/txtCompany"
+        android:fontFamily="serif"
+        android:paddingTop="10dp"
+        android:text="Score : 26789"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_anchorGravity="bottom|center"
+        tools:layout_gravity="bottom|center" />
+
+    <RelativeLayout
+        android:id="@+id/dailyChallengeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/txtDepartment">
+
+        <include
+            layout="@layout/content_daily_challenge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_alignParentStart="true"
+
+
+            ></include>
+
+
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/hsv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/dailyChallengeLayout"
+        android:layout_weight="0"
+        android:fillViewport="true"
+        android:measureAllChildren="false"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:id="@+id/homeLinear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--
+                <RelativeLayout
+                    android:id="@+id/layout_challenges"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/txtDepartment"
+
+
+                <TextView
+                    android:id="@+id/txtChallenges"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="sans-serif-condensed"
+                    android:paddingTop="10dp"
+                    android:text="Challenges"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_anchorGravity="bottom|center"
+                    tools:layout_gravity="bottom|center" />
+                <include
+
+                    layout="@layout/content_challanges_lists"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/txtChallenges" />
+
+            </RelativeLayout>
+ -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="210dp">
+                <!--android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/layout_challenges" -->
+
+
+                <TextView
+                    android:id="@+id/txtFriends"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="sans-serif-condensed"
+                    android:paddingTop="10dp"
+                    android:text="Friends"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_anchorGravity="bottom|center"
+                    tools:layout_gravity="bottom|center" />
+
+                <include
+                    layout="@layout/content_challenges_friends_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/txtFriends" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
+<!--
+
+
+
+-->
+</RelativeLayout>
+
+    <!--
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorwhite"
+        android:fitsSystemWindows="true">
+
+
+        <ImageView
+            android:id="@+id/profPic"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="75dp"
+            android:adjustViewBounds="false"
+            android:padding="10dp"
+            android:src="@drawable/profile_picture"
+            android:layout_gravity="top|center"
+            app:paddingStart="@dimen/activity_horizontal_margin"
+            tools:ignore="ContentDescription" />
+
+
+        <TextView
+            android:id="@+id/txtfullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fullName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_anchor="@id/profPic"
+            app:layout_anchorGravity="bottom|center" />
+
+        <TextView
+            android:id="@+id/txtCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="@string/companyName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
+            android:textColor="@android:color/darker_gray"
+            app:layout_anchor="@id/txtfullName"
+            app:layout_anchorGravity="bottom|center"
+            app:paddingStart="@dimen/activity_horizontal_margin"
+            tools:layout_gravity="bottom|center" />
+
+        <TextView
+            android:id="@+id/txtDepartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/department"
+            android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
+            app:layout_anchor="@id/txtCompany"
+            android:paddingTop="10dp"
+            app:layout_anchorGravity="bottom|center"
+            tools:layout_gravity="bottom|center" />
+
+        <ImageView
+            android:id="@+id/main.appbar"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/bmw_group_logo"
+            tools:ignore="ContentDescription" />
+            </android.support.design.widget.CoordinatorLayout>
+<include layout="@laycontent_userdetailstent"/>
+    -->
+
+
+

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_bmw">
+    android:background="@color/white">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,8 +41,8 @@
                 android:hint="@string/fullname"
                 android:inputType="text"
                 android:padding="16dp"
-                android:textColor="#ADCCE2"
-                android:textColorHint="#ADCCE2"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="16sp" />
 
             <View
@@ -62,8 +62,8 @@
                 android:hint="@string/email"
                 android:inputType="text"
                 android:padding="16dp"
-                android:textColor="#ADCCE2"
-                android:textColorHint="#ADCCE2"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="16sp" />
 
             <View
@@ -83,8 +83,8 @@
                 android:hint="@string/username"
                 android:inputType="text"
                 android:padding="16dp"
-                android:textColor="#ADCCE2"
-                android:textColorHint="#ADCCE2"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="16sp" />
 
             <View
@@ -105,8 +105,8 @@
                 android:inputType="textPassword"
                 android:maxLength="12"
                 android:padding="16dp"
-                android:textColor="#ADCCE2"
-                android:textColorHint="#ADCCE2"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="16sp" />
 
             <View
@@ -125,7 +125,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="10dp"
-                android:background="#54abee"
+                android:background="@color/light_green"
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="@string/createAccount"

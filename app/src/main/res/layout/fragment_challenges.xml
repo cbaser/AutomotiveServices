@@ -1,236 +1,300 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-android:background="@color/white"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    >
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:src="@drawable/bmw_group_logo"
-        tools:ignore="ContentDescription" />
+    android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/profPic"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="81dp"
-        android:adjustViewBounds="false"
-        android:padding="10dp"
-        android:src="@drawable/profile_picture"
-        tools:ignore="ContentDescription" />
-    <TextView
-        android:id="@+id/txtfullName"
+        android:layout_marginTop="47dp"
+        android:text="Reduce your fuel consumption with 0.4l this week!"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fullName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_below="@id/profPic"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/textView9"
         android:layout_centerHorizontal="true"
-        />
+        android:layout_marginTop="19dp"
+        android:max="100"
+        android:minHeight="50dp"
+        android:minWidth="400dp"
+        android:progress="1" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignEnd="@+id/textView9"
+        android:layout_below="@+id/progressBar"
+        android:layout_marginEnd="104dp"
+        app:srcCompat="@drawable/profile_picture" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/textView9"
+        android:layout_below="@+id/progressBar"
+        android:layout_marginStart="85dp"
+        app:srcCompat="@drawable/profile_picture" />
 
     <TextView
-        android:id="@+id/txtCompany"
+        android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtfullName"
+        android:layout_below="@+id/progressBar"
         android:layout_centerHorizontal="true"
-        android:paddingTop="10dp"
-        android:text="Vehicle : i3"
-        android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
+        android:layout_marginTop="11dp"
+        android:text="VS."
         android:textColor="@color/black" />
 
     <TextView
-        android:id="@+id/txtDepartment"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignEnd="@+id/txtfullName"
-        android:layout_alignStart="@+id/txtfullName"
-        android:layout_below="@+id/txtCompany"
-        android:fontFamily="serif"
-        android:paddingTop="10dp"
-        android:text="Score : 26789"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_anchorGravity="bottom|center"
-        tools:layout_gravity="bottom|center" />
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imageView4"
+        android:layout_below="@+id/imageView4"
+        android:layout_marginEnd="12dp"
+        android:text="You"
+        android:textColor="@color/black" />
 
-    <ScrollView
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imageView2"
+        android:layout_below="@+id/imageView2"
+        android:text="Hampus"
+        android:textColor="@color/black" />
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/tips_cardview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/txtDepartment">
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView9"
+        android:layout_below="@+id/description_cardview"
+        android:layout_marginTop="24dp">
 
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-    <!--
-                <RelativeLayout
-                    android:id="@+id/layout_challenges"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/txtDepartment"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/description_cardview"
+            android:background="#fff"
+            android:padding="16dp">
 
-
-                <TextView
-                    android:id="@+id/txtChallenges"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:fontFamily="sans-serif-condensed"
-                    android:paddingTop="10dp"
-                    android:text="Challenges"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_anchorGravity="bottom|center"
-                    tools:layout_gravity="bottom|center" />
-                <include
-
-                    layout="@layout/content_challanges_lists"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/txtChallenges" />
-
-            </RelativeLayout>
- -->
-            <RelativeLayout
+            <TextView
+                android:id="@+id/tips_cardview_title"
                 android:layout_width="wrap_content"
-                android:layout_height="210dp">
-                <!--android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/layout_challenges" -->
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:paddingBottom="5dp"
+                android:text="Tips"
+                android:textColor="@color/light_green"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/tips_cardview_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tips_cardview_title"
+                android:text="Try to avoid hard acceleration and breaking"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="14sp" />
 
-                <TextView
-                    android:id="@+id/txtFriends"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:fontFamily="sans-serif-condensed"
-                    android:paddingTop="10dp"
-                    android:text="Friends"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_anchorGravity="bottom|center"
-                    tools:layout_gravity="bottom|center" />
-
-                <include
-                    layout="@layout/content_challenges_friends_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/txtFriends" />
-            </RelativeLayout>
-
-
-        </LinearLayout>
-
-
-    </ScrollView>
-<!--
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
 
 
--->
-</RelativeLayout>
+    <android.support.v7.widget.CardView
+        android:id="@+id/description_cardview"
 
-    <!--
-    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorwhite"
-        android:fitsSystemWindows="true">
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView9"
+        android:layout_below="@+id/textView11"
+        android:layout_marginTop="25dp">
 
-
-        <ImageView
-            android:id="@+id/profPic"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="75dp"
-            android:adjustViewBounds="false"
-            android:padding="10dp"
-            android:src="@drawable/profile_picture"
-            android:layout_gravity="top|center"
-            app:paddingStart="@dimen/activity_horizontal_margin"
-            tools:ignore="ContentDescription" />
-
-
-        <TextView
-            android:id="@+id/txtfullName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fullName"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            app:layout_anchor="@id/profPic"
-            app:layout_anchorGravity="bottom|center" />
-
-        <TextView
-            android:id="@+id/txtCompany"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:text="@string/companyName"
-            android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
-            android:textColor="@android:color/darker_gray"
-            app:layout_anchor="@id/txtfullName"
-            app:layout_anchorGravity="bottom|center"
-            app:paddingStart="@dimen/activity_horizontal_margin"
-            tools:layout_gravity="bottom|center" />
-
-        <TextView
-            android:id="@+id/txtDepartment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/department"
-            android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
-            app:layout_anchor="@id/txtCompany"
-            android:paddingTop="10dp"
-            app:layout_anchorGravity="bottom|center"
-            tools:layout_gravity="bottom|center" />
-
-        <ImageView
-            android:id="@+id/main.appbar"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:src="@drawable/bmw_group_logo"
-            tools:ignore="ContentDescription" />
-            </android.support.design.widget.CoordinatorLayout>
-<include layout="@laycontent_userdetailstent"/>
-    -->
+            android:layout_height="120dp"
+
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+
+            android:background="#fff"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/description_cardview_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:paddingBottom="5dp"
+                android:text="Description"
+                android:textColor="@color/light_green"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/description_cardview_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description_cardview_title"
+                android:text="Starting Point 8.6l/100km"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/currentConsumptionTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/description_cardview_description"
+                android:text="Current Consumption: 8.5l/100km"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/targetConsumptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/currentConsumptionTextview"
+                android:text="Target: 8.4 l/100km"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/tournament_cardview"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/description_cardview"
+        android:layout_below="@+id/tips_cardview">
 
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
 
+            android:layout_alignEnd="@+id/tips_cardview"
+            android:layout_below="@+id/tips_cardview"
+
+            android:background="@color/light_yellow"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView18"
+                android:layout_below="@+id/textView16"
+                android:background="@color/colorAccent"
+                android:text="REJECT(-150PTS)" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/imageView5"
+                android:layout_toEndOf="@+id/achievements_cardview_description"
+                android:text="VS."
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/imageView5"
+                android:layout_below="@+id/imageView5"
+                android:text="You"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/achievements_cardview_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:paddingBottom="5dp"
+                android:text="Regional Tournament"
+                android:textColor="@color/light_green"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/achievements_cardview_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/achievements_cardview_title"
+                android:text="Save a tree this week!"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/achievements_cardview_description"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="14dp"
+                app:srcCompat="@drawable/profile_picture" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:background="@color/light_green"
+                android:text="Accept(+250 PTS)" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/textView17"
+                android:layout_marginStart="48dp"
+                android:layout_toEndOf="@+id/achievements_cardview_title"
+                app:srcCompat="@drawable/profile_picture" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/button"
+                android:layout_marginStart="33dp"
+                android:layout_toEndOf="@+id/achievements_cardview_title"
+                android:text="BMW Group"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
+</ScrollView>

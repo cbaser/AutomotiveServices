@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_bmw">
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="UselessParent">
-
-        <LinearLayout
-            android:id="@+id/appLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp"
-            android:background="@android:color/transparent"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/singupLayout"
@@ -35,13 +23,13 @@
             android:padding="16dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="361dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="90dp"
                 android:text="@string/sign_up"
                 android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/white"
+                android:textColor="@color/light_green"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 tools:ignore="RtlHardcoded" />
@@ -50,40 +38,34 @@
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="332dp"
             android:layout_height="50dp"
-            android:background="@color/light_blue"
             android:layout_above="@id/singupLayout"
+            android:layout_marginEnd="40dp"
             android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp">
+            android:background="@color/light_green">
 
             <TextView
                 android:id="@+id/singin"
-                android:layout_width="305dp"
+                android:layout_width="0dp"
                 android:layout_height="55dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical = "true"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/sign_in"
                 android:textColor="@color/white"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:textSize="22sp" />
 
         </LinearLayout>
 
-        <TextView
+        <ImageView
+            android:id="@+id/mainIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/appLayout"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textColor="#54abee"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            tools:ignore="RtlHardcoded" />
+            android:layout_marginTop="153dp"
+            android:contentDescription="TODO"
+            app:srcCompat="@drawable/main_icon" />
 
     </RelativeLayout>
 </FrameLayout>

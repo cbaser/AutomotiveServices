@@ -6,27 +6,29 @@
  <group android:checkableBehavior="single"
      android:title="My Car">
      <item
-         android:id="@+id/nav_challenges"
-         android:title="My Challenges"
-         android:icon="@drawable/ic_flag" />
+         android:id="@+id/nav_home"
+         android:icon="@drawable/ic_home_black_24dp"
+         android:title="Home" />
      <item
-         android:id="@+id/nav_carStatus"
-         android:icon="@drawable/ic_drive_eta_black_24dp"
-         android:title="@string/navigation_carStatus" />
+         android:id="@+id/nav_challenges"
+         android:title="Challenges"
+         android:icon="@drawable/ic_flag" />
+
 
  </group>
 
     <group android:checkableBehavior="single"
         android:title="@string/navigation_myDriving">
-
         <item
             android:id="@+id/nav_myDriving"
             android:icon="@drawable/ic_group_work_black_24dp"
-            android:title="@string/navigation_myDriving" />
+            android:title="@string/navigation_myDriving"
+            tools:icon="@drawable/ic_mileage" />
         <item
-            android:id="@+id/nav_highScores"
-            android:icon="@drawable/ic_high_score"
-            android:title="@string/navigation_highScores" />
+            android:id="@+id/nav_carStatus"
+            android:icon="@drawable/ic_drive_eta_black_24dp"
+            android:title="@string/navigation_carStatus" />
+
 
     </group>
 <group android:checkableBehavior="single">
