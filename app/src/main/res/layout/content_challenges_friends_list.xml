@@ -16,18 +16,6 @@
         android:background="@color/white"
         android:padding="@dimen/activity_horizontal_margin">
 
-        <ImageView
-            android:id="@+id/friendPic"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:adjustViewBounds="false"
-            android:padding="10dp"
-            android:scaleType="center"
-            android:src="@drawable/cagatay_icon"
-            tools:ignore="ContentDescription" />
-
 
         <ImageView
             android:id="@+id/icItem7"
@@ -67,55 +55,31 @@
             tools:ignore="HardcodedText"
             tools:text="19344" />
 
-        <TextView
-            android:id="@+id/friendName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/friendPic"
-            android:layout_marginStart="11dp"
-            android:text="Cagatay"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="#212121"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/friendScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/tv_av_distance"
-            android:layout_alignBottom="@+id/tv_av_distance"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="19dp"
-            android:text="99999"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="#727272"
-            android:textSize="12sp" />
-
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="28dp"
-            android:layout_toEndOf="@+id/friendPic"
+
             app:srcCompat="@drawable/lea_icon" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/icItem7"
             app:srcCompat="@drawable/hampus_icon" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/friendName"
-            android:layout_alignBottom="@+id/friendName"
-            android:layout_alignStart="@+id/imageView"
+            android:layout_above="@+id/textView4"
+            android:layout_marginEnd="25dp"
+            android:layout_toStartOf="@+id/icItem7"
             android:text="Lea"
             android:textColor="@color/black" />
 
@@ -123,9 +87,9 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/friendScore"
-            android:layout_alignBottom="@+id/friendScore"
-            android:layout_alignStart="@+id/textView"
+            android:layout_below="@+id/tvMileage"
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@+id/icItem7"
             android:text="19345"
             android:textColor="#727272"
             tools:text="19345" />
@@ -134,8 +98,9 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:layout_alignEnd="@+id/imageView3"
             android:layout_below="@+id/imageView3"
+            android:layout_marginEnd="9dp"
             android:text="Hampus"
             android:textColor="@color/black" />
 
