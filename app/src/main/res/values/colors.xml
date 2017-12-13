@@ -10,4 +10,8 @@
     <color name="green">#92c27c</color>
     <color name="orange">#FF7F24</color>
     <color name="light_yellow">#fff7a7</color>
+    <color name="h_nav_bar">#66bb6a</color>
+    <color name="h_titles">#338a3e</color>
+    <color name="h_background_play_challenge">#fff350</color>
+    <color name="h_play_challenges_button">#98ee99</color>
 </resources>

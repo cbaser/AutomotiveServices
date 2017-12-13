@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+
 
     <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:ignore="UselessParent">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/singupLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,30 +32,29 @@
                 android:textStyle="bold"
                 tools:ignore="RtlHardcoded" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
-        <LinearLayout
-            android:layout_width="332dp"
-            android:layout_height="50dp"
-            android:layout_above="@id/singupLayout"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp"
-            android:background="@color/light_green">
+    <RelativeLayout
+        android:layout_width="332dp"
+        android:layout_height="50dp"
+        android:layout_above="@id/singupLayout"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:background="@color/white">
 
-            <TextView
-                android:id="@+id/singin"
-                android:layout_width="0dp"
-                android:layout_height="55dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/sign_in"
-                android:textColor="@color/white"
-                android:textSize="22sp" />
+        <Button
+            android:id="@+id/signin_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-        </LinearLayout>
+            android:background="@drawable/buttonshape"
+            android:gravity="center"
+            android:text="@string/sign_in" />
 
-        <ImageView
+    </RelativeLayout>
+
+    <ImageView
             android:id="@+id/mainIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,4 +65,3 @@
             app:srcCompat="@drawable/main_icon" />
 
     </RelativeLayout>
-</FrameLayout>

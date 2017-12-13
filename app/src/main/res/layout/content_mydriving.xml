@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
@@ -27,18 +28,148 @@
                 android:layout_alignParentTop="true"
                 android:paddingBottom="5dp"
                 android:text="My Achievements"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/light_green"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/achievements_cardview_title"
+                app:srcCompat="@drawable/badge_newbie" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/achievements_cardview_title"
+                android:layout_marginStart="26dp"
+                android:layout_toEndOf="@+id/imageView8"
+                app:srcCompat="@drawable/badge_10_winner" />
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/achievements_cardview_title"
+                android:layout_toEndOf="@+id/achievements_cardview_title"
+                app:srcCompat="@drawable/badge_25_winner" />
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView14"
+                app:srcCompat="@drawable/badge_winner" />
+
             <TextView
-                android:id="@+id/achievements_cardview_description"
+                android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/achievements_cardview_title"
-                android:text="No achievements this time."
-                android:textColor="@color/cardview_dark_background"
-                android:textSize="14sp" />
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/imageView8"
+                android:text="Newbie"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignTop="@+id/imageView10"
+                android:layout_marginStart="27dp"
+                android:layout_toEndOf="@+id/imageView10"
+                app:srcCompat="@drawable/badge_50_winner" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/imageView9"
+                android:layout_below="@+id/imageView9"
+                android:text="Rookie"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/imageView10"
+                android:layout_below="@+id/imageView10"
+                android:layout_marginStart="11dp"
+                android:text="Star"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/imageView12"
+                android:layout_below="@+id/imageView12"
+                android:text="Superstar"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/imageView11"
+                android:text="Winner"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignStart="@+id/textView15"
+                android:layout_below="@+id/textView15"
+                app:srcCompat="@drawable/badge_efficient" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/imageView13"
+                android:layout_below="@+id/imageView13"
+                android:text="Efficient"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignStart="@+id/imageView10"
+                android:layout_below="@+id/textView19"
+                app:srcCompat="@drawable/badge_not_efficient" />
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignStart="@+id/textView20"
+                android:layout_below="@+id/textView20"
+                app:srcCompat="@drawable/badge_challenge" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/imageView14"
+                android:layout_below="@+id/imageView14"
+                android:text="Inefficient"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/imageView15"
+                android:layout_below="@+id/imageView15"
+                android:text="Challenger"
+                android:textColor="@color/black" />
 
         </RelativeLayout>
 
@@ -91,7 +222,7 @@
                 android:layout_alignParentTop="true"
                 android:paddingBottom="5dp"
                 android:text="Kilometers Driven"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/light_green"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -130,7 +261,7 @@
                 android:layout_alignParentTop="true"
                 android:paddingBottom="5dp"
                 android:text="CO2 Saved"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/light_green"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -154,7 +285,7 @@
                 android:layout_alignParentTop="true"
                 android:paddingBottom="5dp"
                 android:text="Litres Saved"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/light_green"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -196,7 +327,7 @@
                 android:layout_alignStart="@+id/total_km_description"
                 android:paddingBottom="5dp"
                 android:text="Total km this month"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/light_green"
                 android:textSize="@dimen/nav_header_vertical_spacing"
                 android:textStyle="bold" />
 
@@ -219,7 +350,7 @@
                 android:layout_alignParentTop="true"
                 android:paddingBottom="5dp"
                 android:text="Total Consumption"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/light_green"
                 android:textSize="@dimen/nav_header_vertical_spacing"
                 android:textStyle="bold" />
 

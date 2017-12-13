@@ -4,7 +4,7 @@
     android:id="@+id/home_innerlayout"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:background="@color/light_yellow">
+    android:background="@color/h_background_play_challenge">
 
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/light_green"
+        android:background="@drawable/buttonshape"
         android:text="Play Challenge!"
         android:textColor="@color/cardview_light_background"
         android:textStyle="bold" />

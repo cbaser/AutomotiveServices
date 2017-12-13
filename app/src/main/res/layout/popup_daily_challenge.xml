@@ -23,7 +23,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/start_challenge_yourself_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/relativeLayout2"
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/button2"
+        android:layout_below="@+id/start_challenge_yourself_button"
         android:layout_marginTop="18dp"
         android:background="@color/white"
         android:text="Send challenge to friend"

@@ -11,8 +11,10 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +24,8 @@ import com.bmw.cakin.automotiveservices.R;
 
 public class OpeningActivity extends AppCompatActivity {
     private long backPressedTime = 0;
-    private LinearLayout singup;
-    private TextView singin;
+    private RelativeLayout singup;
+    private Button singin;
     private ImageView mainIcon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +45,8 @@ public class OpeningActivity extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.anim_from_bottom_bounce);
         mainIcon = (ImageView) findViewById(R.id.mainIcon);
         mainIcon.setAnimation(animation);
-        singup = (LinearLayout)findViewById(R.id.singupLayout);
-        singin = (TextView)findViewById(R.id.singin);
+        singup = (RelativeLayout)findViewById(R.id.singupLayout);
+        singin = (Button) findViewById(R.id.signin_button);
 
         singup.setOnClickListener(new View.OnClickListener() {
             @Override

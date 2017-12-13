@@ -1,9 +1,14 @@
 package com.bmw.cakin.automotiveservices.activites.fragments;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -47,8 +52,29 @@ public FragmentHome(){
         @Override
         public void onClick(View v) {
           final View popupView = getActivity().getLayoutInflater().inflate(R.layout.popup_daily_challenge,null);
-          final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+          final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
           popupWindow.showAtLocation(root, Gravity.NO_GRAVITY,10,10);
+          Button start_challenge = (Button) popupView.findViewById(R.id.start_challenge_yourself_button);
+          start_challenge.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Notification notification = new NotificationCompat.Builder(getActivity())
+                          .setContentTitle("Challenge Started!")
+                          .setContentText("Duration: 7 days!")
+                          .setSmallIcon(R.mipmap.ic_launcher)
+                          .setLargeIcon(BitmapFactory.decodeResource(getActivity().getResources(),R.drawable.main_icon)).build();
+
+                  notification.flags |= Notification.FLAG_AUTO_CANCEL;
+                  NotificationManager notificationManager = (NotificationManager)
+                          getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+
+                  //Set a tag so that the same notification doesn't get reposted over and over again and
+                  //you can grab it again later if you need to.
+                  notificationManager.notify(1, notification);
+
+                  popupWindow.dismiss();
+              }
+          });
             FloatingActionButton floatingActionButton = (FloatingActionButton) popupView.findViewById(R.id.exitFAB);
             floatingActionButton.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -7,9 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.bmw.cakin.automotiveservices.R;
 import com.github.mikephil.charting.charts.LineChart;
@@ -29,28 +34,47 @@ import java.util.List;
 public class FragmentDriving extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_mydriving,container,false);
+//        HorizontalBarChart horizontalBarChart = (HorizontalBarChart) view.findViewById(R.id.efficiency_chart);
+//        ArrayList<BarEntry> entries = new ArrayList<>();
+//        entries.add(new BarEntry(4f,0));
+//        entries.add(new BarEntry(4f, 0));
+//        entries.add(new BarEntry(8f, 1));
+//        entries.add(new BarEntry(6f, 2));
+//        entries.add(new BarEntry(12f, 3));
+//        entries.add(new BarEntry(18f, 4));
+//
+//        BarDataSet dataSet = new BarDataSet(entries,"Efficiency Rate");
+//
+//        ArrayList<String> labels = new ArrayList<>();
+//        labels.add("January");
+//        labels.add("February");
+//        labels.add("March");
+//        labels.add("April");
+//        labels.add("May");
+//        labels.add("June");
+//        BarData data = new BarData(dataSet);
+//        horizontalBarChart.setData(data);
+
+
         LineChart lineChart = (LineChart) view.findViewById(R.id.efficiency_chart);
+        Description description = new Description();
+        description.setText("Monthly Efficiency Change");
+        lineChart.setDescription(description);
         ArrayList<Entry> entries = new ArrayList<>();
         entries.add(new Entry(0f, 70));
         entries.add(new Entry(1f, 81));
         entries.add(new Entry(2f, 92));
         entries.add(new Entry(3f, 63));
         entries.add(new Entry(4f, 54));
-        entries.add(new Entry(5f, 59));
-        entries.add(new Entry(6f, 96));
-        entries.add(new Entry(7f, 76));
-        entries.add(new Entry(8f, 85));
-        entries.add(new Entry(9f, 93));
-        entries.add(new Entry(10f, 100));
-        entries.add(new Entry(11f, 75));
+        entries.add(new Entry(5f, 89));
+
 
         LineDataSet dataset = new LineDataSet(entries, "Efficiency Rate");
         dataset.setAxisDependency(YAxis.AxisDependency.LEFT);
 
         final String[] labels = new String[]{
-          "January","February","March","April","May","June",
-                "July","August","September","October","November"
-                ,"December"
+          "January","February","March","April","May","June"
+
         };
 
         List<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
