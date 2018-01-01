@@ -20,18 +20,19 @@
     <group android:checkableBehavior="single"
         android:title="@string/navigation_myDriving">
         <item
-            android:id="@+id/nav_myDriving"
+            android:id="@+id/nav_myAchievements"
             android:icon="@drawable/ic_group_work_black_24dp"
             android:title="Achievements"
             tools:icon="@drawable/ic_mileage" />
-        <item
-            android:id="@+id/nav_carStatus"
-            android:icon="@drawable/ic_drive_eta_black_24dp"
-            android:title="@string/navigation_carStatus" />
-
-
+        <item android:id="@+id/nav_ranking"
+            android:icon="@drawable/ic_high_score"
+            android:title="Rankings"/>
     </group>
 <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_carStatus"
+        android:icon="@drawable/ic_drive_eta_black_24dp"
+        android:title="@string/navigation_carStatus" />
     <item
         android:id="@+id/nav_userDetails"
         android:icon="@drawable/ic_face_black_24dp"

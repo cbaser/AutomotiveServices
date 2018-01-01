@@ -14,4 +14,7 @@
     <color name="h_titles">#338a3e</color>
     <color name="h_background_play_challenge">#fff350</color>
     <color name="h_play_challenges_button">#98ee99</color>
+    <color name="button_pressed">#ff8a00</color>
+    <color name="button_focused">#ff8a00</color>
+    <color name="button_default">#1c76bb</color>
 </resources>

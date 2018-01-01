@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
 
         android:layout_marginTop="12dp"
-        android:background="@color/white"
+        android:background="#ddd"
         android:padding="@dimen/activity_horizontal_margin">
 
 
@@ -23,10 +23,10 @@
             android:layout_height="75dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/imageView"
+            android:layout_toEndOf="@+id/textViewPosition"
             android:cropToPadding="false"
             android:visibility="visible"
-            app:srcCompat="@drawable/can_icon"
+            app:srcCompat="@drawable/ic_can"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -56,13 +56,13 @@
             tools:text="19344" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/textViewPosition"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="28dp"
 
-            app:srcCompat="@drawable/lea_icon" />
+            app:srcCompat="@drawable/ic_lea" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -71,7 +71,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="25dp"
             android:layout_toEndOf="@+id/icItem7"
-            app:srcCompat="@drawable/hampus_icon" />
+            app:srcCompat="@drawable/ic_hampus" />
 
         <TextView
             android:id="@+id/textView"

@@ -36,7 +36,7 @@
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/send_challenge_to_friend_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -50,8 +50,8 @@
         android:id="@+id/button4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/button3"
-        android:layout_below="@+id/button3"
+        android:layout_alignStart="@+id/send_challenge_to_friend_button"
+        android:layout_below="@+id/send_challenge_to_friend_button"
         android:layout_marginTop="8dp"
         android:background="@color/white"
         android:text="Join Regional Challenge"

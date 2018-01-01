@@ -34,7 +34,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/txtCompany"
+        android:id="@+id/txtLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtfullName"
@@ -45,12 +45,12 @@
         android:textColor="@color/black" />
 
     <TextView
-        android:id="@+id/txtDepartment"
+        android:id="@+id/txtScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/department"
         android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
-        android:layout_below="@id/txtCompany"
+        android:layout_below="@id/txtLevel"
         android:layout_centerHorizontal="true"
         android:textColor="@color/light_blue"
         android:paddingTop="10dp"

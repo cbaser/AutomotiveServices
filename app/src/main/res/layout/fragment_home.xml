@@ -7,9 +7,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
+        android:id="@+id/home_mainLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:layout_height="match_parent"
+        android:background="#ddd"
         android:paddingBottom="16dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
@@ -17,13 +18,12 @@
 
         <ImageView
             android:id="@+id/profPic"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignEnd="@+id/txtCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:adjustViewBounds="false"
+            android:layout_centerHorizontal="true"
             android:padding="10dp"
-            android:src="@drawable/cagatay_icon"
+            android:src="@drawable/ic_cagatay"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -39,7 +39,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/txtCompany"
+            android:id="@+id/txtLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtfullName"
@@ -50,12 +50,11 @@
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/txtDepartment"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignEnd="@+id/txtfullName"
-            android:layout_alignStart="@+id/txtfullName"
-            android:layout_below="@+id/txtCompany"
+            android:id="@+id/txtScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLevel"
+            android:layout_centerHorizontal="true"
             android:fontFamily="serif"
             android:paddingTop="10dp"
             android:text="Score : 26789"
@@ -71,9 +70,10 @@
             android:id="@+id/dailyChallengeLayout"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_below="@+id/txtDepartment">
+            android:layout_below="@+id/txtScore">
 
             <include
+                android:id="@+id/include_daily_challenge_content"
                 layout="@layout/content_daily_challenge"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -166,12 +166,23 @@
                         tools:layout_gravity="bottom|center" />
 
                     <include
+                        android:id="@+id/include"
                         layout="@layout/content_challenges_friends_list"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
 
+                        android:layout_height="match_parent"
                         android:layout_alignParentStart="true"
                         android:layout_below="@+id/txtFriends" />
+
+                    <Button
+                        android:id="@+id/seeFriendsBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/include"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/button_change_clicked"
+                        android:text="See All Friends"
+                        android:textColor="@color/white" />
                 </RelativeLayout>
 
 
@@ -179,6 +190,7 @@
 
 
         </HorizontalScrollView>
+
         <!--
 
 

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/expandableButton1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF0000"
+        android:drawableRight="@android:drawable/arrow_down_float"
+        android:paddingRight="10dp"
+        android:text="REWE"
+        android:textColor="#fff" />
+
+    <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+        android:id="@+id/expandableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/expandableButton1"
+        android:background="#FF4D4D"
+        android:padding="12dp"
+        android:paddingBottom="10dp"
+        app:ael_duration="400"
+        app:ael_expanded="false"
+        app:ael_interpolator="fastOutLinearIn"
+        app:ael_orientation="vertical">
+
+        <TextView
+            android:id="@+id/rewe_cardview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingBottom="5dp"
+            android:text="Description"
+            android:textColor="#003300"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rewe_cardview_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rewe_cardview_title"
+            android:text="Starting Point: Garching "
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/reweTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/rewe_cardview_description"
+            android:text="Nearest Rewe is in 2 km"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/rewe2TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/reweTextView"
+            android:text="Target: Go to nearest rewe in Leopold Str."
+            android:textColor="@color/black" />
+        <Button
+            android:id="@+id/btn_rewe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEND!"
+            android:layout_below="@+id/rewe2TextView"
+            android:background="@color/colorPrimary"/>
+
+
+    </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+
+    <Button
+        android:id="@+id/expandableButton2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/expandableLayout1"
+        android:background="#FF50DC52"
+        android:drawableRight="@android:drawable/arrow_down_float"
+        android:paddingRight="10dp"
+        android:text="CO2"
+        android:textColor="@color/colorPrimary" />
+
+    <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+        android:id="@+id/expandableLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/expandableButton2"
+        android:background="#FF50DC52"
+        android:padding="16dp"
+        app:ael_duration="400"
+        app:ael_expanded="false"
+        app:ael_interpolator="bounce"
+        app:ael_orientation="vertical">
+
+        <TextView
+            android:id="@+id/description_co2_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingBottom="5dp"
+            android:text="Description"
+            android:textColor="#003300"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/description_co2_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description_co2_title"
+            android:text="Starting Point 4.3l/100km"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/currentCo2Textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/description_co2_description"
+            android:text="Current Consumption: 4.1/100km"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/targetCo2TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/currentCo2Textview"
+            android:text="Target: 3.7 l/100km"
+            android:textColor="@color/black" />
+        <Button
+            android:id="@+id/co2btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEND!"
+            android:layout_below="@+id/targetCo2TextView"
+            android:background="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/description2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/co2btn"
+            android:paddingBottom="5dp"
+            android:text="Description"
+            android:textColor="#003300"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/implemented"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Will be Implemented"
+            android:textColor="@color/black"
+            android:layout_below="@+id/description2"/>
+        <Button
+            android:id="@+id/co2btn2"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="SEND!"
+            android:layout_below="@+id/implemented"
+            android:background="@color/colorPrimary"/>
+
+
+    </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+    <Button
+        android:id="@+id/expandableButton3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/expandableLayout2"
+        android:background="#FFCFC20C"
+        android:drawableRight="@android:drawable/arrow_down_float"
+        android:paddingRight="10dp"
+        android:text="FUEL"
+        android:textColor="@color/black" />
+
+    <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+        android:id="@+id/expandableLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/expandableButton3"
+        android:background="#FFCFC20C"
+        android:padding="16dp"
+        app:ael_duration="400"
+        app:ael_expanded="false"
+        app:ael_interpolator="linear"
+        app:ael_orientation="vertical">
+
+        <TextView
+            android:id="@+id/fuel_cardview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingBottom="5dp"
+            android:text="Description"
+            android:textColor="@color/light_green"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fuel_cardview_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fuel_cardview_title"
+            android:text="Starting Point 4.3l/100km"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/fuelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fuel_cardview_description"
+            android:text="Current Consumption: 4.1/100km"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/fuel2TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fuelTextView"
+            android:text="Target: 3.7 l/100km"
+            android:textColor="@color/black" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEND!"
+            android:layout_below="@+id/fuel2TextView"
+            android:background="@color/colorPrimary"/>
+
+
+    </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+
+    <Button
+        android:id="@+id/expandableButton4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/expandableLayout3"
+        android:background="#0080FF"
+        android:drawableRight="@android:drawable/arrow_down_float"
+        android:paddingRight="10dp"
+        android:text="Driving Style Challenge"
+        android:textColor="#fff" />
+
+    <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+        android:id="@+id/expandableLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/expandableButton4"
+        android:background="#0080FF"
+        android:padding="16dp"
+        app:ael_duration="400"
+        app:ael_expanded="false"
+        app:ael_interpolator="bounce"
+        app:ael_orientation="vertical">
+
+        <TextView
+            android:id="@+id/driving_cardview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingBottom="5dp"
+            android:text="Description"
+            android:textColor="#003300"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/driving_cardview_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/driving_cardview_title"
+            android:text="Starting From Today"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/drivingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/driving_cardview_description"
+            android:text="Current Driving Style : 3 Stars"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/driving2TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/drivingTextView"
+            android:text="Target: 5 Stars"
+            android:textColor="@color/black" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEND!"
+            android:layout_below="@+id/driving2TextView"
+            android:background="@color/colorPrimary"/>
+    </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+</RelativeLayout>

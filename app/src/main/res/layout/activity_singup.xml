@@ -125,7 +125,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/buttonshape"
+                android:background="@drawable/button_with_shape"
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="@string/createAccount"

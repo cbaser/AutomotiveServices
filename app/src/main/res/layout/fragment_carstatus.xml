@@ -32,7 +32,7 @@
 
 
     <TextView
-        android:id="@+id/txtCompany"
+        android:id="@+id/txtLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/profPic"
@@ -51,7 +51,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtCompany"
+        android:layout_below="@id/txtLevel"
         >
 
     </RelativeLayout>
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
 
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/txtCompany" />
+        android:layout_below="@+id/txtLevel" />
 
 
 </RelativeLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/closeFriendsFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/black"
+        app:fabSize="mini"
+        app:rippleColor="@color/black"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <ListView
+        android:id="@+id/friendsListview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:textDirection="firstStrong">
+
+
+    </ListView>
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#597ea8"
+        android:drawableEnd="@drawable/ic_add_friend"
+        android:text="Add Friend" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="#597ea8"
+        android:drawableEnd="@drawable/ic_create_group"
+        android:text="Create Group" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#597ea8"
+        android:drawableEnd="@drawable/ic_import_group"
+        android:text="Import Group" />
+
+</LinearLayout>
+
+
+

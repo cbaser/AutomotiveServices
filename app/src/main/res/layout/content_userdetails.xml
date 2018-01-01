@@ -67,7 +67,7 @@
 
         </RelativeLayout>
 
-        <include layout="@layout/group_item_divider" />
+        <include layout="@layout/item_divider" />
 
         <RelativeLayout
             android:layout_width="match_parent"
