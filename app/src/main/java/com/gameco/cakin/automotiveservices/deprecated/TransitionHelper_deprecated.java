@@ -1,4 +1,4 @@
-package com.gameco.cakin.automotiveservices.adapters;
+package com.gameco.cakin.automotiveservices.deprecated;
 
 import android.app.AlertDialog;
 import android.app.Notification;
@@ -10,12 +10,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NotificationCompat;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 
 import com.gameco.cakin.automotiveservices.R;
+import com.gameco.cakin.automotiveservices.adapters.FriendsListAdapter;
 import com.gameco.cakin.automotiveservices.datamodel.Friend;
 
 import java.util.ArrayList;
@@ -25,9 +28,10 @@ import java.util.List;
  * Created by cakin on 12/26/2017.
  */
 
-public class TransitionHelper {
+public class TransitionHelper_deprecated {
     private Fragment fragment;
-    public TransitionHelper(){
+    private LayoutInflater layoutInflater;
+    public TransitionHelper_deprecated(){
 
     }
     public void setFragment(Fragment fragment){
@@ -43,7 +47,7 @@ public class TransitionHelper {
         transaction.commit();
 
     }
-    public void sendNotification(String title,String content){
+    private void sendNotification(String title,String content){
         Notification notification = new NotificationCompat.Builder(fragment.getActivity())
                 .setContentTitle(title)
                 .setContentText(content)
@@ -60,11 +64,11 @@ public class TransitionHelper {
 
 
     }
-    public void showFriends(){
+    private void showFriends(){
         final AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getActivity());
         final AlertDialog dialog;
-        LayoutInflater li = LayoutInflater.from(fragment.getActivity());
-        View mview = li.inflate(R.layout.fragment_friends, null);
+        layoutInflater = LayoutInflater.from(fragment.getActivity());
+        View mview = layoutInflater.inflate(R.layout.fragment_friends, null);
 
         ListView listView;
         List<Friend> friendList = new ArrayList<>();
@@ -74,27 +78,28 @@ public class TransitionHelper {
         friendList.add(new Friend("CAGATAY",19180));
         friendList.add(new Friend("CHRISTOPHER",14032));
         listView = (ListView)mview.findViewById(R.id.friendsListview);
-        ViewGroup header_friends = (ViewGroup)li.inflate(R.layout.header_friends_list,listView,false);
+        ViewGroup header_friends = (ViewGroup)layoutInflater.inflate(R.layout.header_friends_list,listView,false);
         listView.addHeaderView(header_friends);
         FriendsListAdapter friendsListAdapter = new FriendsListAdapter(fragment.getActivity(),friendList);
         listView.setAdapter(friendsListAdapter);
 
-        FloatingActionButton closeFriendsBtn = (FloatingActionButton) mview.findViewById(R.id.closeFriendsFAB);
-      closeFriendsBtn.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                  @Override
-                  public void onDismiss(DialogInterface dialog) {
-                      dialog.cancel();;
-                  }
-              });
-          }
-      });
+//        FloatingActionButton closeFriendsBtn = (FloatingActionButton) mview.findViewById(R.id.closeFriendsFAB);
+//      closeFriendsBtn.setOnClickListener(new View.OnClickListener() {
+//          @Override
+//          public void onClick(View v) {
+//              builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//                  @Override
+//                  public void onDismiss(DialogInterface dialog) {
+//                      dialog.cancel();;
+//                  }
+//              });
+//          }
+//      });
 
         builder.setView(mview);
 
         dialog= builder.create();
         dialog.show();
     }
+
 }

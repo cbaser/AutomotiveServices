@@ -1,91 +1,68 @@
 package com.gameco.cakin.automotiveservices.activites.fragments;
 
-import android.support.design.widget.FloatingActionButton;
+import android.app.Dialog;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 
 import com.gameco.cakin.automotiveservices.R;
-import com.gameco.cakin.automotiveservices.adapters.TransitionHelper;
-import com.gameco.cakin.automotiveservices.adapters.UserHelper;
+import com.gameco.cakin.automotiveservices.controller.FrontController;
+import com.gameco.cakin.automotiveservices.controller.myFragmentController;
 
 /**
  * Created by cakin on 11/22/2017.
  */
 
 public class FragmentHome extends Fragment {
-    private TransitionHelper transitionHelper;
-    private UserHelper userHelper;
+    private FrontController frontController;
+    private Fragment fragment;
 public FragmentHome(){
 
 }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-
      View view = inflater.inflate(R.layout.fragment_home,container,false);
+     fragment = this;
+        frontController = new FrontController(this);
+        frontController.createFragment(view);
+        RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.include_daily_challenge_content);
+        Button challengeButton = (Button) relativeLayout.findViewById(R.id.playChallengeButton);
 
-        userHelper = new UserHelper();
-        transitionHelper = new TransitionHelper();
-        transitionHelper.setFragment(this);
-
-
-
-
-        Button challengeButton = (Button) view.findViewById(R.id.playChallengeButton);
-        challengeButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          final View popupView = getActivity().getLayoutInflater().inflate(R.layout.popup_daily_challenge,null);
-          final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-          popupWindow.showAtLocation(getView(), Gravity.NO_GRAVITY,10,10);
-          Button start_challenge = (Button) popupView.findViewById(R.id.start_challenge_yourself_button);
-          start_challenge.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  transitionHelper.sendNotification("Challenge Started!","Duration: 7 days!");
-                  popupWindow.dismiss();
-
-              }
-          });
-          Button send_challenge = (Button) popupView.findViewById(R.id.send_challenge_to_friend_button);
-          send_challenge.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  userHelper.sendNotification();
-              }
-          });
-            FloatingActionButton floatingActionButton = (FloatingActionButton) popupView.findViewById(R.id.exitFAB);
-            floatingActionButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    popupWindow.dismiss();
-                }
-            });
-
-        }
+    challengeButton.setOnClickListener(new View.OnClickListener() {
+       @Override
+       public void onClick(View v) {
+           frontController.showChallenge();
+       }
     });
     Button seeAllFriendsButton = (Button) view.findViewById(R.id.seeFriendsBtn);
-
     seeAllFriendsButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            transitionHelper.showFriends();
-        //    FragmentFriends fragmentFriends = new FragmentFriends();
-        //    FragmentManager fm = getActivity().getSupportFragmentManager();
-         //   fragmentFriends.show(fm,"Dialog Fragment");
+            frontController.showFriends();
+
         }
     });
 
+    RelativeLayout relativeLayout1 = (RelativeLayout) view.findViewById(R.id.challengesLayoutHome);
+    Button showBtn = (Button) relativeLayout1.findViewById(R.id.seeYourChallengesBtn);
+    showBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+           // myFragmentController fragmentController = new myFragmentController(fragment);
+          //  fragmentController.replaceFragment(R.id.home_frameLayout,new FragmentMainChallenges());
+            final Dialog dialog = new Dialog(fragment.getContext());
+            dialog.setContentView(R.layout.fragment_sub_yourchallenges);
 
-        userHelper.setUserInformation(view,getActivity().getSharedPreferences("UserInfo",0));
+            dialog.setTitle("Title...");
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+            dialog.show();
 
-
-
+        }
+    });
 return view;
 
     }

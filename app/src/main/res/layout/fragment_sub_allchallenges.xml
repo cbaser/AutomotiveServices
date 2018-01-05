@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
     <Button
         android:id="@+id/expandableButton1"
@@ -69,6 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SEND!"
+
             android:layout_below="@+id/rewe2TextView"
             android:background="@color/colorPrimary"/>
 
@@ -142,6 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SEND!"
+
             android:layout_below="@+id/targetCo2TextView"
             android:background="@color/colorPrimary"/>
         <TextView
@@ -238,6 +241,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SEND!"
+
             android:layout_below="@+id/fuel2TextView"
             android:background="@color/colorPrimary"/>
 
@@ -309,7 +313,79 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SEND!"
+
             android:layout_below="@+id/driving2TextView"
             android:background="@color/colorPrimary"/>
+    </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+    <Button
+        android:id="@+id/expandableButton5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/expandableLayout4"
+        android:background="@color/black"
+        android:drawableRight="@android:drawable/arrow_down_float"
+        android:paddingRight="10dp"
+        android:text="Daily Challenge"
+        android:textColor="#fff" />
+
+    <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+        android:id="@+id/expandableLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/expandableButton4"
+        android:background="@color/fbutton_color_clouds"
+        android:padding="16dp"
+        app:ael_duration="400"
+        app:ael_expanded="false"
+        app:ael_interpolator="bounce"
+        app:ael_orientation="vertical">
+
+        <TextView
+            android:id="@+id/daily_cardview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingBottom="5dp"
+            android:text="Description"
+            android:textColor="#003300"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/daily_cardview_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/daily_cardview_title"
+            android:text="Starting From Today to 1 week"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/dailyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/daily_cardview_description"
+            android:text="Current Fuel Consumption:0.8l / km"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/dailyTextTarget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/dailyTextView"
+            android:text="Target: 0.5l / km"
+            android:textColor="@color/black" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dailyTextTarget"
+
+
+            android:background="@color/colorPrimary"
+            android:text="SEND!" />
     </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 </RelativeLayout>

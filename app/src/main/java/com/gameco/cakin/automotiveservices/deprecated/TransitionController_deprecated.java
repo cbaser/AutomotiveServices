@@ -1,4 +1,4 @@
-package com.gameco.cakin.automotiveservices.adapters;
+package com.gameco.cakin.automotiveservices.deprecated;
 
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 
 import com.gameco.cakin.automotiveservices.R;
@@ -18,25 +19,31 @@ import com.gameco.cakin.automotiveservices.activites.fragments.FragmentMainChall
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentHome;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentAchievements;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentRanking;
+import com.gameco.cakin.automotiveservices.adapters.ViewPagerAdapter;
 
 /**
  * Created by cakin on 11/25/2017.
  */
 
-public class TransitionController implements NavigationView.OnNavigationItemSelectedListener {
+public class TransitionController_deprecated implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private String[] pageTitles = {"Home","Challenges","Achievements"};
     private ViewPagerAdapter viewPagerAdapter;
     private DrawerLayout drawer;
     private ViewPager viewPager;
+    private LayoutInflater layoutInflater;
     private AppCompatActivity activity;
-    public  TransitionController(AppCompatActivity activity){
+    private TransitionHelper_deprecated transitionHelperDeprecated;
+    private UserHelper_deprecated userHelperDeprecated;
+    public TransitionController_deprecated(AppCompatActivity activity){
         this.activity = activity;
     }
     public void onCreate(){
         toolbar = (Toolbar) activity.findViewById(R.id.toolbar);
         activity.setSupportActionBar(toolbar);
+        userHelperDeprecated = new UserHelper_deprecated();
+        transitionHelperDeprecated = new TransitionHelper_deprecated();
         viewPager = (ViewPager) activity.findViewById(R.id.viewpager);
        setupViewPager(viewPager);
         tabLayout = (TabLayout) activity.findViewById(R.id.tabs);

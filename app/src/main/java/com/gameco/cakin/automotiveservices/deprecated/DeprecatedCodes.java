@@ -359,5 +359,15 @@ public class DeprecatedCodes {
 //             currentCar.setTelematicsList(Arrays.asList(telematics));
 
 
-
+    //   private TransitionHelper_deprecated transitionHelper;
+    //   private UserHelper_deprecated userHelper;
+    // userHelper = new UserHelper_deprecated();
+    //  transitionHelper = new TransitionHelper_deprecated();
+    //  transitionHelper.setFragment(this);
+    //  transitionHelper.showDailyChallenge();
+    //    FragmentFriends fragmentFriends = new FragmentFriends();
+    //    FragmentManager fm = getActivity().getSupportFragmentManager();
+    //   fragmentFriends.show(fm,"Dialog Fragment");
+    //   transitionHelper.showFriends();
+    //  userHelper.setUserInformation(view,getActivity().getSharedPreferences("UserInfo",0));
 }

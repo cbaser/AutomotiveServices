@@ -7,28 +7,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.gameco.cakin.automotiveservices.R;
 
-import com.gameco.cakin.automotiveservices.adapters.TransitionController;
+import com.gameco.cakin.automotiveservices.controller.FrontController;
+import com.gameco.cakin.automotiveservices.controller.myNotificationController;
+import com.gameco.cakin.automotiveservices.onesignal.NotificationHandler;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.onesignal.OneSignal;
 
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    private FrontController frontController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .setNotificationOpenedHandler(new NotificationHandler(this))
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
 
+         frontController = new FrontController(this);
 
-
-        TransitionController transitionController = new TransitionController(this);
+       // TransitionController_deprecated transitionController = new TransitionController_deprecated(this);
         setContentView(R.layout.activity_main);
-        setTitle("");
-        transitionController.onCreate();
-        String token = FirebaseInstanceId.getInstance().getToken(); //İlk çalışmada boş dönecektir.
 
+        setTitle("");
+        frontController.createActivity();
+     //   transitionController.onCreate();
+        String token = FirebaseInstanceId.getInstance().getToken(); //İlk çalışmada boş.
+    //    transitionController.showDailyChallenge();
         String msg = "Token :"+token;
         Log.d(TAG, msg);
 
@@ -69,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 
 

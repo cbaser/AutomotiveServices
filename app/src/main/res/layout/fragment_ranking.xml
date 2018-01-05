@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ddd"
-    android:backgroundTint="#ddd">
+    android:background="@color/white"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ddd"
+        android:background="@color/white"
 
         android:orientation="vertical">
 
@@ -67,11 +67,11 @@
             android:id="@+id/b2bListView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="#ddd"
+            android:background="@color/white"
 
 
             android:divider="@color/black"
-            android:dividerHeight="4px"
+            android:dividerHeight="4dp"
             android:textDirection="firstStrong">
 
 
@@ -121,9 +121,9 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:background="@color/white"
-            android:backgroundTint="#ddd"
+
             android:divider="@color/black"
-            android:dividerHeight="4px"
+            android:dividerHeight="4dp"
             android:textDirection="firstStrong">
 
 

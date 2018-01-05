@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.backend.BackendHelper;
+import com.gameco.cakin.automotiveservices.onesignal.NotificationHandler;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -38,10 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        OneSignal.startInit(this)
-                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-                .unsubscribeWhenNotificationsAreDisabled(true)
-                .init();
+
         if (mDatabase == null) {
            // FirebaseDatabase.getInstance().setPersistenceEnabled(true);
             mDatabase = FirebaseDatabase.getInstance();
@@ -115,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(LoginActivity.this, "Welcome" +email, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Welcome" +firebaseAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(LoginActivity.this, MainActivity.class);
                    FirebaseUser user = firebaseAuth.getCurrentUser();
                     Log.d("LOGGED", "user: " + user);

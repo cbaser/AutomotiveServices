@@ -9,10 +9,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/main_icon"
         android:label="@string/app_name"
         android:roundIcon="@drawable/main_icon"
         android:supportsRtl="true"
+
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name="com.gameco.cakin.automotiveservices.activites.OpeningActivity"
@@ -22,12 +23,17 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter> <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity
             android:name="com.gameco.cakin.automotiveservices.activites.SingupActivity"
             android:label="@string/title_activity_singup"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity
             android:name="com.gameco.cakin.automotiveservices.activites.LoginActivity"
             android:label="@string/title_activity_login"
@@ -36,6 +42,7 @@
             android:name="com.gameco.cakin.automotiveservices.activites.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
+
 
         </activity>
         <!-- [START firebase_service] -->
@@ -55,7 +62,7 @@
         </service>
         <!-- [END firebase_iid_service] -->
 
-
+        <meta-data android:name="com.onesignal.NotificationOpened.DEFAULT" android:value="DISABLE" />
     </application>
 
 </manifest>

@@ -262,7 +262,7 @@
                     app:srcCompat="@drawable/ic_cagatay" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/acceptChallengeBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -284,7 +284,7 @@
                     android:id="@+id/textView18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/button"
+                    android:layout_above="@+id/acceptChallengeBtn"
                     android:layout_marginStart="33dp"
                     android:layout_toEndOf="@+id/achievements_cardview_title"
                     android:text="BMW Group"

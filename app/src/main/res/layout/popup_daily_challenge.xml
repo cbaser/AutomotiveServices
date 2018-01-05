@@ -47,7 +47,7 @@
         android:textColor="@color/black" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/join_regional_challenge_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/send_challenge_to_friend_button"

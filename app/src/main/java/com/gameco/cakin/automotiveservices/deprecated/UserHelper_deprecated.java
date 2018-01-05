@@ -1,4 +1,4 @@
-package com.gameco.cakin.automotiveservices.adapters;
+package com.gameco.cakin.automotiveservices.deprecated;
 
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -31,7 +31,7 @@ import java.util.Scanner;
  * Created by cakin on 12/28/2017.
  */
 
-public class UserHelper {
+public class UserHelper_deprecated {
 
 
     private FirebaseAuth firebaseAuth;
