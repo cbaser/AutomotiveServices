@@ -1,100 +1,230 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/home_innerlayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/friendsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="13dp"
         android:background="@color/white"
+        android:orientation="horizontal"
         android:padding="@dimen/activity_horizontal_margin">
 
+        <LinearLayout
+            android:id="@+id/linearlayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/icItem7"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            <TextView
+                android:id="@+id/rankLea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/josefin_sans_semibold"
+                android:text="1."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <ImageView
+
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                app:srcCompat="@drawable/ic_lea" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/josefin_sans_semibold"
+                android:text="Lea"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:text="123456"
+                android:textColor="#727272"
+                tools:text="123456" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/linearlayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/textViewPosition"
-            android:cropToPadding="false"
-            android:visibility="visible"
-            app:srcCompat="@drawable/ic_can"
-            tools:ignore="ContentDescription" />
+            android:layout_marginStart="75dp"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/LinearLayout3"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvMileage"
+            <TextView
+                android:id="@+id/rankHampus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/josefin_sans_semibold"
+                android:text="2."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_hampus" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/josefin_sans_semibold"
+                android:text="Hampus"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="123455"
+                android:textColor="#727272"
+                tools:text="123455" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/LinearLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/icItem7"
-            android:layout_below="@+id/icItem7"
-            android:layout_marginStart="21dp"
-            android:text="Can"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            tools:text="Can" />
 
-        <TextView
-            android:id="@+id/tv_av_distance"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/rankCan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/josefin_sans_semibold"
+                android:text="3."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/imageCan"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_can"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvCan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/josefin_sans_semibold"
+                android:text="Can"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:text="Can" />
+
+
+            <TextView
+                android:id="@+id/tv_av_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="123454"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="#727272"
+                android:textSize="12sp"
+                tools:ignore="HardcodedText"
+                tools:text="123454" />
+
+
+        </LinearLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+<!--LEA
+            <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tvMileage"
-            android:layout_below="@+id/tvMileage"
-            android:text="19344"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="#727272"
-            android:textSize="12sp"
-            tools:ignore="HardcodedText"
-            tools:text="19344" />
-
-        <ImageView
+            android:layout_alignEnd="@+id/textView2"
+            android:layout_below="@+id/textViewPosition"
+            android:text="Lea"
+            android:textColor="@color/black" />
+            <ImageView
             android:id="@+id/textViewPosition"
             android:layout_width="75dp"
             android:layout_height="75dp"
+
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="28dp"
-
             app:srcCompat="@drawable/ic_lea" />
-
-        <ImageView
-            android:id="@+id/imageView3"
+             <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textViewPosition"
+            android:layout_below="@+id/textView"
+            android:layout_marginStart="13dp"
+            android:text="19345"
+            android:textColor="#727272"
+            tools:text="19345" />
+            <ImageView
+            android:id="@+id/textViewPosition"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="25dp"
-            android:layout_toEndOf="@+id/icItem7"
-            app:srcCompat="@drawable/ic_hampus" />
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_lea" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textView4"
-            android:layout_marginEnd="25dp"
-            android:layout_toStartOf="@+id/icItem7"
+
+            android:layout_below="@+id/textViewPosition"
+            android:layout_centerHorizontal="true"
             android:text="Lea"
             android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvMileage"
-            android:layout_marginEnd="16dp"
-            android:layout_toStartOf="@+id/icItem7"
-            android:text="19345"
-            android:textColor="#727272"
-            tools:text="19345" />
 
-        <TextView
+
+
+-->
+
+<!--HAMPUS
+
+  <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,6 +233,14 @@
             android:layout_marginEnd="9dp"
             android:text="Hampus"
             android:textColor="@color/black" />
+             <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/icItem7"
+            app:srcCompat="@drawable/ic_hampus" />
 
         <TextView
             android:id="@+id/textView4"
@@ -115,7 +253,5 @@
             tools:text="19343" />
 
 
-    </RelativeLayout>
+-->
 
-
-</RelativeLayout>

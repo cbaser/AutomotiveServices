@@ -6,9 +6,11 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -33,6 +35,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -73,10 +77,10 @@ public class myFragmentController {
         ListView listView;
         List<Friend> friendList = new ArrayList<>();
         friendList.clear();
-        friendList.add(new Friend("LEA",23494));
-        friendList.add(new Friend("CAN",21421));
-        friendList.add(new Friend("CAGATAY",19180));
-        friendList.add(new Friend("CHRISTOPHER",14032));
+        friendList.add(new Friend("LEA",123456));
+        friendList.add(new Friend("HAMPUS",123456));
+        friendList.add(new Friend("CAN",123454));
+        friendList.add(new Friend("CHRISTOPHER",123450));
         listView = (ListView)mview.findViewById(R.id.friendsListview);
         ViewGroup header_friends = (ViewGroup)layoutInflater.inflate(R.layout.header_friends_list,listView,false);
         listView.addHeaderView(header_friends);
@@ -107,8 +111,16 @@ public class myFragmentController {
         String firebaseUserEmail = firebaseUser.getEmail();
 
         //  String username = settings.getString("Username","");
-        if(firebaseUserEmail.contains("cnturkr"))
+        if(firebaseUserEmail.contains("can"))
         {
+            NavigationView navigationView = (NavigationView) fragment.getActivity().findViewById(R.id.nav_view);
+
+            View headerLayout = navigationView.getHeaderView(0);
+
+            ((TextView)  headerLayout.findViewById(R.id.userTextV)).setText("Can Türker");
+            ((TextView) headerLayout.findViewById(R.id.userEmailV)).setText("can.tuerker@tum.de");
+
+
             FrameLayout frameLayout = (FrameLayout)view.findViewById(R.id.home_frameLayout);
             RelativeLayout relativeLayout =(RelativeLayout) frameLayout.findViewById(R.id.home_mainLayout);
 

@@ -4,7 +4,7 @@
     android:id="@+id/popup_element"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/green"
+    android:background="@color/colorCan"
     android:orientation="vertical"
     android:padding="10px">
 
@@ -15,6 +15,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="76dp"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:lineSpacingExtra="8sp"
         android:text="Reduce average consumption by 0.5 l/100km"
         android:textAlignment="center"
@@ -26,10 +27,11 @@
         android:id="@+id/start_challenge_yourself_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/relativeLayout2"
+        android:layout_alignStart="@+id/send_challenge_to_friend_button"
         android:layout_below="@+id/relativeLayout2"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="24dp"
         android:background="@color/white"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:lineSpacingExtra="8sp"
         android:text="Start challenge yourself"
         android:textColor="@color/black"
@@ -43,6 +45,7 @@
         android:layout_below="@+id/start_challenge_yourself_button"
         android:layout_marginTop="18dp"
         android:background="@color/white"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:text="Send challenge to friend"
         android:textColor="@color/black" />
 
@@ -54,6 +57,7 @@
         android:layout_below="@+id/send_challenge_to_friend_button"
         android:layout_marginTop="8dp"
         android:background="@color/white"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:text="Join Regional Challenge"
         android:textColor="@color/black" />
 
@@ -64,7 +68,7 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/textView8"
         android:layout_marginTop="25dp"
-        android:background="@color/light_yellow">
+        android:background="@color/primaryColor">
 
         <EditText
             android:id="@+id/editText"
@@ -73,6 +77,7 @@
 
             android:ems="10"
             android:enabled="false"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:inputType="text|textPersonName"
             android:text="Time: one month"
             android:textColor="@color/black" />
@@ -85,6 +90,7 @@
             android:layout_below="@+id/editText"
             android:ems="10"
             android:enabled="false"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:inputType="textPersonName"
             android:text="Points to be scored : 2000"
             android:textColor="@color/black" />
@@ -97,6 +103,7 @@
             android:layout_below="@+id/editText2"
             android:ems="10"
             android:enabled="false"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:inputType="textPersonName"
             android:text="Your current consumption: 8.4l /100km"
             android:textColor="@color/black" />
@@ -109,6 +116,7 @@
             android:layout_below="@+id/editText3"
             android:ems="10"
             android:enabled="false"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:inputType="textPersonName"
             android:text="Your target consumption: 7.9l/100km"
             android:textColor="@color/black" />

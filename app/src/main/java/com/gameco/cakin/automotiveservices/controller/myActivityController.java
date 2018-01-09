@@ -169,7 +169,7 @@ public class myActivityController implements NavigationView.OnNavigationItemSele
                 View layout = layoutInflater.inflate(R.layout.content_daily_challenge, null);
                 layout.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.anim_daily_content));
                 // create a 300px width and 470px height PopupWindow
-                PopupWindow pw = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT, 500, true);
+                PopupWindow pw = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT, 700, true);
                 // display the popup in the center
                 pw.showAtLocation(layout, Gravity.CENTER, 0, 0);
                 dailyRelative.setVisibility(View.VISIBLE);

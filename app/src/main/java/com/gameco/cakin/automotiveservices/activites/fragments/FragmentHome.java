@@ -47,22 +47,22 @@ public FragmentHome(){
         }
     });
 
-    RelativeLayout relativeLayout1 = (RelativeLayout) view.findViewById(R.id.challengesLayoutHome);
-    Button showBtn = (Button) relativeLayout1.findViewById(R.id.seeYourChallengesBtn);
-    showBtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-           // myFragmentController fragmentController = new myFragmentController(fragment);
-          //  fragmentController.replaceFragment(R.id.home_frameLayout,new FragmentMainChallenges());
-            final Dialog dialog = new Dialog(fragment.getContext());
-            dialog.setContentView(R.layout.fragment_sub_yourchallenges);
-
-            dialog.setTitle("Title...");
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
-            dialog.show();
-
-        }
-    });
+//    RelativeLayout relativeLayout1 = (RelativeLayout) view.findViewById(R.id.challengesLayoutHome);
+//    Button showBtn = (Button) relativeLayout1.findViewById(R.id.seeYourChallengesBtn);
+//    showBtn.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//           // myFragmentController fragmentController = new myFragmentController(fragment);
+//          //  fragmentController.replaceFragment(R.id.home_frameLayout,new FragmentMainChallenges());
+//            final Dialog dialog = new Dialog(fragment.getContext());
+//            dialog.setContentView(R.layout.fragment_sub_yourchallenges);
+//
+//            dialog.setTitle("Title...");
+//            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+//            dialog.show();
+//
+//        }
+//    });
 return view;
 
     }

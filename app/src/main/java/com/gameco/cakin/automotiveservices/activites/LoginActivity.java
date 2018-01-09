@@ -113,7 +113,10 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(LoginActivity.this, "Welcome" +firebaseAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
+                    if(firebaseAuth.getCurrentUser().getEmail().contains("can"))
+                    Toast.makeText(LoginActivity.this, "Welcome:" +"Can!", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(LoginActivity.this, "Welcome:" +"Cagatay!", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(LoginActivity.this, MainActivity.class);
                    FirebaseUser user = firebaseAuth.getCurrentUser();
                     Log.d("LOGGED", "user: " + user);

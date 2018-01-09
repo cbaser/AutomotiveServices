@@ -152,12 +152,12 @@ public class myNotificationController {
                     });
                     Log.d("Tag",sendRef.toString());
 
-                    if(LoginActivity.LoggedIn_User_Email.equals("c.akinbaser@hotmail.com")){
-                        emailToSend = "cnturkr@gmail.com";
+                    if(LoginActivity.LoggedIn_User_Email.equals("cagatayakin.baser@tum.de")){
+                        emailToSend = "can.tuerker@tum.de";
                         name = "Cagatay";
                     }
-                    else if(LoginActivity.LoggedIn_User_Email.equals("cnturkr@gmail.com")){
-                        emailToSend="c.akinbaser@hotmail.com";
+                    else if(LoginActivity.LoggedIn_User_Email.equals("can.tuerker@tum.de")){
+                        emailToSend="cagatayakin.baser@tum.de";
                         name = "Can";
                     }
                     try

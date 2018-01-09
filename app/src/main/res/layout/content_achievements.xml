@@ -26,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:paddingBottom="5dp"
                 android:text="My Achievements"
                 android:textColor="@color/light_green"
@@ -64,7 +65,7 @@
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView14"
-                app:srcCompat="@drawable/badge_winner" />
+                app:srcCompat="@drawable/badge_unlock" />
 
             <TextView
                 android:id="@+id/textView14"
@@ -72,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/imageView8"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Newbie"
                 android:textColor="@color/black" />
 
@@ -82,7 +84,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView22"
                 android:layout_marginTop="15dp"
-                app:srcCompat="@drawable/badge_50_winner" />
+                app:srcCompat="@drawable/badge_unlock" />
 
             <TextView
                 android:id="@+id/textView15"
@@ -90,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/imageView9"
                 android:layout_below="@+id/imageView9"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Rookie"
                 android:textColor="@color/black" />
 
@@ -100,6 +103,7 @@
                 android:layout_alignStart="@+id/imageView10"
                 android:layout_below="@+id/imageView10"
                 android:layout_marginStart="11dp"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Star"
                 android:textColor="@color/black" />
 
@@ -118,6 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/imageView11"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Winner"
                 android:textColor="@color/black" />
 
@@ -135,6 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/imageView13"
                 android:layout_below="@+id/imageView13"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Efficient"
                 android:textColor="@color/black" />
 
@@ -150,9 +156,9 @@
                 android:id="@+id/imageView15"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_alignEnd="@+id/textView24"
-                android:layout_below="@+id/textView24"
-                app:srcCompat="@drawable/badge_challenge" />
+                android:layout_above="@+id/textView20"
+                android:layout_alignStart="@+id/textView23"
+                app:srcCompat="@drawable/badge_unlock" />
 
             <TextView
                 android:id="@+id/textView24"
@@ -160,6 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/imageView14"
                 android:layout_below="@+id/imageView14"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Inefficient"
                 android:textColor="@color/black" />
 
@@ -169,6 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/imageView15"
                 android:layout_below="@+id/imageView15"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Challenger"
                 android:textColor="@color/black" />
 
@@ -221,6 +229,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:paddingBottom="5dp"
                 android:text="Kilometers Driven"
                 android:textColor="@color/light_green"
@@ -233,6 +242,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/kilometers_cardview_title"
 
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:text="787 km"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
@@ -260,6 +270,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:paddingBottom="5dp"
                 android:text="CO2 Saved"
                 android:textColor="@color/light_green"
@@ -272,6 +283,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/litres_cardview_title"
 
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:text="10kg"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
@@ -284,6 +296,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:paddingBottom="5dp"
                 android:text="Litres Saved"
                 android:textColor="@color/light_green"
@@ -297,6 +310,7 @@
 
                 android:layout_alignStart="@+id/litres_cardview_title"
                 android:layout_below="@+id/litres_cardview_title"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:text="8 L"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
@@ -326,6 +340,7 @@
                 android:layout_alignBaseline="@+id/total_consumption_cardview_title"
                 android:layout_alignBottom="@+id/total_consumption_cardview_title"
                 android:layout_alignStart="@+id/total_km_description"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:paddingBottom="5dp"
                 android:text="Total km this month"
                 android:textColor="@color/light_green"
@@ -337,6 +352,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/total_km_cardview_title"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:text="288km"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
@@ -349,6 +365,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:paddingBottom="5dp"
                 android:text="Total Consumption"
                 android:textColor="@color/light_green"
@@ -361,6 +378,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/total_consumption_cardview_title"
                 android:layout_below="@+id/total_consumption_cardview_title"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:text="31.8 kWh"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"

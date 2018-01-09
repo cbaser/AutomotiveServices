@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:background="#FF0000"
         android:drawableRight="@android:drawable/arrow_down_float"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:paddingRight="10dp"
         android:text="REWE"
         android:textColor="#fff" />
@@ -33,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:paddingBottom="5dp"
             android:text="Description"
             android:textColor="#003300"
@@ -44,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rewe_cardview_title"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Starting Point: Garching "
             android:textColor="@color/black"
             android:textSize="14sp" />
@@ -54,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/rewe_cardview_description"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Nearest Rewe is in 2 km"
             android:textColor="@color/black" />
 
@@ -63,16 +67,19 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/reweTextView"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Target: Go to nearest rewe in Leopold Str."
             android:textColor="@color/black" />
+
         <Button
             android:id="@+id/btn_rewe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SEND!"
-
             android:layout_below="@+id/rewe2TextView"
-            android:background="@color/colorPrimary"/>
+
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/josefin_sans_semibold"
+            android:text="SEND!" />
 
 
     </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
@@ -86,6 +93,7 @@
         android:layout_below="@+id/expandableLayout1"
         android:background="#FF50DC52"
         android:drawableRight="@android:drawable/arrow_down_float"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:paddingRight="10dp"
         android:text="CO2"
         android:textColor="@color/colorPrimary" />
@@ -107,6 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:paddingBottom="5dp"
             android:text="Description"
             android:textColor="#003300"
@@ -118,6 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/description_co2_title"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Starting Point 4.3l/100km"
             android:textColor="@color/cardview_dark_background"
             android:textSize="14sp" />
@@ -128,6 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/description_co2_description"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Current Consumption: 4.1/100km"
             android:textColor="@color/black" />
 
@@ -137,41 +148,50 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/currentCo2Textview"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Target: 3.7 l/100km"
             android:textColor="@color/black" />
+
         <Button
             android:id="@+id/co2btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SEND!"
-
             android:layout_below="@+id/targetCo2TextView"
-            android:background="@color/colorPrimary"/>
+
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/josefin_sans_semibold"
+            android:text="SEND!" />
+
         <TextView
             android:id="@+id/description2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/co2btn"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:paddingBottom="5dp"
             android:text="Description"
             android:textColor="#003300"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/implemented"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_below="@+id/description2"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Will be Implemented"
-            android:textColor="@color/black"
-            android:layout_below="@+id/description2"/>
+            android:textColor="@color/black" />
+
         <Button
             android:id="@+id/co2btn2"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="SEND!"
             android:layout_below="@+id/implemented"
-            android:background="@color/colorPrimary"/>
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/josefin_sans_semibold"
+            android:text="SEND!" />
 
 
     </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
@@ -184,6 +204,7 @@
         android:layout_below="@+id/expandableLayout2"
         android:background="#FFCFC20C"
         android:drawableRight="@android:drawable/arrow_down_float"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:paddingRight="10dp"
         android:text="FUEL"
         android:textColor="@color/black" />
@@ -205,6 +226,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:paddingBottom="5dp"
             android:text="Description"
             android:textColor="@color/light_green"
@@ -216,6 +238,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fuel_cardview_title"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Starting Point 4.3l/100km"
             android:textColor="@color/cardview_dark_background"
             android:textSize="14sp" />
@@ -226,6 +249,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/fuel_cardview_description"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Current Consumption: 4.1/100km"
             android:textColor="@color/black" />
 
@@ -235,15 +259,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/fuelTextView"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Target: 3.7 l/100km"
             android:textColor="@color/black" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SEND!"
-
             android:layout_below="@+id/fuel2TextView"
-            android:background="@color/colorPrimary"/>
+
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/josefin_sans_semibold"
+            android:text="SEND!" />
 
 
     </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
@@ -253,9 +280,11 @@
         android:id="@+id/expandableButton4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/expandableLayout3"
         android:background="#0080FF"
         android:drawableRight="@android:drawable/arrow_down_float"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:paddingRight="10dp"
         android:text="Driving Style Challenge"
         android:textColor="#fff" />
@@ -277,6 +306,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:paddingBottom="5dp"
             android:text="Description"
             android:textColor="#003300"
@@ -288,6 +318,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/driving_cardview_title"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Starting From Today"
             android:textColor="@color/black"
             android:textSize="14sp" />
@@ -298,6 +329,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/driving_cardview_description"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Current Driving Style : 3 Stars"
             android:textColor="@color/black" />
 
@@ -307,15 +339,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/drivingTextView"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Target: 5 Stars"
             android:textColor="@color/black" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SEND!"
-
             android:layout_below="@+id/driving2TextView"
-            android:background="@color/colorPrimary"/>
+
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/josefin_sans_semibold"
+            android:text="SEND!" />
     </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
     <Button
@@ -325,6 +360,7 @@
         android:layout_below="@+id/expandableLayout4"
         android:background="@color/black"
         android:drawableRight="@android:drawable/arrow_down_float"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:paddingRight="10dp"
         android:text="Daily Challenge"
         android:textColor="#fff" />
@@ -346,6 +382,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:paddingBottom="5dp"
             android:text="Description"
             android:textColor="#003300"
@@ -357,6 +394,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/daily_cardview_title"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Starting From Today to 1 week"
             android:textColor="@color/black"
             android:textSize="14sp" />
@@ -367,6 +405,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/daily_cardview_description"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Current Fuel Consumption:0.8l / km"
             android:textColor="@color/black" />
 
@@ -376,6 +415,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/dailyTextView"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Target: 0.5l / km"
             android:textColor="@color/black" />
 
@@ -383,9 +423,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dailyTextTarget"
-
-
             android:background="@color/colorPrimary"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="SEND!" />
     </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 </RelativeLayout>

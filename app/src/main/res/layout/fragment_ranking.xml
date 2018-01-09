@@ -18,6 +18,7 @@
             android:id="@+id/textView28"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Born 2 Be Innovative"
             android:textColor="@color/black"
             android:textSize="24sp" />
@@ -81,6 +82,7 @@
             android:id="@+id/textView29"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="Global"
             android:textColor="@color/black"
             android:textSize="24sp" />

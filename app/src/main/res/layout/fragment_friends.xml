@@ -22,11 +22,12 @@
 
     <Button
         android:id="@+id/button8"
-        android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:background="#597ea8"
         android:drawableEnd="@drawable/ic_add_friend"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:text="Add Friend" />
 
     <Button
@@ -36,6 +37,7 @@
         android:layout_marginBottom="5dp"
         android:background="#597ea8"
         android:drawableEnd="@drawable/ic_create_group"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:text="Create Group" />
 
     <Button
@@ -44,6 +46,7 @@
         android:layout_height="wrap_content"
         android:background="#597ea8"
         android:drawableEnd="@drawable/ic_import_group"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:text="Import Group" />
 
 </LinearLayout>

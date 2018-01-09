@@ -38,11 +38,12 @@
                 android:layout_marginEnd="35dp"
                 android:layout_marginStart="22dp"
                 android:background="#0000"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:hint="@string/fullname"
                 android:inputType="text"
                 android:padding="16dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColor="@color/light_green"
+                android:textColorHint="@color/light_green"
                 android:textSize="16sp" />
 
             <View
@@ -59,11 +60,12 @@
                 android:layout_marginEnd="35dp"
                 android:layout_marginStart="22dp"
                 android:background="#0000"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:hint="@string/email"
                 android:inputType="text"
                 android:padding="16dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColor="@color/light_green"
+                android:textColorHint="@color/light_green"
                 android:textSize="16sp" />
 
             <View
@@ -80,11 +82,12 @@
                 android:layout_marginEnd="35dp"
                 android:layout_marginStart="22dp"
                 android:background="#0000"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:hint="@string/username"
                 android:inputType="text"
                 android:padding="16dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColor="@color/light_green"
+                android:textColorHint="@color/light_green"
                 android:textSize="16sp" />
 
             <View
@@ -101,12 +104,13 @@
                 android:layout_marginEnd="35dp"
                 android:layout_marginStart="22dp"
                 android:background="#0000"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:maxLength="12"
                 android:padding="16dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColor="@color/light_green"
+                android:textColorHint="@color/light_green"
                 android:textSize="16sp" />
 
             <View
@@ -126,6 +130,7 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button_with_shape"
+                android:fontFamily="@font/josefin_sans_semibold"
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="@string/createAccount"
