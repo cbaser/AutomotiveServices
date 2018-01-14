@@ -4,9 +4,10 @@
     android:id="@+id/popup_element"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/colorCan"
+    android:background="@color/fbutton_color_midnight_blue"
+
     android:orientation="vertical"
-    android:padding="10px">
+    android:padding="@dimen/activity_horizontal_margin">
 
     <TextView
         android:id="@+id/textView8"
@@ -68,58 +69,65 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/textView8"
         android:layout_marginTop="25dp"
-        android:background="@color/primaryColor">
+        android:background="@color/fbutton_color_midnight_blue">
 
-        <EditText
-            android:id="@+id/editText"
+        <TextView
+            android:id="@+id/txtTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
             android:ems="10"
             android:enabled="false"
             android:fontFamily="@font/josefin_sans_semibold"
-            android:inputType="text|textPersonName"
-            android:text="Time: one month"
-            android:textColor="@color/black" />
 
-        <EditText
-            android:id="@+id/editText2"
+            android:text="Time: one week"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtPoint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/editText"
+
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/txtTime"
+            android:layout_marginTop="14dp"
             android:ems="10"
             android:enabled="false"
             android:fontFamily="@font/josefin_sans_semibold"
-            android:inputType="textPersonName"
             android:text="Points to be scored : 2000"
-            android:textColor="@color/black" />
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/editText3"
+        <TextView
+            android:id="@+id/txtCurrent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/editText2"
+            android:layout_below="@+id/txtPoint"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:enabled="false"
             android:fontFamily="@font/josefin_sans_semibold"
-            android:inputType="textPersonName"
             android:text="Your current consumption: 8.4l /100km"
-            android:textColor="@color/black" />
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/editText4"
+        <TextView
+            android:id="@+id/txtTarget"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/editText3"
+
+            android:layout_below="@+id/txtPoint"
+            android:layout_marginTop="61dp"
             android:ems="10"
             android:enabled="false"
             android:fontFamily="@font/josefin_sans_semibold"
-            android:inputType="textPersonName"
             android:text="Your target consumption: 7.9l/100km"
-            android:textColor="@color/black" />
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 

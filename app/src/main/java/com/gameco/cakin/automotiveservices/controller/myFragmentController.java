@@ -3,6 +3,7 @@ package com.gameco.cakin.automotiveservices.controller;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
@@ -134,20 +135,13 @@ public class myFragmentController {
 
 
     }
-    public void playChallenge(){
-       notificationController.showPopUp();
-
-
-
-
-    }
 
 
 
 
 
 }
-//                final View popupView = fragment.getActivity().getLayoutInflater().inflate(R.layout.popup_daily_challenge,null);
+//                final View popupView = fragment.getActivity().getLayoutInflater().inflate(R.layout.popup_challenge,null);
 //                final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 //                popupWindow.showAtLocation(popupView, Gravity.NO_GRAVITY,10,10);
 //                Button start_challenge = (Button) popupView.findViewById(R.id.start_challenge_yourself_button);

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin">
     <android.support.v7.widget.CardView
         android:id="@+id/tournament_cardview"
 
@@ -18,7 +19,7 @@
             android:layout_alignEnd="@+id/tips_cardview"
             android:layout_below="@+id/tips_cardview"
 
-            android:background="@color/light_yellow"
+            android:background="@color/fbutton_color_midnight_blue"
             android:padding="16dp">
 
             <Button
@@ -30,7 +31,7 @@
                 android:layout_marginEnd="9dp"
                 android:background="@color/colorAccent"
                 android:fontFamily="@font/josefin_sans_semibold"
-                android:text="REJECT(-150PTS)" />
+                android:text="REJECT" />
 
             <TextView
                 android:id="@+id/achievements_cardview_title"
@@ -39,8 +40,8 @@
                 android:layout_alignParentTop="true"
                 android:fontFamily="@font/josefin_sans_semibold"
                 android:paddingBottom="5dp"
-                android:text="Regional Tournament"
-                android:textColor="@color/light_green"
+                android:text="Challenge!"
+                android:textColor="@color/h_titles"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -51,7 +52,7 @@
                 android:layout_below="@+id/achievements_cardview_title"
                 android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Reduce Fuel Consumption to 0.5l / km"
-                android:textColor="@color/cardview_dark_background"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <Button
@@ -63,7 +64,7 @@
                 android:layout_marginStart="10dp"
                 android:background="@color/light_green"
                 android:fontFamily="@font/josefin_sans_semibold"
-                android:text="Accept(+250 PTS)" />
+                android:text="Accept" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

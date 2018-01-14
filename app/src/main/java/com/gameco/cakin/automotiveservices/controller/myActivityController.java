@@ -61,23 +61,29 @@ public class myActivityController implements NavigationView.OnNavigationItemSele
 
         if (id == R.id.nav_home) {
             viewPager.setCurrentItem(0);
+            tabLayout.setVisibility(View.VISIBLE);
         }
         else if (id == R.id.nav_challenges) {
             viewPager.setCurrentItem(1);
+            tabLayout.setVisibility(View.VISIBLE);
 
         }
         else if (id == R.id.nav_myAchievements) {
             viewPager.setCurrentItem(2);
+            tabLayout.setVisibility(View.VISIBLE);
 
         }  else if (id == R.id.nav_ranking) {
             viewPager.setCurrentItem(3);
+            tabLayout.setVisibility(View.INVISIBLE);
 
         }
         else if (id == R.id.nav_carStatus) {
             viewPager.setCurrentItem(4);
+            tabLayout.setVisibility(View.INVISIBLE);
         }
         else if(id==R.id.nav_userDetails){
             viewPager.setCurrentItem(5);
+            tabLayout.setVisibility(View.INVISIBLE);
         }
 
 
@@ -150,44 +156,44 @@ public class myActivityController implements NavigationView.OnNavigationItemSele
         viewPager.setAdapter(viewPagerAdapter);
     }
 
-    public void showDailyChallenge() {
-
-
-        CountDownTimer timer = new CountDownTimer(3000, 1000) {
-            @Override
-            public void onTick(long l) {
-
-            }
-
-            @Override
-            public void onFinish() {
-                RelativeLayout dailyRelative =(RelativeLayout) activity.findViewById(R.id.dailyChallengeLayout);
-                dailyRelative.setVisibility(View.INVISIBLE);
-                LayoutInflater layoutInflater = LayoutInflater.from(activity);
-
-                //Inflate the view from a predefined XML layout
-                View layout = layoutInflater.inflate(R.layout.content_daily_challenge, null);
-                layout.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.anim_daily_content));
-                // create a 300px width and 470px height PopupWindow
-                PopupWindow pw = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT, 700, true);
-                // display the popup in the center
-                pw.showAtLocation(layout, Gravity.CENTER, 0, 0);
-                dailyRelative.setVisibility(View.VISIBLE);
-                Button playBtn =(Button) layout.findViewById(R.id.playChallengeButton);
-                playBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        myNotificationController.showPopUp();
-                    }
-                });
-
-            }
-
-        };
-        timer.start();
-
-
-        }
+//    public void showDailyChallenge() {
+//
+//
+//        CountDownTimer timer = new CountDownTimer(3000, 1000) {
+//            @Override
+//            public void onTick(long l) {
+//
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                RelativeLayout dailyRelative =(RelativeLayout) activity.findViewById(R.id.dailyChallengeLayout);
+//                dailyRelative.setVisibility(View.INVISIBLE);
+//                LayoutInflater layoutInflater = LayoutInflater.from(activity);
+//
+//                //Inflate the view from a predefined XML layout
+//                View layout = layoutInflater.inflate(R.layout.content_daily_challenge, null);
+//                layout.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.anim_daily_content));
+//                // create a 300px width and 470px height PopupWindow
+//                PopupWindow pw = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT, 700, true);
+//                // display the popup in the center
+//                pw.showAtLocation(layout, Gravity.CENTER, 0, 0);
+//                dailyRelative.setVisibility(View.VISIBLE);
+//                Button playBtn =(Button) layout.findViewById(R.id.playChallengeButton);
+//                playBtn.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//      //                  myNotificationController.showPopUp();
+//                    }
+//                });
+//
+//            }
+//
+//        };
+//        timer.start();
+//
+//
+//        }
 
     }
 

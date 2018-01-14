@@ -1,6 +1,7 @@
 package com.gameco.cakin.automotiveservices.activites.fragments;
 
 import android.app.Dialog;
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.RelativeLayout;
 import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.controller.FrontController;
 import com.gameco.cakin.automotiveservices.controller.myFragmentController;
+import com.gameco.cakin.automotiveservices.controller.myNotificationController;
 
 /**
  * Created by cakin on 11/22/2017.
@@ -21,21 +23,23 @@ import com.gameco.cakin.automotiveservices.controller.myFragmentController;
 public class FragmentHome extends Fragment {
     private FrontController frontController;
     private Fragment fragment;
+    private myNotificationController controller;
 public FragmentHome(){
 
 }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
      View view = inflater.inflate(R.layout.fragment_home,container,false);
      fragment = this;
+     controller = new myNotificationController(this);
         frontController = new FrontController(this);
         frontController.createFragment(view);
         RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.include_daily_challenge_content);
         Button challengeButton = (Button) relativeLayout.findViewById(R.id.playChallengeButton);
-
+        final int color = Color.parseColor("#00bf9a");
     challengeButton.setOnClickListener(new View.OnClickListener() {
        @Override
        public void onClick(View v) {
-           frontController.showChallenge();
+         controller.showPopUp("Time : One Week","Points to get : 2000","Current Consumption 8.4l /100km","Target Consumption : 7.9l /100km",color);//  frontController.showChallenge();
        }
     });
     Button seeAllFriendsButton = (Button) view.findViewById(R.id.seeFriendsBtn);

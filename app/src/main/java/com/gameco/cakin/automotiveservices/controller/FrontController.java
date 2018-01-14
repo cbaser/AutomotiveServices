@@ -21,7 +21,7 @@ public class FrontController {
     public void createActivity(){
         myActivityController.setUpTabs();
         myActivityController.setupNavigationMenu();
-        myActivityController.showDailyChallenge();
+        //myActivityController.showDailyChallenge();
     }
     public void createFragment(View view){
         myFragmentController.setUserInformation(view);
@@ -32,9 +32,7 @@ public class FrontController {
     public void replaceFragment(int challengesFrameLayout, Fragment fragment){
         myFragmentController.replaceFragment(challengesFrameLayout,fragment);
     }
-    public void showChallenge(){
-        myFragmentController.playChallenge();
-    }
+
 
 
 }

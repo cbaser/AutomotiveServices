@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popup_element"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="@color/cardview_light_background"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <ImageView
+        android:id="@+id/badgeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/exitFAB"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/badge_unlock" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/exitFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/badgeDescription"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        app:backgroundTint="@color/black"
+        app:fabSize="mini"
+        app:rippleColor="@color/black"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <TextView
+        android:id="@+id/badgeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/badgeImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="9dp"
+        android:text="badgeName"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/badgeDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/relativeLayout2"
+        android:layout_below="@+id/badgeName"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/josefin_sans_semibold"
+        android:text="You have to do more challenges inorder to unlock that badge"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+</RelativeLayout>

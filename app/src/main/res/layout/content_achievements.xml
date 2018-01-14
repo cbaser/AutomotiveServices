@@ -34,7 +34,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/image1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
@@ -42,25 +42,25 @@
                 app:srcCompat="@drawable/badge_newbie" />
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/image2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/achievements_cardview_title"
                 android:layout_marginStart="26dp"
-                android:layout_toEndOf="@+id/imageView8"
+                android:layout_toEndOf="@+id/image1"
                 app:srcCompat="@drawable/badge_10_winner" />
 
             <ImageView
-                android:id="@+id/imageView10"
+                android:id="@+id/image3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_alignTop="@+id/imageView9"
+                android:layout_alignTop="@+id/image2"
                 android:layout_marginStart="14dp"
                 android:layout_toEndOf="@+id/achievements_cardview_title"
                 app:srcCompat="@drawable/badge_25_winner" />
 
             <ImageView
-                android:id="@+id/imageView11"
+                android:id="@+id/image4"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
@@ -72,13 +72,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/imageView8"
+                android:layout_below="@+id/image1"
                 android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Newbie"
                 android:textColor="@color/black" />
 
             <ImageView
-                android:id="@+id/imageView12"
+                android:id="@+id/image7"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
@@ -90,8 +90,8 @@
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/imageView9"
-                android:layout_below="@+id/imageView9"
+                android:layout_alignStart="@+id/image2"
+                android:layout_below="@+id/image2"
                 android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Rookie"
                 android:textColor="@color/black" />
@@ -100,8 +100,8 @@
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/imageView10"
-                android:layout_below="@+id/imageView10"
+                android:layout_alignStart="@+id/image3"
+                android:layout_below="@+id/image3"
                 android:layout_marginStart="11dp"
                 android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Star"
@@ -111,8 +111,8 @@
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/imageView12"
-                android:layout_below="@+id/imageView12"
+                android:layout_alignStart="@+id/image7"
+                android:layout_below="@+id/image7"
                 android:text="Superstar"
                 android:textColor="@color/black" />
 
@@ -121,13 +121,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/imageView11"
+                android:layout_below="@+id/image4"
                 android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Winner"
                 android:textColor="@color/black" />
 
             <ImageView
-                android:id="@+id/imageView13"
+                android:id="@+id/image5"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignStart="@+id/textView15"
@@ -138,22 +138,22 @@
                 android:id="@+id/textView23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/imageView13"
-                android:layout_below="@+id/imageView13"
+                android:layout_alignStart="@+id/image5"
+                android:layout_below="@+id/image5"
                 android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Efficient"
                 android:textColor="@color/black" />
 
             <ImageView
-                android:id="@+id/imageView14"
+                android:id="@+id/image6"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_above="@+id/textView23"
-                android:layout_alignStart="@+id/imageView10"
+                android:layout_alignStart="@+id/image3"
                 app:srcCompat="@drawable/badge_not_efficient" />
 
             <ImageView
-                android:id="@+id/imageView15"
+                android:id="@+id/image8"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_above="@+id/textView20"
@@ -164,8 +164,8 @@
                 android:id="@+id/textView24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/imageView14"
-                android:layout_below="@+id/imageView14"
+                android:layout_alignEnd="@+id/image6"
+                android:layout_below="@+id/image6"
                 android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Inefficient"
                 android:textColor="@color/black" />
@@ -174,8 +174,8 @@
                 android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/imageView15"
-                android:layout_below="@+id/imageView15"
+                android:layout_alignStart="@+id/image8"
+                android:layout_below="@+id/image8"
                 android:fontFamily="@font/josefin_sans_semibold"
                 android:text="Challenger"
                 android:textColor="@color/black" />

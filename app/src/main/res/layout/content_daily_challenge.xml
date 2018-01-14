@@ -4,7 +4,7 @@
     android:id="@+id/home_innerlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryColor"
+    android:background="@color/fbutton_color_midnight_blue"
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
@@ -20,7 +20,7 @@
         android:layout_marginBottom="22dp"
         android:fontFamily="@font/josefin_sans_semibold"
         android:text="Today's Daily Challenge!"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -32,7 +32,7 @@
         android:layout_centerVertical="true"
         android:fontFamily="@font/josefin_sans_semibold"
         android:text="Reduce average fuel consumption by 0.5"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="italic"
         tools:text="Reduce average fuel consumption by 0.5" />

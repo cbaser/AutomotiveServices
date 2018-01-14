@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:padding="@dimen/activity_horizontal_margin"
+    >
 
     <Button
         android:id="@+id/expandableButton1"
@@ -153,42 +154,11 @@
             android:textColor="@color/black" />
 
         <Button
-            android:id="@+id/co2btn"
+            android:id="@+id/btn_co2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/targetCo2TextView"
 
-            android:background="@color/colorPrimary"
-            android:fontFamily="@font/josefin_sans_semibold"
-            android:text="SEND!" />
-
-        <TextView
-            android:id="@+id/description2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/co2btn"
-            android:fontFamily="@font/josefin_sans_semibold"
-            android:paddingBottom="5dp"
-            android:text="Description"
-            android:textColor="#003300"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/implemented"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/description2"
-            android:fontFamily="@font/josefin_sans_semibold"
-            android:text="Will be Implemented"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/co2btn2"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/implemented"
             android:background="@color/colorPrimary"
             android:fontFamily="@font/josefin_sans_semibold"
             android:text="SEND!" />
@@ -264,10 +234,10 @@
             android:textColor="@color/black" />
 
         <Button
+            android:id="@+id/btn_fuel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fuel2TextView"
-
             android:background="@color/colorPrimary"
             android:fontFamily="@font/josefin_sans_semibold"
             android:text="SEND!" />
@@ -344,87 +314,14 @@
             android:textColor="@color/black" />
 
         <Button
+            android:id="@+id/btn_driving_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_below="@+id/driving2TextView"
-
             android:background="@color/colorPrimary"
             android:fontFamily="@font/josefin_sans_semibold"
             android:text="SEND!" />
     </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-    <Button
-        android:id="@+id/expandableButton5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/expandableLayout4"
-        android:background="@color/black"
-        android:drawableRight="@android:drawable/arrow_down_float"
-        android:fontFamily="@font/josefin_sans_semibold"
-        android:paddingRight="10dp"
-        android:text="Daily Challenge"
-        android:textColor="#fff" />
-
-    <com.github.aakira.expandablelayout.ExpandableRelativeLayout
-        android:id="@+id/expandableLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/expandableButton4"
-        android:background="@color/fbutton_color_clouds"
-        android:padding="16dp"
-        app:ael_duration="400"
-        app:ael_expanded="false"
-        app:ael_interpolator="bounce"
-        app:ael_orientation="vertical">
-
-        <TextView
-            android:id="@+id/daily_cardview_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:fontFamily="@font/josefin_sans_semibold"
-            android:paddingBottom="5dp"
-            android:text="Description"
-            android:textColor="#003300"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/daily_cardview_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/daily_cardview_title"
-            android:fontFamily="@font/josefin_sans_semibold"
-            android:text="Starting From Today to 1 week"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/dailyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/daily_cardview_description"
-            android:fontFamily="@font/josefin_sans_semibold"
-            android:text="Current Fuel Consumption:0.8l / km"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/dailyTextTarget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/dailyTextView"
-            android:fontFamily="@font/josefin_sans_semibold"
-            android:text="Target: 0.5l / km"
-            android:textColor="@color/black" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/dailyTextTarget"
-            android:background="@color/colorPrimary"
-            android:fontFamily="@font/josefin_sans_semibold"
-            android:text="SEND!" />
-    </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 </RelativeLayout>
