@@ -183,8 +183,8 @@ public class FragmentAchievements extends Fragment {
             case R.drawable.badge_not_efficient:
                 badgeImage.setImageResource(R.drawable.badge_not_efficient);
                 badgeImage.setTag(R.drawable.badge_not_efficient);
-                badgeName.setText("Not Efficient");
-                badgeDescription.setText("You drove not so efficient last month and unlocked this badge!");
+                badgeName.setText("Competitive");
+                badgeDescription.setText("You sent 20 challenges and unlocked this badge!");
                 break;
 
         }

@@ -14,6 +14,7 @@ android:padding="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:fontFamily="@font/bree_serif"
         android:background="@color/white"
         android:textDirection="firstStrong">
 
@@ -25,9 +26,10 @@ android:padding="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:background="#597ea8"
+        android:fontFamily="@font/bree_serif"
+        android:background="@color/fbutton_color_midnight_blue"
         android:drawableEnd="@drawable/ic_add_friend"
-        android:fontFamily="@font/josefin_sans_semibold"
+
         android:text="Add Friend" />
 
     <Button
@@ -35,18 +37,18 @@ android:padding="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:background="#597ea8"
+        android:background="@color/fbutton_color_midnight_blue"
         android:drawableEnd="@drawable/ic_create_group"
-        android:fontFamily="@font/josefin_sans_semibold"
+        android:fontFamily="@font/bree_serif"
         android:text="Create Group" />
 
     <Button
         android:id="@+id/button10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#597ea8"
+        android:background="@color/fbutton_color_midnight_blue"
         android:drawableEnd="@drawable/ic_import_group"
-        android:fontFamily="@font/josefin_sans_semibold"
+        android:fontFamily="@font/bree_serif"
         android:text="Import Group" />
 
 </LinearLayout>

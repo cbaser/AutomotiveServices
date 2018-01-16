@@ -5,10 +5,12 @@ import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.gameco.cakin.automotiveservices.R;
@@ -33,13 +35,14 @@ public FragmentHome(){
      controller = new myNotificationController(this);
         frontController = new FrontController(this);
         frontController.createFragment(view);
-        RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.include_daily_challenge_content);
-        Button challengeButton = (Button) relativeLayout.findViewById(R.id.playChallengeButton);
-        final int color = Color.parseColor("#00bf9a");
+        CardView cardView = (CardView) view.findViewById(R.id.cardview_daily_content);
+        LinearLayout linearLayout = (LinearLayout) cardView.findViewById(R.id.include_daily_challenge_content);
+        Button challengeButton = (Button) linearLayout.findViewById(R.id.playChallengeButton);
+        final int color = Color.parseColor("#2c3e50");
     challengeButton.setOnClickListener(new View.OnClickListener() {
        @Override
        public void onClick(View v) {
-         controller.showPopUp("Time : One Week","Points to get : 2000","Current Consumption 8.4l /100km","Target Consumption : 7.9l /100km",color);//  frontController.showChallenge();
+         controller.showPopUp("Daily Challenge!","Time : One Week","Points to get : 2000","Current Consumption 8.4l /100km","Target Consumption : 7.9l /100km",color);//  frontController.showChallenge();
        }
     });
     Button seeAllFriendsButton = (Button) view.findViewById(R.id.seeFriendsBtn);

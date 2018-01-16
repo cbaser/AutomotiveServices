@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="1."
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="Lea"
                 android:textColor="@color/black" />
 
@@ -48,6 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
+                android:fontFamily="@font/bree_serif"
                 android:text="123456"
                 android:textColor="#727272"
                 tools:text="123456" />
@@ -72,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="2."
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -89,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="Hampus"
                 android:textColor="@color/black" />
 
@@ -98,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/bree_serif"
                 android:text="123455"
                 android:textColor="#727272"
                 tools:text="123455" />
@@ -118,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="3."
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -137,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="Can"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
@@ -150,6 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/bree_serif"
                 android:gravity="center"
                 android:text="123454"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"

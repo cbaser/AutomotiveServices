@@ -17,7 +17,7 @@ import com.gameco.cakin.automotiveservices.R;
 
 public class OpeningActivity extends AppCompatActivity {
     private long backPressedTime = 0;
-    private RelativeLayout singup;
+    //private TextView singup;
     private Button singin;
     private ImageView mainIcon;
     @Override
@@ -27,18 +27,16 @@ public class OpeningActivity extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.anim_from_bottom_bounce);
         mainIcon = (ImageView) findViewById(R.id.mainIcon);
         mainIcon.setAnimation(animation);
-        singup = (RelativeLayout)findViewById(R.id.singupLayout);
+       // singup = (TextView) findViewById(R.id.singupLayout);
         singin = (Button) findViewById(R.id.signin_button);
 
-        singup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainIcon.setAnimation(null);
-                Intent it = new Intent(OpeningActivity.this,SingupActivity.class);
-                startActivity(it);
-
-            }
-        });
+//        singup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//            }
+//        });
 
         singin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +61,11 @@ public class OpeningActivity extends AppCompatActivity {
             startActivity(a);
             OpeningActivity.this.finish();
         }
+    }
+    public void onClick(View v){
+        mainIcon.setAnimation(null);
+        Intent it = new Intent(OpeningActivity.this,SingupActivity.class);
+        startActivity(it);
     }
 
 }

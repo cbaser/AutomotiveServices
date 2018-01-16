@@ -32,10 +32,11 @@ import java.util.Scanner;
  */
 
 public class myNotificationController {
-    private String emailToSend;
-
+    //private String emailToSend;
     private Fragment fragment;
     private Activity activity;
+    private String strJsonBody;
+    private String userEmail,friendEmail;
    public myNotificationController(Fragment fragment){
        this.fragment=fragment;
    }
@@ -55,11 +56,13 @@ public class myNotificationController {
         notificationManager.notify(1, notification);
     }
 
-    public void showPopUp(String time,String points,String current,String target,int color ){
+    public void showPopUp(String title ,final String time,String points,String current,String target,int color ){
          View popupView = fragment.getActivity().getLayoutInflater().inflate(R.layout.popup_challenge,null);
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
-
+        setEmail();
+        TextView txtTitle = (TextView) popupView.findViewById(R.id.txtTitle);
+        txtTitle.setText(title);
         TextView txtTime = (TextView) popupView.findViewById(R.id.txtTime);
         txtTime.setText(time);
         TextView txtPoint = (TextView) popupView.findViewById(R.id.txtPoint);
@@ -83,7 +86,7 @@ public class myNotificationController {
             @Override
             public void onClick(View v) {
 
-                sendNotificationToSelf(fragment.getActivity(),"Challenge Started","Duration 7 days");
+                sendNotificationToSelf(fragment.getActivity(),"Challenge Started","Duration :"+time);
                 //   transitionHelper.sendNotification("Challenge Started!","Duration: 7 days!");
                 popupWindow.dismiss();
 
@@ -93,7 +96,10 @@ public class myNotificationController {
         send_challenge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendNotificationToFriend("Challenge from : "+LoginActivity.LoggedIn_User_Email);
+
+                setJsonBody(friendEmail,"Challenge From : " +LoginActivity.LoggedIn_User_Email);
+            //    sendNotificationToFriend("Challenge from : "+LoginActivity.LoggedIn_User_Email);
+                sendNotificationToFriend();
                 //     userHelper.sendNotification();
             }
         });
@@ -101,7 +107,7 @@ public class myNotificationController {
         join_regional.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendNotificationToSelf(fragment.getActivity(),"Regional Challenge : München","Duration 30 days");
+                sendNotificationToSelf(fragment.getActivity(),"Regional Challenge : München","Duration : " +time);
             }
         });
 
@@ -119,40 +125,44 @@ public class myNotificationController {
         View popupView = activity.getLayoutInflater().inflate(R.layout.popup_accept_challenge,null);
         final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.showAtLocation(popupView, Gravity.CENTER,10,10);
+        setEmail();
         Button accept_challenge = (Button) popupView.findViewById(R.id.acceptChallengeBtn);
         accept_challenge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setJsonBody(friendEmail,"Challenge Accepted!");
+                sendNotificationToFriend();
                // sendNotificationToSelf(activity,"Challenge Accepted!","+250 POINTS");
-                //popupWindow.dismiss();
+                popupWindow.dismiss();
             }
         });
         Button reject_challenge = (Button) popupView.findViewById(R.id.rejectChallengeBtn);
         reject_challenge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setJsonBody(friendEmail,"Challenge Rejected!");
+                sendNotificationToFriend();
                 //sendNotificationToSelf(activity,"Challenge Rejected!","-150 POINTS");
-               // popupWindow.dismiss();
+                popupWindow.dismiss();
             }
         });
     }
-    private String getEmail(){
+    private void setEmail(){
+        userEmail = LoginActivity.LoggedIn_User_Email;
         if(LoginActivity.LoggedIn_User_Email.equals("cagatayakin.baser@tum.de")){
-            emailToSend = "can.tuerker@tum.de";
-          //  name = "Cagatay";
 
+            friendEmail = "can.tuerker@tum.de";
 
         }
         else if(LoginActivity.LoggedIn_User_Email.equals("can.tuerker@tum.de")){
-            emailToSend="cagatayakin.baser@tum.de";
-     //       name = "Can";
+            friendEmail="cagatayakin.baser@tum.de";
         }
-        return emailToSend;
+
+
     }
 
 
-    public void sendNotificationToFriend(final String content){
+    public void sendNotificationToFriend(){
 
 
         AsyncTask.execute(new Runnable() {
@@ -163,7 +173,6 @@ public class myNotificationController {
                     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                             .permitAll().build();
                     StrictMode.setThreadPolicy(policy);
-                    String email = getEmail();
 //                    DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 //                    DatabaseReference reference = rootRef.getRef().child("Cagatay");
 //                    DatabaseReference sendRef = reference.child("Email");
@@ -192,17 +201,18 @@ public class myNotificationController {
                         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
                         con.setRequestProperty("Authorization","Basic NDVlYWYxZTUtNDJiZC00YTEzLThlNjctMTk0MzMwMTc3NjJm");
                         con.setRequestMethod("POST");
-                        String strJsonBody = "{"
-                                + "\"app_id\": \"4a5d1740-b98b-4569-9107-2de771ddc07d\","
 
-                                + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + email + "\"}],"
-
-                                + "\"buttons\": [{\"id\":\"btnAccept\",\"text\":\"Accept\",\"icon\":\"\"},{\"id\":\"btnDecline\",\"text\":\"Decline\",\"icon\":\"\"}],"
-                              //  + "\"data\": {\"foo\": \"bar\"},"
-                             //   + "\"contents\": {\"en\": \"Challenge from: "+name+ "\"}"
-                                + "\"contents\": {\"en\":\" "+ content +"\"}"
-
-                                + "}";
+//                        String strJsonBody = "{"
+//                                + "\"app_id\": \"4a5d1740-b98b-4569-9107-2de771ddc07d\","
+//
+//                                + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + email + "\"}],"
+//
+//                                + "\"buttons\": [{\"id\":\"btnAccept\",\"text\":\"Accept\",\"icon\":\"\"},{\"id\":\"btnDecline\",\"text\":\"Decline\",\"icon\":\"\"}],"
+//                              //  + "\"data\": {\"foo\": \"bar\"},"
+//                             //   + "\"contents\": {\"en\": \"Challenge from: "+name+ "\"}"
+//                                + "\"contents\": {\"en\":\" "+ content +"\"}"
+//
+//                                + "}";
 
 
                         System.out.println("strJsonBody:\n" + strJsonBody);
@@ -234,5 +244,24 @@ public class myNotificationController {
                 }
             }
         });
+    }
+//    public String getStrJsonBody(){
+//
+//        return strJsonBody;
+//
+//    }
+    public void setJsonBody(String email,String content){
+        strJsonBody = "{"
+                + "\"app_id\": \"4a5d1740-b98b-4569-9107-2de771ddc07d\","
+
+                + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + email + "\"}],"
+
+                //  + "\"buttons\": [{\"id\":\"btnAccept\",\"text\":\"Accept\",\"icon\":\"\"},{\"id\":\"btnDecline\",\"text\":\"Decline\",\"icon\":\"\"}],"
+                //  + "\"data\": {\"foo\": \"bar\"},"
+                //   + "\"contents\": {\"en\": \"Challenge from: "+name+ "\"}"
+                + "\"contents\": {\"en\":\" "+ content +"\"}"
+
+                + "}";
+
     }
 }

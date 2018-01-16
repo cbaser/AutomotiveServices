@@ -1,73 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background"
     android:padding="@dimen/activity_horizontal_margin"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        tools:ignore="UselessParent">
+    tools:ignore="UselessParent">
 
-        <RelativeLayout
-            android:id="@+id/singupLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:background="@android:color/transparent"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="361dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="90dp"
-                android:fontFamily="@font/josefin_sans_semibold"
-                android:text="@string/sign_up"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@color/light_green"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                tools:ignore="RtlHardcoded" />
-
-        </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="332dp"
-        android:layout_height="50dp"
-        android:layout_above="@id/singupLayout"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
-        android:background="@color/white">
-
-        <Button
-            android:id="@+id/signin_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/button_with_shape"
-            android:fontFamily="@font/josefin_sans_semibold"
-            android:gravity="center"
-            android:text="@string/sign_in"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
 
     <ImageView
-            android:id="@+id/mainIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="153dp"
-            android:contentDescription="TODO"
-            app:srcCompat="@drawable/main_icon" />
+        android:id="@+id/mainIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/signin_button"
+        android:layout_alignStart="@+id/signin_button"
+        android:layout_marginBottom="154dp"
+        android:layout_marginStart="65dp"
+        android:contentDescription="TODO"
+        app:srcCompat="@drawable/icon_transparent" />
 
-    </RelativeLayout>
+    <Button
+        android:id="@+id/signin_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_above="@+id/textView16"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_with_shape"
+        android:fontFamily="@font/bree_serif"
+        android:gravity="center"
+        android:text="@string/sign_in"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="361dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="35dp"
+        android:fontFamily="@font/bree_serif"
+        android:text="@string/sign_up"
+        android:onClick="onClick"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:ignore="RtlHardcoded"
+        android:id="@+id/textView16" />
+
+</RelativeLayout>

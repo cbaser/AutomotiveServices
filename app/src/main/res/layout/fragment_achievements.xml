@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-
-    android:layout_height="match_parent"
-    android:background="#ddd"
-    android:orientation="vertical"
-    android:padding="16dp">
 
     <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@mipmap/background"
         android:layout_width="match_parent"
+        android:padding="16dp"
         android:layout_height="match_parent">
 
 
         <include layout="@layout/content_achievements"></include>
 
     </ScrollView>
-</LinearLayout>

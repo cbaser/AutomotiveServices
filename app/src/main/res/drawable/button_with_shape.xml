@@ -4,7 +4,7 @@
         android:radius="14dp"
         />
     <solid
-        android:color="#66bb6a"
+        android:color="#16a085"
         />
     <padding
         android:left="0dp"
@@ -24,7 +24,7 @@
 
 
 <!--
-
+ android:color="#66bb6a"
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
     <corners

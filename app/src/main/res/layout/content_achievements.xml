@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    android:background="#ddd"
+
     android:orientation="vertical"
     android:padding="16dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/description_cardview"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/image1"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="Newbie"
                 android:textColor="@color/black" />
 
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/image2"
                 android:layout_below="@+id/image2"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="Rookie"
                 android:textColor="@color/black" />
 
@@ -102,8 +102,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/image3"
                 android:layout_below="@+id/image3"
-                android:layout_marginStart="11dp"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/bree_serif"
                 android:text="Star"
                 android:textColor="@color/black" />
 
@@ -113,6 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/image7"
                 android:layout_below="@+id/image7"
+                android:fontFamily="@font/bree_serif"
                 android:text="Superstar"
                 android:textColor="@color/black" />
 
@@ -122,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/image4"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="Winner"
                 android:textColor="@color/black" />
 
@@ -140,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/image5"
                 android:layout_below="@+id/image5"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="Efficient"
                 android:textColor="@color/black" />
 
@@ -164,10 +165,10 @@
                 android:id="@+id/textView24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/image6"
-                android:layout_below="@+id/image6"
-                android:fontFamily="@font/josefin_sans_semibold"
-                android:text="Inefficient"
+                android:layout_above="@+id/image7"
+                android:layout_alignStart="@+id/image6"
+                android:fontFamily="@font/bree_serif"
+                android:text="Competitive"
                 android:textColor="@color/black" />
 
             <TextView
@@ -176,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/image8"
                 android:layout_below="@+id/image8"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="Challenger"
                 android:textColor="@color/black" />
 
@@ -229,7 +230,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:paddingBottom="5dp"
                 android:text="Kilometers Driven"
                 android:textColor="@color/light_green"
@@ -242,7 +243,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/kilometers_cardview_title"
 
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="787 km"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
@@ -252,6 +253,7 @@
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
+
     <android.support.v7.widget.CardView
         android:id="@+id/litres_cardview"
         android:layout_width="match_parent"
@@ -270,7 +272,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:paddingBottom="5dp"
                 android:text="CO2 Saved"
                 android:textColor="@color/light_green"
@@ -283,7 +285,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/litres_cardview_title"
 
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="10kg"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
@@ -296,7 +298,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:paddingBottom="5dp"
                 android:text="Litres Saved"
                 android:textColor="@color/light_green"
@@ -310,7 +312,7 @@
 
                 android:layout_alignStart="@+id/litres_cardview_title"
                 android:layout_below="@+id/litres_cardview_title"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="8 L"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
@@ -320,6 +322,7 @@
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
+
     <android.support.v7.widget.CardView
         android:id="@+id/total_km_cardview"
         android:layout_width="match_parent"
@@ -340,7 +343,7 @@
                 android:layout_alignBaseline="@+id/total_consumption_cardview_title"
                 android:layout_alignBottom="@+id/total_consumption_cardview_title"
                 android:layout_alignStart="@+id/total_km_description"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:paddingBottom="5dp"
                 android:text="Total km this month"
                 android:textColor="@color/light_green"
@@ -352,7 +355,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/total_km_cardview_title"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="288km"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
@@ -365,7 +368,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:paddingBottom="5dp"
                 android:text="Total Consumption"
                 android:textColor="@color/light_green"
@@ -378,7 +381,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/total_consumption_cardview_title"
                 android:layout_below="@+id/total_consumption_cardview_title"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/bree_serif"
                 android:text="31.8 kWh"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"

@@ -20,7 +20,7 @@ import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 public class FragmentSubAllChallenges extends Fragment{
     ExpandableRelativeLayout expandableLayout1, expandableLayout2, expandableLayout3, expandableLayout4, expandableLayout5;
    private myNotificationController notificationController;
-   private String time,point,current,target;
+   private String title,time,point,current,target;
    private int color;
     public  FragmentSubAllChallenges(){
 
@@ -67,39 +67,43 @@ public class FragmentSubAllChallenges extends Fragment{
             public void onClick(View view) {
                 switch((Integer) view.getTag()){
                     case 1:
+                        title = "REWE Special Challenge!";
                         time = "Time : One week";
                         point = "500 Points";
                         current = ((TextView) expandableLayout1.findViewById(R.id.rewe_cardview_description)).getText().toString() ;
                         target = ((TextView) expandableLayout1.findViewById(R.id.reweTextView)).getText().toString()+" "+((TextView) expandableLayout1.findViewById(R.id.rewe2TextView)).getText().toString();
-                        color = Color.parseColor("#FF0000");
+                        color = Color.parseColor("#2c3e50");
                         break;
                     case 2:
+                        title = "CO2 Challenge!";
                         time = "Time :One week";
                         point = "Points to get :500 Points";
                         current = ((TextView) expandableLayout2.findViewById(R.id.description_co2_description)).getText().toString()+ " "+((TextView) expandableLayout2.findViewById(R.id.currentCo2Textview)).getText().toString() ;
                         target = ((TextView) expandableLayout2.findViewById(R.id.targetCo2TextView)).getText().toString();
-                        color = Color.parseColor("#FF50DC52");
+                        color = Color.parseColor("#2c3e50");
                         break;
                     case 3:
+                        title = "Fuel Challenge!";
                         time = "Time : Two weeks";
                         point = "Points to get :1000 Points";
                         current = ((TextView) expandableLayout3.findViewById(R.id.fuel_cardview_description)).getText().toString()+ " "+((TextView) expandableLayout3.findViewById(R.id.fuelTextView)).getText().toString() ;
                         target = ((TextView) expandableLayout3.findViewById(R.id.fuel2TextView)).getText().toString();
-                        color = Color.parseColor("#FFCFC20C");
+                        color = Color.parseColor("#2c3e50");
                         break;
                     case 4:
+                        title = "Driving Style Challenge!";
                         time = "Time : Two weeks";
                         point = "Points to get : 1000 Points";
-                        current = ((TextView) expandableLayout4.findViewById(R.id.driving_cardview_description)).getText().toString()+ ((TextView) expandableLayout4.findViewById(R.id.drivingTextView)).getText().toString() ;
+                        current = ((TextView) expandableLayout4.findViewById(R.id.driving_cardview_description)).getText().toString()+" "+ ((TextView) expandableLayout4.findViewById(R.id.drivingTextView)).getText().toString() ;
                         target = ((TextView) expandableLayout4.findViewById(R.id.driving2TextView)).getText().toString();
-                        color = Color.parseColor("#0080FF");
+                        color = Color.parseColor("#2c3e50");
                         break;
 
 
                 }
 
 
-             notificationController.showPopUp(time,point,current,target,color);
+             notificationController.showPopUp(title,time,point,current,target,color);
             }
         };
 

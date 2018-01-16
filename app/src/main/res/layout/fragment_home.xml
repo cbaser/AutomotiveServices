@@ -3,206 +3,138 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="@dimen/activity_horizontal_margin"
-    android:background="@color/white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@mipmap/background"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
 
-<FrameLayout
-    android:id="@+id/home_frameLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-    <RelativeLayout
-
-        android:id="@+id/home_mainLayout"
+    <LinearLayout
+        android:id="@+id/home_frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/profPic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:padding="10dp"
-            android:src="@drawable/ic_cagatay"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/txtfullName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profPic"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/josefin_sans_semibold"
-            android:text="@string/fullName"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/txtLevel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtfullName"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/josefin_sans_semibold"
-            android:paddingTop="10dp"
-            android:text="Level: Newbie"
-            android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/txtScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtLevel"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/josefin_sans_semibold"
-            android:paddingTop="10dp"
-            android:text="Score : 26789"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_anchorGravity="bottom|center"
-            tools:layout_gravity="bottom|center" />
-
-        <RelativeLayout
-            android:id="@+id/dailyChallengeLayout"
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp">
 
-            android:layout_below="@+id/txtScore">
+            <RelativeLayout
+
+                android:id="@+id/home_mainLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/profPic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_cagatay"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/txtfullName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/profPic"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/josefin_sans_semibold"
+                    android:text="@string/fullName"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    tools:fontFamily="@font/bree_serif" />
+
+                <TextView
+                    android:id="@+id/txtLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtfullName"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/bree_serif"
+                    android:paddingTop="10dp"
+                    android:text="Level: Newbie"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txtScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/txtLevel"
+                    android:layout_below="@+id/txtLevel"
+                    android:fontFamily="@font/bree_serif"
+                    android:paddingTop="10dp"
+                    android:text="Score : 26789"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_anchorGravity="bottom|center"
+                    tools:layout_gravity="bottom|center" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardview_daily_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
 
             <include
                 android:id="@+id/include_daily_challenge_content"
                 layout="@layout/content_daily_challenge"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
-                android:layout_alignParentStart="true"
-
-
-                ></include>
+                android:layout_alignParentStart="true" />
 
 
-        </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
-      <RelativeLayout
-          android:id="@+id/challengesLayoutHome"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/dailyChallengeLayout">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp">
 
-      </RelativeLayout>
-    <HorizontalScrollView
-        android:id="@+id/hsv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/challengesLayoutHome"
-        android:layout_marginTop="20dp"
-        android:fillViewport="true"
-        android:measureAllChildren="false"
-        android:scrollbars="none">
-
-
-        <!--
-                <RelativeLayout
-                    android:id="@+id/layout_challenges"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/txtDepartment"
-
-
-                <TextView
-                    android:id="@+id/txtChallenges"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:fontFamily="sans-serif-condensed"
-                    android:paddingTop="10dp"
-                    android:text="Challenges"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_anchorGravity="bottom|center"
-                    tools:layout_gravity="bottom|center" />
-                <include
-
-                    layout="@layout/content_challanges_lists"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/txtChallenges" />
-
-            </RelativeLayout>
- -->
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="19dp">
-            <!--android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/layout_challenges" -->
-
-
-            <include
-                android:id="@+id/include"
-                layout="@layout/content_challenges_friends_list"
-                android:layout_width="match_parent"
-
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/seeFriendsBtn" />
-
-            <Button
-                android:id="@+id/seeFriendsBtn"
-                android:layout_width="150dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/button_with_shape"
-                android:gravity="center"
-                android:padding="16dp"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/include"
+                    layout="@layout/content_challenges_friends_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <Button
+                    android:id="@+id/seeFriendsBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_with_shape"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:text="See All Friends"
+
+                    />
+
+            </LinearLayout>
 
 
-                android:shadowColor="#A8A8A8"
-                android:shadowDx="0"
-                android:shadowDy="0"
-                android:shadowRadius="5"
-                android:text="See All Friends"
-                android:textColor="@color/white"
-
-                android:textSize="12sp" />
-        </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
 
-    </HorizontalScrollView>
-
-        <!--
-
-
-
--->
-    </RelativeLayout>
-</FrameLayout>
+    </LinearLayout>
 </ScrollView>
     <!--
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"

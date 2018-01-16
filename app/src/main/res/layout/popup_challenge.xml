@@ -10,13 +10,13 @@
     android:padding="@dimen/activity_horizontal_margin">
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/txtTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="76dp"
-        android:fontFamily="@font/josefin_sans_semibold"
+        android:fontFamily="@font/bree_serif"
         android:lineSpacingExtra="8sp"
         android:text="Reduce average consumption by 0.5 l/100km"
         android:textAlignment="center"
@@ -32,7 +32,7 @@
         android:layout_below="@+id/relativeLayout2"
         android:layout_marginTop="24dp"
         android:background="@color/white"
-        android:fontFamily="@font/josefin_sans_semibold"
+        android:fontFamily="@font/bree_serif"
         android:lineSpacingExtra="8sp"
         android:text="Start challenge yourself"
         android:textColor="@color/black"
@@ -46,7 +46,7 @@
         android:layout_below="@+id/start_challenge_yourself_button"
         android:layout_marginTop="18dp"
         android:background="@color/white"
-        android:fontFamily="@font/josefin_sans_semibold"
+        android:fontFamily="@font/bree_serif"
         android:text="Send challenge to friend"
         android:textColor="@color/black" />
 
@@ -58,16 +58,17 @@
         android:layout_below="@+id/send_challenge_to_friend_button"
         android:layout_marginTop="8dp"
         android:background="@color/white"
-        android:fontFamily="@font/josefin_sans_semibold"
+        android:fontFamily="@font/bree_serif"
         android:text="Join Regional Challenge"
         android:textColor="@color/black" />
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/relativeLayout2"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/textView8"
+        android:layout_below="@+id/txtTitle"
         android:layout_marginTop="25dp"
         android:background="@color/fbutton_color_midnight_blue">
 
@@ -78,8 +79,7 @@
 
             android:ems="10"
             android:enabled="false"
-            android:fontFamily="@font/josefin_sans_semibold"
-
+            android:fontFamily="@font/bree_serif"
             android:text="Time: one week"
             android:textColor="@color/white"
             android:textSize="18sp" />
@@ -88,13 +88,9 @@
             android:id="@+id/txtPoint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/txtTime"
-            android:layout_marginTop="14dp"
             android:ems="10"
             android:enabled="false"
-            android:fontFamily="@font/josefin_sans_semibold"
+            android:fontFamily="@font/bree_serif"
             android:text="Points to be scored : 2000"
             android:textColor="@color/white"
             android:textSize="18sp" />
@@ -103,13 +99,9 @@
             android:id="@+id/txtCurrent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/txtPoint"
-            android:layout_marginTop="16dp"
             android:ems="10"
             android:enabled="false"
-            android:fontFamily="@font/josefin_sans_semibold"
+            android:fontFamily="@font/bree_serif"
             android:text="Your current consumption: 8.4l /100km"
             android:textColor="@color/white"
             android:textSize="18sp" />
@@ -118,28 +110,24 @@
             android:id="@+id/txtTarget"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-
-            android:layout_below="@+id/txtPoint"
-            android:layout_marginTop="61dp"
             android:ems="10"
             android:enabled="false"
-            android:fontFamily="@font/josefin_sans_semibold"
+            android:fontFamily="@font/bree_serif"
             android:text="Your target consumption: 7.9l/100km"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/exitFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textView8"
+        android:layout_alignEnd="@+id/txtTitle"
         android:layout_alignParentTop="true"
         android:layout_marginTop="15dp"
         android:clickable="true"
-        app:backgroundTint="@color/black"
+        app:backgroundTint="@color/fbutton_color_midnight_blue"
         app:fabSize="mini"
         app:rippleColor="@color/black"
         app:srcCompat="@android:drawable/ic_delete" />

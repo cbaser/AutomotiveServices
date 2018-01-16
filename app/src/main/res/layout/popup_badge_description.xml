@@ -25,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
         android:clickable="true"
-        app:backgroundTint="@color/black"
+        app:backgroundTint="@color/white"
         app:fabSize="mini"
         app:rippleColor="@color/black"
         app:srcCompat="@android:drawable/ic_delete" />
@@ -34,6 +34,7 @@
         android:id="@+id/badgeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bree_serif"
         android:layout_below="@+id/badgeImage"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="9dp"
@@ -47,11 +48,10 @@
         android:layout_alignStart="@+id/relativeLayout2"
         android:layout_below="@+id/badgeName"
         android:layout_marginTop="11dp"
-        android:fontFamily="@font/josefin_sans_semibold"
+        android:fontFamily="@font/bree_serif"
         android:text="You have to do more challenges inorder to unlock that badge"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold|italic" />
+        android:textSize="18sp" />
 
 </RelativeLayout>
