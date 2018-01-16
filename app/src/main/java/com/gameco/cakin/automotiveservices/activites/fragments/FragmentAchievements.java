@@ -155,36 +155,37 @@ public class FragmentAchievements extends Fragment {
                 badgeImage.setImageResource(R.drawable.badge_newbie);
                 badgeImage.setTag(R.drawable.badge_newbie);
                 badgeName.setText("Newbie");
-                badgeDescription.setText("You played one challenge and unlocked this badge!");
+                badgeDescription.setText("You won the first challenge!");
                 break;
             case R.drawable.badge_10_winner:
                 badgeImage.setImageResource(R.drawable.badge_10_winner);
                 badgeImage.setTag(R.drawable.badge_10_winner);
                 badgeName.setText("Rookie");
-                badgeDescription.setText("You sent ten challenges and unlocked this badge!");
+                badgeDescription.setText("You won ten challenges!");
                 break;
             case R.drawable.badge_25_winner:
                 badgeImage.setImageResource(R.drawable.badge_25_winner);
                 badgeImage.setTag(R.drawable.badge_25_winner);
-                badgeName.setText("Rookie");
-                badgeDescription.setText("You sent 25 challenge and unlocked this badge!");
+                badgeName.setText("Star");
+                badgeDescription.setText("You won twentyfive challenges!");
                 break;
             case R.drawable.badge_unlock:
                 badgeImage.setImageResource(R.drawable.badge_unlock);
                 badgeImage.setTag(R.drawable.badge_unlock);
                 badgeName.setText("Locked");
+                badgeDescription.setText("Play more challenges in order to unlock this badge!");
                 break;
             case R.drawable.badge_efficient:
                 badgeImage.setImageResource(R.drawable.badge_efficient);
                 badgeImage.setTag(R.drawable.badge_efficient);
                 badgeName.setText("Efficient");
-                badgeDescription.setText("You drove so efficient last month and unlocked this badge!");
+                badgeDescription.setText("You drove in Eco-mode for 30 days!");
                 break;
             case R.drawable.badge_not_efficient:
                 badgeImage.setImageResource(R.drawable.badge_not_efficient);
                 badgeImage.setTag(R.drawable.badge_not_efficient);
                 badgeName.setText("Competitive");
-                badgeDescription.setText("You sent 20 challenges and unlocked this badge!");
+                badgeDescription.setText("You accepted 20 challenges in a row!");
                 break;
 
         }

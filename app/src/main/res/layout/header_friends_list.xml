@@ -16,7 +16,7 @@
         android:padding="5dp"
         android:text="Rank"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView26"
@@ -29,7 +29,7 @@
         android:padding="5dp"
         android:text="Name"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView27"
@@ -41,5 +41,5 @@
         android:padding="5dp"
         android:text="Points"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 </LinearLayout>

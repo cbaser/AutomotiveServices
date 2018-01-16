@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -122,7 +123,7 @@ public class myFragmentController {
             ((TextView) headerLayout.findViewById(R.id.userEmailV)).setText("can.tuerker@tum.de");
 
 
-            FrameLayout frameLayout = (FrameLayout)view.findViewById(R.id.home_frameLayout);
+            LinearLayout frameLayout = (LinearLayout) view.findViewById(R.id.home_frameLayout);
             RelativeLayout relativeLayout =(RelativeLayout) frameLayout.findViewById(R.id.home_mainLayout);
 
             ImageView imageView = (ImageView) relativeLayout.findViewById(R.id.profPic);

@@ -15,12 +15,11 @@
         android:id="@+id/mainIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/signin_button"
-        android:layout_alignStart="@+id/signin_button"
-        android:layout_marginBottom="154dp"
-        android:layout_marginStart="65dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="135dp"
         android:contentDescription="TODO"
-        app:srcCompat="@drawable/icon_transparent" />
+        app:srcCompat="@drawable/main_icon" />
 
     <Button
         android:id="@+id/signin_button"

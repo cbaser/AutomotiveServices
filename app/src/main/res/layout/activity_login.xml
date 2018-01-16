@@ -35,7 +35,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="45dp"
         android:layout_weight="1"
-        app:srcCompat="@drawable/icon_transparent" />
+        app:srcCompat="@drawable/main_icon" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -46,7 +46,7 @@
 
         <EditText
             android:id="@+id/email_edit"
-            android:layout_width="327dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="35dp"
             android:layout_marginStart="22dp"
@@ -57,8 +57,8 @@
             android:hint="@string/email"
             android:inputType="text"
             android:padding="16dp"
-            android:textColor="@color/light_green"
-            android:textColorHint="@color/light_green"
+            android:textColor="@color/fbutton_color_green_sea"
+            android:textColorHint="@color/fbutton_color_green_sea"
             android:textSize="16sp" />
 
         <View
@@ -70,7 +70,7 @@
 
         <EditText
             android:id="@+id/password_edit"
-            android:layout_width="327dp"
+            android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginEnd="35dp"
             android:layout_marginStart="22dp"
@@ -81,8 +81,8 @@
             android:inputType="textPassword"
             android:maxLength="12"
             android:padding="16dp"
-            android:textColor="@color/light_green"
-            android:textColorHint="@color/light_green"
+            android:textColor="@color/fbutton_color_green_sea"
+            android:textColorHint="@color/fbutton_color_green_sea"
             android:textSize="16sp" />
 
         <View

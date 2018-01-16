@@ -2,7 +2,7 @@
     <string name="app_name">GamECO</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="sign_in">Sign In</string>
+    <string name="sign_in">Sıgn In</string>
     <string name="sign_up">Not a member yet? Sign Up </string>
     <string name="username">User Name</string>
     <string name="password">Password</string>

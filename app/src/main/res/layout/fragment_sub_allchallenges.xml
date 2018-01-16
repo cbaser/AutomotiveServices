@@ -108,7 +108,7 @@
         android:padding="16dp"
         app:ael_duration="400"
         app:ael_expanded="false"
-        app:ael_interpolator="bounce"
+        app:ael_interpolator="fastOutLinearIn"
         app:ael_orientation="vertical">
 
         <TextView
@@ -187,7 +187,7 @@
         android:padding="16dp"
         app:ael_duration="400"
         app:ael_expanded="false"
-        app:ael_interpolator="linear"
+        app:ael_interpolator="fastOutLinearIn"
         app:ael_orientation="vertical">
 
         <TextView
@@ -267,7 +267,7 @@
         android:padding="16dp"
         app:ael_duration="400"
         app:ael_expanded="false"
-        app:ael_interpolator="bounce"
+        app:ael_interpolator="fastOutLinearIn"
         app:ael_orientation="vertical">
 
         <TextView
