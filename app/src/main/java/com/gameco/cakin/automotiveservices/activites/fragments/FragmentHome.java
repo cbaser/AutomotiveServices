@@ -60,7 +60,7 @@ public FragmentHome(){
 //        @Override
 //        public void onClick(View v) {
 //           // myFragmentController fragmentController = new myFragmentController(fragment);
-//          //  fragmentController.replaceFragment(R.id.home_frameLayout,new FragmentMainChallenges());
+//          //  fragmentController.replaceFragment(R.id.home_frameLayout,new FragmentMyChallenges());
 //            final Dialog dialog = new Dialog(fragment.getContext());
 //            dialog.setContentView(R.layout.fragment_sub_yourchallenges);
 //

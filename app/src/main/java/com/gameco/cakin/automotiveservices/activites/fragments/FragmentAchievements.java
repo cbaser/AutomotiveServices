@@ -1,6 +1,7 @@
 package com.gameco.cakin.automotiveservices.activites.fragments;
 
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
@@ -22,8 +24,12 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.gameco.cakin.automotiveservices.R;
+import com.github.mikephil.charting.data.RadarData;
+import com.github.mikephil.charting.data.RadarDataSet;
+import com.github.mikephil.charting.data.RadarEntry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -36,57 +42,100 @@ import java.util.List;
 public class FragmentAchievements extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_achievements,container,false);
-        BarChart barChart = (BarChart) view.findViewById(R.id.efficiency_chart);
-        Description description = new Description();
-        description.setText("Monthly Fuel Efficiency Change");
-        barChart.setDescription(description);
-        ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(0f, 70));
-        entries.add(new BarEntry(1f, 81));
-        entries.add(new BarEntry(2f, 92));
+
+    //    RadarChart radarChart = (RadarChart) view.findViewById(R.id.efficiency_chart);
+//        ArrayList<RadarEntry> entries = new ArrayList<>();
+//        Description description = new Description();
+//        description.setText("");
+//        radarChart.setDescription(description);
+//        entries.add(new RadarEntry(90f,"Fuel Efficiency"));
+//        entries.add(new RadarEntry(80f,"Co2 Emission"));
+//        entries.add(new RadarEntry(70f,"REWE"));
+////        BarChart barChart = (BarChart) view.findViewById(R.id.efficiency_chart);
+////        Description description = new Description();
+////        description.setText("Monthly Fuel Efficiency Change");
+////        barChart.setDescription(description);
+////        ArrayList<BarEntry> entries = new ArrayList<>();
+////        entries.add(new BarEntry(0f, 70));
+////        entries.add(new BarEntry(1f, 81));
+////        entries.add(new BarEntry(2f, 92));
+////
+////
+////
+//
+//        RadarDataSet dataSet = new RadarDataSet(entries,"Fuel Efficiency");
+//        dataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+//        dataSet.setColor(Color.GREEN);
+//        dataSet.setDrawFilled(true);
+//        final String[] labels = new String[]{
+//                "January","February","March"
+//
+//        };
+//        List<IRadarDataSet> dataSets = new ArrayList<IRadarDataSet>();
+//        dataSets.add(dataSet);
+//        RadarData radarData = new RadarData(dataSets);
+////        BarDataSet dataset = new BarDataSet(entries, " Fuel Efficiency Rate");
+////        dataset.setAxisDependency(YAxis.AxisDependency.LEFT);
+////
+////        final String[] labels = new String[]{
+////          "January","February","March"
+////
+////        };
+////
+////        List<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
+////        dataSets.add(dataset);
+////
+////
+////        BarData lineData = new BarData(dataSets);
+////        dataset.setColors(ColorTemplate.COLORFUL_COLORS); //
+//
+//
+//
+////        IAxisValueFormatter formatter = new IAxisValueFormatter() {
+////            @Override
+////            public String getFormattedValue(float value, AxisBase axis) {
+////                return labels[(int) value];
+////            }
+////            public int getDecimalDigits() {  return 0; }
+////        };
+////        XAxis xAxis = radarChart.getXAxis();
+////        xAxis.setGranularity(1f);
+////        xAxis.setValueFormatter(formatter);
+////
+////
+////
+////
+////
+////        IAxisValueFormatter formatter = new IAxisValueFormatter() {
+////
+////            @Override
+////            public String getFormattedValue(float value, AxisBase axis) {
+////                return labels[(int) value];
+////            }
+////
+////            // we don't draw numbers, so no decimal digits needed
+////
+////            public int getDecimalDigits() {  return 0; }
+////        };
+////
+////        XAxis xAxis = barChart.getXAxis();
+////        xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
+////        xAxis.setValueFormatter(formatter);
+////      //  dataset.setDrawFilled(true);
+////
+////
+////
+////        barChart.setData(lineData);
+////        barChart.invalidate();
+//
+//        radarChart.setData(radarData);
+//        radarChart.invalidate();
+//
+//
 
 
 
-        BarDataSet dataset = new BarDataSet(entries, " Fuel Efficiency Rate");
-        dataset.setAxisDependency(YAxis.AxisDependency.LEFT);
 
-        final String[] labels = new String[]{
-          "January","February","March"
-
-        };
-
-        List<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
-        dataSets.add(dataset);
-
-
-        BarData lineData = new BarData(dataSets);
-        dataset.setColors(ColorTemplate.COLORFUL_COLORS); //
-
-
-
-
-
-        IAxisValueFormatter formatter = new IAxisValueFormatter() {
-
-            @Override
-            public String getFormattedValue(float value, AxisBase axis) {
-                return labels[(int) value];
-            }
-
-            // we don't draw numbers, so no decimal digits needed
-
-            public int getDecimalDigits() {  return 0; }
-        };
-
-        XAxis xAxis = barChart.getXAxis();
-        xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
-        xAxis.setValueFormatter(formatter);
-      //  dataset.setDrawFilled(true);
-
-
-
-        barChart.setData(lineData);
-        barChart.invalidate();
         View.OnClickListener onClickListener= new View.OnClickListener(){
             public void onClick(View v){
                 showImageDescription(v,(Integer)v.getTag());

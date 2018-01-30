@@ -17,16 +17,16 @@ import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
  * Created by cakin on 12/24/2017.
  */
 
-public class FragmentSubAllChallenges extends Fragment{
+public class FragmentAllChallenges extends Fragment{
     ExpandableRelativeLayout expandableLayout1, expandableLayout2, expandableLayout3, expandableLayout4, expandableLayout5;
    private myNotificationController notificationController;
    private String title,time,point,current,target;
    private int color;
-    public  FragmentSubAllChallenges(){
+    public FragmentAllChallenges(){
 
     }
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_sub_allchallenges, container, false);
+        View view = inflater.inflate(R.layout.fragment_all_challenges, container, false);
         notificationController = new myNotificationController(this);
         Button expandbleBtn1 = (Button) view.findViewById(R.id.expandableButton1);
         Button expandbleBtn2 = (Button) view.findViewById(R.id.expandableButton2);

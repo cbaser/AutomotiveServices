@@ -17,9 +17,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="150dp"
         android:contentDescription="TODO"
-        app:srcCompat="@drawable/main_icon" />
+        app:srcCompat="@drawable/white_logo" />
 
     <Button
         android:id="@+id/signin_button"
@@ -30,27 +30,27 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_with_shape"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/source_sans_pro"
         android:gravity="center"
         android:text="@string/sign_in"
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/textView16"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_gravity="center"
         android:layout_marginBottom="35dp"
-        android:fontFamily="@font/bree_serif"
-        android:text="@string/sign_up"
+        android:fontFamily="@font/source_sans_pro"
         android:onClick="onClick"
+        android:text="@string/sign_up"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        tools:ignore="RtlHardcoded"
-        android:id="@+id/textView16" />
+        tools:ignore="RtlHardcoded" />
 
 </RelativeLayout>

@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginBottom="22dp"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/source_sans_pro"
         android:text="Today's Daily Challenge!"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -30,20 +30,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/source_sans_pro"
         android:text="Reduce average fuel consumption by 0.5"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="italic"
         tools:text="Reduce average fuel consumption by 0.5" />
 
     <Button
         android:id="@+id/playChallengeButton"
-        android:fontFamily="@font/bree_serif"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
         android:background="@drawable/button_with_shape"
+        android:drawableLeft="@android:drawable/ic_media_play"
+        android:fontFamily="@font/source_sans_pro"
         android:text="Play Challenge!"
         android:textColor="@color/cardview_light_background"
         android:textStyle="bold" />

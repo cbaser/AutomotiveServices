@@ -1,51 +1,27 @@
 package com.gameco.cakin.automotiveservices.controller;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.AsyncTask;
-import android.os.StrictMode;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.text.Layout;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gameco.cakin.automotiveservices.R;
-import com.gameco.cakin.automotiveservices.activites.LoginActivity;
 import com.gameco.cakin.automotiveservices.adapters.FriendsListAdapter;
 import com.gameco.cakin.automotiveservices.datamodel.Friend;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by cakin on 1/2/2018.
@@ -72,23 +48,63 @@ public class myFragmentController {
     }
     public void showFriends(){
         final AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getActivity());
-        final AlertDialog dialog;
+         AlertDialog dialog = null;
         layoutInflater = LayoutInflater.from(fragment.getActivity());
         View mview = layoutInflater.inflate(R.layout.fragment_friends, null);
 
         ListView listView;
         List<Friend> friendList = new ArrayList<>();
         friendList.clear();
-        friendList.add(new Friend("LEA",123456));
-        friendList.add(new Friend("HAMPUS",123456));
-        friendList.add(new Friend("CAN",123454));
-        friendList.add(new Friend("CHRISTOPHER",123450));
+        Friend lea = new Friend(fragment.getResources().getDrawable(R.drawable.ic_lea),"Lea Jäntgen",123456);
+        friendList.add(lea);
+        Friend can = new Friend(fragment.getResources().getDrawable(R.drawable.ic_can),"Can Türker",123455);
+        friendList.add(can);
+        Friend hampus = new Friend(fragment.getResources().getDrawable(R.drawable.ic_hampus),"Hampus Olausson-Eckl",123454);
+        friendList.add(hampus);
+
+
+        Button addFriendBtn = (Button) mview.findViewById(R.id.addFriendBtn);
+        addFriendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(fragment.getActivity(), "Will be implemented as Adding new friends", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Button createGroupBtn = (Button) mview.findViewById(R.id.createGroupBtn);
+        createGroupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(fragment.getActivity(), "Will be implemented as Creating Group among friends", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Button importGroupBtn = (Button) mview.findViewById(R.id.importGroupBtn);
+        importGroupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(fragment.getActivity(), "Will be implemented as Importing friends from Facebook", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
         listView = (ListView)mview.findViewById(R.id.friendsListview);
-        ViewGroup header_friends = (ViewGroup)layoutInflater.inflate(R.layout.header_friends_list,listView,false);
-        listView.addHeaderView(header_friends);
+//        ViewGroup header_friends = (ViewGroup)layoutInflater.inflate(R.layout.header_friends_list,listView,false);
+//        listView.addHeaderView(header_friends);
         FriendsListAdapter friendsListAdapter = new FriendsListAdapter(fragment.getActivity(),friendList);
         listView.setAdapter(friendsListAdapter);
-
+//        FloatingActionButton floatingActionButton = (FloatingActionButton) mview.findViewById(R.id.exitFAB);
+//        final AlertDialog finalDialog = dialog;
+//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//                    @Override
+//                    public void onDismiss(DialogInterface dialogInterface) {
+//                        finalDialog.dismiss();
+//                    }
+//                });
+//            }
+//        });
 //        FloatingActionButton closeFriendsBtn = (FloatingActionButton) mview.findViewById(R.id.closeFriendsFAB);
 //        closeFriendsBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -126,11 +142,11 @@ public class myFragmentController {
             LinearLayout frameLayout = (LinearLayout) view.findViewById(R.id.home_frameLayout);
             RelativeLayout relativeLayout =(RelativeLayout) frameLayout.findViewById(R.id.home_mainLayout);
 
-            ImageView imageView = (ImageView) relativeLayout.findViewById(R.id.profPic);
+            ImageView imageView = (ImageView) relativeLayout.findViewById(R.id.profPic_lea);
             imageView.setImageResource(R.drawable.ic_can);
-            ((TextView) relativeLayout.findViewById(R.id.txtfullName)).setText(R.string.canName);
-            ((TextView) relativeLayout.findViewById(R.id.txtLevel)).setText(R.string.canLevel);
-            ((TextView) relativeLayout.findViewById(R.id.txtScore)).setText(R.string.canPoints);
+            ((TextView) relativeLayout.findViewById(R.id.txtRewe)).setText("Welcome Can To GamECO!");
+            ((TextView) relativeLayout.findViewById(R.id.txtRewe_con)).setText(R.string.canLevel);
+            ((TextView) relativeLayout.findViewById(R.id.txtScore)).setText("123456");
 
         }
 

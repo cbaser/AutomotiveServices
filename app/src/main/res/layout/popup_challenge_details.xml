@@ -4,7 +4,7 @@
     android:id="@+id/popup_element"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/fbutton_color_midnight_blue"
+    android:background="@color/white"
 
     android:orientation="vertical"
     android:padding="@dimen/activity_horizontal_margin">
@@ -20,115 +20,119 @@
         android:lineSpacingExtra="8sp"
         android:text="Reduce average consumption by 0.5 l/100km"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/fbutton_color_asbestos"
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/start_challenge_yourself_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/send_challenge_to_friend_button"
-        android:layout_below="@+id/detailDescription"
-        android:layout_marginTop="24dp"
-        android:background="@color/white"
-        android:fontFamily="@font/bree_serif"
-        android:lineSpacingExtra="8sp"
-        android:text="Start challenge yourself"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
 
-    <Button
-        android:id="@+id/send_challenge_to_friend_button"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/profileLinear1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/start_challenge_yourself_button"
-        android:layout_marginTop="18dp"
-        android:background="@color/white"
-        android:fontFamily="@font/bree_serif"
-        android:text="Send challenge to friend"
-        android:textColor="@color/black" />
-<!--
-    <Button
-        android:id="@+id/join_regional_challenge_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/send_challenge_to_friend_button"
-        android:layout_below="@+id/send_challenge_to_friend_button"
-        android:layout_marginTop="8dp"
-        android:background="@color/white"
-        android:fontFamily="@font/bree_serif"
-        android:text="Join Regional Challenge"
-        android:textColor="@color/black" />
--->
+        android:layout_below="@id/txtdetailTitle"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/txtdetailFriendPic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_can" />
+
+        <TextView
+            android:id="@+id/txtdetailFriendName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Can Türker"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/detailDescription"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/profileLinear1"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_below="@+id/txtdetailTitle"
         android:layout_marginTop="25dp"
-        android:background="@color/fbutton_color_midnight_blue">
+        android:background="@color/white">
 
         <TextView
-            android:id="@+id/txtTime"
+            android:id="@+id/txtdetailTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
             android:fontFamily="@font/bree_serif"
             android:text="Time: one week"
-            android:textColor="@color/white"
+            android:textColor="@color/fbutton_color_asbestos"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/txtPoint"
+            android:id="@+id/txtdetailPoints"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
             android:fontFamily="@font/bree_serif"
             android:text="Points to be scored : 2000"
-            android:textColor="@color/white"
+            android:textColor="@color/fbutton_color_asbestos"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/txtCurrent"
+            android:id="@+id/txtdetailMy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
             android:fontFamily="@font/bree_serif"
-            android:text="Your current consumption: 8.4l /100km"
-            android:textColor="@color/white"
+            android:text="Your current consumption: 7.9l /100km"
+            android:textColor="@color/fbutton_color_asbestos"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/txtTarget"
+            android:id="@+id/txtdetailFriend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
             android:fontFamily="@font/bree_serif"
-            android:text="Your target consumption: 7.9l/100km"
-            android:textColor="@color/white"
+            android:text="Friends consumption: 9.0l /100km"
+            android:textColor="@color/fbutton_color_asbestos"
             android:textSize="18sp" />
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/txtdetailWinning"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailDescription"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:fontFamily="@font/bree_serif"
+        android:lineSpacingExtra="8sp"
+        android:text="Congratulations! You are on the lead ! Keep up the good work"
+        android:textAlignment="center"
+        android:textColor="@color/colorLeaGreen"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/exitChallenge"
+        android:id="@+id/exitdetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/txtdetailTitle"
         android:layout_alignParentTop="true"
         android:layout_marginTop="15dp"
         android:clickable="true"
-        app:backgroundTint="@color/fbutton_color_midnight_blue"
+        app:backgroundTint="@color/fbutton_color_asbestos"
         app:fabSize="mini"
         app:rippleColor="@color/black"
-        app:srcCompat="@android:drawable/ic_delete" />
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
 </RelativeLayout>

@@ -45,7 +45,7 @@
         android:id="@+id/badgeDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/relativeLayout2"
+        android:layout_alignStart="@+id/detailDescription"
         android:layout_below="@+id/badgeName"
         android:layout_marginTop="11dp"
         android:fontFamily="@font/bree_serif"

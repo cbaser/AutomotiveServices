@@ -39,7 +39,7 @@
                 android:fontFamily="@font/bree_serif"
                 android:paddingBottom="5dp"
                 android:text="Challenge!"
-                android:textColor="@color/h_titles"
+                android:textColor="@color/colorLeaGreen"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

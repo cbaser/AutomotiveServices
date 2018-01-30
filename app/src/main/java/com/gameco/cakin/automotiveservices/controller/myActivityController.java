@@ -1,12 +1,7 @@
 package com.gameco.cakin.automotiveservices.controller;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -15,28 +10,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.PopupWindow;
 
 import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.activites.LoginActivity;
-import com.gameco.cakin.automotiveservices.activites.MainActivity;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentAchievements;
+import com.gameco.cakin.automotiveservices.activites.fragments.FragmentAllChallenges;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentCarstatus;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentHome;
-import com.gameco.cakin.automotiveservices.activites.fragments.FragmentMainChallenges;
+import com.gameco.cakin.automotiveservices.activites.fragments.FragmentMyChallenges;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentRanking;
 import com.gameco.cakin.automotiveservices.adapters.ViewPagerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
-
-import android.os.Handler;
-import android.widget.RelativeLayout;
 
 /**
  * Created by cakin on 1/2/2018.
@@ -49,10 +35,10 @@ public class myActivityController implements NavigationView.OnNavigationItemSele
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private ViewPagerAdapter viewPagerAdapter;
-    private myNotificationController myNotificationController;
+  //  private myNotificationController myNotificationController;
     public myActivityController(AppCompatActivity activity){
         this.activity = activity;
-        myNotificationController = new myNotificationController(activity);
+     //   myNotificationController = new myNotificationController(activity);
 
     }
     @Override
@@ -72,16 +58,16 @@ public class myActivityController implements NavigationView.OnNavigationItemSele
             viewPager.setCurrentItem(2);
             tabLayout.setVisibility(View.VISIBLE);
 
-        }  else if (id == R.id.nav_ranking) {
+        }  else if (id == R.id.nav_allChallenges) {
             viewPager.setCurrentItem(3);
             tabLayout.setVisibility(View.INVISIBLE);
 
         }
-        else if (id == R.id.nav_carStatus) {
+        else if (id == R.id.nav_ranking) {
             viewPager.setCurrentItem(4);
             tabLayout.setVisibility(View.INVISIBLE);
         }
-        else if(id==R.id.nav_userDetails){
+        else if(id==R.id.nav_carStatus){
             viewPager.setCurrentItem(5);
             tabLayout.setVisibility(View.INVISIBLE);
         }
@@ -103,7 +89,7 @@ public class myActivityController implements NavigationView.OnNavigationItemSele
         activity.setSupportActionBar(toolbar);
          viewPager = (ViewPager) activity.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
-        String[] pageTitles = {"Home","Challenges","Achievements"};
+        String[] pageTitles = {"Home","My Challenges","Achievements"};
         tabLayout = (TabLayout) activity.findViewById(R.id.tabs);
         for (int i = 0; i < pageTitles.length; i++) {
             tabLayout.addTab(tabLayout.newTab().setText(pageTitles[i]));
@@ -148,10 +134,10 @@ public class myActivityController implements NavigationView.OnNavigationItemSele
     public void setupViewPager(ViewPager viewPager){
         viewPagerAdapter = new ViewPagerAdapter(activity.getSupportFragmentManager());
         viewPagerAdapter.addFrag(new FragmentHome(), "ONE");
-        viewPagerAdapter.addFrag(new FragmentMainChallenges(), "TWO");
+        viewPagerAdapter.addFrag(new FragmentMyChallenges(), "TWO");
         viewPagerAdapter.addFrag(new FragmentAchievements(),"THREE");
-        viewPagerAdapter.addFrag(new FragmentRanking(),"FOUR");
-        viewPagerAdapter.addFrag(new FragmentCarstatus(),"FIVE");
+        viewPagerAdapter.addFrag(new FragmentAllChallenges(),"FOUR");
+        viewPagerAdapter.addFrag(new FragmentRanking(),"FIVE");
         viewPagerAdapter.addFrag(new FragmentCarstatus(),"SIX");
         viewPager.setAdapter(viewPagerAdapter);
     }

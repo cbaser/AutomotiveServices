@@ -3,12 +3,13 @@ package com.gameco.cakin.automotiveservices.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.gameco.cakin.automotiveservices.activites.fragments.FragmentAllChallenges;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentCarstatus;
-import com.gameco.cakin.automotiveservices.activites.fragments.FragmentMainChallenges;
+import com.gameco.cakin.automotiveservices.activites.fragments.FragmentMyChallenges;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentHome;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentAchievements;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentRanking;
-import com.gameco.cakin.automotiveservices.activites.fragments.FragmentUserDetails;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +25,12 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public ViewPagerAdapter(android.support.v4.app.FragmentManager manager) {
         super(manager);
         mFragmentList.add(new FragmentHome());
-        mFragmentList.add(new FragmentMainChallenges());
+        mFragmentList.add(new FragmentMyChallenges());
         mFragmentList.add(new FragmentAchievements());
+        mFragmentList.add(new FragmentAllChallenges());
         mFragmentList.add(new FragmentRanking());
         mFragmentList.add(new FragmentCarstatus());
-        mFragmentList.add(new FragmentUserDetails());
+      //  mFragmentList.add(new FragmentUserDetails());
 
     }
 

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@mipmap/background"
     android:layout_height="wrap_content"
     android:padding="@dimen/activity_horizontal_margin"
     >
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/fbutton_color_midnight_blue"
         android:drawableEnd="@android:drawable/arrow_down_float"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/source_sans_pro"
         android:paddingEnd="10dp"
         android:text="REWE"
         android:textColor="#fff" />
@@ -35,10 +36,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:paddingBottom="5dp"
             android:text="Description"
-            android:textColor="@color/light_green"
+            android:textColor="@color/colorLeaGreen"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -47,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rewe_cardview_title"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:text="Starting Point: Garching "
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -58,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/rewe_cardview_description"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:text="Nearest Rewe is in 2 km"
             android:textColor="@color/white" />
 
@@ -68,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/reweTextView"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:text="Target: Go to nearest rewe in Leopold Str."
             android:textColor="@color/white" />
 
@@ -77,8 +78,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rewe2TextView"
-            android:fontFamily="@font/bree_serif"
-            android:background="@color/fbutton_color_green_sea"
+            android:fontFamily="@font/source_sans_pro"
+            android:background="@color/colorLeaGreen"
 
             android:text="SEND!" />
 
@@ -94,7 +95,7 @@
         android:layout_below="@+id/expandableLayout1"
         android:background="@color/fbutton_color_midnight_blue"
         android:drawableEnd="@android:drawable/arrow_down_float"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/source_sans_pro"
         android:paddingEnd="10dp"
         android:text="CO2"
         android:textColor="@color/white" />
@@ -116,10 +117,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:paddingBottom="5dp"
             android:text="Description"
-            android:textColor="@color/light_green"
+            android:textColor="@color/colorLeaGreen"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -128,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/description_co2_title"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:text="Starting Point 4.3l/100km"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -139,7 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/description_co2_description"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:text="Current Consumption: 4.1/100km"
             android:textColor="@color/white" />
 
@@ -149,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/currentCo2Textview"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:text="Target: 3.7 l/100km"
             android:textColor="@color/white" />
 
@@ -158,8 +159,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/targetCo2TextView"
-            android:background="@color/fbutton_color_green_sea"
-            android:fontFamily="@font/bree_serif"
+            android:background="@color/colorLeaGreen"
+            android:fontFamily="@font/source_sans_pro"
             android:text="SEND!" />
 
 
@@ -173,7 +174,7 @@
         android:layout_below="@+id/expandableLayout2"
         android:background="@color/fbutton_color_midnight_blue"
         android:drawableEnd="@android:drawable/arrow_down_float"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/source_sans_pro"
         android:paddingEnd="10dp"
         android:text="FUEL"
         android:textColor="@color/white" />
@@ -195,10 +196,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:paddingBottom="5dp"
             android:text="Description"
-            android:textColor="@color/light_green"
+            android:textColor="@color/colorLeaGreen"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -207,7 +208,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fuel_cardview_title"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:text="Starting Point 4.3l/100km"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -218,7 +219,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/fuel_cardview_description"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:text="Current Consumption: 4.1/100km"
             android:textColor="@color/white" />
 
@@ -228,7 +229,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/fuelTextView"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:text="Target: 3.7 l/100km"
             android:textColor="@color/white" />
 
@@ -237,8 +238,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fuel2TextView"
-            android:background="@color/fbutton_color_green_sea"
-            android:fontFamily="@font/bree_serif"
+            android:background="@color/colorLeaGreen"
+            android:fontFamily="@font/source_sans_pro"
             android:text="SEND!" />
 
 
@@ -253,7 +254,7 @@
         android:layout_below="@+id/expandableLayout3"
         android:background="@color/fbutton_color_midnight_blue"
         android:drawableEnd="@android:drawable/arrow_down_float"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/source_sans_pro"
         android:paddingEnd="10dp"
         android:text="Driving Style Challenge"
         android:textColor="#fff" />
@@ -275,10 +276,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:paddingBottom="5dp"
             android:text="Description"
-            android:textColor="@color/light_green"
+            android:textColor="@color/colorLeaGreen"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -287,7 +288,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/driving_cardview_title"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:text="Starting From Today"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -298,7 +299,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/driving_cardview_description"
-            android:fontFamily="@font/bree_serif"
+            android:fontFamily="@font/source_sans_pro"
             android:text="Current Driving Style : 3 Stars"
             android:textColor="@color/white" />
 
@@ -308,7 +309,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/drivingTextView"
-            android:fontFamily="@font/bree_serif"
+
+            android:fontFamily="@font/source_sans_pro"
             android:text="Target: 5 Stars"
             android:textColor="@color/white" />
 
@@ -317,8 +319,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/driving2TextView"
-            android:background="@color/fbutton_color_green_sea"
-            android:fontFamily="@font/josefin_sans_semibold"
+            android:background="@color/colorLeaGreen"
+            android:fontFamily="@font/source_sans_pro"
             android:text="SEND!" />
     </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 

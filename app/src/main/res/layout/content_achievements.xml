@@ -3,9 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
-
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -26,10 +24,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:fontFamily="@font/josefin_sans_semibold"
+                android:fontFamily="@font/source_sans_pro"
                 android:paddingBottom="5dp"
                 android:text="My Achievements"
-                android:textColor="@color/light_green"
+                android:textColor="@color/colorLeaGreen"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -73,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/image1"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="Newbie"
                 android:textColor="@color/black" />
 
@@ -92,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/image2"
                 android:layout_below="@+id/image2"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="Rookie"
                 android:textColor="@color/black" />
 
@@ -103,7 +101,7 @@
                 android:layout_alignStart="@+id/image3"
                 android:layout_below="@+id/image3"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="Star"
                 android:textColor="@color/black" />
 
@@ -113,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/image7"
                 android:layout_below="@+id/image7"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="Superstar"
                 android:textColor="@color/black" />
 
@@ -123,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/image4"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="Winner"
                 android:textColor="@color/black" />
 
@@ -141,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/image5"
                 android:layout_below="@+id/image5"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="Efficient"
                 android:textColor="@color/black" />
 
@@ -167,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/image7"
                 android:layout_alignStart="@+id/image6"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="Competitive"
                 android:textColor="@color/black" />
 
@@ -177,28 +175,27 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/image8"
                 android:layout_below="@+id/image8"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="Challenger"
                 android:textColor="@color/black" />
 
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
-
+<!--
     <android.support.v7.widget.CardView
-        android:id="@+id/efficiency_cardview"
+        android:id="@+id/chart_cardview"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:layout_marginTop="25dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
-
             android:padding="16dp">
 
-            <com.github.mikephil.charting.charts.BarChart
+            <com.github.mikephil.charting.charts.RadarChart
                 android:id="@+id/efficiency_chart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -206,7 +203,58 @@
                 android:layout_alignParentTop="true">
 
 
-            </com.github.mikephil.charting.charts.BarChart>
+            </com.github.mikephil.charting.charts.RadarChart>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/efficiency_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/money_cardview_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fontFamily="@font/source_sans_pro"
+                android:paddingBottom="5dp"
+                android:text="Saved Amount of Money"
+                android:textColor="@color/colorLeaGreen"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/money_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/money_cardview_title"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="35€"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+<!--
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/efficiency_chart"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true">
+
+
+                        </com.github.mikephil.charting.charts.BarChart>
+-->
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
@@ -230,10 +278,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:paddingBottom="5dp"
                 android:text="Kilometers Driven"
-                android:textColor="@color/light_green"
+                android:textColor="@color/colorLeaGreen"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -243,7 +291,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/kilometers_cardview_title"
 
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="787 km"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
@@ -272,10 +320,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:paddingBottom="5dp"
                 android:text="CO2 Saved"
-                android:textColor="@color/light_green"
+                android:textColor="@color/colorLeaGreen"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -285,7 +333,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/litres_cardview_title"
 
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="10kg"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
@@ -298,10 +346,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:paddingBottom="5dp"
                 android:text="Litres Saved"
-                android:textColor="@color/light_green"
+                android:textColor="@color/colorLeaGreen"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -312,7 +360,7 @@
 
                 android:layout_alignStart="@+id/litres_cardview_title"
                 android:layout_below="@+id/litres_cardview_title"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="8 L"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
@@ -343,10 +391,10 @@
                 android:layout_alignBaseline="@+id/total_consumption_cardview_title"
                 android:layout_alignBottom="@+id/total_consumption_cardview_title"
                 android:layout_alignStart="@+id/total_km_description"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:paddingBottom="5dp"
                 android:text="Total km this month"
-                android:textColor="@color/light_green"
+                android:textColor="@color/colorLeaGreen"
                 android:textSize="@dimen/nav_header_vertical_spacing"
                 android:textStyle="bold" />
 
@@ -355,7 +403,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/total_km_cardview_title"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="288km"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
@@ -368,10 +416,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:paddingBottom="5dp"
                 android:text="Total Consumption"
-                android:textColor="@color/light_green"
+                android:textColor="@color/colorLeaGreen"
                 android:textSize="@dimen/nav_header_vertical_spacing"
                 android:textStyle="bold" />
 
@@ -381,7 +429,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/total_consumption_cardview_title"
                 android:layout_below="@+id/total_consumption_cardview_title"
-                android:fontFamily="@font/bree_serif"
+                android:fontFamily="@font/source_sans_pro"
                 android:text="31.8 kWh"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"

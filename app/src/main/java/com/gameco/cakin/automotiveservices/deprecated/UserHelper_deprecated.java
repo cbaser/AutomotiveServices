@@ -7,11 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.activites.LoginActivity;
-import com.gameco.cakin.automotiveservices.activites.MainActivity;
 import com.gameco.cakin.automotiveservices.datamodel.Friend;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -52,10 +50,10 @@ public class UserHelper_deprecated {
         if(firebaseUserEmail.contains("cnturkr"))
         {
 
-             ImageView imageView = (ImageView) view.findViewById(R.id.profPic);
+             ImageView imageView = (ImageView) view.findViewById(R.id.profPic_lea);
              imageView.setImageResource(R.drawable.ic_can);
-            ((TextView) view.findViewById(R.id.txtfullName)).setText(R.string.canName);
-            ((TextView) view.findViewById(R.id.txtLevel)).setText(R.string.canLevel);
+            ((TextView) view.findViewById(R.id.txtRewe)).setText(R.string.canName);
+            ((TextView) view.findViewById(R.id.txtRewe_con)).setText(R.string.canLevel);
             ((TextView) view.findViewById(R.id.txtScore)).setText(R.string.canPoints);
 
         }

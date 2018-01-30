@@ -64,42 +64,42 @@ public class TransitionHelper_deprecated {
 
 
     }
-    private void showFriends(){
-        final AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getActivity());
-        final AlertDialog dialog;
-        layoutInflater = LayoutInflater.from(fragment.getActivity());
-        View mview = layoutInflater.inflate(R.layout.fragment_friends, null);
-
-        ListView listView;
-        List<Friend> friendList = new ArrayList<>();
-        friendList.clear();
-        friendList.add(new Friend("LEA",23494));
-        friendList.add(new Friend("CAN",21421));
-        friendList.add(new Friend("CAGATAY",19180));
-        friendList.add(new Friend("CHRISTOPHER",14032));
-        listView = (ListView)mview.findViewById(R.id.friendsListview);
-        ViewGroup header_friends = (ViewGroup)layoutInflater.inflate(R.layout.header_friends_list,listView,false);
-        listView.addHeaderView(header_friends);
-        FriendsListAdapter friendsListAdapter = new FriendsListAdapter(fragment.getActivity(),friendList);
-        listView.setAdapter(friendsListAdapter);
-
-//        FloatingActionButton closeFriendsBtn = (FloatingActionButton) mview.findViewById(R.id.closeFriendsFAB);
-//      closeFriendsBtn.setOnClickListener(new View.OnClickListener() {
-//          @Override
-//          public void onClick(View v) {
-//              builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-//                  @Override
-//                  public void onDismiss(DialogInterface dialog) {
-//                      dialog.cancel();;
-//                  }
-//              });
-//          }
-//      });
-
-        builder.setView(mview);
-
-        dialog= builder.create();
-        dialog.show();
-    }
+//    private void showFriends(){
+//        final AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getActivity());
+//        final AlertDialog dialog;
+//        layoutInflater = LayoutInflater.from(fragment.getActivity());
+//        View mview = layoutInflater.inflate(R.layout.fragment_friends, null);
+//
+//        ListView listView;
+//        List<Friend> friendList = new ArrayList<>();
+//        friendList.clear();
+//        friendList.add(new Friend("LEA",23494));
+//        friendList.add(new Friend("CAN",21421));
+//        friendList.add(new Friend("CAGATAY",19180));
+//        friendList.add(new Friend("CHRISTOPHER",14032));
+//        listView = (ListView)mview.findViewById(R.id.friendsListview);
+//        ViewGroup header_friends = (ViewGroup)layoutInflater.inflate(R.layout.header_friends_list,listView,false);
+//        listView.addHeaderView(header_friends);
+//        FriendsListAdapter friendsListAdapter = new FriendsListAdapter(fragment.getActivity(),friendList);
+//        listView.setAdapter(friendsListAdapter);
+//
+////        FloatingActionButton closeFriendsBtn = (FloatingActionButton) mview.findViewById(R.id.closeFriendsFAB);
+////      closeFriendsBtn.setOnClickListener(new View.OnClickListener() {
+////          @Override
+////          public void onClick(View v) {
+////              builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+////                  @Override
+////                  public void onDismiss(DialogInterface dialog) {
+////                      dialog.cancel();;
+////                  }
+////              });
+////          }
+////      });
+//
+//        builder.setView(mview);
+//
+//        dialog= builder.create();
+//        dialog.show();
+//    }
 
 }

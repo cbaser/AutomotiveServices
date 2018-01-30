@@ -3,6 +3,8 @@
     <color name="primaryColor">#ffa000</color>
     <color name="secondaryLightColor">#80e27e</color>
     <color name="colorCan">#00bf9a</color>
+    <color name="colorLeaGreen">#549d4b</color>
+    <color name="colorLeaGrey">#549d4b</color>
     <color name="secondaryDarkColor">#087f23</color>
     <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#5896cd</color>

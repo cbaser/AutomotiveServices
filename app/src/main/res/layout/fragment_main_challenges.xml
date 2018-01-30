@@ -5,30 +5,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin"
     android:background="@mipmap/background">
 
-    <LinearLayout
+
+    <include
+        layout="@layout/content_my_challenges"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:layout_height="wrap_content" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <FrameLayout
+
+
+
+<!--
+   <FrameLayout
                 android:id="@+id/challengesFrameLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"></FrameLayout>
-        </RelativeLayout>
-
-
-
-
             <Button
                 android:id="@+id/allChallengesBtn"
                 android:layout_width="match_parent"
@@ -50,8 +44,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bree_serif"
-
-
                 android:background="@drawable/button_with_shape"
                 android:gravity="center"
                 android:padding="16dp"
@@ -62,10 +54,10 @@
                 android:text="Ongoing Challenges"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
+-->
 
 
 
-    </LinearLayout>
 </ScrollView>
 
 <!--

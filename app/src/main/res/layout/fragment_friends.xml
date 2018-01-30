@@ -1,57 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-android:padding="@dimen/activity_horizontal_margin"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
+<RelativeLayout
+    android:id="@+id/upperRelativeLayout"
+    android:layout_width="wrap_content"
+    android:background="#ddd"
+    android:layout_height="wrap_content">
 
+    <Button
+        android:id="@+id/addFriendBtn"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end"
+        android:background="@drawable/button_change_clicked"
+        android:drawableTop="@drawable/ic_add_friend"
+        android:fontFamily="@font/bree_serif" />
+
+    <EditText
+        android:id="@+id/editSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="50dp"
+        android:background="@color/white"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:text="Search by Display Name"
+        android:textColor="@color/black"
+        tools:text="Search by Display Name" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_below="@id/editSearch"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/createGroupBtn"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/button_change_clicked"
+
+            android:fontFamily="@font/bree_serif"
+            android:text="Create Group"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/importGroupBtn"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="right"
+
+            android:background="@drawable/button_change_clicked"
+            android:fontFamily="@font/bree_serif"
+            android:text="Import Group"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="14sp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
     <ListView
         android:id="@+id/friendsListview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_below="@id/upperRelativeLayout"
         android:layout_weight="1"
-        android:fontFamily="@font/bree_serif"
         android:background="@color/white"
+        android:fontFamily="@font/bree_serif"
         android:textDirection="firstStrong">
 
 
     </ListView>
 
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="@font/bree_serif"
-        android:background="@color/fbutton_color_midnight_blue"
-        android:drawableEnd="@drawable/ic_add_friend"
 
-        android:text="Add Friend" />
 
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:background="@color/fbutton_color_midnight_blue"
-        android:drawableEnd="@drawable/ic_create_group"
-        android:fontFamily="@font/bree_serif"
-        android:text="Create Group" />
-
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/fbutton_color_midnight_blue"
-        android:drawableEnd="@drawable/ic_import_group"
-        android:fontFamily="@font/bree_serif"
-        android:text="Import Group" />
-
-</LinearLayout>
+</RelativeLayout>
 
 
 

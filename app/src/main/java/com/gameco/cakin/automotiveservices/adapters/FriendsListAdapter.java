@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gameco.cakin.automotiveservices.R;
@@ -44,17 +45,14 @@ public class FriendsListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = layoutInflater.inflate(R.layout.group_friend,null);
-        TextView tvRank = (TextView)view.findViewById(R.id.textViewPosition);
+        ImageView imRank = (ImageView) view.findViewById(R.id.imageViewPicture);
         TextView tvName =(TextView) view.findViewById(R.id.textViewName);
         TextView tvPoint =(TextView) view.findViewById(R.id.textViewPoint);
 
         Friend friend = list.get(position);
-        tvRank.setText(String.valueOf(position+1));
+        imRank.setImageDrawable(friend.getImage());
         tvName.setText(friend.getName());
         tvPoint.setText(String.valueOf(friend.getPoint()));
-
-
-
 
 
         return view;
