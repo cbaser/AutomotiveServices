@@ -180,10 +180,14 @@ public class myNotificationController {
                 final ListView listView = (ListView) friendView.findViewById(R.id.friendsListview);
                 List<Friend> friendList = new ArrayList<>();
                 friendList.clear();
-
-                Friend can = new Friend(fragment.getActivity().getResources().getDrawable(R.drawable.ic_can),"Can Türker",123455);
-                friendList.add(can);
-
+                if(LoginActivity.LoggedIn_User_Email.equals("cagatayakin.baser@tum.de")) {
+                    Friend can = new Friend(fragment.getActivity().getResources().getDrawable(R.drawable.ic_can), "Can Türker", 123455);
+                    friendList.add(can);
+                }
+                else{
+                    Friend cagatay = new Friend(fragment.getActivity().getResources().getDrawable(R.drawable.ic_cagatay), "Cagatay Akin Baser", 123457);
+                    friendList.add(cagatay);
+                }
 
 
                ViewGroup header_friends = (ViewGroup)fragment.getActivity().getLayoutInflater().inflate(R.layout.header_available_friends,listView,false);
