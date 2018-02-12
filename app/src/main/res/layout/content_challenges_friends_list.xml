@@ -12,107 +12,12 @@
         android:padding="@dimen/activity_horizontal_margin">
 
         <LinearLayout
-            android:id="@+id/linearlayout1"
+            android:id="@+id/LinearLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_alignParentStart="true"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/rankLea"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/source_sans_pro"
-                android:text="1."
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-            <ImageView
-
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                app:srcCompat="@drawable/ic_lea" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/source_sans_pro"
-                android:text="Lea"
-                android:textColor="@color/black" />
-
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="13dp"
-                android:fontFamily="@font/source_sans_pro"
-                android:text="123456"
-                android:textColor="#727272"
-                tools:text="123456" />
-
-
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:id="@+id/linearlayout2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="75dp"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/LinearLayout3"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/rankHampus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/source_sans_pro"
-                android:text="2."
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="100dp"
-                android:layout_height="75dp"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/ic_hampus" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/source_sans_pro"
-                android:text="Hampus"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/source_sans_pro"
-                android:text="123455"
-                android:textColor="#727272"
-                tools:text="123455" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/LinearLayout3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignParentEnd="true"
-            android:gravity="end"
+            android:gravity="start"
             android:orientation="vertical">
 
             <TextView
@@ -121,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/source_sans_pro"
-                android:text="3."
+                android:text="1."
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -163,6 +68,105 @@
 
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+            android:layout_toEndOf="@id/LinearLayout1"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/rankLea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="2."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                app:srcCompat="@drawable/ic_cagatay" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="Cagatay"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="123453"
+                android:textColor="#727272"
+                tools:text="123453" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearlayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentTop="false"
+
+            android:layout_toEndOf="@+id/linearlayout2"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/rankHampus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="2."
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_hampus" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="Hampus"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="123455"
+                android:textColor="#727272"
+                tools:text="123455" />
+        </LinearLayout>
+
+
 
 
 

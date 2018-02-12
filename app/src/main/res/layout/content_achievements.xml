@@ -20,7 +20,7 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/achievements_cardview_title"
+                android:id="@+id/sure_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -36,14 +36,14 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/achievements_cardview_title"
+                android:layout_below="@+id/sure_title"
                 app:srcCompat="@drawable/badge_newbie" />
 
             <ImageView
                 android:id="@+id/image2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_below="@+id/achievements_cardview_title"
+                android:layout_below="@+id/sure_title"
                 android:layout_marginStart="26dp"
                 android:layout_toEndOf="@+id/image1"
                 app:srcCompat="@drawable/badge_10_winner" />
@@ -54,7 +54,7 @@
                 android:layout_height="50dp"
                 android:layout_alignTop="@+id/image2"
                 android:layout_marginStart="14dp"
-                android:layout_toEndOf="@+id/achievements_cardview_title"
+                android:layout_toEndOf="@+id/sure_title"
                 app:srcCompat="@drawable/badge_25_winner" />
 
             <ImageView
@@ -238,7 +238,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/money_cardview_title"
                 android:fontFamily="@font/source_sans_pro"
-                android:text="35€"
+                android:text="135€"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="18sp"
@@ -258,7 +258,95 @@
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:id="@+id/coffee_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/coffee_cardview_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fontFamily="@font/source_sans_pro"
+                android:paddingBottom="5dp"
+                android:text="Gained Coffee"
+                android:textColor="@color/colorLeaGreen"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:id="@+id/coffee1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/coffee_cardview_title"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_coffee_cup" />
+            <ImageView
+                android:id="@+id/coffee2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toEndOf="@id/coffee1"
+                android:layout_below="@id/coffee_cardview_title"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_coffee_cup" />
+            <ImageView
+                android:id="@+id/coffee3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toEndOf="@id/coffee2"
+                android:layout_below="@id/coffee_cardview_title"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_coffee_cup" />
+
+            <TextView
+                android:id="@+id/total_discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/coffee_cardview_title"
+                android:layout_alignBottom="@+id/coffee_cardview_title"
+                android:layout_alignParentEnd="true"
+                android:text="Rewe discount"
+                android:textColor="@color/colorLeaGreen"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/discount_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/total_discount"
+                android:layout_below="@+id/coffee_cardview_title"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="10€ Voucher coupon"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <!--
+                                    <com.github.mikephil.charting.charts.BarChart
+                                        android:id="@+id/efficiency_chart"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true">
+
+
+                                    </com.github.mikephil.charting.charts.BarChart>
+            -->
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
         android:id="@+id/kilometers_cardview"
         android:layout_width="match_parent"
@@ -334,7 +422,7 @@
                 android:layout_below="@+id/litres_cardview_title"
 
                 android:fontFamily="@font/source_sans_pro"
-                android:text="10kg"
+                android:text="55.09 kg"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="18sp"
@@ -361,7 +449,7 @@
                 android:layout_alignStart="@+id/litres_cardview_title"
                 android:layout_below="@+id/litres_cardview_title"
                 android:fontFamily="@font/source_sans_pro"
-                android:text="8 L"
+                android:text="68.8 L"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="18sp"

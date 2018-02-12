@@ -28,11 +28,12 @@ public class NotificationHandler implements OneSignal.NotificationOpenedHandler 
         JSONObject data = result.notification.payload.additionalData;
         if (data != null) {
             String myCustomData = data.optString("key", null);
+            Log.e("------HOPPPP-!---",myCustomData);
         }
         OSNotificationAction.ActionType actionType = result.action.type;
         if (actionType == OSNotificationAction.ActionType.ActionTaken)
             Log.i("OneSignalExample", "Button pressed with id: " + result.action.actionID);
 
-        notificationController.acceptOrDeclineChallenge();
+        notificationController.acceptOrDeclineChallenge(notificationController.getChallenge());
     }
 }

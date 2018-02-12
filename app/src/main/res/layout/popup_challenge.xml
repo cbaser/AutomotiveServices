@@ -34,7 +34,7 @@
         android:background="@color/white"
         android:fontFamily="@font/bree_serif"
         android:lineSpacingExtra="8sp"
-        android:text="Start challenge yourself"
+        android:text="Start challenge individually"
         android:textColor="@color/black"
         android:textSize="14sp" />
 

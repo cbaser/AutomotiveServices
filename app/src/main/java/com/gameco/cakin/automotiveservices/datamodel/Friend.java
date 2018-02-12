@@ -16,21 +16,24 @@ public class Friend {
         this.name = name;
     }
 
-    public int getPoint() {
+    public long getPoint() {
         return point;
     }
 
-    public void setPoint(int point) {
+    public void setPoint(long point) {
         this.point = point;
     }
     private Drawable drawable;
     private String name;
-    private int point;
+    private long point;
 
-    public Friend(Drawable drawable,String name,int point){
+    public Friend(Drawable drawable,String name,long point){
         this.drawable = drawable;
         this.name=name;
         this.point=point;
+    }
+    public Friend(){
+
     }
 
     public Drawable getImage() {

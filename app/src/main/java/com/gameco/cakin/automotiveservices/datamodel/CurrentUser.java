@@ -9,20 +9,27 @@ import java.util.List;
  */
 
 public class CurrentUser {
-    private String username;
+
+    private String fullName;
+    private String email;
     private String password;
     private Car car;
     private List<Friend> friendList;
     private List<Rank> rankList;
-    private ImageView image;
     private String level;
-
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPassword() {
@@ -55,14 +62,6 @@ public class CurrentUser {
 
     public void setRankList(List<Rank> rankList) {
         this.rankList = rankList;
-    }
-
-    public ImageView getImage() {
-        return image;
-    }
-
-    public void setImage(ImageView image) {
-        this.image = image;
     }
 
     public String getLevel() {

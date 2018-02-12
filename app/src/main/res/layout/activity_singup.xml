@@ -47,6 +47,16 @@
                 android:textColorHint="@color/colorLeaGreen"
                 android:textSize="16sp" />
 
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="35dp"
+                android:textColor="@color/colorLeaGreen"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:layout_marginStart="22dp"/>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -75,21 +85,6 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:background="#ADCCE2" />
-
-            <EditText
-                android:id="@+id/username_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="22dp"
-                android:background="#0000"
-                android:fontFamily="@font/source_sans_pro"
-                android:hint="@string/username"
-                android:inputType="text"
-                android:padding="16dp"
-                android:textColor="@color/colorLeaGreen"
-                android:textColorHint="@color/colorLeaGreen"
-                android:textSize="16sp" />
 
             <View
                 android:layout_width="match_parent"
@@ -124,12 +119,10 @@
 
             <Button
                 android:id="@+id/signup_button"
-                android:layout_width="313dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="28dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/button_with_shape"
                 android:fontFamily="@font/source_sans_pro"
                 android:gravity="center"

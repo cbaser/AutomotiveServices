@@ -1,8 +1,21 @@
 package com.gameco.cakin.automotiveservices.controller;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+
+import com.gameco.cakin.automotiveservices.datamodel.Challenge;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -10,8 +23,8 @@ import android.view.View;
  */
 
 public class FrontController {
-    private com.gameco.cakin.automotiveservices.controller.myActivityController myActivityController;
-    private com.gameco.cakin.automotiveservices.controller.myFragmentController myFragmentController;
+    private myActivityController myActivityController;
+    private myFragmentController myFragmentController;
     public FrontController(AppCompatActivity activity){
         myActivityController = new myActivityController(activity);
     }
@@ -28,9 +41,6 @@ public class FrontController {
     }
     public void showFriends(){
         myFragmentController.showFriends();
-    }
-    public void replaceFragment(int challengesFrameLayout, Fragment fragment){
-        myFragmentController.replaceFragment(challengesFrameLayout,fragment);
     }
 
 

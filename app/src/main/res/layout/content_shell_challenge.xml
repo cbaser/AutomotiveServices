@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/include_shell_challenge_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fbutton_color_midnight_blue"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="22dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="Weekly Shell Challenge!"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/source_sans_pro"
+        android:text="Refuel at Shell and get a free coffee"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        tools:text="Refuel at Shell and get free coffee" />
+
+    <Button
+        android:id="@+id/playShellChallenge"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:background="@drawable/button_with_shape"
+        android:drawableLeft="@android:drawable/ic_media_play"
+        android:drawableRight="@drawable/coffee_drawable"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="Play Challenge!"
+        android:textColor="@color/cardview_light_background"
+        android:textStyle="bold" />
+
+</LinearLayout>

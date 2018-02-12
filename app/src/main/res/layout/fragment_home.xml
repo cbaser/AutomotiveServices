@@ -10,6 +10,36 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp">
 
+    <FrameLayout
+        android:id="@+id/challengesFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <include
+            android:id="@+id/include2"
+            layout="@layout/content_home" />
+
+
+    </FrameLayout>
+    <!--
+
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end|bottom"
+        android:layout_marginTop="22dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:srcCompat="@drawable/ic_can" />
     <LinearLayout
         android:id="@+id/home_frameLayout"
         android:layout_width="match_parent"
@@ -131,14 +161,22 @@
 
                     />
 
+
+
             </LinearLayout>
 
 
         </android.support.v7.widget.CardView>
-
-
     </LinearLayout>
+
+</RelativeLayout>
+
+-->
 </ScrollView>
+
+
+
+
     <!--
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"

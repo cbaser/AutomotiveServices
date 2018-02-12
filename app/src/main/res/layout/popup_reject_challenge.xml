@@ -2,14 +2,17 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/activity_horizontal_margin">
+
     <android.support.v7.widget.CardView
-        android:id="@+id/tournament_cardview"
+        android:id="@+id/sure_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       >
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp">
 
 
         <RelativeLayout
@@ -23,7 +26,7 @@
             android:padding="16dp">
 
             <Button
-                android:id="@+id/rejectChallengeBtn"
+                android:id="@+id/rejectSure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -33,7 +36,6 @@
                 android:fontFamily="@font/bree_serif"
                 android:text="REJECT" />
 
-
             <TextView
                 android:id="@+id/sure_title"
                 android:layout_width="wrap_content"
@@ -41,23 +43,23 @@
                 android:layout_alignParentTop="true"
                 android:fontFamily="@font/bree_serif"
                 android:paddingBottom="5dp"
-                android:text="Challenge!"
+                android:text="Are you sure!"
                 android:textColor="@color/colorLeaGreen"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/achievements_cardview_description"
+                android:id="@+id/sure_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sure_title"
                 android:fontFamily="@font/bree_serif"
-                android:text="Reduce Fuel Consumption to 0.5l / km"
+                android:text="You will lose 1000 points by rejecting this challenge!"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/acceptChallengeBtn"
+                android:id="@+id/acceptSure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -65,10 +67,10 @@
                 android:layout_marginStart="10dp"
                 android:background="@color/light_green"
                 android:fontFamily="@font/bree_serif"
-                android:text="Accept" />
+                android:text="Go Back" />
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/closeAcceptChallenge"
+                android:id="@+id/closeRejectChallange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"

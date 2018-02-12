@@ -1,5 +1,6 @@
 package com.gameco.cakin.automotiveservices.activites;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -7,19 +8,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.Toast;
 
 import com.gameco.cakin.automotiveservices.R;
 
 import com.gameco.cakin.automotiveservices.controller.FrontController;
-import com.gameco.cakin.automotiveservices.controller.myNotificationController;
+import com.gameco.cakin.automotiveservices.datamodel.Challenge;
 import com.gameco.cakin.automotiveservices.onesignal.NotificationHandler;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.onesignal.OneSignal;
 
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    private List<Challenge> challengeList;
+    private long backPressedTime = 0;
     private FrontController frontController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +58,16 @@ public class MainActivity extends AppCompatActivity {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+             backPressedTime = (backPressedTime + 1);
+            Toast.makeText(getApplicationContext(), " Press Back again to Logout ", Toast.LENGTH_SHORT).show();
+            if (backPressedTime > 1) {
+                Intent a = new Intent(Intent.ACTION_MAIN);
+                a.addCategory(Intent.CATEGORY_HOME);
+                a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(a);
+                this.finish();
+            }
+          //  super.onBackPressed();
         }
     }
 
@@ -80,8 +94,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
 
 

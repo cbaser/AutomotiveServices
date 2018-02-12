@@ -32,13 +32,14 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/source_sans_pro"
                     android:text="Born 2 Be Innovative"
+                    android:textStyle="bold"
                     android:textColor="@color/colorLeaGreen"
                     android:textSize="24sp" />
 
                 <ListView
                     android:id="@+id/b2bListView"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="300dp"
                     android:background="@color/white"
                     android:divider="@color/fbutton_color_asbestos"
                     android:dividerHeight="2dp"
@@ -67,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/source_sans_pro"
                     android:text="Global"
+                    android:textStyle="bold"
                     android:textColor="@color/colorLeaGreen"
                     android:textSize="24sp" />
 

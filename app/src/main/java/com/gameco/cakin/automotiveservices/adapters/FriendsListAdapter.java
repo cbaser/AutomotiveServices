@@ -50,9 +50,9 @@ public class FriendsListAdapter extends BaseAdapter {
         TextView tvPoint =(TextView) view.findViewById(R.id.textViewPoint);
 
         Friend friend = list.get(position);
-        imRank.setImageDrawable(friend.getImage());
-        tvName.setText(friend.getName());
-        tvPoint.setText(String.valueOf(friend.getPoint()));
+       imRank.setImageDrawable(friend.getImage());
+       tvName.setText(friend.getName());
+       tvPoint.setText(String.valueOf(friend.getPoint()));
 
 
         return view;

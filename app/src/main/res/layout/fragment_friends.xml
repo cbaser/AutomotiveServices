@@ -41,6 +41,7 @@
         tools:text="Search by Display Name" />
 
     <RelativeLayout
+        android:id="@+id/middleRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -76,20 +77,53 @@
 
     </RelativeLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/exitFAB"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:clickable="true"
+        app:backgroundTint="@color/fbutton_color_midnight_blue"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
 </RelativeLayout>
-    <ListView
-        android:id="@+id/friendsListview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:layout_below="@id/upperRelativeLayout"
-        android:layout_weight="1"
-        android:background="@color/white"
-        android:fontFamily="@font/bree_serif"
-        android:textDirection="firstStrong">
+
+    <RelativeLayout
+        android:id="@+id/header_main_page_clist1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/upperRelativeLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:background="#ffffff"
+        android:paddingBottom="10dp">
+
+        <ListView
+            android:id="@+id/friendsListview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/upperRelativeLayout"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:fontFamily="@font/bree_serif"
+            android:textDirection="firstStrong">
 
 
-    </ListView>
+        </ListView>
+
+        <TextView
+            android:id="@+id/emptyElement"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/upperRelativeLayout"
+            android:text="You dont have any friends,add friends to send challenges"
+            android:textColor="#525252"
+            android:textSize="19.0sp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
 
 
 

@@ -16,7 +16,7 @@ import android.view.View;
 import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.activites.LoginActivity;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentAchievements;
-import com.gameco.cakin.automotiveservices.activites.fragments.FragmentAllChallenges;
+import com.gameco.cakin.automotiveservices.activites.fragments.FragmentChallengeCategories;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentCarstatus;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentHome;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentMyChallenges;
@@ -38,9 +38,14 @@ public class myActivityController implements NavigationView.OnNavigationItemSele
   //  private myNotificationController myNotificationController;
     public myActivityController(AppCompatActivity activity){
         this.activity = activity;
+
      //   myNotificationController = new myNotificationController(activity);
 
     }
+    public TabLayout getTabLayout(){
+        return tabLayout;
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -58,7 +63,7 @@ public class myActivityController implements NavigationView.OnNavigationItemSele
             viewPager.setCurrentItem(2);
             tabLayout.setVisibility(View.VISIBLE);
 
-        }  else if (id == R.id.nav_allChallenges) {
+        }  else if (id == R.id.nav_challengeCategories) {
             viewPager.setCurrentItem(3);
             tabLayout.setVisibility(View.INVISIBLE);
 
@@ -130,13 +135,19 @@ public class myActivityController implements NavigationView.OnNavigationItemSele
         toggle.syncState();
 
     }
+    public ViewPager getViewPager(){
+
+        viewPager = (ViewPager) activity.findViewById(R.id.viewpager);
+        return viewPager;
+    }
+
 
     public void setupViewPager(ViewPager viewPager){
         viewPagerAdapter = new ViewPagerAdapter(activity.getSupportFragmentManager());
         viewPagerAdapter.addFrag(new FragmentHome(), "ONE");
         viewPagerAdapter.addFrag(new FragmentMyChallenges(), "TWO");
         viewPagerAdapter.addFrag(new FragmentAchievements(),"THREE");
-        viewPagerAdapter.addFrag(new FragmentAllChallenges(),"FOUR");
+        viewPagerAdapter.addFrag(new FragmentChallengeCategories(),"FOUR");
         viewPagerAdapter.addFrag(new FragmentRanking(),"FIVE");
         viewPagerAdapter.addFrag(new FragmentCarstatus(),"SIX");
         viewPager.setAdapter(viewPagerAdapter);
