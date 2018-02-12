@@ -15,6 +15,8 @@ import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.controller.FrontController;
 import com.gameco.cakin.automotiveservices.datamodel.Challenge;
 import com.gameco.cakin.automotiveservices.onesignal.NotificationHandler;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.onesignal.OneSignal;
 
@@ -61,11 +63,15 @@ public class MainActivity extends AppCompatActivity {
              backPressedTime = (backPressedTime + 1);
             Toast.makeText(getApplicationContext(), " Press Back again to Logout ", Toast.LENGTH_SHORT).show();
             if (backPressedTime > 1) {
-                Intent a = new Intent(Intent.ACTION_MAIN);
-                a.addCategory(Intent.CATEGORY_HOME);
-                a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(a);
-                this.finish();
+
+                FirebaseAuth.getInstance().signOut();
+                Intent it = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(it);
+//                Intent a = new Intent(Intent.ACTION_MAIN);
+//                a.addCategory(Intent.CATEGORY_HOME);
+//                a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(a);
+//                this.finish();
             }
           //  super.onBackPressed();
         }
