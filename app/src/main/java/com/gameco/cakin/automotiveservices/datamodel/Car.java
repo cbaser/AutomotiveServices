@@ -7,6 +7,7 @@ import java.util.List;
  */
 
 public class Car {
+    private String carName;
     private String VIN;
     public String getVIN() {
         return VIN;
@@ -131,4 +132,11 @@ public class Car {
 
     private String nextServiceDistance;
 
+    public String getCarName() {
+        return carName;
+    }
+
+    public void setCarName(String carName) {
+        this.carName = carName;
+    }
 }

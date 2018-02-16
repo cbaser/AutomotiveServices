@@ -7,6 +7,9 @@ import android.graphics.drawable.Drawable;
  */
 
 public class Challenge {
+    public Challenge(){
+
+    }
 
     public String getFriendName() {
         return friendName;

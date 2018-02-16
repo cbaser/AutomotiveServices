@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.activites.LoginActivity;
+import com.gameco.cakin.automotiveservices.activites.MainActivity;
 import com.gameco.cakin.automotiveservices.adapters.MyChallengesAdapter;
 import com.gameco.cakin.automotiveservices.controller.myNotificationController;
 import com.gameco.cakin.automotiveservices.datamodel.Challenge;
@@ -37,6 +38,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,105 +52,136 @@ public class FragmentMyChallenges extends Fragment  {
     private View view;
     public static FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
-    private TextView title, winning,time,friendName;
-    private ListView listView,listView2;
-    private List<Challenge> challengeList = new ArrayList<>();
+    private myNotificationController controller;
+    private  ArrayList<Challenge> challengeList;
     private RecyclerView recyclerView;
     private MyChallengesAdapter myChallengesAdapter;
-    private myNotificationController controller;
-    private static final String PREFS_TAG = "SharedPrefs";
-    private static final String PRODUCT_TAG = "Challenges";
+
 
     public FragmentMyChallenges(){
 
     }
     private void getChallengesFromFirebase(){
-
-
+        challengeList = new ArrayList<>();
+  //      challengeList.clear();
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference().child("Users").child(LoginActivity.user_full_name);
         mRef.child("Challenges").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-//                GenericTypeIndicator<HashMap<String, List<Challenge>>> genericTypeIndicator = new GenericTypeIndicator<HashMap<String, List<Challenge>>>() {};
-//                Map<String, List<Challenge>> hashMap = dataSnapshot.getValue(genericTypeIndicator);
-
-
-//                for (Map.Entry<String,List<Challenge>> entry : hashMap.entrySet()) {
-//                    List<Challenge> challenges = entry.getValue();
-//                    for (Challenge challenge: challenges){
-//                        Log.i("TEEEEEEEEEEEEEST", challenge.getFriendName());
-//                    }
-//                }
-
-//                for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-//                    Challenge challenge = new Challenge();
-//                    challenge.setFriendName(postSnapshot.getValue().toString());
-//
-//                    Log.e("TEEEEEEEEEST",challenge.toString());
-//                    Log.e("TEEEEEEEEEST",challenge.getFriendName());
-//               }
-//                Map<String, Object> td = (HashMap<String,Object>) dataSnapshot.getValue();
-//                List<Object> values = (List<Object>) td.values();
-//
-//                collectChallenges((Map<String,Object>) dataSnapshot.getValue());
+                try{
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                for(DataSnapshot childrenShot : children){
+                        Iterable<DataSnapshot>innerChildren = childrenShot.getChildren();
+                        for (DataSnapshot challengeShot : innerChildren){
+                            Challenge challenge =challengeShot.getValue(Challenge.class);
+                            challengeList.add(challenge);
+                        }
+                }
+                setRecyclerView();
+                }catch (Exception e){
+                    Log.e("ERRORRR",e.getMessage());
+                   // e.printStackTrace();
+                }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
         });
 
-
-//        Gson gson = new Gson();
-//        List<Challenge> productFromShared = new ArrayList<>();
-//        SharedPreferences sharedPref = this.getActivity().getApplicationContext().getSharedPreferences(PREFS_TAG, Context.MODE_PRIVATE);
-//        String jsonPreferences = sharedPref.getString(PRODUCT_TAG, "");
-//
-//        Type type = new TypeToken<List<Challenge>>() {}.getType();
-//        productFromShared = gson.fromJson(jsonPreferences, type);
-//
-//        return productFromShared;
     }
-    private void collectChallenges(Map<String,Object> users) {
-
-        ArrayList<Challenge> challenges = new ArrayList<>();
-
-        //iterate through each user, ignoring their UID
-        for (Map.Entry<String, Object> entry : users.entrySet()){
-
-
-            Map singleUser = (Map) entry.getValue();
-            Log.e("TEEEEEEEEEST",singleUser.toString());
-
-            Gson gson = new Gson();
-            String json = singleUser.toString();
-            Type type = new TypeToken<List<Challenge>>() {}.getType();
-            challenges = gson.fromJson(json, type);
-
-
-
-         //   challenges.add((Challenge) singleUser);
-        }
-        Log.e("DAVAY DAVAY",challenges.toString());
-     //   System.out.println(challenges.toString());
+    private void setRecyclerView(){
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewChallenges);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        myChallengesAdapter = new MyChallengesAdapter(this.getActivity(),challengeList);
+        recyclerView.setAdapter(myChallengesAdapter);
+        myChallengesAdapter.notifyDataSetChanged();
     }
-
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
          view = inflater.inflate(R.layout.fragment_my_challenges,container,false);
         // ListView listView = view.findViewById(R.id.challengesList);
         controller = new myNotificationController(this);
+        try{
+            getChallengesFromFirebase();
+        }catch (Exception e){
+            Log.e("PROBLEM",e.getMessage());
+        }
 
-        getChallengesFromFirebase();
 
 
-    //    recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
 
-       // myChallengesAdapter = new MyChallengesAdapter(this.getActivity(),getDataFromSharedPreferences());
-      //  Log.i("TAG",controller.getChallengeList().size()+"");
+          return view;
+    }
+}
+
+
+
+
+
+// setRecyclerView();
+//    recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+//                recyclerView.setItemAnimator(new DefaultItemAnimator());
+//                myChallengesAdapter = new MyChallengesAdapter(this.getActivity(), productFromShared);
+//                myChallengesAdapter.notifyDataSetChanged();
+//                HashMap<String,Challenge> hashMap = (HashMap<String, Challenge>) valuex.get(title);
+//                List<Challenge> list = new ArrayList<Challenge>(hashMap.values());
+//                Challenge x = (Challenge) hashMap.get(title);
+//                for (DataSnapshot challengeShot : challengeChildren){
+//                    Challenge challenge =challengeShot.getValue(Challenge.class);
+//                    challengeList.add(challenge);
+//                    Log.e("IAAAAAAAAAAAAAA",challengeList.size()+"");
+//                }
+//    private void showDetails(ImageView image, String time, String friendName, String title, String myCurrent, String friendCurrent, boolean winning) {
+//        View detailView = this.getActivity().getLayoutInflater().inflate(R.layout.popup_challenge_details,null);
+//        final PopupWindow detailWindow = new PopupWindow(detailView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        detailWindow.showAtLocation(detailView, Gravity.CENTER,10,10);
+//        TextView txtDetailTime = (TextView) detailView.findViewById(R.id.txtdetailTime);
+//        txtDetailTime.setText(time);
+//        TextView txtDetailTitle = (TextView) detailView.findViewById(R.id.txtdetailTitle);
+//        txtDetailTitle.setText(title);
+//        TextView txtDetailMy = (TextView) detailView.findViewById(R.id.txtdetailMy);
+//        txtDetailMy.setText(myCurrent);
+//        TextView txtDetailFriend = (TextView) detailView.findViewById(R.id.txtdetailFriend);
+//        txtDetailFriend.setText(friendCurrent);
+//        TextView txtDetailFriendName = (TextView) detailView.findViewById(R.id.txtdetailFriendName);
+//        txtDetailFriendName.setText(friendName);
+//        TextView txtWinning = (TextView) detailView.findViewById(R.id.txtdetailWinning);
+//        if(winning)
+//        {
+//            txtWinning.setText("Congratulations! You are on the lead ! Keep up the good work");
+//            txtWinning.setTextColor(this.getActivity().getResources().getColor(R.color.colorLeaGreen));
+//        }
+//        else{
+//            txtWinning.setText("You are loosing. Try harder!");
+//            txtWinning.setTextColor(this.getActivity().getResources().getColor(R.color.orange));
+//        }
+//
+//
+//
+//        ImageView friendImage = (ImageView) detailView.findViewById(R.id.txtdetailFriendPic);
+//        friendImage.setImageDrawable(image.getDrawable());
+//
+//        FloatingActionButton exitmyChallenge = (FloatingActionButton) detailView.findViewById(R.id.exitdetail);
+//        exitmyChallenge.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                detailWindow.dismiss();
+//            }
+//        });
+//
+//
+//
+//    }
+//    private TextView title, winning,time,friendName;
+//    private ListView listView,listView2;
+        //    private static final String PREFS_TAG = "SharedPrefs";
+//    private static final String PRODUCT_TAG = "Challenges";
+        //  Log.i("TAG",controller.getChallengeList().size()+"");
 //        Bundle bundle = this.getArguments();
 //        try {
 //            String str = bundle.getString("Challenge");
@@ -161,12 +194,7 @@ public class FragmentMyChallenges extends Fragment  {
 //                }.getType();
 //                productFromShared = gson.fromJson(str, type);
 //
-//                myChallengesAdapter = new MyChallengesAdapter(this.getActivity(), productFromShared);
-//                myChallengesAdapter.notifyDataSetChanged();
-//                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
-//                recyclerView.setLayoutManager(mLayoutManager);
-//                recyclerView.setItemAnimator(new DefaultItemAnimator());
-//                recyclerView.setAdapter(myChallengesAdapter);
+//
 //
 //            }
 //        }catch (Exception e)
@@ -177,10 +205,6 @@ public class FragmentMyChallenges extends Fragment  {
 //        Button expandbleBtn1 = (Button) view.findViewById(R.id.expandableButton1);
 //        Button expandbleBtn2 = (Button) view.findViewById(R.id.expandableButton2);
 //        Button expandbleBtn3 = (Button) view.findViewById(R.id.expandableButton3);
-
-
-
-
 //        expandbleBtn1.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -228,49 +252,34 @@ public class FragmentMyChallenges extends Fragment  {
 //
 //            }
 //        });
-
-
-
-        return view;
-    }
-
-    private void showDetails(ImageView image, String time, String friendName, String title, String myCurrent, String friendCurrent, boolean winning) {
-        View detailView = this.getActivity().getLayoutInflater().inflate(R.layout.popup_challenge_details,null);
-        final PopupWindow detailWindow = new PopupWindow(detailView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        detailWindow.showAtLocation(detailView, Gravity.CENTER,10,10);
-        TextView txtDetailTime = (TextView) detailView.findViewById(R.id.txtdetailTime);
-        txtDetailTime.setText(time);
-        TextView txtDetailTitle = (TextView) detailView.findViewById(R.id.txtdetailTitle);
-        txtDetailTitle.setText(title);
-        TextView txtDetailMy = (TextView) detailView.findViewById(R.id.txtdetailMy);
-        txtDetailMy.setText(myCurrent);
-        TextView txtDetailFriend = (TextView) detailView.findViewById(R.id.txtdetailFriend);
-        txtDetailFriend.setText(friendCurrent);
-        TextView txtDetailFriendName = (TextView) detailView.findViewById(R.id.txtdetailFriendName);
-        txtDetailFriendName.setText(friendName);
-        TextView txtWinning = (TextView) detailView.findViewById(R.id.txtdetailWinning);
-        if(winning)
-        {
-            txtWinning.setText("Congratulations! You are on the lead ! Keep up the good work");
-            txtWinning.setTextColor(this.getActivity().getResources().getColor(R.color.colorLeaGreen));
-        }
-        else{
-            txtWinning.setText("You are loosing. Try harder!");
-            txtWinning.setTextColor(this.getActivity().getResources().getColor(R.color.orange));
-        }
-
-
-
-        ImageView friendImage = (ImageView) detailView.findViewById(R.id.txtdetailFriendPic);
-        friendImage.setImageDrawable(image.getDrawable());
-
-        FloatingActionButton exitmyChallenge = (FloatingActionButton) detailView.findViewById(R.id.exitdetail);
-        exitmyChallenge.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                detailWindow.dismiss();
-            }
-        });
+        //        Gson gson = new Gson();
+//        List<Challenge> productFromShared = new ArrayList<>();
+//        SharedPreferences sharedPref = this.getActivity().getApplicationContext().getSharedPreferences(PREFS_TAG, Context.MODE_PRIVATE);
+//        String jsonPreferences = sharedPref.getString(PRODUCT_TAG, "");
+//
+//        Type type = new TypeToken<List<Challenge>>() {}.getType();
+//        productFromShared = gson.fromJson(jsonPreferences, type);
+//
+//        return productFromShared;
+//                GenericTypeIndicator<HashMap<String, List<Challenge>>> genericTypeIndicator = new GenericTypeIndicator<HashMap<String, List<Challenge>>>() {};
+//                Map<String, List<Challenge>> hashMap = dataSnapshot.getValue(genericTypeIndicator);
+//                for (Map.Entry<String,List<Challenge>> entry : hashMap.entrySet()) {
+//                    List<Challenge> challenges = entry.getValue();
+//                    for (Challenge challenge: challenges){
+//                        Log.i("TEEEEEEEEEEEEEST", challenge.getFriendName());
+//                    }
+//                }
+//                for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+//                    Challenge challenge = new Challenge();
+//                    challenge.setFriendName(postSnapshot.getValue().toString());
+//
+//                    Log.e("TEEEEEEEEEST",challenge.toString());
+//                    Log.e("TEEEEEEEEEST",challenge.getFriendName());
+//               }
+//                Map<String, Object> td = (HashMap<String,Object>) dataSnapshot.getValue();
+//                List<Object> values = (List<Object>) td.values();
+//
+//                collectChallenges((Map<String,Object>) dataSnapshot.getValue());
 //        View popupView = this.getActivity().getLayoutInflater().inflate(R.layout.popup_challenge_details,null);
 //        final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 //
@@ -296,9 +305,9 @@ public class FragmentMyChallenges extends Fragment  {
 //        }
 //
 //        popupWindow.showAtLocation(popupView, Gravity.CENTER,10,10);
-    }
 
-}
+
+
 //        progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
 //        progressBar.setProgress(3);
 // frontController.replaceFragment(R.id.challengesFrameLayout,fragment);

@@ -14,7 +14,7 @@
         android:fontFamily="@font/bree_serif"
         android:gravity="center"
         android:padding="5dp"
-        android:text="Position"
+        android:text="My Ranking"
         android:textColor="@color/white"
         android:textSize="24sp" />
 

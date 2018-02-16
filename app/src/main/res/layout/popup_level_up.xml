@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin">
+    <android.support.v7.widget.CardView
+        android:id="@+id/tournament_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+
+            android:layout_alignEnd="@+id/tips_cardview"
+            android:layout_below="@+id/tips_cardview"
+
+            android:background="@color/fbutton_color_midnight_blue"
+            android:padding="16dp">
+
+
+            <TextView
+                android:id="@+id/sure_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fontFamily="@font/bree_serif"
+                android:paddingBottom="5dp"
+                android:text="Level Up!"
+                android:textColor="@color/colorLeaGreen"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/achievements_cardview_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/bree_serif"
+                android:text="Congratulations! Your new level:"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/achievements_cardview_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/achievements_cardview_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/bree_serif"
+                android:text="Star!!!"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/closeLevelUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:clickable="true"
+                app:backgroundTint="@color/fbutton_color_midnight_blue"
+                app:srcCompat="@android:drawable/ic_delete" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -32,18 +33,20 @@ public class MyChallengesAdapter extends RecyclerView.Adapter<MyChallengesAdapte
     private Activity activity;
     private TextView txtTime,txtFriendName,txtTitle,txtWinner;
     private ImageView profPic;
+    private Button detailsButton;
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        public MyViewHolder(View view){
-            super(view);
-            LinearLayout profileLinear = view.findViewById(R.id.profileLinear1);
+        public MyViewHolder(View itemView){
+            super(itemView);
+            LinearLayout profileLinear = itemView.findViewById(R.id.profileLinear1);
          txtTime = profileLinear.findViewById(R.id.txtTime1);
          txtFriendName = profileLinear.findViewById(R.id.txtFriendName1);
          profPic = profileLinear.findViewById(R.id.profPic_challenge);
 
-        LinearLayout descriptionLinear = view.findViewById(R.id.descriptionLinear1);
+        LinearLayout descriptionLinear = itemView.findViewById(R.id.descriptionLinear1);
          txtTitle = descriptionLinear.findViewById(R.id.txtDescription1);
          txtWinner = descriptionLinear.findViewById(R.id.txtwin);
+            detailsButton = descriptionLinear.findViewById(R.id.expandableButton1);
         }
 
     }
@@ -62,21 +65,30 @@ public class MyChallengesAdapter extends RecyclerView.Adapter<MyChallengesAdapte
     }
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Challenge challenge = challengeList.get(position);
+        final Challenge challenge = challengeList.get(position);
         txtTime.setText(challenge.getTime());
         txtFriendName.setText(challenge.getFriendName());
         txtTitle.setText(challenge.getChallengeTitle());
+        if(txtFriendName.getText().toString().contains("Can")||txtFriendName.getText().toString().contains("can"))
+            profPic.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_can));
+        else
+            profPic.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_cagatay));
 
         if(challenge.isWinner()){
             txtWinner.setText("Congratulations you are on the lead");
-            txtWinner.setTextColor(Color.GREEN);
-            profPic.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_cagatay));
+            txtWinner.setTextColor(activity.getResources().getColor(R.color.colorLeaGreen));
         }
         else
         {
             txtWinner.setText("You are loosing! Keep up the hard work!");
-            txtWinner.setTextColor(Color.YELLOW);
+            txtWinner.setTextColor(activity.getResources().getColor(R.color.orange));
         }
+        detailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDetails(challenge);
+            }
+        });
     }
 
 
@@ -90,23 +102,23 @@ public class MyChallengesAdapter extends RecyclerView.Adapter<MyChallengesAdapte
 
 
 
-    public void showDetails(ImageView image,String time,String friendName,String title,String myCurrent,String friendCurrent,boolean winning)
+    public void showDetails(Challenge challenge)
     {
         View detailView = activity.getLayoutInflater().inflate(R.layout.popup_challenge_details,null);
         final PopupWindow detailWindow = new PopupWindow(detailView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         detailWindow.showAtLocation(detailView, Gravity.CENTER,10,10);
         TextView txtDetailTime = (TextView) detailView.findViewById(R.id.txtdetailTime);
-        txtDetailTime.setText(time);
+        txtDetailTime.setText(challenge.getTime());
         TextView txtDetailTitle = (TextView) detailView.findViewById(R.id.txtdetailTitle);
-        txtDetailTitle.setText(title);
+        txtDetailTitle.setText(challenge.getChallengeTitle());
         TextView txtDetailMy = (TextView) detailView.findViewById(R.id.txtdetailMy);
-        txtDetailMy.setText(myCurrent);
+        txtDetailMy.setText(challenge.getCurrent());
         TextView txtDetailFriend = (TextView) detailView.findViewById(R.id.txtdetailFriend);
-        txtDetailFriend.setText(friendCurrent);
+        txtDetailFriend.setText(challenge.getFriendStatus());
         TextView txtDetailFriendName = (TextView) detailView.findViewById(R.id.txtdetailFriendName);
-        txtDetailFriendName.setText(friendName);
+        txtDetailFriendName.setText(challenge.getFriendName());
         TextView txtWinning = (TextView) detailView.findViewById(R.id.txtdetailWinning);
-        if(winning)
+        if(challenge.isWinner())
         {
             txtWinning.setText("Congratulations! You are on the lead ! Keep up the good work");
             txtWinning.setTextColor(activity.getResources().getColor(R.color.colorLeaGreen));
@@ -119,7 +131,10 @@ public class MyChallengesAdapter extends RecyclerView.Adapter<MyChallengesAdapte
 
 
         ImageView friendImage = (ImageView) detailView.findViewById(R.id.txtdetailFriendPic);
-        friendImage.setImageDrawable(image.getDrawable());
+        if(txtDetailFriendName.getText().toString().contains("Can")||txtDetailFriendName.getText().toString().contains("can"))
+        friendImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_can));
+        else
+            friendImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_cagatay));
 
         FloatingActionButton exitmyChallenge = (FloatingActionButton) detailView.findViewById(R.id.exitdetail);
         exitmyChallenge.setOnClickListener(new View.OnClickListener() {

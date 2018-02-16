@@ -1,10 +1,12 @@
 package com.gameco.cakin.automotiveservices.activites.fragments;
 
+import android.media.Image;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gameco.cakin.automotiveservices.R;
@@ -26,11 +28,12 @@ import com.google.firebase.database.ValueEventListener;
 public class FragmentCarstatus extends Fragment {
 
     private Car car;
+
     public static FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
     private FrontController frontController;
-    private TextView mileage,average_distance,remainingFuel,batteryLevel,nextService,ecoActive,fuelConsumption;
-
+    private TextView mileage,average_distance,remainingFuel,batteryLevel,nextService,ecoActive,fuelConsumption,vehicleName;
+    private ImageView carPicture;
 
 
 
@@ -45,8 +48,13 @@ public class FragmentCarstatus extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_carstatus,container,false);
+        getCarType();
+        carPicture =(ImageView) view.findViewById(R.id.car_picture);
+        vehicleName =(TextView) view.findViewById(R.id.vehicleName);
+
+
         try{
-            car =  backendHelper.tryTelematics("Telematics");
+                car =  backendHelper.tryTelematics("Telematics");
              mileage = (TextView) view.findViewById(R.id.tv_mileage);
 
             mileage.setText(car.getMileage().replace("\"",""));
@@ -82,9 +90,6 @@ public class FragmentCarstatus extends Fragment {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
-
         return view;
     }
     private void updateCarData(){
@@ -105,6 +110,42 @@ public class FragmentCarstatus extends Fragment {
 
              }
          });
+
+    }
+    private void setVehicleInfo(String carType){
+        vehicleName.setText(carType);
+        switch (carType) {
+            case "BMW i3":
+                carPicture.setImageDrawable(this.getActivity().getResources().getDrawable(R.drawable.i3_picture));
+                break;
+            case "BMW 120d":
+                carPicture.setImageDrawable(this.getActivity().getResources().getDrawable(R.drawable.bmw120d));
+                break;
+            case "BMW 140i":
+                carPicture.setImageDrawable(this.getActivity().getResources().getDrawable(R.drawable.bmw140i));
+                break;
+            case "BMW M235i":
+                carPicture.setImageDrawable(this.getActivity().getResources().getDrawable(R.drawable.bmwm235i));
+                break;
+        }
+    }
+    private void getCarType(){
+
+        mDatabase =FirebaseDatabase.getInstance();
+        mRef = mDatabase.getReference();
+        mRef.child("Users").child(LoginActivity.user_full_name).child("Car").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String type  = (String) dataSnapshot.child("carName").getValue();
+                setVehicleInfo(type);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 

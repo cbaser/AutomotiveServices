@@ -1,5 +1,6 @@
 package com.gameco.cakin.automotiveservices.activites.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
@@ -13,7 +14,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.gameco.cakin.automotiveservices.activites.LoginActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.controller.FrontController;
@@ -29,8 +37,25 @@ import java.util.List;
 
 public class FragmentHome extends Fragment {
     private FrontController frontController;
-
     private myNotificationController controller;
+    private DatabaseReference mRef;
+    public static FirebaseDatabase mDatabase;
+    private long challengeCount,points;
+    private String remaining;
+    private TextView txtScore,txtProgressCount,txtLevel;
+    private ProgressBar progressBar;
+    private Activity mActivity;
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity a;
+
+        if (context instanceof Activity){
+            a=(Activity) context;
+        }
+
+    }
 public FragmentHome(){
 
 }
@@ -39,9 +64,44 @@ public FragmentHome(){
      controller = new myNotificationController(this);
         frontController = new FrontController(this);
         frontController.createFragment(view);
-        ProgressBar progressBar = view.findViewById(R.id.progressBarLevel);
-        progressBar.setMax(100);
-        progressBar.setProgress(70);
+        RelativeLayout homeMainLayout = view.findViewById(R.id.home_mainLayout);
+         txtScore = homeMainLayout.findViewById(R.id.txtScore);
+         txtProgressCount = homeMainLayout.findViewById(R.id.progressCount);
+         txtLevel = homeMainLayout.findViewById(R.id.txtLvl);
+         progressBar = view.findViewById(R.id.progressBarLevel);
+
+        progressBar.setMax(5);
+        try {
+            mDatabase =FirebaseDatabase.getInstance();
+            mRef = mDatabase.getReference();
+
+            mRef.child("Users").child(LoginActivity.user_full_name).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    challengeCount  = (long) dataSnapshot.child("ChallengeCount").getValue();
+                    points = (long) dataSnapshot.child("Points").getValue();
+                    remaining = String.valueOf(progressBar.getMax()-challengeCount);
+                    txtProgressCount.setText(remaining);
+                    txtScore.setText(String.valueOf(points));
+                    txtLevel.setText((String)dataSnapshot.child("Level").getValue());
+                    progressBar.setProgress((int)challengeCount);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            txtProgressCount.setText(remaining);
+            txtScore.setText(String.valueOf(points));
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         CardView cardView = (CardView) view.findViewById(R.id.cardview_daily_content);
         LinearLayout linearLayout = (LinearLayout) cardView.findViewById(R.id.include_daily_challenge_content);
         Button challengeDailyButton = (Button) linearLayout.findViewById(R.id.playChallengeButton);

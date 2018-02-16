@@ -58,7 +58,8 @@ public class SingupActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
-
+                ((TextView)parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.colorLeaGreen));
+                ((TextView)parent.getChildAt(0)).setTextSize(16);
                 selectedType = parent.getSelectedItem().toString();
             }
 
@@ -111,13 +112,15 @@ public class SingupActivity extends AppCompatActivity {
 
                     DatabaseReference reference = rootRef.child("Users").child(fullName);
                     Car car = new Car();
-
-                    car.setVIN(CarVINs.getBMWi3());
+                    car.setCarName(selectedType);
+                    car.setVIN(CarVINs.getVINFromType(selectedType));
                     reference.child("Full Name").setValue(fullName);
                     reference.child("Email").setValue(email);
                     reference.child("Password").setValue(password);
                     reference.child("Car").setValue(car);
                     reference.child("Level").setValue("Newbie");
+                    reference.child("Points").setValue(12345);
+                    reference.child("ChallengeCount").setValue(0);
 
 
                     Toast.makeText(SingupActivity.this, "Please log in",

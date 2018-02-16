@@ -371,3 +371,189 @@ public class DeprecatedCodes {
     //   transitionHelper.showFriends();
     //  userHelper.setUserInformation(view,getActivity().getSharedPreferences("UserInfo",0));
 }
+
+
+
+//Notification Controller
+//        challenge.setFriendPicture(fragment.getActivity().getResources().getDrawable(R.drawable.ic_cagatay));
+//     challenge.setFriendPicture(fragment.getActivity().getResources().getDrawable(R.drawable.ic_can));
+//    mRef.child(LoginActivity.user_full_name).child("Challenges").setValue(challenges);
+
+//                mRef.child("cagatay baser").addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        dataSnapshot.getRef("Challenge")
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//
+//                    }
+//                });
+//
+
+
+
+
+
+//    public String getTitle() {
+//        return title;
+//    }
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
+//
+//    public String getTime() {
+//        return time;
+//    }
+//
+//    public void setTime(String time) {
+//        this.time = time;
+//    }
+//
+//    public String getPoints() {
+//        return points;
+//    }
+//
+//    public void setPoints(String points) {
+//        this.points = points;
+//    }
+//
+//    public String getCurrent() {
+//        return current;
+//    }
+//
+//    public void setCurrent(String current) {
+//        this.current = current;
+//    }
+//
+//    public String getTarget() {
+//        return target;
+//    }
+//
+//    public void setTarget(String target) {
+//        this.target = target;
+//    }
+
+//  private String title,time,points,current,target;
+
+
+//        Button join_regional = (Button) popupView.findViewById(R.id.join_regional_challenge_button);
+//        join_regional.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                sendNotificationToSelf(fragment.getActivity(),"Regional Challenge : München","Duration : " +time);
+//            }
+//        });
+//
+//  final AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getActivity());
+//                 dialog = null;
+
+//                View friendsView = fragment.getActivity().getLayoutInflater().inflate(R.layout.popup_select_friend,null);
+//                Button sendBtn = (Button) friendsView.findViewById(R.id.sendChallengeBtn);
+//                sendBtn.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        sendNotificationToSelf(fragment.getActivity(),"Hello","Test");
+//                    }
+//                });
+//
+//                Button closeBtn = (Button) friendsView.findViewById(R.id.closeChallengeBtn);
+//                closeBtn.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//                            @Override
+//                            public void onDismiss(DialogInterface dialogInterface) {
+//                             dialog.cancel();
+//                            }
+//                        });
+//                    }
+//                });
+//
+//                builder.setView(friendsView);
+//
+//                dialog= builder.create();
+//                dialog.show();
+
+
+
+
+
+
+
+
+//    sendNotificationToFriend("Challenge from : "+LoginActivity.LoggedIn_User_Email);
+//     userHelper.sendNotification();
+
+
+
+
+
+
+
+
+
+
+//                        View progressView = fragment.getActivity().getLayoutInflater().inflate(R.layout.popup_progress_bar,null);
+//                        final PopupWindow progressWindow = new PopupWindow(progressView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//                        progressWindow.showAtLocation(progressView, Gravity.CENTER,10,10);
+//                        final ProgressBar progressBar = progressView.findViewById(R.id.progressBar2);
+//                        progressBar.setProgress(0);
+//                        progressBar.setIndeterminate(false);
+//
+//                        final int totalProgressTime = 10;
+//                        final Thread t = new Thread() {
+//                            @Override
+//                            public void run() {
+//                                int jumpTime = 0;
+//
+//                                while(jumpTime < totalProgressTime) {
+//                                    try {
+//                                        sleep(100);
+//                                        jumpTime += 5;
+//                                        progressBar.setProgress(jumpTime);
+//                                    } catch (InterruptedException e) {
+//                                        // TODO Auto-generated catch block
+//                                        e.printStackTrace();
+//                                    }
+//                                }
+//                            }
+//                        };
+//                        t.start();
+//  + "\"buttons\": [{\"id\":\"btnAccept\",\"text\":\"Accept\",\"icon\":\"\"},{\"id\":\"btnDecline\",\"text\":\"Decline\",\"icon\":\"\"}],"
+//  + "\"data\": {\"foo\": \"bar\"},"
+//   + "\"contents\": {\"en\": \"Challenge from: "+name+ "\"}"
+//    public String getStrJsonBody(){
+//
+//        return strJsonBody;
+//
+//    }
+
+//                        String strJsonBody = "{"
+//                                + "\"app_id\": \"4a5d1740-b98b-4569-9107-2de771ddc07d\","
+//
+//                                + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + email + "\"}],"
+//
+//                                + "\"buttons\": [{\"id\":\"btnAccept\",\"text\":\"Accept\",\"icon\":\"\"},{\"id\":\"btnDecline\",\"text\":\"Decline\",\"icon\":\"\"}],"
+//                              //  + "\"data\": {\"foo\": \"bar\"},"
+//                             //   + "\"contents\": {\"en\": \"Challenge from: "+name+ "\"}"
+//                                + "\"contents\": {\"en\":\" "+ content +"\"}"
+//
+//                                + "}";
+//                    DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+//                    DatabaseReference reference = rootRef.getRef().child("Cagatay");
+//                    DatabaseReference sendRef = reference.child("Email");
+//                    sendRef.addValueEventListener(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            emailToSend =(String) dataSnapshot.getValue();
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(DatabaseError databaseError) {
+//
+//                        }
+//                    });
+//                    Log.d("Tag",sendRef.toString());

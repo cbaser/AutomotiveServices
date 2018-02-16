@@ -34,6 +34,7 @@ public class NotificationHandler implements OneSignal.NotificationOpenedHandler 
         if (actionType == OSNotificationAction.ActionType.ActionTaken)
             Log.i("OneSignalExample", "Button pressed with id: " + result.action.actionID);
 
-        notificationController.acceptOrDeclineChallenge(notificationController.getChallenge());
+    //    notificationController.acceptOrDeclineChallenge(notificationController.getChallenge());
+        notificationController.acceptOrDeclineChallenge();
     }
 }

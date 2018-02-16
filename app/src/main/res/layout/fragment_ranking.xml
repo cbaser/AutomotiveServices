@@ -31,10 +31,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/source_sans_pro"
-                    android:text="Born 2 Be Innovative"
-                    android:textStyle="bold"
+                    android:text="Group : Born 2 Be Innovative"
                     android:textColor="@color/colorLeaGreen"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <ListView
                     android:id="@+id/b2bListView"

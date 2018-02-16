@@ -64,7 +64,7 @@ public class myFragmentController {
 
         ListView listView = (ListView)popupView.findViewById(R.id.friendsListview);
         Friend can;
-
+        friendList.clear();
         if(!LoginActivity.LoggedIn_User_Email.contains("can"))
          can = new Friend(fragment.getResources().getDrawable(R.drawable.ic_can),"Can Turker",123454);
         else
@@ -82,7 +82,37 @@ public class myFragmentController {
         addFriendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                View friendView = fragment.getActivity().getLayoutInflater().inflate(R.layout.popup_add_new_friend,null);
+                Toast.makeText(fragment.getActivity(), "Will be implemented as Adding new friends", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Button createGroupBtn = (Button) popupView.findViewById(R.id.createGroupBtn);
+        createGroupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(fragment.getActivity(), "Will be implemented as Creating Group among friends", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Button importGroupBtn = (Button) popupView.findViewById(R.id.importGroupBtn);
+        importGroupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(fragment.getActivity(), "Will be implemented as Importing friends from Facebook", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        FloatingActionButton floatingActionButton = (FloatingActionButton) popupView.findViewById(R.id.exitFAB);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+
+
+        popupWindow.showAtLocation(popupView, Gravity.CENTER,10,10);
+
+    }
+    //                View friendView = fragment.getActivity().getLayoutInflater().inflate(R.layout.popup_add_new_friend,null);
 //                 final PopupWindow friendWindow = new PopupWindow(friendView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 //                 friendWindow.showAtLocation(friendView, Gravity.NO_GRAVITY,10,10);
 //
@@ -137,64 +167,33 @@ public class myFragmentController {
 //
 
 
-
-                Toast.makeText(fragment.getActivity(), "Will be implemented as Adding new friends", Toast.LENGTH_SHORT).show();
-            }
-        });
-        Button createGroupBtn = (Button) popupView.findViewById(R.id.createGroupBtn);
-        createGroupBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(fragment.getActivity(), "Will be implemented as Creating Group among friends", Toast.LENGTH_SHORT).show();
-            }
-        });
-        Button importGroupBtn = (Button) popupView.findViewById(R.id.importGroupBtn);
-        importGroupBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(fragment.getActivity(), "Will be implemented as Importing friends from Facebook", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        FloatingActionButton floatingActionButton = (FloatingActionButton) popupView.findViewById(R.id.exitFAB);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
-            }
-        });
-
-
-        popupWindow.showAtLocation(popupView, Gravity.CENTER,10,10);
-
-    }
-    private void getFriendList(){
-
-        mRef.child(LoginActivity.user_full_name).child("Friends").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Friend  friend = dataSnapshot.getValue(Friend.class);
-                friend.setName(dataSnapshot.child("Name").getValue()+"");
-                friend.setPoint((long)dataSnapshot.child("Points").getValue());
-                if(friend.getName().contains("can"))
-                    friend.setImage(fragment.getResources().getDrawable(R.drawable.ic_can));
-                else
-                    friend.setImage(fragment.getResources().getDrawable(R.drawable.ic_cagatay));
-
-
-                friendList.add(friend);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-
-    }
+//    private void getFriendList(){
+//
+//        mRef.child(LoginActivity.user_full_name).child("Friends").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                Friend  friend = dataSnapshot.getValue(Friend.class);
+//                friend.setName(dataSnapshot.child("Name").getValue()+"");
+//                friend.setPoint((long)dataSnapshot.child("Points").getValue());
+//                if(friend.getName().contains("can"))
+//                    friend.setImage(fragment.getResources().getDrawable(R.drawable.ic_can));
+//                else
+//                    friend.setImage(fragment.getResources().getDrawable(R.drawable.ic_cagatay));
+//
+//
+//                friendList.add(friend);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//
+//
+//
+//    }
 
 
 //                Friend test = dataSnapshot.getValue(Friend.class);
@@ -240,15 +239,11 @@ public class myFragmentController {
             LinearLayout frameLayout = (LinearLayout) view.findViewById(R.id.home_frameLayout);
             RelativeLayout relativeLayout =(RelativeLayout) frameLayout.findViewById(R.id.home_mainLayout);
 
-            ImageView imageView = (ImageView) relativeLayout.findViewById(R.id.profPic_lea);
+            ImageView imageView = (ImageView) relativeLayout.findViewById(R.id.profPic);
             imageView.setImageResource(R.drawable.ic_can);
             ((TextView) relativeLayout.findViewById(R.id.txtRewe)).setText("Welcome Can To GamECO!");
-            ((TextView) relativeLayout.findViewById(R.id.txtRewe_con)).setText(R.string.canLevel);
-            ((TextView) relativeLayout.findViewById(R.id.txtScore)).setText("Score : 123456");
-            ((TextView) relativeLayout.findViewById(R.id.progressDescription)).setText("1 more challenge to level up !");
-            ProgressBar progressBar = view.findViewById(R.id.progressBarLevel);
-            progressBar.setMax(100);
-            progressBar.setProgress(90);
+
+
 
 
 
