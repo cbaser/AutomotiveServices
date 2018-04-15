@@ -14,7 +14,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
 
             android:layout_alignEnd="@+id/tips_cardview"
             android:layout_below="@+id/tips_cardview"
@@ -46,6 +46,74 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+            <LinearLayout
+                android:id="@+id/detailDescription"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/txtdetailTitle"
+                android:layout_marginTop="25dp"
+                android:background="@color/fbutton_color_midnight_blue"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtFrom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:fontFamily="@font/bree_serif"
+                    android:text="From: can.tuerker@tum.de"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/txtTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:fontFamily="@font/bree_serif"
+                    android:text="Time: one week"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txtPoint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:fontFamily="@font/bree_serif"
+                    android:text="Points to be scored : 2000"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txtCurrent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:fontFamily="@font/bree_serif"
+                    android:text="Your current consumption: 8.4l /100km"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txtTarget"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:fontFamily="@font/bree_serif"
+                    android:text="Your target consumption: 7.9l/100km"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+<!--
             <TextView
                 android:id="@+id/achievements_cardview_description"
                 android:layout_width="wrap_content"
@@ -55,7 +123,7 @@
                 android:text="Reduce Fuel Consumption to 0.5l / km"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
-
+-->
             <Button
                 android:id="@+id/acceptChallengeBtn"
                 android:layout_width="wrap_content"

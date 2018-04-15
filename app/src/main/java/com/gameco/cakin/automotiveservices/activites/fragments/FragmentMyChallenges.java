@@ -27,6 +27,8 @@ import com.gameco.cakin.automotiveservices.activites.MainActivity;
 import com.gameco.cakin.automotiveservices.adapters.MyChallengesAdapter;
 import com.gameco.cakin.automotiveservices.controller.myNotificationController;
 import com.gameco.cakin.automotiveservices.datamodel.Challenge;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -64,8 +66,10 @@ public class FragmentMyChallenges extends Fragment  {
     private void getChallengesFromFirebase(){
         challengeList = new ArrayList<>();
   //      challengeList.clear();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance();
-        mRef = mDatabase.getReference().child("Users").child(LoginActivity.user_full_name);
+     //   mRef = mDatabase.getReference().child("Users").child(LoginActivity.user_full_name);
+        mRef = mDatabase.getReference().child("Users").child(user.getEmail().replace(".",","));
         mRef.child("Challenges").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -110,11 +114,6 @@ public class FragmentMyChallenges extends Fragment  {
         }catch (Exception e){
             Log.e("PROBLEM",e.getMessage());
         }
-
-
-
-
-
           return view;
     }
 }

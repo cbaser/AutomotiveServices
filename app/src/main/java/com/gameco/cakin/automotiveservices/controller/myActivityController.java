@@ -20,6 +20,7 @@ import com.gameco.cakin.automotiveservices.activites.fragments.FragmentChallenge
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentCarstatus;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentHome;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentMyChallenges;
+import com.gameco.cakin.automotiveservices.activites.fragments.FragmentProfile;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentRanking;
 import com.gameco.cakin.automotiveservices.adapters.ViewPagerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -74,6 +75,10 @@ public class myActivityController implements NavigationView.OnNavigationItemSele
         }
         else if(id==R.id.nav_carStatus){
             viewPager.setCurrentItem(5);
+            tabLayout.setVisibility(View.INVISIBLE);
+        }
+        else if(id==R.id.nav_profile){
+            viewPager.setCurrentItem(6);
             tabLayout.setVisibility(View.INVISIBLE);
         }
 
@@ -150,6 +155,7 @@ public class myActivityController implements NavigationView.OnNavigationItemSele
         viewPagerAdapter.addFrag(new FragmentChallengeCategories(),"FOUR");
         viewPagerAdapter.addFrag(new FragmentRanking(),"FIVE");
         viewPagerAdapter.addFrag(new FragmentCarstatus(),"SIX");
+        viewPagerAdapter.addFrag(new FragmentProfile(),"SEVEN");
         viewPager.setAdapter(viewPagerAdapter);
     }
 

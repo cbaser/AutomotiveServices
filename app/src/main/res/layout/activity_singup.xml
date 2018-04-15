@@ -3,6 +3,7 @@
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signup_activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@mipmap/background"
@@ -33,7 +34,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/fullname_edit"
+                android:id="@+id/nickname_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="35dp"
@@ -46,7 +47,7 @@
                 android:textColor="@color/colorLeaGreen"
                 android:textColorHint="@color/colorLeaGreen"
                 android:textSize="16sp" />
-
+<!--
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
@@ -56,6 +57,28 @@
                 android:textSize="16sp"
                 android:padding="16dp"
                 android:layout_marginStart="22dp"/>
+-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:background="#ADCCE2" />
+
+            <EditText
+                android:id="@+id/vin_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="35dp"
+                android:layout_marginStart="22dp"
+                android:background="#0000"
+                android:fontFamily="@font/source_sans_pro"
+                android:hint="@string/VIN"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textColor="@color/colorLeaGreen"
+                android:textColorHint="@color/colorLeaGreen"
+                android:textSize="16sp"/>
 
             <View
                 android:layout_width="match_parent"
@@ -78,13 +101,6 @@
                 android:textColor="@color/colorLeaGreen"
                 android:textColorHint="@color/colorLeaGreen"
                 android:textSize="16sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:background="#ADCCE2" />
 
             <View
                 android:layout_width="match_parent"

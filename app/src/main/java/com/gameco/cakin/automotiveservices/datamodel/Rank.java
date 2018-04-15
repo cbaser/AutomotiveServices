@@ -5,27 +5,41 @@ package com.gameco.cakin.automotiveservices.datamodel;
  */
 
 public class Rank {
-    public Rank(int position, String region) {
-        this.position = position;
-        this.region = region;
+
+    private String nickname;
+    private long point;
+    private long position;
+
+    public Rank() {
     }
 
-    public int getPosition() {
+    public Rank(String nickname, long point,long position) {
+        this.nickname = nickname;
+        this.point = point;
+        this.position = position;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public long getPoint() {
+        return point;
+    }
+
+    public void setPoint(long point) {
+        this.point = point;
+    }
+
+    public long getPosition() {
         return position;
     }
 
-    public void setPosition(int position) {
+    public void setPosition(long position) {
         this.position = position;
     }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    private int position;
-    private String region;
 }

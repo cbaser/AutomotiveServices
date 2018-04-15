@@ -1,5 +1,6 @@
 package com.gameco.cakin.automotiveservices.backend;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -15,7 +16,7 @@ import java.net.URL;
 public class BackendController extends AsyncTask<String,Void,String>{
     private String response="";
     private String login_website = "http://vmkrcmar20.informatik.tu-muenchen.de/login.php";
-    private String register_website ="http://vmkrcmar20.informatik.tu-muenchen.de/signup.php";
+    private String register_website ="http://vmkrcmar20.informatik.tu-muenchen.de/saveVinToDatabase.php";
     private String telematic_website = "http://vmkrcmar20.informatik.tu-muenchen.de/getTelematicKeys.php";
 
 
@@ -49,12 +50,14 @@ public class BackendController extends AsyncTask<String,Void,String>{
 
         switch (operationType){
             case "Login":
-                this.setResponse(doLogin(strings));
+               // this.setResponse(doLogin(strings));
                 break;
-            case "Register":
+            case "VIN":
                 this.setResponse(doRegister(strings));
+                break;
             case "Telematics":
                 this.setResponse(getTelematics());
+                break;
         }
 
         return response;
@@ -63,18 +66,21 @@ public class BackendController extends AsyncTask<String,Void,String>{
     protected void onPreExecute(){
     }
 
-    private String doLogin(String[] args) {
+
+    private String doRegister(String[] args){
+        String VIN = args[1];
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("https")
+                .authority("http://vmkrcmar20.informatik.tu-muenchen.de/saveVinToDatabase.php")
+                .appendQueryParameter("VIN",VIN);
 
         try{
-            String username = args[1];
-            String password = args[2];
-
-            HttpURLConnection connection =  this.establishConnection(this.login_website+"?username="+username+"&password="+password);
+            HttpURLConnection connection = this.establishConnection(this.register_website+"?VIN="+VIN);
             connection.setRequestMethod("GET");
             connection.setDoInput(true);
             connection.connect();
-            InputStream is=connection.getInputStream();
-            if (is != null) {
+            InputStream is = connection.getInputStream();
+            if(is != null){
                 StringBuilder sb = new StringBuilder();
                 String line;
                 try {
@@ -90,17 +96,9 @@ public class BackendController extends AsyncTask<String,Void,String>{
                 response = sb.toString();
             }
         }catch (Exception e){
-            response=null;
+            e.printStackTrace();
         }
         return response;
-    }
-    private String doRegister(String[] args){
-        String username = args[1];
-        String password = args[2];
-        String fullname = args[3];
-        String email = args[4];
-        HttpURLConnection connection = this.establishConnection(this.register_website);
-        return null;
 
     }
     private String getTelematics(){
@@ -115,7 +113,6 @@ public class BackendController extends AsyncTask<String,Void,String>{
                 while ((jsonTelematics =bufferedReader.readLine()) != null){
                     stringBuilder.append(jsonTelematics+"\n");
                 }
-      //          Log.i(  "STRINGBUILDER",stringBuilder.toString().trim());
                 return stringBuilder.toString().trim();
 
             }catch (Exception e){
@@ -128,3 +125,34 @@ public class BackendController extends AsyncTask<String,Void,String>{
 
 
 }
+//    private String doLogin(String[] args) {
+//
+//        try{
+//            String username = args[1];
+//            String password = args[2];
+//
+//            HttpURLConnection connection =  this.establishConnection(this.login_website+"?username="+username+"&password="+password);
+//            connection.setRequestMethod("GET");
+//            connection.setDoInput(true);
+//            connection.connect();
+//            InputStream is=connection.getInputStream();
+//            if (is != null) {
+//                StringBuilder sb = new StringBuilder();
+//                String line;
+//                try {
+//                    BufferedReader reader = new BufferedReader(
+//                            new InputStreamReader(is));
+//                    while ((line = reader.readLine()) != null) {
+//                        sb.append(line);
+//                    }
+//                    reader.close();
+//                } finally {
+//                    is.close();
+//                }
+//                response = sb.toString();
+//            }
+//        }catch (Exception e){
+//            response=null;
+//        }
+//        return response;
+//    }

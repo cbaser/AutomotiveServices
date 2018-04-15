@@ -8,6 +8,7 @@ import com.gameco.cakin.automotiveservices.activites.fragments.FragmentCarstatus
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentMyChallenges;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentHome;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentAchievements;
+import com.gameco.cakin.automotiveservices.activites.fragments.FragmentProfile;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentRanking;
 
 
@@ -30,7 +31,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         mFragmentList.add(new FragmentChallengeCategories());
         mFragmentList.add(new FragmentRanking());
         mFragmentList.add(new FragmentCarstatus());
-      //  mFragmentList.add(new FragmentUserDetails());
+        mFragmentList.add(new FragmentProfile());
 
     }
 

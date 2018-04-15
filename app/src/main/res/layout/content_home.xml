@@ -29,23 +29,22 @@
 
                     <ImageView
                         android:id="@+id/profPic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:layout_centerVertical="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_cagatay"
+                        android:src="@drawable/profile_picture"
                         tools:ignore="ContentDescription" />
 
                     <TextView
-                        android:id="@+id/txtRewe"
+                        android:id="@+id/txtWelcome"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_alignStart="@+id/txtlvlDescription"
                         android:layout_marginTop="18dp"
                         android:fontFamily="@font/source_sans_pro"
-                        android:text="Welcome Cagatay to GamECO!"
+                        android:text="Welcome ... to GamECO!"
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"
                         android:textColor="@color/black"
                         android:textSize="18sp"
@@ -55,7 +54,7 @@
                         android:id="@+id/txtlvlDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/txtRewe"
+                        android:layout_below="@+id/txtWelcome"
                         android:layout_marginStart="14dp"
                         android:layout_toEndOf="@+id/profPic"
                         android:fontFamily="@font/source_sans_pro"
@@ -68,8 +67,8 @@
                         android:id="@+id/txtLvl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/txtScore"
-                        android:layout_below="@+id/txtRewe"
+                        android:layout_alignEnd="@+id/progressDescription"
+                        android:layout_below="@+id/txtWelcome"
                         android:fontFamily="@font/source_sans_pro"
                         android:paddingTop="10dp"
                         android:text="Newbie"

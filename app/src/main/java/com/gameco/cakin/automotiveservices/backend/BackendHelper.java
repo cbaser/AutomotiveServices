@@ -17,15 +17,13 @@ public class BackendHelper {
          jsonParser = new myJSONParser();
 
     }
-
-    public String tryLogin(String... strings) {
-       backendController.execute(strings);
-       return backendController.getResponse();
-    }
-
     public String tryRegister(String ... strings){
-        backendController.execute(strings);
-        return backendController.getResponse();
+        try{
+            jsonString= backendController.execute(strings).get();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return jsonString;
     }
     public Car tryTelematics(String ... strings){
         try {
@@ -33,9 +31,6 @@ public class BackendHelper {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-       // jsonParser.setJsonString(jsonString);
-
         return  jsonParser.convertToCarData();
     }
     public void setJsonString(String jsonString){

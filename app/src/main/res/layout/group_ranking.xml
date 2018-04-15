@@ -6,22 +6,34 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     android:orientation="horizontal">
-
     <TextView
-        android:id="@+id/textViewPosition"
+        android:id="@+id/textViewNick"
         android:layout_width="114dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="@font/josefin_sans_semibold"
         android:gravity="center"
         android:padding="5dp"
-        android:text="1412312"
+        android:text="Binali"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/textViewRegion"
+        android:id="@+id/textViewPoints"
+        android:layout_width="114dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/josefin_sans_semibold"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="1000"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textViewPosition"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="51dp"
@@ -29,7 +41,7 @@
         android:fontFamily="@font/josefin_sans_semibold"
         android:gravity="center"
         android:padding="5dp"
-        android:text="Germany"
+        android:text="1"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="16sp" />

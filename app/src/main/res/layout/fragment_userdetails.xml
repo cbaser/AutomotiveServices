@@ -1,70 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/activity_horizontal_margin"
-    android:background="@color/white">
-
-    <ImageView
-        android:id="@+id/profPic_lea"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:adjustViewBounds="false"
-        android:padding="10dp"
-        android:src="@drawable/profile_picture"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/txtRewe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profPic_lea"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:text="@string/fullName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/txtRewe_con"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtRewe"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="10dp"
-        android:text="@string/companyName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
-        android:textColor="@color/black" />
-
-    <TextView
-        android:id="@+id/txtScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/department"
-        android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
-        android:layout_below="@id/txtRewe_con"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/light_blue"
-        android:paddingTop="10dp"
-        app:layout_anchorGravity="bottom|center"
-        tools:layout_gravity="bottom|center" />
-    <ImageView
+    android:background="@mipmap/background">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-
-        android:src="@drawable/blackbmw"
-        tools:ignore="ContentDescription" />
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
 
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <include layout="@layout/content_userdetails"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
 
-</RelativeLayout>
+                <ImageView
+                    android:id="@+id/profPic_Profile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="100dp"
+                    android:adjustViewBounds="false"
+                    android:padding="10dp"
+                    android:src="@drawable/profile_picture"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/txtFullNameProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/profPic_Profile"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/fullName"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txtCarVIN_Profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtFullNameProfile"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="10dp"
+                    android:text="Vehicle Identification Number:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txtScore_Profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtCarVIN_Profile"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="10dp"
+                    android:text="Score"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
+                    android:textColor="@color/light_blue"
+                    app:layout_anchorGravity="bottom|center"
+                    tools:layout_gravity="bottom|center" />
+
+                <ImageView
+                    android:id="@+id/bmwLogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/blackbmw"
+                    tools:ignore="ContentDescription" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/floatingSelectImage"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignBottom="@+id/profPic_Profile"
+                    android:layout_toEndOf="@+id/profPic_Profile"
+                    android:clickable="true"
+                    app:backgroundTint="@color/fbutton_color_midnight_blue"
+                    app:srcCompat="@android:drawable/ic_input_add" />
+
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+
+        <include layout="@layout/content_userdetails"/>
+
+
+    </RelativeLayout>
+
+
+</ScrollView>
 
 
 

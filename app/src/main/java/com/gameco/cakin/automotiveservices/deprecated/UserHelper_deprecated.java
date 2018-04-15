@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gameco.cakin.automotiveservices.R;
-import com.gameco.cakin.automotiveservices.activites.LoginActivity;
 import com.gameco.cakin.automotiveservices.datamodel.Friend;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -47,16 +46,16 @@ public class UserHelper_deprecated {
 
 
       //  String username = settings.getString("Username","");
-        if(firebaseUserEmail.contains("cnturkr"))
-        {
-
-             ImageView imageView = (ImageView) view.findViewById(R.id.profPic_lea);
-             imageView.setImageResource(R.drawable.ic_can);
-            ((TextView) view.findViewById(R.id.txtRewe)).setText(R.string.canName);
-            ((TextView) view.findViewById(R.id.txtRewe_con)).setText(R.string.canLevel);
-            ((TextView) view.findViewById(R.id.txtScore)).setText(R.string.canPoints);
-
-        }
+//        if(firebaseUserEmail.contains("cnturkr"))
+//        {
+//
+//             ImageView imageView = (ImageView) view.findViewById(R.id.profPic_lea);
+//             imageView.setImageResource(R.drawable.ic_can);
+//            ((TextView) view.findViewById(R.id.txtWelcome)).setText(R.string.canName);
+//            ((TextView) view.findViewById(R.id.txtRewe_con)).setText(R.string.canLevel);
+//            ((TextView) view.findViewById(R.id.txtScore)).setText(R.string.canPoints);
+//
+//        }
 
 
     }
@@ -87,12 +86,12 @@ public class UserHelper_deprecated {
                     });
                     Log.d("Tag",sendRef.toString());
 
-                    if(LoginActivity.LoggedIn_User_Email.equals("c.akinbaser@hotmail.com")){
-                        emailToSend = "cnturkr@gmail.com";
-                    }
-                    else if(LoginActivity.LoggedIn_User_Email.equals("can_turker@gmail.com")){
-                        emailToSend="c.akinbaser@hotmail.com";
-                    }
+//                    if(LoginActivity.LoggedIn_User_Email.equals("c.akinbaser@hotmail.com")){
+//                        emailToSend = "cnturkr@gmail.com";
+//                    }
+//                    else if(LoginActivity.LoggedIn_User_Email.equals("can_turker@gmail.com")){
+//                        emailToSend="c.akinbaser@hotmail.com";
+//                    }
                     try
                     {
                         String jsonResponse;

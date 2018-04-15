@@ -1,7 +1,5 @@
 package com.gameco.cakin.automotiveservices.datamodel;
 
-import android.graphics.drawable.Drawable;
-
 /**
  * Created by cakin on 2/2/2018.
  */
@@ -42,9 +40,6 @@ public class Challenge {
     public void setWinner(boolean winner) {
         this.winner = winner;
     }
-
-
-
     public String getTimeToLeft() {
         return timeToLeft;
     }
@@ -53,12 +48,12 @@ public class Challenge {
         this.timeToLeft = timeToLeft;
     }
 
-    public String getYourStatus() {
-        return yourStatus;
+    public String getUserStatus() {
+        return userStatus;
     }
 
-    public void setYourStatus(String yourStatus) {
-        this.yourStatus = yourStatus;
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
     }
 
     public String getFriendStatus() {
@@ -69,13 +64,11 @@ public class Challenge {
         this.friendStatus = friendStatus;
     }
 
-
-
-    public String getPoints() {
+    public long getPoints() {
         return points;
     }
 
-    public void setPoints(String points) {
+    public void setPoints(long points) {
         this.points = points;
     }
 
@@ -94,19 +87,25 @@ public class Challenge {
     public void setTarget(String target) {
         this.target = target;
     }
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
     private String challengeTitle;
+    private String current;
+    private String description;
+    private String friendName;
+    private String friendStatus;
+    private long points;
+    private String target;
     private String time;
     private String timeToLeft;
-    private String current;
-    private String target;
-    private String points;
     private boolean winner;
-    private String friendName;
-
-
-    private String yourStatus;
-    private String friendStatus;
+    private String userStatus;
+    
 
 
 }

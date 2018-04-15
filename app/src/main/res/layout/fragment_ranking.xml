@@ -10,9 +10,59 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="50dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/winnerTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:text="Weekly Challenge Price"
+                    android:textColor="@color/colorLeaGreen"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/amazon_gift_card"/>
+                <TextView
+                    android:id="@+id/winnerAmazon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:text="50€ Amazon gift card"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@color/fbutton_color_asbestos"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/winnerDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:text="Reward for the first rank in München!"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+
+
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,13 +81,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/source_sans_pro"
-                    android:text="Group : Born 2 Be Innovative"
+                    android:text="Friends"
                     android:textColor="@color/colorLeaGreen"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <ListView
-                    android:id="@+id/b2bListView"
+                    android:id="@+id/friendsRankListView"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:background="@color/white"
@@ -73,7 +123,7 @@
                     android:textSize="24sp" />
 
                 <ListView
-                    android:id="@+id/globalListview"
+                    android:id="@+id/leaderboardListView"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:background="@color/white"

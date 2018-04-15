@@ -47,12 +47,15 @@ public class RankingAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = layoutInflater.inflate(R.layout.group_ranking,null);
-        TextView tvPos = (TextView) view.findViewById(R.id.textViewPosition);
-        TextView tvReg =(TextView) view.findViewById(R.id.textViewRegion);
+        TextView tvNick = (TextView) view.findViewById(R.id.textViewNick);
+        TextView tvPoint = (TextView) view.findViewById(R.id.textViewPoint);
+        TextView tvPos =(TextView) view.findViewById(R.id.textViewPosition);
+
 
         Rank rank = rankList.get(position);
         tvPos.setText(String.valueOf(rank.getPosition()));
-        tvReg.setText(String.valueOf(rank.getRegion()));
+        tvPoint.setText(String.valueOf(rank.getPoint()));
+        tvNick.setText(rank.getNickname());
 
 
 

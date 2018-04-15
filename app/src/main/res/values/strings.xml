@@ -5,10 +5,11 @@
     <string name="sign_in">Sıgn In</string>
     <string name="sign_up">Not a member yet? Sign Up </string>
     <string name="username">User Name</string>
-    <string name="password">Password</string>
+    <string name="password">Password (7 characters or more)</string>
     <string name="createAccount">Create Account</string>
-    <string name="fullname">Full Name</string>
+    <string name="fullname">Nick Name</string>
     <string name="email">E-Mail</string>
+    <string name="VIN">Vehicle Identification Number</string>
     <string name="title_activity_singup">SingupActivity</string>
     <string name="fullName">Cagatay Akin Baser</string>
     <string name="canName">Can Türker</string>
@@ -24,7 +25,8 @@
     <string name="additionalInfo">Additional Information comes here..</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
+    <string name="facebook_app_id">588151798208426</string>
+    <string name="fb_login_protocol_scheme">fb588151798208426</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
     <string name="title_home">Home</string>

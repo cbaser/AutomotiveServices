@@ -18,10 +18,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-
             android:layout_alignEnd="@+id/tips_cardview"
             android:layout_below="@+id/tips_cardview"
-
             android:background="@color/fbutton_color_midnight_blue"
             android:padding="16dp">
 
@@ -52,9 +50,11 @@
                 android:id="@+id/sure_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/sure_title"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/closeRejectChallange"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/bree_serif"
-                android:text="You will lose 1000 points by rejecting this challenge!"
+                android:text="You will lose 250 points by rejecting this challenge!"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
