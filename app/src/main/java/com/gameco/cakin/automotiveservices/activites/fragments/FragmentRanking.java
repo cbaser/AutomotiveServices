@@ -45,11 +45,11 @@ public class FragmentRanking extends Fragment {
         friendList.clear();
         database = FirebaseDatabase.getInstance();
         leaderBoardReference = database.getReference().child("Leaderboards");
-        final RankingAdapter rankingAdapter = new RankingAdapter(this.getActivity(),rankList);
+        //final RankingAdapter rankingAdapter = new RankingAdapter(this.getActivity(),rankList);
         rankListView = (ListView) view.findViewById(R.id.leaderboardListView);
         ViewGroup header_ranking = (ViewGroup)inflater.inflate(R.layout.header_ranking_list,rankListView,false);
         rankListView.addHeaderView(header_ranking);
-        rankListView.setAdapter(rankingAdapter);
+        //rankListView.setAdapter(rankingAdapter);
         leaderBoardReference.orderByChild("Points").addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -70,7 +70,7 @@ public class FragmentRanking extends Fragment {
 //                Rank rank = dataSnapshot.getValue(Rank.class);
 //                Log.e("FRAGMENT RANKİNG",rank.getPoint()+"");
 //                rankList.add(rank);
-                rankingAdapter.notifyDataSetChanged();
+              //  rankingAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

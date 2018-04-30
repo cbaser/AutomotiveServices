@@ -174,14 +174,14 @@ public FragmentHome(){
 
             }
         });
-    Button seeAllFriendsButton = (Button) view.findViewById(R.id.seeFriendsBtn);
-    seeAllFriendsButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-           showFriends();
-
-        }
-    });
+//    Button seeAllFriendsButton = (Button) view.findViewById(R.id.seeFriendsBtn);
+//    seeAllFriendsButton.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//           showFriends();
+//
+//        }
+//    });
 
 return view;
 
@@ -194,74 +194,74 @@ return view;
 
 
 
-    public void showFriends(){
-        View popupView = getActivity().getLayoutInflater().inflate(R.layout.popup_friends,null);
-        final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        ListView listView = (ListView)popupView.findViewById(R.id.friendsListview);
-        Friend can;
-        friendList.clear();
-//        if(!LoginActivity.LoggedIn_User_Email.contains("can"))
-//         can = new Friend(fragment.getResources().getDrawable(R.drawable.ic_can),"Can Turker",123454);
-//        else
-//             can = new Friend(fragment.getResources().getDrawable(R.drawable.ic_cagatay),"Cagatay Baser",123454);
-
-
-        //friendList.add(can);
-        if(friendList.size()>0){
-            friendsListAdapter = new FriendsListAdapter(fragment.getActivity(),friendList);
-            listView.setAdapter(friendsListAdapter);
-            friendsListAdapter.notifyDataSetChanged();
-        }
-
-        Button addFriendBtn = (Button) popupView.findViewById(R.id.addFriendBtn);
-        addFriendBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(fragment.getActivity(), "Will be implemented as Adding new friends", Toast.LENGTH_SHORT).show();
-            }
-        });
-        Button invitePeopleBtn = (Button)popupView.findViewById(R.id.invitePeopleBtn);
-        invitePeopleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new AppInviteInvitation.IntentBuilder("Invite To GameECO")
-//                        .setMessage("Check out this new app GamECO!"))
-//                        .setDeepLink(Uri.parse(getString(R.string.invitation_deep_link)))
-//                        .setCustomImage(Uri.parse(getString(R.string.invitation_custom_image)))
-//                        .setCallToActionText(getString(R.string.invitation_cta))
-//                        .build();
-//                startActivityForResult(intent, REQUEST_INVITE);
-
-            }
-        });
-//        Button createGroupBtn = (Button) popupView.findViewById(R.id.createGroupBtn);
-//        createGroupBtn.setOnClickListener(new View.OnClickListener() {
+//    public void showFriends(){
+//        View popupView = getActivity().getLayoutInflater().inflate(R.layout.popup_friends,null);
+//        final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//
+//        ListView listView = (ListView)popupView.findViewById(R.id.friendsListview);
+//        Friend can;
+//        friendList.clear();
+////        if(!LoginActivity.LoggedIn_User_Email.contains("can"))
+////         can = new Friend(fragment.getResources().getDrawable(R.drawable.ic_can),"Can Turker",123454);
+////        else
+////             can = new Friend(fragment.getResources().getDrawable(R.drawable.ic_cagatay),"Cagatay Baser",123454);
+//
+//
+//        //friendList.add(can);
+//        if(friendList.size()>0){
+//            friendsListAdapter = new FriendsListAdapter(fragment.getActivity(),friendList);
+//            listView.setAdapter(friendsListAdapter);
+//            friendsListAdapter.notifyDataSetChanged();
+//        }
+//
+//        Button addFriendBtn = (Button) popupView.findViewById(R.id.addFriendBtn);
+//        addFriendBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Toast.makeText(fragment.getActivity(), "Will be implemented as Creating Group among friends", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(fragment.getActivity(), "Will be implemented as Adding new friends", Toast.LENGTH_SHORT).show();
 //            }
 //        });
-//        Button importGroupBtn = (Button) popupView.findViewById(R.id.importGroupBtn);
-//        importGroupBtn.setOnClickListener(new View.OnClickListener() {
+//        Button invitePeopleBtn = (Button)popupView.findViewById(R.id.invitePeopleBtn);
+//        invitePeopleBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Toast.makeText(fragment.getActivity(), "Will be implemented as Importing friends from Facebook", Toast.LENGTH_SHORT).show();
+////                Intent intent = new AppInviteInvitation.IntentBuilder("Invite To GameECO")
+////                        .setMessage("Check out this new app GamECO!"))
+////                        .setDeepLink(Uri.parse(getString(R.string.invitation_deep_link)))
+////                        .setCustomImage(Uri.parse(getString(R.string.invitation_custom_image)))
+////                        .setCallToActionText(getString(R.string.invitation_cta))
+////                        .build();
+////                startActivityForResult(intent, REQUEST_INVITE);
+//
 //            }
 //        });
-
-        FloatingActionButton floatingActionButton = (FloatingActionButton) popupView.findViewById(R.id.exitFAB);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
-            }
-        });
-
-
-        popupWindow.showAtLocation(popupView, Gravity.CENTER,10,10);
-
-    }
+////        Button createGroupBtn = (Button) popupView.findViewById(R.id.createGroupBtn);
+////        createGroupBtn.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View view) {
+////                Toast.makeText(fragment.getActivity(), "Will be implemented as Creating Group among friends", Toast.LENGTH_SHORT).show();
+////            }
+////        });
+////        Button importGroupBtn = (Button) popupView.findViewById(R.id.importGroupBtn);
+////        importGroupBtn.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View view) {
+////                Toast.makeText(fragment.getActivity(), "Will be implemented as Importing friends from Facebook", Toast.LENGTH_SHORT).show();
+////            }
+////        });
+//
+//        FloatingActionButton floatingActionButton = (FloatingActionButton) popupView.findViewById(R.id.exitFAB);
+//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popupWindow.dismiss();
+//            }
+//        });
+//
+//
+//        popupWindow.showAtLocation(popupView, Gravity.CENTER,10,10);
+//
+//    }
     //                View friendView = fragment.getActivity().getLayoutInflater().inflate(R.layout.popup_add_new_friend,null);
 //                 final PopupWindow friendWindow = new PopupWindow(friendView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 //                 friendWindow.showAtLocation(friendView, Gravity.NO_GRAVITY,10,10);
@@ -355,9 +355,9 @@ return view;
 //                friendList.add(friend);
 ////                friend = dataSnapshot.getValue(Friend.class);
 
-    public void setUserInformation(){
-
-    }
+//    public void setUserInformation(){
+//
+//    }
 
 
 }

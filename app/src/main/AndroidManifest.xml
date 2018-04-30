@@ -32,11 +32,11 @@
             android:name=".activites.SingupActivity"
             android:label="@string/title_activity_singup"
             android:theme="@style/AppTheme.NoActionBar" />
-
+<!--
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-
+            android:value="@string/facebook_application_id" />
+            -->
         <activity
             android:name=".activites.LoginActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -60,13 +60,6 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-        <!-- [START firebase_service] -->
-        <service android:name=".firebase.MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-        <!-- [END firebase_service] -->
         <!-- [START firebase_iid_service] -->
         <service android:name=".firebase.MyFirebaseInstanceIDService">
             <intent-filter>

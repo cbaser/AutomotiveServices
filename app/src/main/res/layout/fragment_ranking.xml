@@ -10,8 +10,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,20 +35,23 @@
                     android:textColor="@color/colorLeaGreen"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:src="@drawable/amazon_gift_card"/>
+                    android:src="@drawable/amazon_gift_card" />
+
                 <TextView
                     android:id="@+id/winnerAmazon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/source_sans_pro"
                     android:text="50€ Amazon gift card"
-                    android:layout_gravity="center"
-                    android:textSize="20sp"
                     android:textColor="@color/fbutton_color_asbestos"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/winnerDescription"
                     android:layout_width="match_parent"
@@ -58,11 +62,10 @@
                     android:textSize="18sp" />
 
 
-
-
-
             </LinearLayout>
         </android.support.v7.widget.CardView>
+
+        <!--
         <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -99,16 +102,16 @@
                 </ListView>
             </LinearLayout>
         </android.support.v7.widget.CardView>
-
+-->
 
         <android.support.v7.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="@dimen/activity_horizontal_margin">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@color/white"
                 android:orientation="vertical">
 
@@ -118,14 +121,14 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/source_sans_pro"
                     android:text="Global"
-                    android:textStyle="bold"
                     android:textColor="@color/colorLeaGreen"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <ListView
                     android:id="@+id/leaderboardListView"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="400dp"
                     android:background="@color/white"
                     android:divider="@color/fbutton_color_asbestos"
                     android:dividerHeight="2dp"

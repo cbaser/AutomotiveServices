@@ -12,6 +12,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.gameco.cakin.automotiveservices.activites.MainActivity;
 import com.gameco.cakin.automotiveservices.datamodel.Car;
 import com.gameco.cakin.automotiveservices.datamodel.CurrentUser;
@@ -50,13 +51,17 @@ public class MyFirebaseDatabase {
     public MyFirebaseDatabase (Activity activity){
         user = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
-        leaderBoardReference = database.getReference().child("Leaderboards");
+         leaderBoardReference = database.getReference().child("Leaderboards");
         currentUser = new CurrentUser();
         this.activity = activity;
     }
-    public void createAccountInFirebaseDatabase(String email,String password,String nickname,String VIN,String Uri){
 
+    public DatabaseReference getDatabaseReference() {
+        return database.getReference().child("Users").child(user.getEmail().replace(".",","));
+    }
+
+    public void createAccountInFirebaseDatabase(String email, String password, String nickname, String VIN, String Uri){
+        databaseReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
         Car car = new Car();
         car.setVIN(VIN);
         databaseReference.child("Nick Name").setValue(nickname);
@@ -74,6 +79,11 @@ public class MyFirebaseDatabase {
                 ;
         leaderBoardReference.child("Points").setValue(0);
     }
+
+
+
+
+
     public void setCurrentUser (CurrentUser currentUser){
         this.currentUser = currentUser;
     }
@@ -81,6 +91,8 @@ public class MyFirebaseDatabase {
         return  currentUser;
     }
     public void updateCarData(final Car car){
+        databaseReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
+
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -99,6 +111,7 @@ public class MyFirebaseDatabase {
     }
     public void getImage(final ImageView imageView){
 
+        databaseReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
 
         picsRef = FirebaseStorage.getInstance().getReference().child("images/"+ user.getEmail().replace(".",","));
         try {
@@ -120,6 +133,8 @@ public class MyFirebaseDatabase {
 
     }
     public void uploadImage(Bitmap bitmap){
+        databaseReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
+
         picsRef = FirebaseStorage.getInstance().getReference().child("images/"+ user.getEmail().replace(".",","));
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos);
@@ -133,7 +148,18 @@ public class MyFirebaseDatabase {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                final Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        dataSnapshot.getRef().child("PictureURI").setValue(downloadUrl);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
                 Log.d("MyFirebaseDatabase",downloadUrl.getEncodedPath());
             }
         });
@@ -143,7 +169,13 @@ public class MyFirebaseDatabase {
 
 
 
+
+
+
+
     public void getCurrentUserFromDatabase(){
+        databaseReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
+
         final Semaphore semaphore = new Semaphore(0);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

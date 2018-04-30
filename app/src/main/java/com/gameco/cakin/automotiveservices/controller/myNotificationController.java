@@ -265,9 +265,9 @@ public class myNotificationController {
 
                 ViewGroup header_friends = (ViewGroup) fragment.getActivity().getLayoutInflater().inflate(R.layout.header_available_friends, listView, false);
                 listView.addHeaderView(header_friends);
-
-                FriendsListAdapter friendsListAdapter = new FriendsListAdapter(fragment.getActivity(), friendList);
-                listView.setAdapter(friendsListAdapter);
+//
+//                FriendsListAdapter friendsListAdapter = new FriendsListAdapter(fragment.getActivity(), friendList);
+//                listView.setAdapter(friendsListAdapter);
 
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

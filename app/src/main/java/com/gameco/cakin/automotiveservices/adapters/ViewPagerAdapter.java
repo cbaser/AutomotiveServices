@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentChallengeCategories;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentCarstatus;
+import com.gameco.cakin.automotiveservices.activites.fragments.FragmentFriendlist;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentMyChallenges;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentHome;
 import com.gameco.cakin.automotiveservices.activites.fragments.FragmentAchievements;
@@ -30,6 +31,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         mFragmentList.add(new FragmentAchievements());
         mFragmentList.add(new FragmentChallengeCategories());
         mFragmentList.add(new FragmentRanking());
+        mFragmentList.add(new FragmentFriendlist());
         mFragmentList.add(new FragmentCarstatus());
         mFragmentList.add(new FragmentProfile());
 

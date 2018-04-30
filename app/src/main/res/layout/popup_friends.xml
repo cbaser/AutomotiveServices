@@ -23,7 +23,6 @@
         android:layout_marginStart="22dp"
         android:layout_toEndOf="@+id/exitFAB"
         android:background="@drawable/button_change_clicked"
-        android:drawableTop="@drawable/ic_add_friend"
         android:fontFamily="@font/bree_serif" />
 
     <EditText
@@ -41,31 +40,19 @@
         android:textColor="@color/black"
         tools:text="Search by Display Name" />
 
-    <RelativeLayout
-        android:id="@+id/middleRelativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_below="@id/editSearch"
-        android:orientation="horizontal">
-
-
-        <Button
-            android:id="@+id/invitePeopleBtn"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="left"
-            android:background="@drawable/button_change_clicked"
-            android:fontFamily="@font/bree_serif"
-            android:text="Invite People"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textSize="14sp" />
-
-
-    </RelativeLayout>
+    <Button
+        android:id="@+id/invitePeopleBtn"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editSearch"
+        android:layout_gravity="left"
+        android:background="@drawable/button_change_clicked"
+        android:fontFamily="@font/bree_serif"
+        android:text="Invite People"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="14sp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/exitFAB"

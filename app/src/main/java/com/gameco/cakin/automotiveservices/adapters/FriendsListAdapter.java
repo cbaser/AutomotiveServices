@@ -1,61 +1,37 @@
 package com.gameco.cakin.automotiveservices.adapters;
-import android.app.Activity;
+
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.gameco.cakin.automotiveservices.R;
+import com.gameco.cakin.automotiveservices.activites.fragments.FragmentFriendlist;
 import com.gameco.cakin.automotiveservices.datamodel.Friend;
+import com.google.firebase.database.DatabaseReference;
 
-import java.util.List;
-
-/**
- * Created by cakin on 11/23/2017.
- */
-
-public class FriendsListAdapter extends BaseAdapter {
-   private LayoutInflater layoutInflater;
-    private List<Friend> list;
-    private Activity activity;
-    public FriendsListAdapter(Activity activity,List<Friend> list) {
-        layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.list = list;
-        this.activity = activity;
-
-    }
-    @Override
-    public int getCount() {
-        return list.size();
+public class FriendsListAdapter extends FirebaseRecyclerAdapter<Friend,FriendsListHolder>{
+    public FriendsListAdapter(@NonNull FirebaseRecyclerOptions<Friend> options) {
+        super(options);
     }
 
     @Override
-    public Object getItem(int position) {
-        return list.get(position);
+    public FriendsListHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // Create a new instance of the ViewHolder, in this case we are using a custom
+        // layout called R.layout.message for each item
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.group_friend, parent, false);
+
+        return new FriendsListHolder(view);
     }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = layoutInflater.inflate(R.layout.group_friend,null);
-        ImageView imRank = (ImageView) view.findViewById(R.id.imageViewPicture);
-        TextView tvName =(TextView) view.findViewById(R.id.textViewName);
-        TextView tvPoint =(TextView) view.findViewById(R.id.textViewPoint);
-
-        Friend friend = list.get(position);
-    //   imRank.setImageDrawable(friend.getImage());
-       tvName.setText(friend.getName());
-       tvPoint.setText(String.valueOf(friend.getPoint()));
-
-
-        return view;
+    protected void onBindViewHolder(@NonNull FriendsListHolder holder, int position, @NonNull Friend model) {
 
     }
 }

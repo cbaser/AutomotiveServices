@@ -11,36 +11,36 @@ public class Friend {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
-    public long getPoint() {
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getPoint() {
         return point;
     }
-    public void setPoint(long point) {
+
+    public void setPoint(String point) {
         this.point = point;
     }
-    private String name;
-    private long point;
 
-    public String getVIN() {
-        return VIN;
+    private String name,image,point;
+
+
+    public Friend(String name, String image, String point) {
+        this.name = name;
+        this.image = image;
+        this.point = point;
     }
 
-    public void setVIN(String VIN) {
-        this.VIN = VIN;
+    public Friend() {
     }
-
-    private String VIN;
-
-    public Friend(String name,long point,String VIN){
-        this.name=name;
-        this.point=point;
-        this.VIN =VIN;
-    }
-    public Friend(){
-
-    }
-
-
 }

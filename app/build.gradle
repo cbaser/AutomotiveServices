@@ -13,7 +13,6 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.gameco.cakin.automotiveservices"
-
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
@@ -43,13 +42,13 @@ repositories {
 
 
 dependencies {
-
+    implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.android.support:support-vector-drawable:26.1.0'
     implementation 'com.facebook.android:facebook-android-sdk:4.31.0'
-    // FirebaseUI for Firebase Realtime Database
     implementation 'com.firebaseui:firebase-ui-database:3.2.2'
+    implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
+    implementation 'com.firebaseui:firebase-ui-storage:3.2.2'
     implementation 'com.google.firebase:firebase-core:11.8.0'
-    implementation 'com.google.firebase:firebase-messaging:11.8.0'
     implementation 'com.google.firebase:firebase-database:11.8.0'
     implementation 'com.google.firebase:firebase-auth:11.8.0'
     implementation 'com.google.firebase:firebase-invites:11.8.0'
@@ -66,7 +65,6 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.4'
     implementation 'com.google.code.gson:gson:2.8.1'
     implementation 'com.github.aakira:expandable-layout:1.4.2@aar'
-    implementation 'com.github.d-max:spots-dialog:0.7@aar'
     implementation 'com.google.android.gms:play-services-auth:11.8.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // FirebaseUI for Firebase Auth

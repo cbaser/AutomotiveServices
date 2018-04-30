@@ -39,4 +39,6 @@ public class FragmentFriends extends DialogFragment {
 
         return view;
     }
+
+
 }

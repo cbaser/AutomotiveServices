@@ -18,47 +18,66 @@ import java.util.List;
  */
 
 public class RankingAdapter extends BaseAdapter{
-    private LayoutInflater layoutInflater;
-
-    private List<Rank> rankList;
-    private Activity activity;
-
-    public RankingAdapter( Activity activity,List<Rank> rankList) {
-        layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.rankList = rankList;
-        this.activity = activity;
-    }
-
     @Override
     public int getCount() {
-        return rankList.size();
+        return 0;
     }
 
     @Override
-    public Object getItem(int position) {
-        return rankList.get(position);
+    public Object getItem(int i) {
+        return null;
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public long getItemId(int i) {
+        return 0;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = layoutInflater.inflate(R.layout.group_ranking,null);
-        TextView tvNick = (TextView) view.findViewById(R.id.textViewNick);
-        TextView tvPoint = (TextView) view.findViewById(R.id.textViewPoint);
-        TextView tvPos =(TextView) view.findViewById(R.id.textViewPosition);
-
-
-        Rank rank = rankList.get(position);
-        tvPos.setText(String.valueOf(rank.getPosition()));
-        tvPoint.setText(String.valueOf(rank.getPoint()));
-        tvNick.setText(rank.getNickname());
-
-
-
-        return view;
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        return null;
     }
+//    private LayoutInflater layoutInflater;
+//
+//    private List<Rank> rankList;
+//    private Activity activity;
+//
+//    public RankingAdapter( Activity activity,List<Rank> rankList) {
+//        layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        this.rankList = rankList;
+//        this.activity = activity;
+//    }
+//
+//    @Override
+//    public int getCount() {
+//        return rankList.size();
+//    }
+//
+//    @Override
+//    public Object getItem(int position) {
+//        return rankList.get(position);
+//    }
+//
+//    @Override
+//    public long getItemId(int position) {
+//        return position;
+//    }
+//
+//    @Override
+//    public View getView(int position, View convertView, ViewGroup parent) {
+//        View view = layoutInflater.inflate(R.layout.group_ranking,null);
+//        TextView tvNick = (TextView) view.findViewById(R.id.textViewNick);
+//        TextView tvPoint = (TextView) view.findViewById(R.id.textViewPoint);
+//        TextView tvPos =(TextView) view.findViewById(R.id.textViewPosition);
+//
+//
+//        Rank rank = rankList.get(position);
+//        tvPos.setText(String.valueOf(rank.getPosition()));
+////        tvPoint.setText(String.valueOf(rank.getPoint()));
+//        tvNick.setText(rank.getNickname());
+//
+//
+//
+//        return view;
+//    }
 }
