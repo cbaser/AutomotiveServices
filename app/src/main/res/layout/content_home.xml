@@ -85,7 +85,6 @@
                         android:paddingTop="10dp"
                         android:text="Score : "
                         android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_anchorGravity="bottom|center"
@@ -101,7 +100,6 @@
                         android:paddingTop="10dp"
                         android:text="123457"
                         android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_anchorGravity="bottom|center"
@@ -173,7 +171,7 @@
 
             <include
                 android:id="@+id/include_shell_challenge_content"
-                layout="@layout/content_shell_challenge"
+                layout="@layout/content_weekly_challenge"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true" />

@@ -1,15 +1,19 @@
 package com.gameco.cakin.automotiveservices.backend;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.gameco.cakin.automotiveservices.activites.LoginActivity;
 import com.gameco.cakin.automotiveservices.activites.MainActivity;
+import com.gameco.cakin.automotiveservices.activites.ProgressActivity;
 import com.gameco.cakin.automotiveservices.datamodel.BMWCarData;
 import com.gameco.cakin.automotiveservices.datamodel.CarVINs;
 import com.gameco.cakin.automotiveservices.datamodel.Car;
+import com.gameco.cakin.automotiveservices.datamodel.CurrentUser;
+import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,60 +36,35 @@ import java.util.List;
 
 public class myJSONParser {
     private String jsonString;
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
-  //  private DatabaseReference mRef;
-    //TODO Retrieve VIN From User
-    private String VIN;
     private Car car;
-    private BMWCarData[] bmwCarData;
-    public static FirebaseDatabase mDatabase;
     public void setJsonString(String jsonString){
         this.jsonString = jsonString;
-        Log.e("JsonString",jsonString);
     }
+
 
 
 
     public Car convertToCarData(){
-     //   BMWCarData[] bmwCarData;
+
         car = new Car();
-     //   mDatabase = FirebaseDatabase.getInstance();
-      //  FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-       // mRef =mDatabase.getReference("Users").child(LoginActivity.user_full_name);
         startParsing();
-//        mRef = mDatabase.getReference().child("Users").child(user.getEmail().replace(".",","));
-//        mRef.child("Car").child("vin").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot snapshot) {
-//              VIN = (String) snapshot.getValue();
-//              //prints "Do you have data? You'll love Firebase."
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });
-     //   VIN =mDatabase.getReference("car").child("vin").getKey();
+
         return car;
     }
     private void startParsing(){
         try{
+            MyFirebaseDatabase  firebaseDatabase  = new MyFirebaseDatabase(ProgressActivity.getContextOfApplication());
             //    String i3VINCode;
             JsonParser parser = new JsonParser();
             JsonObject jsonObject = parser.parse(jsonString).getAsJsonObject();
-            Context applicationContext = MainActivity.getContextOfApplication();
-            sharedPreferences = applicationContext.getSharedPreferences("userdetails",Context.MODE_PRIVATE);
-            VIN = sharedPreferences.getString("VIN","");
-            JsonElement jsonElement = jsonObject.get("telematicKeys");
 
             Gson gson = new Gson();
-            //  CarVINs carVINs = new CarVINs();
-            bmwCarData = gson.fromJson(jsonElement,BMWCarData[].class);
+            String  VIN = firebaseDatabase.getUserFromPreferences().getCar().getVIN();
+            JsonElement jsonElement = jsonObject.get("telematicKeys");
+
+            BMWCarData[] bmwCarData = gson.fromJson(jsonElement,BMWCarData[].class);
             int lastIndex = 0;
-            //    if(LoginActivity.LoggedIn_User_Email.contains("can"))
-            //  i3VINCode = carVINs.getBMWi3();
-            //    else
-            //         i3VINCode = carVINs.getBMWM235i();
+
             List<BMWCarData> telematicValues = Arrays.asList(bmwCarData);
 
             for (int i=0;i<bmwCarData.length;i++){
@@ -104,17 +83,17 @@ public class myJSONParser {
                     if(telematicValues.get(i).getTelematics().contains("bmwcardata_mileage"))
                         car.setMileage( getTelematicValue("bmwcardata_mileage",telematicValues.get(i).getTelematics()));
                     if(telematicValues.get(i).getTelematics().contains("bmwcardata_averageDistance"))
-                        car.setAverage_distance_per_week(getTelematicValue("bmwcardata_averageDistance",telematicValues.get(i).getTelematics()));
+                        car.setAverage_Distance(getTelematicValue("bmwcardata_averageDistance",telematicValues.get(i).getTelematics()));
                     if(telematicValues.get(i).getTelematics().contains("bmwcardata_remainingFuel"))
-                        car.setRemaining_fuel(getTelematicValue("bmwcardata_remainingFuel",telematicValues.get(i).getTelematics()));
+                        car.setRemaining_Fuel(getTelematicValue("bmwcardata_remainingFuel",telematicValues.get(i).getTelematics()));
                     if(telematicValues.get(i).getTelematics().contains("bmwcardata_batteryVoltage"))
-                        car.setBatteryVoltage(getTelematicValue("bmwcardata_batteryVoltage",telematicValues.get(i).getTelematics()));
+                        car.setBattery_Level(getTelematicValue("bmwcardata_batteryVoltage",telematicValues.get(i).getTelematics()));
                     if(telematicValues.get(i).getTelematics().contains("bmwcardata_nextServiceDistance"))
-                        car.setNextServiceDistance(getTelematicValue("bmwcardata_nextServiceDistance",telematicValues.get(i).getTelematics()));
+                        car.setNext_Service_Distance(getTelematicValue("bmwcardata_nextServiceDistance",telematicValues.get(i).getTelematics()));
                     if(telematicValues.get(i).getTelematics().contains("bmwcardata_SegmentLastTripECOTimeOfActivation"))
-                        car.setActive_time_of_eco_mode(getTelematicValue("bmwcardata_SegmentLastTripECOTimeOfActivation",telematicValues.get(i).getTelematics()));
+                        car.setECO_Time(getTelematicValue("bmwcardata_SegmentLastTripECOTimeOfActivation",telematicValues.get(i).getTelematics()));
                     if(telematicValues.get(i).getTelematics().contains("bmwcardata_SegmentLastTripFuelConsumption"))
-                        car.setFuel_consumption(getTelematicValue("bmwcardata_SegmentLastTripFuelConsumption",telematicValues.get(i).getTelematics()));
+                        car.setFuel_Consumption(getTelematicValue("bmwcardata_SegmentLastTripFuelConsumption",telematicValues.get(i).getTelematics()));
 
                 }
 
@@ -142,4 +121,27 @@ public class myJSONParser {
         return telematicString;
     }
 }
+//  private DatabaseReference mRef;
+//   BMWCarData[] bmwCarData;
+//   mDatabase = FirebaseDatabase.getInstance();
+//  FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+// mRef =mDatabase.getReference("Users").child(LoginActivity.user_full_name);
 
+//        mRef = mDatabase.getReference().child("Users").child(user.getEmail().replace(".",","));
+//        mRef.child("Car").child("vin").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot snapshot) {
+//              VIN = (String) snapshot.getValue();
+//              //prints "Do you have data? You'll love Firebase."
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        });
+//   VIN =mDatabase.getReference("car").child("vin").getKey();
+
+//  CarVINs carVINs = new CarVINs();
+//    if(LoginActivity.LoggedIn_User_Email.contains("can"))
+//  i3VINCode = carVINs.getBMWi3();
+//    else
+//         i3VINCode = carVINs.getBMWM235i();

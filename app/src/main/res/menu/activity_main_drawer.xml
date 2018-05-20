@@ -20,9 +20,9 @@
         android:title="@string/navigation_myDriving">
         <item
             android:id="@+id/nav_myAchievements"
-            android:icon="@drawable/ic_group_work_black_24dp"
+            android:icon="@drawable/ic_achievements"
             android:title="Achievements"
-            tools:icon="@drawable/ic_mileage" />
+            tools:icon="@drawable/ic_achievements" />
         <item
             android:id="@+id/nav_challengeCategories"
             android:icon="@drawable/ic_category"

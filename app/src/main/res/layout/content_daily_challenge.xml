@@ -14,10 +14,9 @@
 
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textDaily_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginBottom="22dp"
         android:fontFamily="@font/source_sans_pro"
         android:text="Today's Daily Challenge!"
@@ -26,10 +25,9 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textDaily_Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:fontFamily="@font/source_sans_pro"
         android:text="Reduce average fuel consumption by 0.5"
         android:textColor="@color/white"
@@ -37,7 +35,7 @@
         tools:text="Reduce average fuel consumption by 0.5" />
 
     <Button
-        android:id="@+id/playChallengeButton"
+        android:id="@+id/playDailyChallengeButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"

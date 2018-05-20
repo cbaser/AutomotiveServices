@@ -19,7 +19,7 @@
 //import com.gameco.cakin.automotiveservices.activites.fragments.FragmentHome;
 //import com.gameco.cakin.automotiveservices.activites.fragments.FragmentAchievements;
 //import com.gameco.cakin.automotiveservices.activites.fragments.FragmentRanking;
-//import com.gameco.cakin.automotiveservices.adapters.ViewPagerAdapter;
+//import com.gameco.cakin.automotiveservices.adapters.FragmentViewPagerAdapter;
 //
 ///**
 // * Created by cakin on 11/25/2017.
@@ -29,7 +29,7 @@
 //    private Toolbar toolbar;
 //    private TabLayout tabLayout;
 //    private String[] pageTitles = {"Home","Challenges","Achievements"};
-//    private ViewPagerAdapter viewPagerAdapter;
+//    private FragmentViewPagerAdapter viewPagerAdapter;
 //    private DrawerLayout drawer;
 //    private ViewPager viewPager;
 //    private LayoutInflater layoutInflater;
@@ -55,7 +55,7 @@
 //        assert navigationView != null;
 //        navigationView.setNavigationItemSelectedListener(this);
 //
-//        ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(activity.getSupportFragmentManager());
+//        FragmentViewPagerAdapter pagerAdapter = new FragmentViewPagerAdapter(activity.getSupportFragmentManager());
 //        viewPager.setAdapter(pagerAdapter);
 //
 //        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -85,7 +85,7 @@
 //        toggle.syncState();
 //    }
 //    private void setupViewPager(ViewPager viewPager) {
-//        viewPagerAdapter = new ViewPagerAdapter(activity.getSupportFragmentManager());
+//        viewPagerAdapter = new FragmentViewPagerAdapter(activity.getSupportFragmentManager());
 //        viewPagerAdapter.addFrag(new FragmentHome(), "ONE");
 //        viewPagerAdapter.addFrag(new FragmentMyChallenges(), "TWO");
 //        viewPagerAdapter.addFrag(new FragmentAchievements(),"THREE");

@@ -5,15 +5,17 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/activity_horizontal_margin"
+
     android:background="@mipmap/background">
     <RelativeLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
+
         android:layout_height="wrap_content">
 
 
         <android.support.v7.widget.CardView
-            android:id="@+id/cardView_profile"
+            android:id="@+id/cardView_profile_upper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -24,22 +26,21 @@
 
                 <ImageView
                     android:id="@+id/profPic_Profile"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="100dp"
                     android:adjustViewBounds="false"
-                    android:padding="10dp"
                     android:src="@drawable/profile_picture"
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/txtFullNameProfile"
+                    android:id="@+id/txtFullName_Profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/profPic_Profile"
+                    android:layout_below="@+id/profPic_Profile"
                     android:layout_centerHorizontal="true"
-                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/source_sans_pro"
                     android:text="@string/fullName"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:textColor="@color/black"
@@ -49,22 +50,38 @@
                     android:id="@+id/txtCarVIN_Profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtFullNameProfile"
-                    android:layout_centerHorizontal="true"
+                    android:layout_alignStart="@+id/txtFullName_Profile"
+                    android:layout_below="@+id/txtFullName_Profile"
+                    android:fontFamily="@font/source_sans_pro"
                     android:paddingTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:text="Vehicle Identification Number:"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
                     android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/txtScore_Profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/txtCarVIN_Profile"
+                    android:layout_alignEnd="@+id/txtFullName_Profile"
+                    android:layout_alignParentBottom="true"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:paddingTop="10dp"
+                    android:text="0"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/light_blue"
+                    app:layout_anchorGravity="bottom|center"
+                    tools:layout_gravity="bottom|center" />
+
+                <TextView
+                    android:id="@+id/textView_Score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView7"
                     android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/source_sans_pro"
                     android:paddingTop="10dp"
                     android:text="Score"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Notification.Info"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:textColor="@color/light_blue"
                     app:layout_anchorGravity="bottom|center"
                     tools:layout_gravity="bottom|center" />
@@ -80,13 +97,38 @@
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/floatingSelectImage"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/profPic_Profile"
+                    android:layout_marginStart="10dp"
                     android:layout_toEndOf="@+id/profPic_Profile"
                     android:clickable="true"
-                    app:backgroundTint="@color/fbutton_color_midnight_blue"
-                    app:srcCompat="@android:drawable/ic_input_add" />
+
+                    android:focusable="true"
+                    app:backgroundTint="@color/colorLeaGreen"
+                    app:srcCompat="@drawable/ic_upload" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/txtFullName_Profile"
+                    android:layout_toStartOf="@+id/txtFullName_Profile"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:text="Name:"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/txtCarVIN_Profile"
+                    android:layout_toStartOf="@+id/txtCarVIN_Profile"
+                    android:fontFamily="@font/source_sans_pro"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:text="Vehicle ID:"
+                    android:textColor="@color/black" />
 
 
             </RelativeLayout>
@@ -96,7 +138,7 @@
 
 
 
-        <include layout="@layout/content_userdetails"/>
+        <include  android:id="@+id/cardView_profile_down" layout="@layout/content_userdetails"/>
 
 
     </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.gameco.cakin.automotiveservices.adapters;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 
@@ -20,13 +21,16 @@ import java.util.List;
  * Created by cakin on 11/20/2017.
  */
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class FragmentViewPagerAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    public ViewPagerAdapter(android.support.v4.app.FragmentManager manager) {
+    public FragmentViewPagerAdapter(android.support.v4.app.FragmentManager manager) {
         super(manager);
-        mFragmentList.add(new FragmentHome());
+        FragmentHome fragmentHome = new FragmentHome();
+        Bundle bundle = new Bundle();
+        fragmentHome.setArguments(bundle);
+        mFragmentList.add(fragmentHome);
         mFragmentList.add(new FragmentMyChallenges());
         mFragmentList.add(new FragmentAchievements());
         mFragmentList.add(new FragmentChallengeCategories());

@@ -57,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/source_sans_pro"
-                    android:text="Reward for the first rank in München!"
+                    android:text="Reward for the first rank !"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -120,7 +120,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/source_sans_pro"
-                    android:text="Global"
+                    android:text="Top 10"
                     android:textColor="@color/colorLeaGreen"
                     android:textSize="24sp"
                     android:textStyle="bold" />

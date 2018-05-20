@@ -49,9 +49,6 @@ public class BackendController extends AsyncTask<String,Void,String>{
         String operationType = strings[0];
 
         switch (operationType){
-            case "Login":
-               // this.setResponse(doLogin(strings));
-                break;
             case "VIN":
                 this.setResponse(doRegister(strings));
                 break;

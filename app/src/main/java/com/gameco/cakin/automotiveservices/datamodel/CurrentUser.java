@@ -1,100 +1,86 @@
 package com.gameco.cakin.automotiveservices.datamodel;
 
-import android.widget.ImageView;
-
-import java.util.List;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by cakin on 11/27/2017.
  */
 
-public class CurrentUser {
+public class CurrentUser implements Serializable{
 
-    public Car getCar() {
-        return car;
+    private Car Car;
+    private int ChallengeCount;
+    private String Email;
+    private String NickName;
+    private String Level;
+    private String Password;
+    private String PictureURI;
+    private int Points;
+    private ArrayList<Challenge> challengeList;
+    private HashMap<String,String> Friends;
+
+    public CurrentUser() {
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public CurrentUser(Car car, int challengeCount, String email, String nickName, String level, String Password, String pictureURI, int points, HashMap<String,String> Friends) {
+        this.Car = car;
+        ChallengeCount = challengeCount;
+        Email = email;
+        NickName = nickName;
+        Level = level;
+        this.Password = Password;
+        PictureURI = pictureURI;
+        Points = points;
+        this.Friends = Friends;
+    }
+
+    public Car getCar() {
+        return Car;
     }
 
     public int getChallengeCount() {
         return ChallengeCount;
     }
 
-    public void setChallengeCount(int challengeCount) {
-        ChallengeCount = challengeCount;
-    }
-
-    public List<Challenge> getChallenges() {
-        return challenges;
-    }
-
-    public void setChallenges(List<Challenge> challenges) {
-        this.challenges = challenges;
-    }
-
     public String getEmail() {
         return Email;
     }
 
-    public void setEmail(String email) {
-        Email = email;
-    }
-
-    public String getFullName() {
-        return FullName;
-    }
-
-    public void setFullName(String fullName) {
-        FullName = fullName;
+    public String getNickName() {
+        return NickName;
     }
 
     public String getLevel() {
         return Level;
     }
 
-    public void setLevel(String level) {
-        Level = level;
-    }
-
     public String getPassword() {
         return Password;
     }
 
-    public void setPassword(String password) {
-        Password = password;
+    public String getPictureURI() {
+        return PictureURI;
     }
 
     public int getPoints() {
-        return points;
+        return Points;
+    }
+    public ArrayList<Challenge> getChallengeList() {
+        return challengeList;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
+    public void setChallengeList(ArrayList<Challenge> challengeList) {
+        this.challengeList = challengeList;
     }
 
-    private Car car;
-    private int ChallengeCount;
-    private List<Challenge> challenges;
-    private String Email;
-    private String FullName;
-    private String Level;
-    private String Password;
-    private int points;
-
-    public CurrentUser(Car car, int challengeCount, List<Challenge> challenges, String email, String fullName, String level, String password, int points) {
-        this.car = car;
-        ChallengeCount = challengeCount;
-        this.challenges = challenges;
-        Email = email;
-        FullName = fullName;
-        Level = level;
-        Password = password;
-        this.points = points;
+    public HashMap<String,String> getFriends() {
+        return Friends;
     }
 
-    public CurrentUser() {
+    public void setFriends(HashMap<String,String> Friends) {
+        this.Friends = Friends;
     }
 
 

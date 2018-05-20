@@ -7,50 +7,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/background"
-    android:padding="@dimen/activity_horizontal_margin"
     tools:ignore="UselessParent">
 
 
-    <ImageView
-        android:id="@+id/mainIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
-        android:contentDescription="TODO"
-        app:srcCompat="@drawable/white_logo" />
+        android:layout_alignParentBottom="true"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/transparent"
+        android:layout_height="match_parent">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/activity_opening_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/mainIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/white_logo" />
 
     <Button
         android:id="@+id/signin_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_above="@+id/textView16"
+       android:layout_above="@id/signup_button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/button_with_shape"
+        android:background="@drawable/transparent_button"
         android:fontFamily="@font/source_sans_pro"
         android:gravity="center"
         android:text="@string/sign_in"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="361dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="center"
-        android:layout_marginBottom="35dp"
-        android:fontFamily="@font/source_sans_pro"
-        android:onClick="onClick"
-        android:text="@string/sign_up"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:textStyle="bold"
-        tools:ignore="RtlHardcoded" />
+        android:textStyle="bold" />
+        <Button
+            android:id="@+id/signup_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/transparent_button"
+            android:fontFamily="@font/source_sans_pro"
+            android:gravity="center"
+            android:text="@string/sign_up"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 </RelativeLayout>

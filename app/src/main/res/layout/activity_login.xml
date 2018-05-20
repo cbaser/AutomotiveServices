@@ -55,7 +55,7 @@
             android:drawableEnd="@drawable/user"
             android:fontFamily="@font/source_sans_pro"
             android:hint="@string/email"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:padding="16dp"
             android:textColor="@color/colorLeaGreen"
             android:textColorHint="@color/colorLeaGreen"

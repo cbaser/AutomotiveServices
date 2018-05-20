@@ -1,6 +1,5 @@
 package com.gameco.cakin.automotiveservices.adapters;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -55,7 +54,6 @@ public class ChallengeCategoriesAdapter extends RecyclerView.Adapter<ChallengeCa
         startChallengeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   color = Color.parseColor("2c3e50");
                 color = Color.rgb(44, 62, 80);
                 controller.showPopUp(challenge.getChallengeTitle(),challenge.getTime(),challenge.getPoints(),challenge.getCurrent(),challenge.getTarget(), color);
             }
@@ -70,8 +68,8 @@ public class ChallengeCategoriesAdapter extends RecyclerView.Adapter<ChallengeCa
         return challengeList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public MyViewHolder(View itemView) {
+    protected class MyViewHolder extends RecyclerView.ViewHolder {
+        protected MyViewHolder(View itemView) {
             super(itemView);
             LinearLayout linearLayout = itemView.findViewById(R.id.content_challenge_categories_linearLayout);
             expandableButton = linearLayout.findViewById(R.id.expandableButton);

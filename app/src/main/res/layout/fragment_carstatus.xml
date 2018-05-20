@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,19 +28,30 @@
             android:adjustViewBounds="false"
             android:padding="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/i3_picture"
+            android:src="@drawable/bmw140i"
             tools:ignore="ContentDescription" />
 
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingSelectCarImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/car_picture"
+            android:layout_toEndOf="@+id/car_picture"
+            android:clickable="true"
+
+            android:focusable="true"
+            app:backgroundTint="@color/colorLeaGreen"
+            app:srcCompat="@drawable/ic_upload" />
 
         <TextView
             android:id="@+id/vhclTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/vehicleName"
-            android:layout_alignBottom="@+id/vehicleName"
-            android:layout_centerHorizontal="true"
+            android:layout_alignStart="@+id/car_picture"
+            android:layout_below="@+id/car_picture"
             android:paddingTop="10dp"
-            android:text="Vehicle : "
+            android:text="VIN : "
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
             android:textColor="@color/black"
             android:textSize="18sp"

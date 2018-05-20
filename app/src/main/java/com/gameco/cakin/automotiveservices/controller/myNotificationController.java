@@ -26,9 +26,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gameco.cakin.automotiveservices.R;
-import com.gameco.cakin.automotiveservices.adapters.FriendsListAdapter;
 import com.gameco.cakin.automotiveservices.datamodel.Challenge;
 import com.gameco.cakin.automotiveservices.datamodel.Friend;
+import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
+import com.gameco.cakin.automotiveservices.onesignal.SendNotification;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -52,56 +53,22 @@ import java.util.Scanner;
  */
 
 public class myNotificationController {
-    public static FirebaseDatabase mDatabase;
-    private DatabaseReference mRef;
     private Fragment fragment;
     private Activity activity;
-    private FirebaseUser user;
     private String strJsonBody;
-    private String userEmail, friendEmail;
     private boolean toSelf = true;
     private Challenge challenge;
-    private long challengeCount, points;
+    private SendNotification sendNotification;
+    private MyFirebaseDatabase myFirebaseDatabase;
+    private String friendEmail;
     public myNotificationController(Activity activity) {
         this.activity = activity;
     }
 
     public myNotificationController(Fragment fragment) {
         this.fragment = fragment;
-        mDatabase = FirebaseDatabase.getInstance();
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        mRef = mDatabase.getReference("Users").child(user.getEmail().replace(".",","));
-
-    }
-
-    public void addToDatabase(String title,Challenge incomingChallenge) {
-        try {
-         //   mDatabase = FirebaseDatabase.getInstance();
-           // mRef = mDatabase.getReference("Users");
-            DatabaseReference newRef = mRef.child("Challenges");
-            Map<String, Challenge> challenges = new HashMap<>();
-            challenges.put(title, incomingChallenge);
-                newRef.child(title).setValue(challenges);
-           // newRef.push().setValue(challenges);
-            increaseChallengeCount();
-            increasePoints();
-        } catch (Exception e) {
-            Log.e("EROOOOR AT ADDING", e.getMessage());
-        }
-
-        // newRef.setValue(challenges);
-    }
-    public void addAcceptedChallenge(Challenge incoming){
-        try {
-            DatabaseReference newRef = mRef.child("Challenges");
-            Map<String, Challenge> challenges = new HashMap<>();
-            challenges.put(incoming.getChallengeTitle(), incoming);
-            newRef.push().setValue(challenges);
-            increaseChallengeCount();
-        } catch (Exception e) {
-            Log.e("EROOOOR AT ADDING", e.getMessage());
-        }
-
+        myFirebaseDatabase = new MyFirebaseDatabase(fragment.getActivity());
+        sendNotification = new SendNotification();
     }
 
     public void sendNotificationToSelf(Activity activity, String title, String content) {
@@ -121,84 +88,34 @@ public class myNotificationController {
 
         notificationManager.notify(1, notification);
     }
-    private void setLevel(DataSnapshot dataSnapshot){
-        if (challengeCount % 5 == 0) {
-            challengeCount = 0;
 
-            String beforeLevel = (String) dataSnapshot.child("Level").getValue();
-            String afterLevel = "";
-            switch (beforeLevel) {
-                case "Newbie":
-                    dataSnapshot.getRef().child("Level").setValue("Star");
-                    afterLevel = "Star";
-                    break;
-                case "Star":
-                    dataSnapshot.getRef().child("Level").setValue("Master");
-                    afterLevel = "Master";
-                    break;
-                case "Master":
-                    dataSnapshot.getRef().child("Level").setValue("Grandmaster");
-                    afterLevel = "Grandmaster";
-                    break;
-            }
+    private String challengeToJson(){
+        Gson gson = new Gson();
+        String challengeObject = gson.toJson(challenge);
+        return challengeObject;
+    }
 
 
-            //  dataSnapshot.getRef().child("Level").setValue("Star");
-            levelUp(afterLevel);
+
+
+
+    public void levelUp() {
+        if(myFirebaseDatabase.isLevelUp()){
+            View popupView = fragment.getActivity().getLayoutInflater().inflate(R.layout.popup_level_up, null);
+            popupView.setAnimation(AnimationUtils.loadAnimation(fragment.getActivity(), R.anim.anim_popup_levelup));
+            TextView textView = (TextView) popupView.findViewById(R.id.level_up_description);
+            textView.setText(myFirebaseDatabase.getAfterLevel());
+            final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            popupWindow.showAtLocation(popupView, Gravity.CENTER, 10, 10);
+            FloatingActionButton floatingActionButton = (FloatingActionButton) popupView.findViewById(R.id.closeLevelUp);
+            floatingActionButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWindow.dismiss();
+                }
+            });
         }
-        dataSnapshot.getRef().child("ChallengeCount").setValue(challengeCount);
 
-    }
-
-    private void increaseChallengeCount() {
-
-        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                challengeCount = (long) dataSnapshot.child("ChallengeCount").getValue();
-                challengeCount = challengeCount + 1;
-                setLevel(dataSnapshot);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-    private void increasePoints(){
-       // mRef.child(LoginActivity.user_full_name).addListenerForSingleValueEvent(new ValueEventListener() {
-        mRef.addListenerForSingleValueEvent(new ValueEventListener(){
-        @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                long point = (long) dataSnapshot.child("Points").getValue();
-                point += 100;
-                dataSnapshot.getRef().child("Points").setValue(point);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-
-
-    public void levelUp(String value) {
-        View popupView = fragment.getActivity().getLayoutInflater().inflate(R.layout.popup_level_up, null);
-        popupView.setAnimation(AnimationUtils.loadAnimation(fragment.getActivity(), R.anim.anim_popup_levelup));
-        TextView textView = (TextView) popupView.findViewById(R.id.level_up_description);
-        textView.setText(value);
-        final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        popupWindow.showAtLocation(popupView, Gravity.CENTER, 10, 10);
-        FloatingActionButton floatingActionButton = (FloatingActionButton) popupView.findViewById(R.id.closeLevelUp);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
-            }
-        });
 
     }
 
@@ -231,7 +148,7 @@ public class myNotificationController {
             public void onClick(View v) {
                 toSelf = true;
                 sendNotificationToSelf(fragment.getActivity(), "Challenge Started", challenge.getTime());
-                addToDatabase(title,challenge);
+                myFirebaseDatabase.addToDatabase(title,challenge);
                 popupWindow.dismiss();
             }
         });
@@ -293,11 +210,11 @@ public class myNotificationController {
                     public void onClick(View view) {
                         toSelf = false;
                         challenge.setFriendName(friendEmail);
-                      //  setJsonBody(friendEmail, "Challenge From : " + LoginActivity.LoggedIn_User_Email);
-                        setJsonBody(friendEmail,"Challenge From :"+user.getEmail());
+
+                        sendNotification.setJsonBody(friendEmail,"Challenge From :",challengeToJson());
                         Toast.makeText(fragment.getActivity(), "Challenge Sent!", Toast.LENGTH_SHORT).show();
-                        sendNotificationToFriend();
-                        addToDatabase(challenge.getChallengeTitle(),challenge);
+                        sendNotification.sendNotificationToFriend();
+                        myFirebaseDatabase.addToDatabase(challenge.getChallengeTitle(),challenge);
                         friendWindow.dismiss();
                     }
                 });
@@ -346,10 +263,10 @@ public class myNotificationController {
         accept_challenge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setJsonBody(friendEmail, "Challenge Accepted!");
-                sendNotificationToFriend();
+                sendNotification.setJsonBody(friendEmail, "Challenge Accepted!",challengeToJson());
+                sendNotification.sendNotificationToFriend();
                 decideWindow.dismiss();
-                addToDatabase(receivedChallenge.getChallengeTitle(),receivedChallenge);
+                myFirebaseDatabase.addToDatabase(receivedChallenge.getChallengeTitle(),receivedChallenge);
             }
         });
         FloatingActionButton floatingActionButton = (FloatingActionButton) decideView.findViewById(R.id.closeAcceptChallenge);
@@ -383,9 +300,9 @@ public class myNotificationController {
                     @Override
                     public void onClick(View view) {
                         Toast.makeText(activity, "You lost 250 points!", Toast.LENGTH_SHORT).show();
-                        reducePoints();
-                        setJsonBody(friendEmail, "Challenge Rejected!");
-                        sendNotificationToFriend();
+                        myFirebaseDatabase.reducePoints();
+                        sendNotification.setJsonBody(friendEmail, "Challenge Rejected!",challengeToJson());
+                        sendNotification.sendNotificationToFriend();
                         rejectWindow.dismiss();
                     }
                 });
@@ -413,25 +330,6 @@ public class myNotificationController {
 //        }
     }
 
-    private void reducePoints() {
-    //    mDatabase = FirebaseDatabase.getInstance();
-   //     mRef = mDatabase.getReference("Users");
-        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
- //       mRef.child(LoginActivity.user_full_name).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                points = (long) dataSnapshot.child("Points").getValue();
-                points = points - 250;
-                dataSnapshot.getRef().child("Points").setValue(points);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
 
     private void setChallengeAttributes(String title, String time, long points, String current, String target) {
 
@@ -472,74 +370,9 @@ public class myNotificationController {
     }
 
 
-    public void sendNotificationToFriend() {
 
 
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                int SDK_INT = android.os.Build.VERSION.SDK_INT;
-                if (SDK_INT > 8) {
-                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                            .permitAll().build();
-                    StrictMode.setThreadPolicy(policy);
-                    try {
-                        String jsonResponse;
-                        URL url = new URL("https://onesignal.com/api/v1/notifications");
-                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                        con.setUseCaches(false);
-                        con.setDoOutput(true);
-                        con.setDoInput(true);
-                        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                        con.setRequestProperty("Authorization", "Basic NDVlYWYxZTUtNDJiZC00YTEzLThlNjctMTk0MzMwMTc3NjJm");
-                        con.setRequestMethod("POST");
 
-
-                        //     System.out.println("strJsonBody:\n" + strJsonBody);
-
-                        byte[] sendBytes = strJsonBody.getBytes("UTF-8");
-                        con.setFixedLengthStreamingMode(sendBytes.length);
-
-                        OutputStream outputStream = con.getOutputStream();
-                        outputStream.write(sendBytes);
-
-                        int httpResponse = con.getResponseCode();
-                        System.out.println("httpResponse: " + httpResponse);
-
-                        if (httpResponse >= HttpURLConnection.HTTP_OK
-                                && httpResponse < HttpURLConnection.HTTP_BAD_REQUEST) {
-                            Scanner scanner = new Scanner(con.getInputStream(), "UTF-8");
-                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
-                            scanner.close();
-                        } else {
-                            Scanner scanner = new Scanner(con.getErrorStream(), "UTF-8");
-                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
-                            scanner.close();
-                        }
-                        System.out.println("jsonResponse:\n" + jsonResponse);
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-    }
-
-    public void setJsonBody(String email, String content) {
-        Gson gson = new Gson();
-        String challengeObject = gson.toJson(challenge);
-        Log.e("LOOOOOOOOOOOOOOG", challengeObject);
-        strJsonBody = "{"
-                + "\"app_id\": \"4a5d1740-b98b-4569-9107-2de771ddc07d\","
-
-                + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + email + "\"}],"
-                + "\"contents\": {\"en\":\" " + content + "\"},"
-                + "\"data\":" + challengeObject
-                + "}";
-
-    }
 }
 // sendNotificationToSelf(activity,"Challenge Accepted!","+250 POINTS");
 

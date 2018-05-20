@@ -50,14 +50,10 @@ import java.util.Map;
  */
 
 public class FragmentMyChallenges extends Fragment  {
-    private ImageView image;
     private View view;
     public static FirebaseDatabase mDatabase;
-    private DatabaseReference mRef;
-    private myNotificationController controller;
     private  ArrayList<Challenge> challengeList;
-    private RecyclerView recyclerView;
-    private MyChallengesAdapter myChallengesAdapter;
+
 
 
     public FragmentMyChallenges(){
@@ -69,7 +65,7 @@ public class FragmentMyChallenges extends Fragment  {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance();
      //   mRef = mDatabase.getReference().child("Users").child(LoginActivity.user_full_name);
-        mRef = mDatabase.getReference().child("Users").child(user.getEmail().replace(".",","));
+       DatabaseReference mRef = mDatabase.getReference().child("Users").child(user.getEmail().replace(".",","));
         mRef.child("Challenges").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -97,10 +93,10 @@ public class FragmentMyChallenges extends Fragment  {
 
     }
     private void setRecyclerView(){
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewChallenges);
+        RecyclerView    recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewChallenges);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
-        myChallengesAdapter = new MyChallengesAdapter(this.getActivity(),challengeList);
+        MyChallengesAdapter   myChallengesAdapter = new MyChallengesAdapter(this.getActivity(),challengeList);
         recyclerView.setAdapter(myChallengesAdapter);
         myChallengesAdapter.notifyDataSetChanged();
     }
@@ -108,7 +104,6 @@ public class FragmentMyChallenges extends Fragment  {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
          view = inflater.inflate(R.layout.fragment_my_challenges,container,false);
         // ListView listView = view.findViewById(R.id.challengesList);
-        controller = new myNotificationController(this);
         try{
             getChallengesFromFirebase();
         }catch (Exception e){

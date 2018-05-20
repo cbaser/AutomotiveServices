@@ -1,7 +1,16 @@
 package com.gameco.cakin.automotiveservices.activites.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,45 +18,38 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gameco.cakin.automotiveservices.R;
-import com.gameco.cakin.automotiveservices.backend.BackendHelper;
 import com.gameco.cakin.automotiveservices.datamodel.Car;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.gameco.cakin.automotiveservices.datamodel.CurrentUser;
+import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
+
 
 /**
  * Created by cakin on 11/4/2017.
  */
 
 public class FragmentCarstatus extends Fragment {
-
-    private Car car;
-
-    public static FirebaseDatabase mDatabase;
-    private DatabaseReference mRef;
-    private FirebaseUser user;
-   // private FrontController frontController;
+    private int GALLERY = 1, CAMERA = 2;
+    private String TAG = "FragmentCarStatus";
+    private static final int PICK_IMAGE_REQUEST = 124;
     private TextView mileage,average_distance,remainingFuel,batteryLevel,nextService,ecoActive,fuelConsumption,vehicleName;
     private ImageView carPicture;
+    private MyFirebaseDatabase myFirebaseDatabase;
+    private FloatingActionButton uploadPictureBtn;
 
-
-
-    private BackendHelper backendHelper;
-
-    public FragmentCarstatus(){
-        backendHelper = new BackendHelper();
-    //    frontController = new FrontController(this);
-
-
-    }
     @Override
-    public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState)
+        {
+            myFirebaseDatabase = new MyFirebaseDatabase(this.getActivity());
         View view = inflater.inflate(R.layout.fragment_carstatus,container,false);
-    //    getCarType();
         carPicture =(ImageView) view.findViewById(R.id.car_picture);
         vehicleName =(TextView) view.findViewById(R.id.vehicleName);
         mileage = (TextView) view.findViewById(R.id.tv_mileage);
@@ -57,143 +59,95 @@ public class FragmentCarstatus extends Fragment {
         nextService = (TextView) view.findViewById(R.id.tv_next_service);
         ecoActive = (TextView) view.findViewById(R.id.tv_eco_time);
         fuelConsumption= (TextView) view.findViewById(R.id.tv_fuel_consumption);
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        setupGUI();
-//        try{
-//                car =  backendHelper.tryTelematics("Telematics");
-//            vehicleName.setText(car.getVIN());
-//             mileage = (TextView) view.findViewById(R.id.tv_mileage);
-//
-//            mileage.setText(car.getMileage().replace("\"",""));
-//
-//             average_distance = (TextView) view.findViewById(R.id.tv_av_distance);
-//
-//            average_distance.setText(car.getAverage_distance_per_week().replace("\"",""));
-//
-//             remainingFuel = (TextView) view.findViewById(R.id.tv_fuel_state);
-//
-//            remainingFuel.setText(car.getRemaining_fuel().replace("\"",""));
-//
-//
-//             batteryLevel = (TextView) view.findViewById(R.id.tv_battery_state);
-//
-//            batteryLevel.setText(car.getBatteryVoltage().replace("\"",""));
-//
-//             nextService = (TextView) view.findViewById(R.id.tv_next_service);
-//
-//            nextService.setText(car.getNextServiceDistance().replace("\"",""));
-//
-//             ecoActive = (TextView) view.findViewById(R.id.tv_eco_time);
-//
-//            ecoActive.setText(car.getActive_time_of_eco_mode().replace("\"",""));
-//
-//             fuelConsumption= (TextView) view.findViewById(R.id.tv_fuel_consumption);
-//
-//            fuelConsumption.setText(car.getFuel_consumption().replace("\"",""));
-//
-//
-//            updateCarData();
-//
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
+        uploadPictureBtn = (FloatingActionButton) view.findViewById(R.id.floatingSelectCarImage);
+        uploadPictureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            showPictureDialog();
+            }
+        });
+        setupGUIFromObject();
+
         return view;
     }
 
-    private void setupGUI(){
-        mDatabase =FirebaseDatabase.getInstance();
-        mRef = mDatabase.getReference();
-        //    mRef.child("Users").child(LoginActivity.user_full_name).addListenerForSingleValueEvent(new ValueEventListener() {
-        mRef.child("Users").child(user.getEmail().replace(".",",")).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+    private void setupGUIFromObject(){
 
-                mileage.setText((String)dataSnapshot.child("Car").child("Mileage").getValue());
-                average_distance.setText((String) dataSnapshot.child("Car").child("Average distance").getValue());
-                remainingFuel.setText((String)dataSnapshot.child("Car").child("Remaining Fuel").getValue());
-                batteryLevel.setText((String)dataSnapshot.child("Car").child("Battery Level").getValue());
-                nextService.setText((String)dataSnapshot.child("Car").child("Next Service").getValue());
-                fuelConsumption.setText((String)dataSnapshot.child("Car").child("Fuel Consumption").getValue());
-                vehicleName.setText((String)dataSnapshot.child("Car").child("vin").getValue());
-
-
-//                dataSnapshot.getRef().child("Car").child("Average distance").setValue(average_distance.getText().toString());
-//                dataSnapshot.getRef().child("Car").child("Remaining Fuel").setValue(remainingFuel.getText().toString());
-//                dataSnapshot.getRef().child("Car").child("Next Service").setValue(nextService.getText().toString());
-//                dataSnapshot.getRef().child("Car").child("Fuel Consumption").setValue(fuelConsumption.getText().toString());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
+        CurrentUser currentUser = myFirebaseDatabase.getUserFromPreferences();
+        Car car = currentUser.getCar();
+        mileage.setText(car.getMileage());
+        average_distance.setText(car.getAverage_Distance());
+        remainingFuel.setText(car.getRemaining_Fuel());
+        batteryLevel.setText(car.getBattery_Level());
+        nextService.setText(car.getNext_Service_Distance());
+        fuelConsumption.setText(car.getFuel_Consumption());
+        vehicleName.setText(car.getVIN());
+        ecoActive.setText(car.getECO_Time());
+        myFirebaseDatabase.getCarImage(carPicture);
 
     }
-
-
-
-    private void updateCarData(){
-        mDatabase =FirebaseDatabase.getInstance();
-         mRef = mDatabase.getReference();
-     //    mRef.child("Users").child(LoginActivity.user_full_name).addListenerForSingleValueEvent(new ValueEventListener() {
-        mRef.child("Users").child(user.getEmail().replace(".",",")).addListenerForSingleValueEvent(new ValueEventListener() {
-             @Override
-             public void onDataChange(DataSnapshot dataSnapshot) {
-                 dataSnapshot.getRef().child("Car").child("Mileage").setValue(mileage.getText().toString());
-                 dataSnapshot.getRef().child("Car").child("Average distance").setValue(average_distance.getText().toString());
-                 dataSnapshot.getRef().child("Car").child("Remaining Fuel").setValue(remainingFuel.getText().toString());
-                 dataSnapshot.getRef().child("Car").child("Next Service").setValue(nextService.getText().toString());
-                 dataSnapshot.getRef().child("Car").child("Fuel Consumption").setValue(fuelConsumption.getText().toString());
-             }
-
-             @Override
-             public void onCancelled(DatabaseError databaseError) {
-
-             }
-         });
-
+    private void showPictureDialog(){
+        AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this.getActivity());
+        pictureDialog.setTitle("Select Action");
+        String[] pictureDialogItems = {
+                "Select photo from gallery",
+                "Capture photo from camera" };
+        pictureDialog.setItems(pictureDialogItems,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case 0:
+                                choosePhotoFromGallery();
+                                break;
+                            case 1:
+                                takePhotoFromCamera();
+                                break;
+                        }
+                    }
+                });
+        pictureDialog.show();
     }
-    private void setVehicleInfo(String carType){
+    public void choosePhotoFromGallery() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-        switch (carType) {
-            case "BMW i3":
-                carPicture.setImageDrawable(this.getActivity().getResources().getDrawable(R.drawable.i3_picture));
-                break;
-            case "BMW 120d":
-                carPicture.setImageDrawable(this.getActivity().getResources().getDrawable(R.drawable.bmw120d));
-                break;
-            case "BMW 140i":
-                carPicture.setImageDrawable(this.getActivity().getResources().getDrawable(R.drawable.bmw140i));
-                break;
-            case "BMW M235i":
-                carPicture.setImageDrawable(this.getActivity().getResources().getDrawable(R.drawable.bmwm235i));
-                break;
+        startActivityForResult(galleryIntent, GALLERY);
+    }
+
+    private void takePhotoFromCamera() {
+        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, CAMERA);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+        if (resultCode == RESULT_CANCELED) {
+            return;
+        }
+        if(requestCode ==GALLERY && requestCode ==RESULT_OK&& data!=null && data.getData()!=null){
+            Uri filePath = data.getData();
+            Log.e(TAG, filePath.getEncodedPath());
+            try {
+                InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                myFirebaseDatabase.uploadCarImage(bitmap);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+        if (requestCode == CAMERA && resultCode == RESULT_OK ) {
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            myFirebaseDatabase.uploadCarImage(bitmap);
+
         }
     }
-    private void getCarType(){
 
-        mDatabase =FirebaseDatabase.getInstance();
-        mRef = mDatabase.getReference();
-        user = FirebaseAuth.getInstance().getCurrentUser();
 
-     //   mRef.child("Users").child(LoginActivity.user_full_name).child("Car").addListenerForSingleValueEvent(new ValueEventListener() {
-        mRef.child("Users").child(user.getEmail().replace(".",",")).child("Car").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String type  = (String) dataSnapshot.child("carName").getValue();
-                setVehicleInfo(type);
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
 
 }

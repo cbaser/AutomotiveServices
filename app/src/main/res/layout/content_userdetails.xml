@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="300dp"
-    android:padding="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="450dp"
     android:background="@color/white"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    >
+    android:padding="@dimen/activity_horizontal_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,8 +17,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:focusable="true"
             android:padding="@dimen/activity_horizontal_margin">
 
             <ImageView
@@ -30,50 +29,66 @@
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:cropToPadding="false"
-                android:visibility="visible"
                 android:src="@drawable/ic_mail"
+                android:visibility="visible"
                 tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/tvdepartureTime"
+                android:id="@+id/txtEmail_Profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_toEndOf="@id/icItem2"
-                android:layout_toRightOf="@id/icItem2"
-
+                android:fontFamily="@font/source_sans_pro"
                 android:text="@string/email"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/edit_profile_email"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvdepartureTime"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_below="@id/txtEmail_Profile"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/icItem2"
-                android:layout_toRightOf="@id/icItem2"
-
-                android:text="E-mail"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:background="@drawable/search_layout"
+                android:fontFamily="@font/source_sans_pro"
+                android:hint="New E-mail"
                 android:textColor="@color/black"
                 tools:ignore="HardcodedText"
                 tools:text="E-Mail" />
 
+            <TextView
+                android:id="@+id/txtProfile_Email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/txtEmail_Profile"
+                android:layout_toEndOf="@+id/txtEmail_Profile"
+                android:fontFamily="@font/source_sans_pro"
+                android:text=""
+                android:textColor="@color/black" />
+
 
         </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/profileUpdateEmailBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_with_shape"
+            android:fontFamily="@font/source_sans_pro"
+            android:text="Update Email Address" />
+
 
         <include layout="@layout/item_divider" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
+            android:focusable="true"
             android:padding="@dimen/activity_horizontal_margin">
 
             <ImageView
@@ -82,24 +97,69 @@
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:src="@drawable/blackbmw"
                 tools:ignore="ContentDescription" />
 
             <TextView
+                android:id="@+id/txtChangePassword_Profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_toEndOf="@id/icItem3"
-                android:layout_toRightOf="@id/icItem3"
                 android:ellipsize="end"
+                android:fontFamily="@font/source_sans_pro"
                 android:maxLines="1"
-                android:text="@string/additionalInfo"
+                android:text="Change Password"
                 android:textAppearance="@style/TextAppearance.AppCompat.Menu"
                 android:textColor="@color/black" />
 
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_profile_old_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtChangePassword_Profile"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/icItem3"
+                android:background="@drawable/search_layout"
+                android:fontFamily="@font/source_sans_pro"
+                android:hint="Old Password"
+                android:textColor="@color/black"
+                android:inputType="textPassword" />
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_profile_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_profile_old_password"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/icItem3"
+                android:background="@drawable/search_layout"
+                android:textColor="@color/black"
+                android:fontFamily="@font/source_sans_pro"
+                android:hint="New Password"
+                android:inputType="textPassword" />
+
         </RelativeLayout>
+
+        <Button
+            android:id="@+id/profileUpdatePasswordBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_with_shape"
+            android:fontFamily="@font/source_sans_pro"
+            android:text="Update Password" />
+
+
+        <include layout="@layout/item_divider" />
+        <Button
+            android:id="@+id/profileDeleteBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_with_shape"
+            android:fontFamily="@font/source_sans_pro"
+            android:text="Delete Account" />
 
     </LinearLayout>
 

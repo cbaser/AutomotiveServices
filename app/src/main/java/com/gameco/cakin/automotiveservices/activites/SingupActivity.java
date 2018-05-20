@@ -25,6 +25,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class SingupActivity extends AppCompatActivity {
     private Button signupBtn;
@@ -33,8 +35,7 @@ public class SingupActivity extends AppCompatActivity {
     private BackendHelper backendHelper;
     private ProgressBar progressBar;
 
-//    private DatabaseReference rootRef;
-//    private FirebaseDatabase firebaseDatabase;
+    private StorageReference picsRef;
     private MyFirebaseDatabase myFirebaseDatabase;
     private RelativeLayout layout;
     private String[] tmp;
@@ -45,8 +46,6 @@ public class SingupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
-      //  firebaseDatabase = FirebaseDatabase.getInstance();
-       // rootRef = firebaseDatabase.getReference("Users");
         myFirebaseDatabase = new MyFirebaseDatabase(this);
         setContentView(R.layout.activity_singup);
         backendHelper = new BackendHelper();
@@ -77,29 +76,11 @@ public class SingupActivity extends AppCompatActivity {
                 if (!validateForm()) {
                     return;
                 }
-                if(passwordField.getText().toString().length()<6){
-                    Toast.makeText(SingupActivity.this, "Password must be at least 6 characters",
-                            Toast.LENGTH_SHORT).show();
-                }
+
 
                 else
                     createAccount();
-//                checkUserInFirebase(eMailField.getText().toString(), new OnCheckUserExist() {
-//                    @Override
-//                    public void exist() {
-//                        Toast toast = Toast.makeText(getBaseContext(), "User exists",Toast.LENGTH_SHORT);
-//                        toast.show();
-//                    }
-//
-//                    @Override
-//                    public void notExist() {
-//                        Log.d(TAG,"--------User Not Exists-----");
-//                        createAccount();
-//                    }
-//                });
-             //  createAccount();
-                // createAccount(eMailField.getText().toString(),passwordField.getText().toString(),fullNameField.getText().toString(),VINField.getText().toString());
-            }
+     }
         });
         sback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,17 +96,22 @@ public class SingupActivity extends AppCompatActivity {
         tmp[0] = "VIN";
         tmp[1] = VINField.getText().toString();
         progressBar.setVisibility(View.VISIBLE);
-        String response = backendHelper.tryRegister(tmp);
-        if(response.contains("OK")){
+        String response =backendHelper.tryRegister(tmp);
+        Log.e(TAG,response);
+        if(response.equals("OK")){
             firebaseAuth.createUserWithEmailAndPassword(eMailField.getText().toString(),passwordField.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         Log.e(TAG, "createUserWithEmail:success");
 
-                        Toast.makeText(SingupActivity.this, "Account created.",
-                                Toast.LENGTH_SHORT).show();
-                        myFirebaseDatabase.createAccountInFirebaseDatabase(eMailField.getText().toString(),passwordField.getText().toString(),nicknameField.getText().toString(),VINField.getText().toString(),"images_"+eMailField.getText().toString().replace(".",","));
+                        Toast.makeText(SingupActivity.this, "Account created.",Toast.LENGTH_SHORT).show();
+                        myFirebaseDatabase.createAccountInFirebaseDatabase(eMailField.getText().toString(),
+                                passwordField.getText().toString(),
+                                nicknameField.getText().toString(),
+                                VINField.getText().toString(),
+                                "No Picture");
+
                         Toast.makeText(SingupActivity.this, "Please log in",
                                 Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(SingupActivity.this, OpeningActivity.class));
@@ -138,6 +124,8 @@ public class SingupActivity extends AppCompatActivity {
                 }
             });
         }
+        else
+            Log.e(TAG,response);
             progressBar.setVisibility(View.GONE);
 
 
@@ -165,6 +153,10 @@ public class SingupActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(VIN)){
             VINField.setError("Required");
             valid =false;
+        }
+        if(passwordField.getText().toString().length()<6){
+            Toast.makeText(SingupActivity.this, "Password must be at least 6 characters",
+                    Toast.LENGTH_SHORT).show();
         }
         else
             VINField.setError(null);

@@ -1,25 +1,34 @@
 package com.gameco.cakin.automotiveservices.activites;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 
 import com.gameco.cakin.automotiveservices.R;
+import com.gameco.cakin.automotiveservices.adapters.SlideViewPagerAdapter;
 
 
-public class OpeningActivity extends AppCompatActivity {
+public class OpeningActivity extends AppCompatActivity{
     private long backPressedTime = 0;
-    //private TextView singup;
+    private VideoView videoView;
+    private Button signup;
     private Button singin;
     private ImageView mainIcon;
+
+
+    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,16 +36,33 @@ public class OpeningActivity extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.anim_from_bottom_bounce);
         mainIcon = (ImageView) findViewById(R.id.mainIcon);
         mainIcon.setAnimation(animation);
-       // singup = (TextView) findViewById(R.id.singupLayout);
-        singin = (Button) findViewById(R.id.signin_button);
 
-//        singup.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//            }
-//        });
+        singin = (Button) findViewById(R.id.signin_button);
+        signup = (Button) findViewById(R.id.signup_button);
+
+        viewPager = (ViewPager) findViewById(R.id.activity_opening_pager);
+        videoView = (VideoView) findViewById(R.id.videoView);
+
+
+
+
+        try {
+            videoView.setMediaController(null);
+            videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.game_eco_video));
+        } catch (Exception e) {
+            Log.e("Error", e.getMessage());
+            e.printStackTrace();
+
+        }
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setVolume(0, 0);
+                mp.setLooping(true);
+            }
+        });
+        videoView.start();
+
 
         singin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,10 +72,34 @@ public class OpeningActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainIcon.setAnimation(null);
+                Intent it = new Intent(OpeningActivity.this,SingupActivity.class);
+                startActivity(it);
+            }
+        });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        videoView.start();
+    }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
+
+
     @Override
     public void onBackPressed() {
         backPressedTime = (backPressedTime + 1);
@@ -62,10 +112,11 @@ public class OpeningActivity extends AppCompatActivity {
             OpeningActivity.this.finish();
         }
     }
-    public void onClick(View v){
-        mainIcon.setAnimation(null);
-        Intent it = new Intent(OpeningActivity.this,SingupActivity.class);
-        startActivity(it);
-    }
+    private void setupViewPager(){
+        String [] titles = new String[]{"Reduce Fuel Consumption","Get Benefits","Play with your friends"};
+        String [] descriptions = new String[]{"Earn money","Get free coffee","Challenge to your friends"};
+        SlideViewPagerAdapter slideViewPagerAdapter = new SlideViewPagerAdapter(this,titles,descriptions);
+        viewPager.setAdapter(slideViewPagerAdapter);
 
+    }
 }

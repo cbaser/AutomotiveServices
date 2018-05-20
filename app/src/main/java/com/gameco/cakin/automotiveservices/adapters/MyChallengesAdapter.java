@@ -69,10 +69,10 @@ public class MyChallengesAdapter extends RecyclerView.Adapter<MyChallengesAdapte
         txtTime.setText(challenge.getTime());
         txtFriendName.setText(challenge.getFriendName());
         txtTitle.setText(challenge.getChallengeTitle());
-        if(txtFriendName.getText().toString().contains("Can")||txtFriendName.getText().toString().contains("can"))
-            profPic.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_can));
-        else
-            profPic.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_cagatay));
+//        if(txtFriendName.getText().toString().contains("Can")||txtFriendName.getText().toString().contains("can"))
+//            profPic.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_can));
+//        else
+//            profPic.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_cagatay));
 
         if(challenge.isWinner()){
             txtWinner.setText("Congratulations you are on the lead");
@@ -131,10 +131,10 @@ public class MyChallengesAdapter extends RecyclerView.Adapter<MyChallengesAdapte
 
 
         ImageView friendImage = (ImageView) detailView.findViewById(R.id.txtdetailFriendPic);
-        if(txtDetailFriendName.getText().toString().contains("Can")||txtDetailFriendName.getText().toString().contains("can"))
-        friendImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_can));
-        else
-            friendImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_cagatay));
+//        if(txtDetailFriendName.getText().toString().contains("Can")||txtDetailFriendName.getText().toString().contains("can"))
+//        friendImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_can));
+//        else
+//            friendImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_cagatay));
 
         FloatingActionButton exitmyChallenge = (FloatingActionButton) detailView.findViewById(R.id.exitdetail);
         exitmyChallenge.setOnClickListener(new View.OnClickListener() {
