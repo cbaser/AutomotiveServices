@@ -16,6 +16,8 @@
         android:scrollbars="vertical"
         android:id="@+id/recyclerViewChallengeCategories"/>
 
+
+
 </ScrollView>
 <!--
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"

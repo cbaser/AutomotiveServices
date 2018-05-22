@@ -1,33 +1,18 @@
 package com.gameco.cakin.automotiveservices.activites.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.adapters.ChallengeCategoriesAdapter;
-import com.gameco.cakin.automotiveservices.adapters.MyChallengesAdapter;
-import com.gameco.cakin.automotiveservices.controller.myNotificationController;
 import com.gameco.cakin.automotiveservices.datamodel.Challenge;
 import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
-import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 
 /**
@@ -49,7 +34,7 @@ public class FragmentChallengeCategories extends Fragment {
 
     private void setRecyclerView() {
         ArrayList<Challenge> challengeList = myFirebaseDatabase.getChallengesFromPreferences();
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewChallengeCategories);
+        RecyclerView recyclerView =  view.findViewById(R.id.recyclerViewChallengeCategories);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
 

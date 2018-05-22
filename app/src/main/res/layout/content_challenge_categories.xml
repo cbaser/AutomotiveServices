@@ -16,20 +16,20 @@
         android:drawableEnd="@android:drawable/arrow_down_float"
         android:fontFamily="@font/source_sans_pro"
         android:paddingEnd="10dp"
+        android:paddingStart="10dp"
         android:text="TITLE"
         android:textColor="#fff" />
 
     <com.github.aakira.expandablelayout.ExpandableLinearLayout
         android:id="@+id/expandableLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="150dp"
         android:background="@color/fbutton_color_midnight_blue"
-        android:padding="12dp"
-        android:paddingBottom="10dp"
         app:ael_duration="400"
-        app:ael_expanded="true"
+        app:ael_expanded="false"
+        android:orientation="vertical"
         app:ael_interpolator="fastOutLinearIn"
-        app:ael_orientation="horizontal">
+        >
 
         <TextView
             android:id="@+id/expandableLayout_description_title"
@@ -86,3 +86,94 @@
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 </LinearLayout>
+
+    <!--
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/content_challenge_categories_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/expandableButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/fbutton_color_midnight_blue"
+            android:drawableEnd="@android:drawable/arrow_down_float"
+            android:fontFamily="@font/source_sans_pro"
+            android:paddingEnd="10dp"
+            android:text="TITLE"
+            android:textColor="#fff" />
+
+        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+            android:id="@+id/expandableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/fbutton_color_midnight_blue"
+            android:padding="12dp"
+            android:paddingBottom="10dp"
+            app:ael_duration="400"
+            app:ael_expanded="true"
+            app:ael_interpolator="fastOutLinearIn"
+            app:ael_orientation="horizontal">
+
+            <TextView
+                android:id="@+id/expandableLayout_description_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fontFamily="@font/source_sans_pro"
+                android:paddingBottom="5dp"
+                android:text="Title:"
+                android:textColor="@color/colorLeaGreen"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/expandableLayout_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expandableLayout_description_title"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="Description: "
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/expandableLayout_current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/expandableLayout_description"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="Current"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/expandableLayout_target"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/expandableLayout_current"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="Target:"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/expandableLayout_start_challenge_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expandableLayout_target"
+                android:background="@color/colorLeaGreen"
+                android:fontFamily="@font/source_sans_pro"
+                android:text="Start!" />
+
+
+        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+    </LinearLayout>
+    -->
