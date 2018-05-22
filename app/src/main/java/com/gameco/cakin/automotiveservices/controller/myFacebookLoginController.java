@@ -1,5 +1,6 @@
 package com.gameco.cakin.automotiveservices.controller;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -34,13 +35,12 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class myFacebookLoginController extends myLoginController {
 
     private CallbackManager callbackManager;
-    private LoginManager loginManager;
     private String TAG="Facebook Login Controller";
-    private ArrayList<String> arrayList;
     private AccessToken accessToken;
 
 
@@ -52,9 +52,9 @@ public class myFacebookLoginController extends myLoginController {
     @Override
     public void initialize() {
         callbackManager = CallbackManager.Factory.create();
-        AppEventsLogger.activateApp(appCompatActivity);
-        FacebookSdk.sdkInitialize(appCompatActivity);
-        loginManager = LoginManager.getInstance();
+        //AppEventsLogger.activateApp(appCompatActivity);
+        //FacebookSdk.sdkInitialize(appCompatActivity);
+        //LoginManager loginManager = LoginManager.getInstance();
         LoginManager.getInstance().setLoginBehavior(LoginBehavior.WEB_ONLY);
     }
 
@@ -66,13 +66,13 @@ public class myFacebookLoginController extends myLoginController {
 
     @Override
     public boolean checkPreferences() {
-        sharedPreferences = appCompatActivity.getSharedPreferences("facebookPrefs",appCompatActivity.getApplicationContext().MODE_PRIVATE);
+        sharedPreferences = appCompatActivity.getSharedPreferences("facebookPrefs", Context.MODE_PRIVATE);
         if(!sharedPreferences.contains("initialized")){
             editor = sharedPreferences.edit();
 
             //Indicate that the default shared prefs have been set
             editor.putBoolean("initialized", true);
-            editor.commit();
+            editor.apply();
             return false;
         }
         return true;
@@ -80,7 +80,7 @@ public class myFacebookLoginController extends myLoginController {
 
     @Override
     public void startLogin() {
-        final LoginButton loginButton = (LoginButton) appCompatActivity.findViewById(R.id.login_button);
+        final LoginButton loginButton = appCompatActivity.findViewById(R.id.login_button);
         loginButton.setReadPermissions(Arrays.asList(
                 "public_profile", "email", "user_birthday"));
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -104,23 +104,6 @@ public class myFacebookLoginController extends myLoginController {
 
     }
 
-    public void setAccessToken(){
-        this.accessToken = AccessToken.getCurrentAccessToken();
-    }
-
-    public AccessToken getAccessToken(){
-        return accessToken;
-    }
-    public boolean checkLoggedIn(){
-        setAccessToken();
-        if(accessToken != null){
-            handleFacebookAccessToken(accessToken);
-            return true;
-        }
-        else return false;
-    }
-
-
     @Override
     public void activityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
@@ -143,10 +126,10 @@ public class myFacebookLoginController extends myLoginController {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            /**User has logged in with facebook before **/
+                            /** User has logged in with facebook before **/
                             if(checkPreferences()){
                                 Log.e("Facebook Controller", "signInWithCredential:success");
-                                OneSignal.sendTag("User_ID", firebaseAuth.getCurrentUser().getEmail());
+                                OneSignal.sendTag("User_ID", Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail());
                                 startMainActivity();
                             }
                             else
@@ -168,7 +151,6 @@ public class myFacebookLoginController extends myLoginController {
                 });
     }
     private void getFacebookInfo(AccessToken accessToken){
-      arrayList = new ArrayList<>();
         Bundle parameters = new Bundle();
         GraphRequest myRequest = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
             @Override
@@ -176,11 +158,11 @@ public class myFacebookLoginController extends myLoginController {
                 try {
                     Profile profile = Profile.getCurrentProfile();
                     if (profile != null) {
-                        startRegistration((String) object.getString("email"),(String) object.getString("name"), profile.getProfilePictureUri(100, 100).toString());
+                        startRegistration(object.getString("email"), object.getString("name"), profile.getProfilePictureUri(100, 100).toString());
                         //  myFirebaseDatabase.createAccountInFirebaseDatabase((String)object.getString("email"),"Provided by 3rd Party", (String) object.getString("name"),VIN, profile.getProfilePictureUri(100, 100).toString());
                     }
                     else{
-                        Toast.makeText(appCompatActivity,"Failed To Connect Facebook",Toast.LENGTH_LONG);
+                        Toast.makeText(appCompatActivity,"Failed To Connect Facebook",Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

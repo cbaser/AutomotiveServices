@@ -29,15 +29,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.onesignal.OneSignal;
-//import com.onesignal.OneSignal;
 
 public abstract class myLoginController {
-    protected BackendHelper backendHelper;
-    protected SharedPreferences sharedPreferences;
-    protected FirebaseAuth firebaseAuth;
+    private BackendHelper backendHelper;
+    SharedPreferences sharedPreferences;
+    FirebaseAuth firebaseAuth;
     protected MyFirebaseDatabase myFirebaseDatabase;
-    protected SharedPreferences.Editor editor;
-    public AppCompatActivity appCompatActivity;
+    SharedPreferences.Editor editor;
+    AppCompatActivity appCompatActivity;
     abstract void initialize();
      abstract void handleAccount();
     public myLoginController(AppCompatActivity appCompatActivity){

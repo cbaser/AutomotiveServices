@@ -49,7 +49,6 @@ public class FragmentChallengeCategories extends Fragment {
 
     private void setRecyclerView() {
         ArrayList<Challenge> challengeList = myFirebaseDatabase.getChallengesFromPreferences();
-
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewChallengeCategories);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);

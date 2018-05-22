@@ -1,10 +1,12 @@
 package com.gameco.cakin.automotiveservices.datamodel;
 
+import android.support.annotation.NonNull;
+
 /**
  * Created by cakin on 12/27/2017.
  */
 
-public class Rank {
+public class Rank implements Comparable{
 
 
     public String getNickName() {
@@ -31,6 +33,13 @@ public class Rank {
     public Rank(String nickName, long points) {
         NickName = nickName;
         Points = points;
+    }
+
+    @Override
+    public int compareTo(@NonNull Object o) {
+        long comparePoints=((Rank)o).getPoints();
+        /* For Ascending order*/
+        return (int)this.Points-(int)comparePoints;
     }
 
 //    private String nickname;

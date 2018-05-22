@@ -119,7 +119,8 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
         ImageView imageView = popupView.findViewById(R.id.popup_friend_profpic);
         if(myFirebaseDatabase.isCurrentUser(currentUser.getEmail()))
             addFriends.setVisibility(View.INVISIBLE);
-
+        if(!requestType)
+            addFriends.setVisibility(View.INVISIBLE);
 
         tvName.setText(currentUser.getNickName());
         tvDescription.setText(currentUser.getEmail());

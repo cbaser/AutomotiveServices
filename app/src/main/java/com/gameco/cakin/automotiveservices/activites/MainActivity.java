@@ -12,11 +12,14 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import com.gameco.cakin.automotiveservices.R;
 
+import com.gameco.cakin.automotiveservices.backend.BackendHelper;
 import com.gameco.cakin.automotiveservices.controller.myActivityController;
 
 //import com.gameco.cakin.automotiveservices.onesignal.NotificationOpenedHandler;
 //import com.gameco.cakin.automotiveservices.onesignal.NotificationReceivedHandler;
 
+import com.gameco.cakin.automotiveservices.datamodel.Car;
+import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
 import com.gameco.cakin.automotiveservices.onesignal.NotificationOpenedHandler;
 import com.gameco.cakin.automotiveservices.onesignal.NotificationReceivedHandler;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private myFacebookLoginController myFacebookLoginController;
     private myGoogleLoginController myGoogleLoginController;
     private myActivityController activityController;
+    private MyFirebaseDatabase myFirebaseDatabase;
 
     /**Save App to Database code : scp -r gameco.apk MSP@vmkrcmar20.informatik.tu-muenchen.de:/var/www/html/uploads*/
     /** Download app Link : http://vmkrcmar20.informatik.tu-muenchen.de/uploads/gameco.apk*/
@@ -47,12 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         myFacebookLoginController = new myFacebookLoginController(this);
         myGoogleLoginController = new myGoogleLoginController(this);
-        OneSignal.startInit(this)
-                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-                .setNotificationOpenedHandler(new NotificationOpenedHandler(this))
-                .setNotificationReceivedHandler(new NotificationReceivedHandler(this))
-                .unsubscribeWhenNotificationsAreDisabled(true)
-                .init();
+
 
 
 
@@ -70,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 Uri deeplink;
                 if(pendingDynamicLinkData != null){
                     deeplink = pendingDynamicLinkData.getLink();
+                    Log.e(TAG,deeplink.toString());
                 }
             }
         });
@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
         return true;
     }
 
@@ -132,27 +133,22 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_refresh) {
+            Toast.makeText(this,"Refreshing",Toast.LENGTH_LONG).show();
+            myFirebaseDatabase = new MyFirebaseDatabase(this);
+            myFirebaseDatabase.getFriendRequestFromDatabase();
+            myFirebaseDatabase.getFriendsFromDatabase();
+            myFirebaseDatabase.setUserInfoToPreferences();
+            myFirebaseDatabase.setRankingToPreferences();
+            myFirebaseDatabase.setChallengeInfoToPreferences();
+            BackendHelper backendHelper = new BackendHelper();
+            Car car = backendHelper.tryTelematics("Telematics");
+            myFirebaseDatabase.updateCarData(car);
+            Toast.makeText(this,"Refreshed!",Toast.LENGTH_LONG).show();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    public void registerComponents(Context context, Glide glide, Registry registry) {
-//        // Register FirebaseImageLoader to handle StorageReference
-//   //    registry.append(StorageReference.class,InputStream.class,new F);
-//    }
 }
-//  private FrontController frontController;
-//    frontController = new FrontController(this);
-// TransitionController_deprecated transitionController = new TransitionController_deprecated(this);
-//   frontController.createActivity();
-//   transitionController.onCreate();
-//    transitionController.showDailyChallenge();
-//                Intent a = new Intent(Intent.ACTION_MAIN);
-//                a.addCategory(Intent.CATEGORY_HOME);
-//                a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(a);
-//                this.finish();

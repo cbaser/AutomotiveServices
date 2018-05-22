@@ -10,11 +10,14 @@ import android.util.Log;
 
 import com.gameco.cakin.automotiveservices.controller.myNotificationController;
 import com.gameco.cakin.automotiveservices.datamodel.Challenge;
+import com.gameco.cakin.automotiveservices.datamodel.CurrentUser;
+import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
 import com.google.gson.Gson;
 import com.onesignal.OSNotificationAction;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OneSignal;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -27,22 +30,35 @@ import org.json.JSONObject;
 
 
 public class NotificationOpenedHandler implements OneSignal.NotificationOpenedHandler {
-    private Activity activity;
+
     private myNotificationController notificationController;
+    private MyFirebaseDatabase myFirebaseDatabase;
     public NotificationOpenedHandler(Activity activity){
-        this.activity = activity;
         notificationController = new myNotificationController(activity);
+        myFirebaseDatabase = new MyFirebaseDatabase(activity);
     }
     @Override
     public void notificationOpened(OSNotificationOpenResult result) {
         try{
+
             JSONObject data = result.notification.payload.additionalData;
+            JSONArray array = data.getJSONArray("dataFromNotification");
+            Gson gson = new Gson();
             String tmp = data.toString();
-            if(!tmp.contains("Accepted!")&& !tmp.contains("Rejected!")){
-                Gson gson = new Gson();
-                Challenge receivedChallenge = gson.fromJson(tmp,Challenge.class);
-                notificationController.acceptOrDeclineChallenge(receivedChallenge);
+            if(tmp.contains("challenge")){
+                Challenge challenge = gson.fromJson(array.getJSONObject(0).toString(),Challenge.class);
+                CurrentUser currentUser = gson.fromJson(array.getJSONObject(1).toString(),CurrentUser.class);
+                notificationController.acceptOrDeclineChallenge(challenge,currentUser);
             }
+            if(tmp.contains("Friend Requests")){
+                CurrentUser currentUser = gson.fromJson(array.getJSONObject(1).toString(),CurrentUser.class);
+                myFirebaseDatabase.addFriend(currentUser.getEmail());
+
+            }
+
+
+
+
         }catch(Exception e){
             e.printStackTrace();
         }

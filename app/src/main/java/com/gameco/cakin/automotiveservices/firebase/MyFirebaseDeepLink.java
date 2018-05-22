@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,7 +26,7 @@ public class MyFirebaseDeepLink {
     }
 
 
-        public void shareLongDynamicLink(View view) {
+        public void shareLongDynamicLink() {
             Intent intent = new Intent();
             String msg = "Install GamECO " + buildDynamicLink();
             intent.setAction(Intent.ACTION_SEND);
@@ -65,6 +66,11 @@ public class MyFirebaseDeepLink {
                             intent.setType("text/plain");
                             activity.startActivity(intent);
                         }
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<ShortDynamicLink>() {
+                    @Override
+                    public void onComplete(@NonNull Task<ShortDynamicLink> task) {
+                        Toast.makeText(activity,"Share GamECO",Toast.LENGTH_LONG).show();
                     }
                 });
     }

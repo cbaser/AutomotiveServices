@@ -3,6 +3,7 @@ package com.gameco.cakin.automotiveservices.activites;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +18,6 @@ import com.gameco.cakin.automotiveservices.datamodel.Car;
 import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
 
 public class ProgressActivity extends AppCompatActivity {
-private Car car;
 private MyFirebaseDatabase firebaseDatabase;
 private BackendHelper backendHelper;
 private static Activity activity;
@@ -31,7 +31,7 @@ private ProgressBar progressBar;
         activity = ProgressActivity.this;
          progressBar = findViewById(R.id.progressBar_activity);
         progressBar.setIndeterminate(true);
-//        progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.fbutton_color_midnight_blue), android.graphics.PorterDuff.Mode.SRC_IN);
+        progressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.fbutton_color_midnight_blue), PorterDuff.Mode.MULTIPLY);
         firebaseDatabase = new MyFirebaseDatabase(this);
         backendHelper = new BackendHelper();
 
@@ -47,7 +47,7 @@ private ProgressBar progressBar;
 
 
         }catch (Exception e){
-            Toast.makeText(this,"Please Check your Internet Connection and try again",Toast.LENGTH_LONG);
+            Toast.makeText(this,"Please Check your Internet Connection and try again",Toast.LENGTH_LONG).show();
           Intent i = new Intent(ProgressActivity.this, LoginActivity.class);
           startActivity(i);
         }
@@ -60,14 +60,16 @@ private ProgressBar progressBar;
             public void run() {
                 try{
                     Thread.sleep(5000);
-                    car = backendHelper.tryTelematics("Telematics");
+                    Car  car = backendHelper.tryTelematics("Telematics");
                     firebaseDatabase.updateCarData(car);
 
 
                 }
                 catch (Exception e) {
 
-                  e.printStackTrace();} // Just catch the InterruptedException
+                    Toast.makeText(getApplicationContext(),"Please Check your Internet Connection and try again",Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(ProgressActivity.this, LoginActivity.class);
+                    startActivity(i);} // Just catch the InterruptedException
 
                 // Now we use the Handler to post back to the main thread
                 handler.post(new Runnable() {

@@ -12,6 +12,8 @@ import com.gameco.cakin.automotiveservices.adapters.RankingAdapter;
 import com.gameco.cakin.automotiveservices.datamodel.Rank;
 import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,6 +30,7 @@ public class FragmentRanking extends Fragment {
         RankingAdapter    rankingAdapter = new RankingAdapter(this.getActivity(),rankList);
 
         ListView   rankListView = (ListView) view.findViewById(R.id.leaderboardListView);
+
         ViewGroup header_ranking = (ViewGroup)inflater.inflate(R.layout.header_ranking_list,rankListView,false);
         rankListView.addHeaderView(header_ranking);
         rankListView.setAdapter(rankingAdapter);

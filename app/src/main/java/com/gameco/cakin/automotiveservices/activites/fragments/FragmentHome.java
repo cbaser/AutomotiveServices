@@ -40,7 +40,6 @@ public class FragmentHome extends Fragment {
     private TextView txtScore, txtProgressCount, txtLevel, txtWelcome, txtheaderName, txtheaderEmail;
     private ProgressBar progressBar;
     private Challenge dailyChallenge,weeklyChallenge;
-    private CardView dailyChallengeCardView,weeklyChallengeCardView;
     private LinearLayout dailyChallengeLayout,weeklyChallengeLayout;
 
     @Override
@@ -63,7 +62,7 @@ public class FragmentHome extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         /**Initialize Part */
-        controller = new myNotificationController(this);
+        controller = new myNotificationController(this.getActivity());
         firebaseDatabase = new MyFirebaseDatabase(this.getActivity());
         RelativeLayout homeMainLayout = view.findViewById(R.id.home_mainLayout);
         txtScore = homeMainLayout.findViewById(R.id.txtScore);
@@ -77,9 +76,9 @@ public class FragmentHome extends Fragment {
         txtheaderName = headerLayout.findViewById(R.id.userTextV);
         txtheaderEmail = headerLayout.findViewById(R.id.userEmailV);
         imageView = (ImageView) homeMainLayout.findViewById(R.id.profPic);
-        dailyChallengeCardView = (CardView) view.findViewById(R.id.cardview_daily_content);
+        CardView dailyChallengeCardView = (CardView) view.findViewById(R.id.cardview_daily_content);
         dailyChallengeLayout = (LinearLayout) dailyChallengeCardView.findViewById(R.id.include_daily_challenge_content);
-        weeklyChallengeCardView = (CardView) view.findViewById(R.id.cardview_shell_content);
+        CardView weeklyChallengeCardView = (CardView) view.findViewById(R.id.cardview_shell_content);
         weeklyChallengeLayout = (LinearLayout) weeklyChallengeCardView.findViewById(R.id.include_shell_challenge_content);
 
         /** Setup GUI and Challenges From Database*/
@@ -129,7 +128,8 @@ public class FragmentHome extends Fragment {
         challengeDailyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                controller.showPopUp(dailyChallenge.getChallengeTitle(), dailyChallenge.getTime(), dailyChallenge.getPoints(), dailyChallenge.getCurrent() ,dailyChallenge.getTarget(), color);
+                controller.showChallengePopup(dailyChallenge);
+                //controller.showPopUp(dailyChallenge.getChallengeTitle(), dailyChallenge.getTime(), dailyChallenge.getPoints(), dailyChallenge.getCurrent() ,dailyChallenge.getTarget(), color);
 
             }
         });
@@ -144,8 +144,8 @@ public class FragmentHome extends Fragment {
         challengeWeeklyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                controller.showPopUp(weeklyChallenge.getChallengeTitle(), weeklyChallenge.getTime(), weeklyChallenge.getPoints(), weeklyChallenge.getCurrent(), weeklyChallenge.getTarget(), color);//  frontController.showChallenge();
-
+               // controller.showPopUp(weeklyChallenge.getChallengeTitle(), weeklyChallenge.getTime(), weeklyChallenge.getPoints(), weeklyChallenge.getCurrent(), weeklyChallenge.getTarget(), color);//  frontController.showChallenge();
+                controller.showChallengePopup(weeklyChallenge);
             }
         });
 

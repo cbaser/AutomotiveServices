@@ -9,7 +9,7 @@ apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 //        maven { url 'https://plugins.gradle.org/m2/'}
 //    }
 //    dependencies {
-//        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.8.1'
+//        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.9.0, 0.99.99]'
 //    }
 //}
 //apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
@@ -72,7 +72,7 @@ dependencies {
     implementation 'com.android.support:support-v4:26.1.0'
     implementation 'org.apache.commons:commons-lang3:3.4'
     implementation 'com.google.code.gson:gson:2.8.1'
-    implementation 'com.github.aakira:expandable-layout:1.4.2@aar'
+    implementation 'com.github.aakira:expandable-layout:1.6.0@aar'
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.firebase:firebase-storage:15.0.2'

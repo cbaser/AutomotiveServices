@@ -17,23 +17,33 @@ public class CurrentUser implements Serializable{
     private String Level;
     private String Password;
     private String PictureURI;
+    private String CarURI;
     private int Points;
     private ArrayList<Challenge> challengeList;
     private HashMap<String,String> Friends;
 
     public CurrentUser() {
     }
-
-    public CurrentUser(Car car, int challengeCount, String email, String nickName, String level, String Password, String pictureURI, int points, HashMap<String,String> Friends) {
-        this.Car = car;
+    public CurrentUser(com.gameco.cakin.automotiveservices.datamodel.Car car, int challengeCount, String email, String nickName, String level, String password, String pictureURI, String carURI, int points, ArrayList<Challenge> challengeList, HashMap<String, String> friends) {
+        Car = car;
         ChallengeCount = challengeCount;
         Email = email;
         NickName = nickName;
         Level = level;
-        this.Password = Password;
+        Password = password;
         PictureURI = pictureURI;
+        CarURI = carURI;
         Points = points;
-        this.Friends = Friends;
+        this.challengeList = challengeList;
+        Friends = friends;
+    }
+
+    public String getCarURI() {
+        return CarURI;
+    }
+
+    public void setCarURI(String carURI) {
+        CarURI = carURI;
     }
 
     public Car getCar() {

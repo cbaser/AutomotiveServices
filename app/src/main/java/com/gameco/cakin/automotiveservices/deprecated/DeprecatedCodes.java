@@ -5,11 +5,27 @@ package com.gameco.cakin.automotiveservices.deprecated;
  */
 
 public class DeprecatedCodes {
+    //Main Activity
+
+//    @Override
+//    public void registerComponents(Context context, Glide glide, Registry registry) {
+//        // Register FirebaseImageLoader to handle StorageReference
+//   //    registry.append(StorageReference.class,InputStream.class,new F);
+//    }
+    //  private FrontController frontController;
+//    frontController = new FrontController(this);
+// TransitionController_deprecated transitionController = new TransitionController_deprecated(this);
+//   frontController.createActivity();
+//   transitionController.onCreate();
+//    transitionController.showDailyChallenge();
+//                Intent a = new Intent(Intent.ACTION_MAIN);
+//                a.addCategory(Intent.CATEGORY_HOME);
+//                a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(a);
+//                this.finish();
+
+
  //Fragment Friendlist
-
-
-
-
 
 //firebaseUserSearch(searchText);
 //    public static class FriendsViewHolder extends RecyclerView.ViewHolder{

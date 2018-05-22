@@ -2,26 +2,30 @@ package com.gameco.cakin.automotiveservices.onesignal;
 
 import android.os.AsyncTask;
 import android.os.StrictMode;
+import android.util.Log;
 
 import com.google.gson.Gson;
+import com.onesignal.OneSignal;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-public class SendNotification {
+public class MainNotificationHandler {
     private String strJsonBody;
-    public SendNotification(){
+    private String TAG = this.getClass().getName();
+
+    public MainNotificationHandler(){
 
     }
-    public void setJsonBody(String email, String content,String challengeObject) {
+    public void setJsonBody(String email, String content,String data) {
         strJsonBody = "{"
                 + "\"app_id\": \"4a5d1740-b98b-4569-9107-2de771ddc07d\","
 
                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + email + "\"}],"
                 + "\"contents\": {\"en\":\" " + content + "\"},"
-                + "\"data\":" + challengeObject
+                + "\"data\":" + data
                 + "}";
 
     }
@@ -58,7 +62,7 @@ public class SendNotification {
                         outputStream.write(sendBytes);
 
                         int httpResponse = con.getResponseCode();
-                        System.out.println("httpResponse: " + httpResponse);
+                        Log.e(TAG,String.valueOf(httpResponse));
 
                         if (httpResponse >= HttpURLConnection.HTTP_OK
                                 && httpResponse < HttpURLConnection.HTTP_BAD_REQUEST) {
@@ -70,8 +74,7 @@ public class SendNotification {
                             jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
                             scanner.close();
                         }
-                        System.out.println("jsonResponse:\n" + jsonResponse);
-
+                        Log.e(TAG,jsonResponse);
 
                     } catch (Exception e) {
                         e.printStackTrace();

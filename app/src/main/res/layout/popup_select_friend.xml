@@ -39,7 +39,7 @@
                 android:layout_alignParentTop="true"
                 android:fontFamily="@font/bree_serif"
                 android:paddingBottom="5dp"
-                android:text="Challenge!"
+                android:text="@string/popup_challenge_general_title"
                 android:textColor="@color/colorLeaGreen"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -71,7 +71,7 @@
                     android:ems="10"
                     android:enabled="false"
                     android:fontFamily="@font/bree_serif"
-                    android:text="Time: one week"
+                    android:text="@string/popup_challenge_time"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -82,7 +82,7 @@
                     android:ems="10"
                     android:enabled="false"
                     android:fontFamily="@font/bree_serif"
-                    android:text="Points to be scored : 2000"
+                    android:text="@string/popup_challenge_point"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -93,7 +93,7 @@
                     android:ems="10"
                     android:enabled="false"
                     android:fontFamily="@font/bree_serif"
-                    android:text="Your current consumption: 8.4l /100km"
+                    android:text="@string/popup_challenge_current"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -104,7 +104,7 @@
                     android:ems="10"
                     android:enabled="false"
                     android:fontFamily="@font/bree_serif"
-                    android:text="Your target consumption: 7.9l/100km"
+                    android:text="@string/popup_challenge_target"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 

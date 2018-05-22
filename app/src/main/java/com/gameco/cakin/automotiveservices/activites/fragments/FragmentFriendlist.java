@@ -3,6 +3,7 @@ package com.gameco.cakin.automotiveservices.activites.fragments;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -47,7 +48,7 @@ public class FragmentFriendlist extends Fragment {
         invitePeopleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myFirebaseDeepLink.shareLongDynamicLink(view);
+                myFirebaseDeepLink.shareShortDynamicLink(view);
             }
         });
 
@@ -116,11 +117,12 @@ public class FragmentFriendlist extends Fragment {
         friendsListAdapter.notifyDataSetChanged();
     }
     private void setFriendRequestView(boolean isfilled){
+        CardView cardView = view.findViewById(R.id.cardViewFriendRequests);
         RecyclerView  searchRecyclerView = view.findViewById(R.id.friendsRequestListView);
         if(!isfilled)
-            searchRecyclerView.setVisibility(View.INVISIBLE);
+            cardView.setVisibility(View.INVISIBLE);
         else
-            searchRecyclerView.setVisibility(View.VISIBLE);
+            cardView.setVisibility(View.VISIBLE);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
         searchRecyclerView.setLayoutManager(mLayoutManager);
         FriendsListAdapter friendsListAdapter = new FriendsListAdapter(this.getActivity(),friendRequests);

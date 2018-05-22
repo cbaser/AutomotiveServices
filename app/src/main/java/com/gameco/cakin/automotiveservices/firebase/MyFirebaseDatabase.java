@@ -6,9 +6,18 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.datamodel.Car;
 import com.gameco.cakin.automotiveservices.datamodel.Challenge;
 import com.gameco.cakin.automotiveservices.datamodel.CurrentUser;
@@ -19,6 +28,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,6 +54,8 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -59,7 +71,7 @@ public class MyFirebaseDatabase {
     private ArrayList<Challenge> challengeList;
     private ArrayList<Rank> rankList;
     private long challengeCount,points;
-    private boolean levelUp;
+    private boolean upper_level;
     private String afterLevel;
     private String TAG = "MyFirebaseDatabase";
 
@@ -131,7 +143,7 @@ public class MyFirebaseDatabase {
 
             }
         });
-        setUserInfoToPreferences();
+
 
     }
     public void reducePoints() {
@@ -150,7 +162,7 @@ public class MyFirebaseDatabase {
 
             }
         });
-        setUserInfoToPreferences();
+
 
     }
 
@@ -171,7 +183,7 @@ public class MyFirebaseDatabase {
 
             }
         });
-        setUserInfoToPreferences();
+
     }
     public void setLevel(DataSnapshot dataSnapshot){
         if (challengeCount % 5 == 0) {
@@ -183,17 +195,17 @@ public class MyFirebaseDatabase {
                 case "Newbie":
                     dataSnapshot.getRef().child("Level").setValue("Star");
                     afterLevel = "Star";
-                    levelUp =true;
+                    upper_level =true;
                     break;
                 case "Star":
                     dataSnapshot.getRef().child("Level").setValue("Master");
                     afterLevel = "Master";
-                    levelUp = true;
+                    upper_level = true;
                     break;
                 case "Master":
                     dataSnapshot.getRef().child("Level").setValue("Grandmaster");
                     afterLevel = "Grandmaster";
-                    levelUp = true;
+                    upper_level = true;
                     break;
             }
 
@@ -203,7 +215,7 @@ public class MyFirebaseDatabase {
     }
 
     public boolean isLevelUp(){
-        return levelUp;
+        return upper_level;
     }
     public String getAfterLevel(){
         return afterLevel;
@@ -220,6 +232,8 @@ public class MyFirebaseDatabase {
             newRef.child(title).setValue(challenges);
             increaseChallengeCount();
            increasePoints();
+           levelUp();
+           setUserInfoToPreferences();
         } catch (Exception e) {
             Log.e("EROOOOR AT ADDING", e.getMessage());
         }
@@ -621,28 +635,48 @@ public class MyFirebaseDatabase {
     rankList = new ArrayList<>();
         SharedPreferences sharedPreferences = activity.getSharedPreferences("rankPref",Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
-        leaderboardReference.orderByChild("Points").limitToFirst(10).addValueEventListener(new ValueEventListener() {
+        leaderboardReference.orderByChild("/points").limitToLast(10).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-
-                for(DataSnapshot childrenShot : children){
-                   Rank rank = childrenShot.getValue(Rank.class);
-                   rankList.add(rank);
+                for(DataSnapshot childrenShot : dataSnapshot.getChildren()){
+                    Rank rank = childrenShot.getValue(Rank.class);
+                    rankList.add(rank);
                 }
+
+                Collections.sort(rankList,Collections.<Rank>reverseOrder());
 
                 Gson gson = new Gson();
                 editor.putString("rankList",gson.toJson(rankList));
                 editor.apply();
-
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.e(TAG,databaseError.getDetails());
+
             }
         });
     }
+    public void levelUp() {
+        if(isLevelUp()){
+            View popupView = activity.getLayoutInflater().inflate(R.layout.popup_level_up, null);
+            popupView.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.anim_popup_levelup));
+            TextView textView = (TextView) popupView.findViewById(R.id.level_up_description);
+            textView.setText(getAfterLevel());
+            final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            popupWindow.showAtLocation(popupView, Gravity.CENTER, 10, 10);
+            FloatingActionButton floatingActionButton = (FloatingActionButton) popupView.findViewById(R.id.closeLevelUp);
+            floatingActionButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWindow.dismiss();
+                }
+            });
+        }
+
+
+    }
+
+
     public ArrayList<Rank> getRankingFromPreferences(){
         Gson gson = new Gson();
         SharedPreferences  sharedPreferences = activity.getSharedPreferences("rankPref",Context.MODE_PRIVATE);
@@ -715,9 +749,7 @@ public class MyFirebaseDatabase {
         leaderboardReference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
 
-                }
             }
         });
 

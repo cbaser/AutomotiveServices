@@ -22,6 +22,9 @@ import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.controller.myGoogleLoginController;
 
 import com.gameco.cakin.automotiveservices.controller.myFacebookLoginController;
+import com.gameco.cakin.automotiveservices.onesignal.NotificationOpenedHandler;
+import com.gameco.cakin.automotiveservices.onesignal.NotificationReceivedHandler;
+import com.onesignal.OneSignal;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -36,6 +39,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        /** Intitialize OneSignal */
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .setNotificationOpenedHandler(new NotificationOpenedHandler(this))
+                .setNotificationReceivedHandler(new NotificationReceivedHandler(this))
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
         /** Starting to initialization*/
 
         emailtxt = (EditText) findViewById(R.id.email_edit);
