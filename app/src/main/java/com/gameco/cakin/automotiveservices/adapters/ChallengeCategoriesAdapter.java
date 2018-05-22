@@ -2,6 +2,7 @@ package com.gameco.cakin.automotiveservices.adapters;
 
 
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
@@ -32,9 +33,11 @@ public class ChallengeCategoriesAdapter extends RecyclerView.Adapter<ChallengeCa
     private List<Challenge> challengeList;
     private SparseBooleanArray expandState = new SparseBooleanArray();
     private myNotificationController controller;
+    private Activity activity;
 
     public ChallengeCategoriesAdapter(List<Challenge> challengeList, Fragment fragment) {
         this.challengeList = challengeList;
+        this.activity = fragment.getActivity();
         controller = new myNotificationController(fragment.getActivity());
         for (int i = 0; i < challengeList.size(); i++) {
             expandState.append(i, false);
@@ -52,12 +55,13 @@ public class ChallengeCategoriesAdapter extends RecyclerView.Adapter<ChallengeCa
     public void onBindViewHolder(final MyViewHolder holder,final int position) {
         final Challenge challenge = challengeList.get(holder.getAdapterPosition());
         holder.setIsRecyclable(false);
+        holder.expandableLayout.setExpanded(false);
 
-
-        holder.txtTitle.setText(challenge.getChallengeTitle());
-        holder.txtCurrent.setText(challenge.getCurrent());
-        holder.txtDescription.setText(challenge.getDescription());
-        holder.txtTarget.setText(challenge.getTarget());
+        holder.txtTitle.setText(activity.getString(R.string.popup_challenge_title,challenge.getChallengeTitle()));
+        holder.txtCurrent.setText(activity.getString(R.string.popup_challenge_current,challenge.getCurrent()));
+        holder.txtDescription.setText(activity.getString(R.string.popup_challenge_description,challenge.getDescription()));
+        holder.txtTarget.setText(activity.getString(R.string.popup_challenge_target,challenge.getTarget()));
+        holder.txtPoints.setText(activity.getString(R.string.popup_challenge_point,challenge.getPoints()));
         holder.startChallengeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,7 +111,7 @@ public class ChallengeCategoriesAdapter extends RecyclerView.Adapter<ChallengeCa
         public TextView textView;
         public Button buttonLayout;
         public ExpandableLinearLayout expandableLayout;
-        public TextView txtTitle,txtDescription,txtTarget,txtCurrent;
+        public TextView txtTitle,txtDescription,txtPoints,txtTarget,txtCurrent;
         public Button startChallengeButton;
          MyViewHolder(View itemView) {
             super(itemView);
@@ -115,10 +119,12 @@ public class ChallengeCategoriesAdapter extends RecyclerView.Adapter<ChallengeCa
              expandableButton = (Button) itemView.findViewById(R.id.expandableButton);
              textView = (TextView) itemView.findViewById(R.id.textView);
              expandableLayout = linearLayout.findViewById(R.id.expandableLayout);
+
             txtTitle = itemView.findViewById(R.id.expandableLayout_description_title);
             txtDescription = itemView.findViewById(R.id.expandableLayout_description);
             txtCurrent = itemView.findViewById(R.id.expandableLayout_current);
             txtTarget = itemView.findViewById(R.id.expandableLayout_target);
+            txtPoints = itemView.findViewById(R.id.expandableLayout_points);
             startChallengeButton = itemView.findViewById(R.id.expandableLayout_start_challenge_button);
         }
     }

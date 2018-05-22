@@ -38,7 +38,7 @@
             android:layout_alignParentTop="true"
             android:fontFamily="@font/source_sans_pro"
             android:paddingBottom="5dp"
-            android:text="Title:"
+            android:text="@string/popup_challenge_title"
             android:textColor="@color/colorLeaGreen"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -49,7 +49,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/expandableLayout_description_title"
             android:fontFamily="@font/source_sans_pro"
-            android:text="Description: "
+            android:text="@string/popup_challenge_description"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/expandableLayout_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/expandableLayout_description_title"
+            android:fontFamily="@font/source_sans_pro"
+            android:text="@string/popup_challenge_point"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
@@ -60,7 +69,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/expandableLayout_description"
             android:fontFamily="@font/source_sans_pro"
-            android:text="Current"
+            android:text="@string/popup_challenge_current"
             android:textColor="@color/white" />
 
         <TextView
@@ -70,7 +79,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/expandableLayout_current"
             android:fontFamily="@font/source_sans_pro"
-            android:text="Target:"
+            android:text="@string/popup_challenge_target"
             android:textColor="@color/white" />
 
         <Button
@@ -80,7 +89,7 @@
             android:layout_below="@+id/expandableLayout_target"
             android:background="@color/colorLeaGreen"
             android:fontFamily="@font/source_sans_pro"
-            android:text="Start!" />
+            android:text="@string/popup_start_button" />
 
 
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>

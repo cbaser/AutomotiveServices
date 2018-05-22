@@ -37,7 +37,7 @@
 
 
     <string name="popup_challenge_general_title">Challenge!</string>
-
+    <string name="popup_challenge_description">Description : %1$s</string>
     <string name="popup_challenge_from">Challenge from : %1$s!</string>
     <string name="popup_challenge_title">%1$s</string>
     <string name="popup_challenge_time">Time: %1$s!</string>
@@ -48,4 +48,5 @@
     <string name="popup_accept_button">Accept!</string>
     <string name="popup_reject_button">Reject</string>
     <string name="popup_send_button">Send!</string>
+    <string name="popup_start_button">Start!</string>
 </resources>

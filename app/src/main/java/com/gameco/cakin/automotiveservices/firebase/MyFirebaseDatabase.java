@@ -544,6 +544,52 @@ public class MyFirebaseDatabase {
         }
     }
 
+    /** Will be in next iteration */
+    public void getChallengeRequestsFromDatabase(){
+        final HashMap<String,String> challengeRequests=new HashMap<>();
+        final ArrayList<String> challengeTypes = new ArrayList<>();
+        friendsReference = database.getReference().child("ChallengeRequests").child(user.getEmail().replace(".",","));
+        friendsReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    challengeRequests.put(snapshot.getKey(),snapshot.getValue(String.class));
+                }
+                changeChallengesToObjects(challengeRequests);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    public void changeChallengesToObjects(HashMap<String,String> challengeRequest){
+        final Gson gson = new Gson();
+        final SharedPreferences sharedPreferences = activity.getSharedPreferences("currentUserPref", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("currentUserChallengeRequests");
+        editor.apply();
+        for(Map.Entry<String,String> entry : challengeRequest.entrySet()){
+            final HashMap<String,String> jsonMap = new HashMap<>();
+
+            usersReference = database.getReference().child("Users").child(entry.getKey().replace(".",","));
+            usersReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    CurrentUser currentUser = dataSnapshot.getValue(CurrentUser.class);
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+    }
 
 
 
