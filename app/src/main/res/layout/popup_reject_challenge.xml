@@ -54,7 +54,7 @@
                 android:layout_below="@+id/closeRejectChallange"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/bree_serif"
-                android:text="You will lose 250 points by rejecting this challenge!"
+                android:text="You will lose 1000 points by rejecting this challenge!"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 

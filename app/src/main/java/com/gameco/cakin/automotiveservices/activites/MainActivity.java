@@ -18,6 +18,7 @@ import com.gameco.cakin.automotiveservices.controller.myActivityController;
 //import com.gameco.cakin.automotiveservices.onesignal.NotificationOpenedHandler;
 //import com.gameco.cakin.automotiveservices.onesignal.NotificationReceivedHandler;
 
+import com.gameco.cakin.automotiveservices.controller.myUserUpdateInfoController;
 import com.gameco.cakin.automotiveservices.datamodel.Car;
 import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
 import com.gameco.cakin.automotiveservices.onesignal.NotificationOpenedHandler;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private myGoogleLoginController myGoogleLoginController;
     private myActivityController activityController;
     private MyFirebaseDatabase myFirebaseDatabase;
+    private myUserUpdateInfoController myUserUpdateInfoController;
 
     /**Save App to Database code : scp -r gameco.apk MSP@vmkrcmar20.informatik.tu-muenchen.de:/var/www/html/uploads*/
     /** Download app Link : http://vmkrcmar20.informatik.tu-muenchen.de/uploads/gameco.apk*/
@@ -51,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         myFacebookLoginController = new myFacebookLoginController(this);
         myGoogleLoginController = new myGoogleLoginController(this);
-
-
+        myUserUpdateInfoController = new myUserUpdateInfoController(this);
+        myFirebaseDatabase =new MyFirebaseDatabase(this);
 
 
 
@@ -124,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -135,12 +136,7 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_refresh) {
             Toast.makeText(this,"Refreshing",Toast.LENGTH_LONG).show();
-            myFirebaseDatabase = new MyFirebaseDatabase(this);
-            myFirebaseDatabase.getFriendRequestFromDatabase();
-            myFirebaseDatabase.getFriendsFromDatabase();
-            myFirebaseDatabase.setUserInfoToPreferences();
-            myFirebaseDatabase.setRankingToPreferences();
-            myFirebaseDatabase.setChallengeInfoToPreferences();
+            myUserUpdateInfoController.startUpdate();
             BackendHelper backendHelper = new BackendHelper();
             Car car = backendHelper.tryTelematics("Telematics");
             myFirebaseDatabase.updateCarData(car);

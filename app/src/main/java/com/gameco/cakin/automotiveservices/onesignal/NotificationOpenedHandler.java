@@ -4,10 +4,15 @@ package com.gameco.cakin.automotiveservices.onesignal;
 
 import android.app.Activity;
 import android.app.Application;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.gameco.cakin.automotiveservices.activites.LoginActivity;
+import com.gameco.cakin.automotiveservices.activites.MainActivity;
 import com.gameco.cakin.automotiveservices.controller.myNotificationController;
 import com.gameco.cakin.automotiveservices.datamodel.Challenge;
 import com.gameco.cakin.automotiveservices.datamodel.CurrentUser;
@@ -33,7 +38,11 @@ public class NotificationOpenedHandler implements OneSignal.NotificationOpenedHa
 
     private myNotificationController notificationController;
     private MyFirebaseDatabase myFirebaseDatabase;
+    private Activity activity;
+    private String TAG = this.getClass().getName();
+    private AppCompatActivity appCompatActivity;
     public NotificationOpenedHandler(Activity activity){
+        this.activity = activity;
         notificationController = new myNotificationController(activity);
         myFirebaseDatabase = new MyFirebaseDatabase(activity);
     }
@@ -46,13 +55,19 @@ public class NotificationOpenedHandler implements OneSignal.NotificationOpenedHa
             Gson gson = new Gson();
             String tmp = data.toString();
             if(tmp.contains("challenge")){
-                Challenge challenge = gson.fromJson(array.getJSONObject(0).toString(),Challenge.class);
-                CurrentUser currentUser = gson.fromJson(array.getJSONObject(1).toString(),CurrentUser.class);
-                notificationController.acceptOrDeclineChallenge(challenge,currentUser);
+                Challenge challenge = gson.fromJson(array.get(0).toString(),Challenge.class);
+                CurrentUser currentUser = gson.fromJson(array.get(1).toString(),CurrentUser.class);
+                startApp();
+                //    myFirebaseDatabase.sendChallengeRequest(challenge,currentUser);
+          //      notificationController.acceptOrDeclineChallenge(challenge,currentUser);
+
+
             }
             if(tmp.contains("Friend Requests")){
                 CurrentUser currentUser = gson.fromJson(array.getJSONObject(1).toString(),CurrentUser.class);
-                myFirebaseDatabase.addFriend(currentUser.getEmail());
+                myFirebaseDatabase.sendFriendRequest(currentUser.getEmail());
+                startApp();
+            //    notificationController.acceptOrDeclineFriendRequest(currentUser);
 
             }
 
@@ -62,6 +77,11 @@ public class NotificationOpenedHandler implements OneSignal.NotificationOpenedHa
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    private void startApp() {
+        Intent intent = new Intent(activity, MainActivity.class)
+                .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
     }
 }
 

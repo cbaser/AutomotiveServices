@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.backend.BackendHelper;
+import com.gameco.cakin.automotiveservices.controller.myUserUpdateInfoController;
 import com.gameco.cakin.automotiveservices.datamodel.Car;
 import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
 
@@ -23,6 +24,7 @@ private BackendHelper backendHelper;
 private static Activity activity;
 private String TAG = "ProgressActivity";
 private ProgressBar progressBar;
+private myUserUpdateInfoController userUpdateInfoController;
   private Handler handler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,36 +36,22 @@ private ProgressBar progressBar;
         progressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.fbutton_color_midnight_blue), PorterDuff.Mode.MULTIPLY);
         firebaseDatabase = new MyFirebaseDatabase(this);
         backendHelper = new BackendHelper();
-
+        userUpdateInfoController = new myUserUpdateInfoController(this);
 
         try{
-          firebaseDatabase.setUserInfoToPreferences();
-          firebaseDatabase.setRankingToPreferences();
-          firebaseDatabase.setChallengeInfoToPreferences();
-          firebaseDatabase.getFriendsFromDatabase();
-          firebaseDatabase.getFriendRequestFromDatabase();
-
-
-
-
+        userUpdateInfoController.startUpdate();
         }catch (Exception e){
             Toast.makeText(this,"Please Check your Internet Connection and try again",Toast.LENGTH_LONG).show();
           Intent i = new Intent(ProgressActivity.this, LoginActivity.class);
           startActivity(i);
         }
 
-
-
-
-
         new Thread(new Runnable() {
             public void run() {
                 try{
-                    Thread.sleep(5000);
+                    Thread.sleep(3000);
                     Car  car = backendHelper.tryTelematics("Telematics");
                     firebaseDatabase.updateCarData(car);
-
-
                 }
                 catch (Exception e) {
 

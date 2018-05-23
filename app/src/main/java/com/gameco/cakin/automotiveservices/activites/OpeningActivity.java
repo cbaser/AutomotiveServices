@@ -1,11 +1,15 @@
 package com.gameco.cakin.automotiveservices.activites;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -42,9 +46,6 @@ public class OpeningActivity extends AppCompatActivity{
 
         viewPager = (ViewPager) findViewById(R.id.activity_opening_pager);
         videoView = (VideoView) findViewById(R.id.videoView);
-
-
-
 
         try {
             videoView.setMediaController(null);

@@ -35,7 +35,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_daily_challenge">DailyChallengeActivity</string>
 
-
+    <string name="popup_challenge_friend_name">User:%1$s</string>
     <string name="popup_challenge_general_title">Challenge!</string>
     <string name="popup_challenge_description">Description : %1$s</string>
     <string name="popup_challenge_from">Challenge from : %1$s!</string>
@@ -49,4 +49,5 @@
     <string name="popup_reject_button">Reject</string>
     <string name="popup_send_button">Send!</string>
     <string name="popup_start_button">Start!</string>
+    <string name="popup_respond_button">Respond Request!</string>
 </resources>

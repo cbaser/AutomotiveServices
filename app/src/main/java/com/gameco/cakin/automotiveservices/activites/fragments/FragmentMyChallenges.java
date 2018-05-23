@@ -1,5 +1,6 @@
 package com.gameco.cakin.automotiveservices.activites.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -27,6 +28,8 @@ import com.gameco.cakin.automotiveservices.activites.MainActivity;
 import com.gameco.cakin.automotiveservices.adapters.MyChallengesAdapter;
 import com.gameco.cakin.automotiveservices.controller.myNotificationController;
 import com.gameco.cakin.automotiveservices.datamodel.Challenge;
+import com.gameco.cakin.automotiveservices.datamodel.CurrentUser;
+import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -52,60 +55,49 @@ import java.util.Map;
 public class FragmentMyChallenges extends Fragment  {
     private View view;
     public static FirebaseDatabase mDatabase;
-    private  ArrayList<Challenge> challengeList;
+    private  ArrayList<Challenge> challengeList,challengeRequestList;
+    private MyFirebaseDatabase myFirebaseDatabase;
+    private myNotificationController myNotificationController;
+    private Activity activity;
 
-
-
-    public FragmentMyChallenges(){
-
-    }
-    private void getChallengesFromFirebase(){
-        challengeList = new ArrayList<>();
-  //      challengeList.clear();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance();
-     //   mRef = mDatabase.getReference().child("Users").child(LoginActivity.user_full_name);
-       DatabaseReference mRef = mDatabase.getReference().child("Users").child(user.getEmail().replace(".",","));
-        mRef.child("Challenges").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                try{
-                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-                for(DataSnapshot childrenShot : children){
-                        Iterable<DataSnapshot>innerChildren = childrenShot.getChildren();
-                        for (DataSnapshot challengeShot : innerChildren){
-                            Challenge challenge =challengeShot.getValue(Challenge.class);
-                            challengeList.add(challenge);
-                        }
-                }
-                setRecyclerView();
-                }catch (Exception e){
-                    Log.e("ERRORRR",e.getMessage());
-                   // e.printStackTrace();
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-
-        });
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof Activity){
+            this.activity=(Activity) context;
+        }
 
     }
-    private void setRecyclerView(){
+    private void setChallengeView(){
         RecyclerView    recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewChallenges);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         MyChallengesAdapter   myChallengesAdapter = new MyChallengesAdapter(this.getActivity(),challengeList);
+        myChallengesAdapter.setRequest(false);
+        recyclerView.setAdapter(myChallengesAdapter);
+        myChallengesAdapter.notifyDataSetChanged();
+    }
+    private void setChallengeRequestView(){
+        RecyclerView    recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewChallengeRequests);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        MyChallengesAdapter   myChallengesAdapter = new MyChallengesAdapter(this.getActivity(),challengeRequestList);
+        myChallengesAdapter.setRequest(true);
         recyclerView.setAdapter(myChallengesAdapter);
         myChallengesAdapter.notifyDataSetChanged();
     }
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
          view = inflater.inflate(R.layout.fragment_my_challenges,container,false);
-        // ListView listView = view.findViewById(R.id.challengesList);
         try{
-            getChallengesFromFirebase();
+        myFirebaseDatabase = new MyFirebaseDatabase(activity);
+        myNotificationController = new myNotificationController(activity);
+        challengeRequestList = myFirebaseDatabase.getChallengeRequestFromPreferences();
+        challengeList = myFirebaseDatabase.getUserChallengesFromPreferences();
+
+        setChallengeRequestView();
+        setChallengeView();
+
         }catch (Exception e){
             Log.e("PROBLEM",e.getMessage());
         }
@@ -113,7 +105,37 @@ public class FragmentMyChallenges extends Fragment  {
     }
 }
 
-
+//    private void getChallengesFromFirebase(){
+//        challengeList = new ArrayList<>();
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        mDatabase = FirebaseDatabase.getInstance();
+//       DatabaseReference mRef = mDatabase.getReference().child("Users").child(user.getEmail().replace(".",","));
+//        mRef.child("Challenges").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                try{
+//                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+//                for(DataSnapshot childrenShot : children){
+//                        Iterable<DataSnapshot>innerChildren = childrenShot.getChildren();
+//                        for (DataSnapshot challengeShot : innerChildren){
+//                            Challenge challenge =challengeShot.getValue(Challenge.class);
+//                            challengeList.add(challenge);
+//                        }
+//                }
+//                    setChallengeRecylerView();
+//                }catch (Exception e){
+//                    Log.e("ERRORRR",e.getMessage());
+//                   // e.printStackTrace();
+//                }
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//
+//        });
+//
+//    }
 
 
 

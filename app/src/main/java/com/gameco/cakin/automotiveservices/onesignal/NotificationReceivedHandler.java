@@ -33,7 +33,7 @@ public class NotificationReceivedHandler implements OneSignal.NotificationReceiv
         if(tmp.contains("Accepted!")) {
             Gson gson = new Gson();
             Challenge receivedChallenge = gson.fromJson(tmp, Challenge.class);
-            myFirebaseDatabase.addAcceptedChallenge(receivedChallenge);
+           // myFirebaseDatabase.addAcceptedChallenge(receivedChallenge);
         }
     }
 }

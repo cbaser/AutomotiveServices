@@ -7,8 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/main_icon"
@@ -22,36 +22,11 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
-                <data android:scheme="gameco"
-                    android:host="open"/>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
 
-
             </intent-filter>
-<!--
-            <intent-filter>
-                    <data
-                        android:host="*vmkrcmar20.informatik.tu-muenchen.de"
-                        android:scheme="http" />
-                <data
-                    android:host="*vmkrcmar20.informatik.tu-muenchen.de"
-                    android:scheme="https" />
-
-                    <action android:name="android.intent.action.VIEW" />
-
-
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
         </activity>
         <activity
             android:name=".activites.SingupActivity"

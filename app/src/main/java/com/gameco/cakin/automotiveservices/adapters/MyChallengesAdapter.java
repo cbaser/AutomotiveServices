@@ -16,12 +16,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gameco.cakin.automotiveservices.R;
+import com.gameco.cakin.automotiveservices.controller.myNotificationController;
 import com.gameco.cakin.automotiveservices.datamodel.Challenge;
+import com.gameco.cakin.automotiveservices.datamodel.CurrentUser;
 import com.gameco.cakin.automotiveservices.datamodel.Friend;
+import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,26 +38,40 @@ public class MyChallengesAdapter extends RecyclerView.Adapter<MyChallengesAdapte
     private Activity activity;
     private TextView txtTime,txtFriendName,txtTitle,txtWinner;
     private ImageView profPic;
-    private Button detailsButton;
+    private Button detailsButton,respondButton;
+    private LinearLayout profileLinear,descriptionLinear,buttonsLinear;
+    private myNotificationController notificationController;
+    private MyFirebaseDatabase myFirebaseDatabase;
+    private boolean isRequest = false;
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         public MyViewHolder(View itemView){
             super(itemView);
-            LinearLayout profileLinear = itemView.findViewById(R.id.profileLinear1);
-         txtTime = profileLinear.findViewById(R.id.txtTime1);
-         txtFriendName = profileLinear.findViewById(R.id.txtFriendName1);
-         profPic = profileLinear.findViewById(R.id.profPic_challenge);
+            profileLinear = itemView.findViewById(R.id.group_my_challenge_user_linearLayout);
+         txtTime = profileLinear.findViewById(R.id.group_my_challenge_time);
+         txtFriendName = profileLinear.findViewById(R.id.group_my_challenge_friend_name);
+         profPic = profileLinear.findViewById(R.id.group_my_challenge_profile_picture);
 
-        LinearLayout descriptionLinear = itemView.findViewById(R.id.descriptionLinear1);
-         txtTitle = descriptionLinear.findViewById(R.id.txtDescription1);
-         txtWinner = descriptionLinear.findViewById(R.id.txtwin);
-            detailsButton = descriptionLinear.findViewById(R.id.expandableButton1);
+         descriptionLinear = itemView.findViewById(R.id.group_my_challenge_description_linearLayout);
+         txtTitle = descriptionLinear.findViewById(R.id.group_my_challenge_description);
+         txtWinner = descriptionLinear.findViewById(R.id.group_my_challenge_winning);
+            detailsButton = descriptionLinear.findViewById(R.id.group_my_challenge_more_info_button);
+
+            buttonsLinear = itemView.findViewById(R.id.group_my_challenge_buttonLayout);
+            respondButton = buttonsLinear.findViewById(R.id.group_my_challenge_respond_button);
         }
 
     }
-    public MyChallengesAdapter(Activity activity,List<Challenge>challengeList){
+
+    public void setRequest(boolean request) {
+        isRequest = request;
+    }
+
+    public MyChallengesAdapter(Activity activity, List<Challenge>challengeList){
         this.activity = activity;
         this.challengeList = challengeList;
+        notificationController =  new myNotificationController(activity);
+        myFirebaseDatabase = new MyFirebaseDatabase(activity);
     }
 
 
@@ -60,29 +79,47 @@ public class MyChallengesAdapter extends RecyclerView.Adapter<MyChallengesAdapte
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.group_my_challenge_item, parent, false);
-
+        this.activity = (Activity)itemView.getContext();
         return new MyViewHolder(itemView);
     }
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final Challenge challenge = challengeList.get(position);
-        txtTime.setText(challenge.getTime());
-        txtFriendName.setText(challenge.getFriendName());
-        txtTitle.setText(challenge.getChallengeTitle());
-//        if(txtFriendName.getText().toString().contains("Can")||txtFriendName.getText().toString().contains("can"))
-//            profPic.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_can));
-//        else
-//            profPic.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_cagatay));
 
-        if(challenge.isWinner()){
-            txtWinner.setText("Congratulations you are on the lead");
-            txtWinner.setTextColor(activity.getResources().getColor(R.color.colorLeaGreen));
+        txtTime.setText(activity.getString(R.string.popup_challenge_time,challenge.getTime()));
+        txtFriendName.setText(activity.getString(R.string.popup_challenge_friend_name,challenge.getFriendNickName()));
+        txtTitle.setText(activity.getString(R.string.popup_challenge_description,challenge.getDescription()));
+        buttonsLinear.setVisibility(View.INVISIBLE);
+        final CurrentUser currentUser = new CurrentUser();
+        currentUser.setPictureURI(challenge.getFriendPictureURI());
+        currentUser.setEmail(challenge.getFriendEmail());
+
+
+        if(isRequest){
+            detailsButton.setVisibility(View.INVISIBLE);
+            buttonsLinear.setVisibility(View.VISIBLE);
+            respondButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    notificationController.acceptOrDeclineChallenge(activity,challenge,currentUser);
+                }
+            });
+           txtWinner.setText("Sent you a "+challenge.getChallengeTitle());
         }
-        else
-        {
-            txtWinner.setText("You are loosing! Keep up the hard work!");
-            txtWinner.setTextColor(activity.getResources().getColor(R.color.orange));
+        else{
+            if(challenge.isWinner()){
+                txtWinner.setText("Congratulations you are on the lead");
+                txtWinner.setTextColor(activity.getResources().getColor(R.color.colorLeaGreen));
+            }
+            else
+            {
+                txtWinner.setText("You are loosing! Keep up the hard work!");
+                txtWinner.setTextColor(activity.getResources().getColor(R.color.orange));
+            }
         }
+        myFirebaseDatabase.getFriendsProfileImage(profPic,currentUser);
+
+
         detailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,34 +144,28 @@ public class MyChallengesAdapter extends RecyclerView.Adapter<MyChallengesAdapte
         View detailView = activity.getLayoutInflater().inflate(R.layout.popup_challenge_details,null);
         final PopupWindow detailWindow = new PopupWindow(detailView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         detailWindow.showAtLocation(detailView, Gravity.CENTER,10,10);
+
         TextView txtDetailTime = (TextView) detailView.findViewById(R.id.txtdetailTime);
-        txtDetailTime.setText(challenge.getTime());
+        txtDetailTime.setText(activity.getString(R.string.popup_challenge_time,challenge.getTime()));
         TextView txtDetailTitle = (TextView) detailView.findViewById(R.id.txtdetailTitle);
-        txtDetailTitle.setText(challenge.getChallengeTitle());
+        txtDetailTitle.setText(activity.getString(R.string.popup_challenge_title,challenge.getChallengeTitle()));
         TextView txtDetailMy = (TextView) detailView.findViewById(R.id.txtdetailMy);
-        txtDetailMy.setText(challenge.getCurrent());
+        txtDetailMy.setText(activity.getString(R.string.popup_challenge_current,challenge.getCurrent()));
         TextView txtDetailFriend = (TextView) detailView.findViewById(R.id.txtdetailFriend);
-        txtDetailFriend.setText(challenge.getFriendStatus());
+        txtDetailFriend.setText(activity.getString(R.string.popup_challenge_target,challenge.getFriendStatus()));
+        TextView txtDetailPoints = (TextView) detailView.findViewById(R.id.txtdetailPoints);
+        txtDetailPoints.setText(activity.getString(R.string.popup_challenge_point,challenge.getPoints()));
         TextView txtDetailFriendName = (TextView) detailView.findViewById(R.id.txtdetailFriendName);
-        txtDetailFriendName.setText(challenge.getFriendName());
+        txtDetailFriendName.setText(activity.getString(R.string.popup_challenge_friend_name,challenge.getFriendNickName()));
         TextView txtWinning = (TextView) detailView.findViewById(R.id.txtdetailWinning);
-        if(challenge.isWinner())
-        {
-            txtWinning.setText("Congratulations! You are on the lead ! Keep up the good work");
-            txtWinning.setTextColor(activity.getResources().getColor(R.color.colorLeaGreen));
-        }
-        else{
-            txtWinning.setText("You are loosing. Try harder!");
-            txtWinning.setTextColor(activity.getResources().getColor(R.color.orange));
-        }
+        txtWinning.setText("App is calculating the winner status");
 
+        final CurrentUser currentUser = new CurrentUser();
 
-
+        currentUser.setPictureURI(challenge.getFriendPictureURI());
+        currentUser.setEmail(challenge.getFriendEmail());
         ImageView friendImage = (ImageView) detailView.findViewById(R.id.txtdetailFriendPic);
-//        if(txtDetailFriendName.getText().toString().contains("Can")||txtDetailFriendName.getText().toString().contains("can"))
-//        friendImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_can));
-//        else
-//            friendImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_cagatay));
+        myFirebaseDatabase.getFriendsProfileImage(friendImage,currentUser);
 
         FloatingActionButton exitmyChallenge = (FloatingActionButton) detailView.findViewById(R.id.exitdetail);
         exitmyChallenge.setOnClickListener(new View.OnClickListener() {
@@ -145,6 +176,11 @@ public class MyChallengesAdapter extends RecyclerView.Adapter<MyChallengesAdapte
         });
     }
 }
+
+//        if(txtDetailFriendName.getText().toString().contains("Can")||txtDetailFriendName.getText().toString().contains("can"))
+//        friendImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_can));
+//        else
+//            friendImage.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_cagatay));
 //    private LayoutInflater layoutInflater;
 //    private List<Challenge> list;
 //    private Activity activity;

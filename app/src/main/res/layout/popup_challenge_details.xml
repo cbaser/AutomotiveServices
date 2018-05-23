@@ -18,7 +18,7 @@
         android:layout_marginTop="76dp"
         android:fontFamily="@font/bree_serif"
         android:lineSpacingExtra="8sp"
-        android:text="Reduce average consumption by 0.5 l/100km"
+        android:text="@string/popup_challenge_title"
         android:textAlignment="center"
         android:textColor="@color/fbutton_color_asbestos"
         android:textSize="18sp"
@@ -37,16 +37,16 @@
 
         <ImageView
             android:id="@+id/txtdetailFriendPic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_can" />
+            android:src="@drawable/profile_picture" />
 
         <TextView
             android:id="@+id/txtdetailFriendName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Can Türker"
+            android:text="@string/popup_challenge_friend_name"
             android:textColor="@color/black"
             android:textSize="12sp" />
     </LinearLayout>
@@ -69,7 +69,7 @@
             android:ems="10"
             android:enabled="false"
             android:fontFamily="@font/bree_serif"
-            android:text="Time: one week"
+            android:text="@string/popup_challenge_time"
             android:textColor="@color/fbutton_color_asbestos"
             android:textSize="18sp" />
 
@@ -80,7 +80,7 @@
             android:ems="10"
             android:enabled="false"
             android:fontFamily="@font/bree_serif"
-            android:text="Points to be scored : 2000"
+            android:text="@string/popup_challenge_point"
             android:textColor="@color/fbutton_color_asbestos"
             android:textSize="18sp" />
 
@@ -91,7 +91,7 @@
             android:ems="10"
             android:enabled="false"
             android:fontFamily="@font/bree_serif"
-            android:text="Your current consumption: 7.9l /100km"
+            android:text="@string/popup_challenge_current"
             android:textColor="@color/fbutton_color_asbestos"
             android:textSize="18sp" />
 
@@ -102,7 +102,7 @@
             android:ems="10"
             android:enabled="false"
             android:fontFamily="@font/bree_serif"
-            android:text="Friends consumption: 9.0l /100km"
+            android:text="@string/popup_challenge_target"
             android:textColor="@color/fbutton_color_asbestos"
             android:textSize="18sp" />
 

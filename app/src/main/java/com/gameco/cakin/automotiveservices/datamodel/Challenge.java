@@ -8,13 +8,20 @@ public class Challenge {
     public Challenge(){
 
     }
-
-    public String getFriendName() {
-        return friendName;
+    public String getFriendEmail() {
+        return friendEmail;
     }
 
-    public void setFriendName(String friendName) {
-        this.friendName = friendName;
+    public void setFriendEmail(String friendEmail) {
+        this.friendEmail = friendEmail;
+    }
+
+    public String getFriendNickName() {
+        return friendNickName;
+    }
+
+    public void setFriendNickName(String friendNickName) {
+        this.friendNickName = friendNickName;
     }
 
     public String getChallengeTitle() {
@@ -90,14 +97,21 @@ public class Challenge {
     public String getDescription() {
         return description;
     }
+    public String getFriendPictureURI() {
+        return friendPictureURI;
+    }
 
+    public void setFriendPictureURI(String friendPictureURI) {
+        this.friendPictureURI = friendPictureURI;
+    }
     public void setDescription(String description) {
         this.description = description;
     }
     private String challengeTitle;
     private String current;
     private String description;
-    private String friendName;
+    private String friendNickName;
+    private String friendEmail;
     private String friendStatus;
     private long points;
     private String target;
@@ -105,6 +119,10 @@ public class Challenge {
     private String timeToLeft;
     private boolean winner;
     private String userStatus;
+    private String friendPictureURI;
+
+
+
     
 
 

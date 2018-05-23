@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.datamodel.CurrentUser;
 import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
-
+import com.gameco.cakin.automotiveservices.controller.myNotificationController;
 import java.util.ArrayList;
 
 
@@ -32,6 +32,7 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
    private ImageButton acceptBtn,rejectBtn;
    private String current_friend_state="not_friends";
    private boolean requestType;
+   private myNotificationController myNotificationController;
 
     public class FriendsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public FriendsViewHolder(View view){
@@ -59,6 +60,7 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
         this.activity = activity;
         this.currentUsers = currentUsers;
         myFirebaseDatabase = new MyFirebaseDatabase(activity);
+        myNotificationController = new myNotificationController(activity);
     }
 
 
@@ -138,6 +140,7 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
                     addFriends.setEnabled(false);
                     addFriends.setText("Cancel Friend Request");
                     myFirebaseDatabase.sendFriendRequest(currentUser.getEmail());
+                    myNotificationController.sendFriendRequest(currentUser);
                     current_friend_state="req_sent";
                     addFriends.setEnabled(true);
                     return;

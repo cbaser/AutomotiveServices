@@ -2,13 +2,16 @@ package com.gameco.cakin.automotiveservices.controller;
 
 import android.app.Activity;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NotificationCompat;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gameco.cakin.automotiveservices.R;
+import com.gameco.cakin.automotiveservices.activites.ProgressActivity;
 import com.gameco.cakin.automotiveservices.adapters.FriendsChallengeAdapter;
 import com.gameco.cakin.automotiveservices.datamodel.Challenge;
 import com.gameco.cakin.automotiveservices.datamodel.CurrentUser;
@@ -101,13 +105,16 @@ public class myNotificationController {
 
     private void startChallengeToYourself(Challenge challenge){
         sendNotificationToSelf(activity, "Challenge Started", challenge.getTime());
-        myFirebaseDatabase.addToDatabase(challenge.getChallengeTitle(),challenge);
+        CurrentUser currentUser = myFirebaseDatabase.getUserFromPreferences();
+        myFirebaseDatabase.acceptChallenge(currentUser,challenge);
+      //  myFirebaseDatabase.addToDatabase(challenge.getChallengeTitle(),challenge);
     }
 
 
     private void sendNotificationToSelf(Activity activity, String title, String content) {
+
         long[] pattern = {0, 100, 1000};
-        Notification notification = new NotificationCompat.Builder(activity)
+        Notification notification = new NotificationCompat.Builder(activity.getApplicationContext(),"4455")
                 .setContentTitle(title)
                 .setContentText(content)
                 .setVibrate(pattern)
@@ -136,13 +143,11 @@ public class myNotificationController {
     }
 
 
-    private void initializeFriendsScreen(final Challenge challenge, final ArrayList<CurrentUser> friends){
-        View friendView = View.inflate(activity,R.layout.popup_select_friend, null);
+    public void initializeFriendsScreen(final Challenge challenge, final ArrayList<CurrentUser> friends){
+        final View friendView = View.inflate(activity,R.layout.popup_select_friend, null);
         final PopupWindow friendWindow = new PopupWindow(friendView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        friendWindow.showAtLocation(friendView, Gravity.NO_GRAVITY, 10, 10);
 
-
-        TextView txtTime =  friendView.findViewById(R.id.txtSelectFriendTime);
+          TextView txtTime =  friendView.findViewById(R.id.txtSelectFriendTime);
         txtTime.setText(activity.getString(R.string.popup_challenge_time,challenge.getTime()));
         TextView txtPoint = friendView.findViewById(R.id.txtSelectFriendPoint);
         txtPoint.setText(activity.getString(R.string.popup_challenge_point,challenge.getPoints()));
@@ -185,9 +190,9 @@ public class myNotificationController {
 
                 CurrentUser currentUser = friends.get(friendPos);
                 Toast.makeText(activity, "Challenge Sent!", Toast.LENGTH_SHORT).show();
-                mainNotificationHandler.setJsonBody(currentUser.getEmail(),"Challenge From: ",generateJsonData(challenge,currentUser));
+                mainNotificationHandler.setJsonBody(currentUser.getEmail(),"Challenge From: "+currentUser.getEmail(),generateJsonData(challenge,currentUser));
                 mainNotificationHandler.sendNotificationToFriend();
-               // myFirebaseDatabase.addToDatabase(challenge.getChallengeTitle(),challenge);
+                myFirebaseDatabase.sendChallengeRequest(challenge,currentUser);
                 friendWindow.dismiss();
             }
         });
@@ -237,7 +242,6 @@ public class myNotificationController {
         JSONObject finalObject = new JSONObject();
         try{
             Gson gson = new Gson();
-
             finalObject.put("dataFromNotification",gson.toJson(currentUser));
         }catch (Exception e){
             e.printStackTrace();
@@ -254,16 +258,29 @@ public class myNotificationController {
 
 
 
-    public void acceptOrDeclineChallenge(final Challenge challenge, final CurrentUser currentUser) {
-        View decideView = View.inflate(activity,R.layout.popup_accept_challenge, null);
-        final PopupWindow decideWindow = new PopupWindow(decideView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        decideWindow.showAtLocation(decideView, Gravity.CENTER, 10, 10);
+    public void acceptOrDeclineChallenge(final Activity activity,final Challenge challenge, final CurrentUser currentUser) {
+
+        LayoutInflater layoutInflater = activity.getLayoutInflater();
+
+        final View decideView = layoutInflater.inflate(R.layout.popup_accept_challenge, null);
+        final PopupWindow decideWindow = new PopupWindow(decideView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+
+        new Handler().postDelayed(new Runnable(){
+
+            public void run() {
+                decideWindow.showAtLocation(decideView, Gravity.CENTER, 10, 10);
+            }
+
+        }, 200L);
+
+
         LinearLayout linearLayout = decideView.findViewById(R.id.detailDescription);
         TextView txtTitle = linearLayout.findViewById(R.id.txtFrom);
         txtTitle.setText(activity.getString(R.string.popup_challenge_title,challenge.getChallengeTitle()));
 
         TextView txtTime = linearLayout.findViewById(R.id.txtTime);
-        txtTime.setText(activity.getString(R.string.popup_challenge_time,challenge.getChallengeTitle()));
+        txtTime.setText(activity.getString(R.string.popup_challenge_time,challenge.getTime()));
         TextView txtPoint =  linearLayout.findViewById(R.id.txtPoint);
         txtPoint.setText(activity.getString(R.string.popup_challenge_point,challenge.getPoints()));
         TextView txtCurrent = linearLayout.findViewById(R.id.txtCurrent);
@@ -279,7 +296,8 @@ public class myNotificationController {
                 mainNotificationHandler.setJsonBody(currentUser.getEmail(), "Challenge Accepted!",generateJsonData(challenge,currentUser));
                 mainNotificationHandler.sendNotificationToFriend();
                 decideWindow.dismiss();
-                myFirebaseDatabase.addToDatabase(challenge.getChallengeTitle(),challenge);
+                myFirebaseDatabase.acceptChallenge(currentUser,challenge);
+                //myFirebaseDatabase.addToDatabase(challenge.getChallengeTitle(),challenge);
             }
         });
 
@@ -306,7 +324,7 @@ public class myNotificationController {
                     @Override
                     public void onClick(View view) {
                         Toast.makeText(activity, "You lost 250 points!", Toast.LENGTH_SHORT).show();
-                        myFirebaseDatabase.reducePoints();
+                        myFirebaseDatabase.rejectChallenge(currentUser,challenge);
                         mainNotificationHandler.setJsonBody(currentUser.getEmail(), "Challenge Rejected!",generateJsonData(challenge,currentUser));
                         mainNotificationHandler.sendNotificationToFriend();
                         rejectWindow.dismiss();
@@ -326,10 +344,8 @@ public class myNotificationController {
         });
     }
     public void sendFriendRequest(CurrentUser currentUser){
-        mainNotificationHandler.setJsonBody(currentUser.getEmail(),"Friend Request",userToJson(currentUser));
+        mainNotificationHandler.setJsonBody(currentUser.getEmail(),"Friend Request from : "+currentUser.getEmail(),userToJson(currentUser));
         mainNotificationHandler.sendNotificationToFriend();
-
-
     }
 
 

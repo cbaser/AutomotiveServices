@@ -4,9 +4,13 @@ package com.gameco.cakin.automotiveservices.activites;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,6 +29,9 @@ import com.gameco.cakin.automotiveservices.controller.myFacebookLoginController;
 import com.gameco.cakin.automotiveservices.onesignal.NotificationOpenedHandler;
 import com.gameco.cakin.automotiveservices.onesignal.NotificationReceivedHandler;
 import com.onesignal.OneSignal;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -100,6 +107,23 @@ public class LoginActivity extends AppCompatActivity {
         myFacebookLoginController.initialize();
       // if(!myFacebookLoginController.checkLoggedIn())
         myFacebookLoginController.startLogin();
+
+
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.gameco.cakin.automotiveservices",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.e("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
 
     }
     public void doEmailLogin(String email,String password) {

@@ -60,17 +60,18 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class MyFirebaseDatabase {
     private FirebaseUser user;
     private FirebaseDatabase database;
-    private DatabaseReference usersReference,leaderboardReference,challengesReference,friendRequestReference,friendsReference;
+    private DatabaseReference usersReference,leaderboardReference,challengesReference,challengeRequestReference,friendRequestReference,friendsReference;
     private Activity activity;
     private StorageReference picsRef;
     private ArrayList<Challenge> challengeList;
     private ArrayList<Rank> rankList;
-    private long challengeCount,points;
+
     private boolean upper_level;
     private String afterLevel;
     private String TAG = "MyFirebaseDatabase";
@@ -82,34 +83,10 @@ public class MyFirebaseDatabase {
         leaderboardReference = database.getReference().child("Leaderboards");
         challengesReference = database.getReference().child("Challenges").child("Title");
         friendRequestReference = database.getReference().child("FriendRequests");
+        challengeRequestReference = database.getReference().child("ChallengeRequests");
         friendsReference = database.getReference().child("Friends");
         this.activity = activity;
     }
-    public String getUsersMail(){
-        return user.getEmail();
-    }
-    public void getFriendRequests(final String friendMail){
-        friendRequestReference.child(getUsersMail().replace(".",",")).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.hasChild(friendMail.replace(".",","))){
-                    String req_type = dataSnapshot.child(friendMail.replace(".",",")).child("request_type").getValue().toString();
-                    if(req_type.equals("received")){
-
-                    }
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-
-
     public void createAccountInFirebaseDatabase(String email, String password, String nickname, String VIN, String Uri){
          usersReference = database.getReference().child("Users").child(email.replace(".",","));
         Car car = new Car();
@@ -128,131 +105,7 @@ public class MyFirebaseDatabase {
         rank.setPoints(0);
         leaderboardReference.child(email.replace(".",",")).setValue(rank);
     }
-    public void increasePoints(){
-        usersReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
-        usersReference.addListenerForSingleValueEvent(new ValueEventListener(){
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                long point = (long) dataSnapshot.child("Points").getValue();
-                point += 100;
-                dataSnapshot.getRef().child("Points").setValue(point);
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-    }
-    public void reducePoints() {
-        usersReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
-        usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            //       mRef.child(LoginActivity.user_full_name).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                points = (long) dataSnapshot.child("Points").getValue();
-                points = points - 250;
-                dataSnapshot.getRef().child("Points").setValue(points);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-    }
-
-
-
-    public void increaseChallengeCount() {
-        usersReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
-        usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                 challengeCount = (long) dataSnapshot.child("ChallengeCount").getValue();
-                challengeCount = challengeCount + 1;
-                setLevel(dataSnapshot);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-    public void setLevel(DataSnapshot dataSnapshot){
-        if (challengeCount % 5 == 0) {
-            challengeCount = 0;
-
-            String beforeLevel = (String) dataSnapshot.child("Level").getValue();
-
-            switch (beforeLevel) {
-                case "Newbie":
-                    dataSnapshot.getRef().child("Level").setValue("Star");
-                    afterLevel = "Star";
-                    upper_level =true;
-                    break;
-                case "Star":
-                    dataSnapshot.getRef().child("Level").setValue("Master");
-                    afterLevel = "Master";
-                    upper_level = true;
-                    break;
-                case "Master":
-                    dataSnapshot.getRef().child("Level").setValue("Grandmaster");
-                    afterLevel = "Grandmaster";
-                    upper_level = true;
-                    break;
-            }
-
-        }
-        dataSnapshot.getRef().child("ChallengeCount").setValue(challengeCount);
-
-    }
-
-    public boolean isLevelUp(){
-        return upper_level;
-    }
-    public String getAfterLevel(){
-        return afterLevel;
-    }
-
-
-
-    public void addToDatabase(String title,Challenge incomingChallenge) {
-        try {
-            usersReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
-            DatabaseReference newRef = usersReference.child("Challenges");
-            Map<String, Challenge> challenges = new HashMap<>();
-            challenges.put(title, incomingChallenge);
-            newRef.child(title).setValue(challenges);
-            increaseChallengeCount();
-           increasePoints();
-           levelUp();
-           setUserInfoToPreferences();
-        } catch (Exception e) {
-            Log.e("EROOOOR AT ADDING", e.getMessage());
-        }
-
-        // newRef.setValue(challenges);
-    }
-    public void addAcceptedChallenge(Challenge incoming){
-        try {
-            usersReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
-            DatabaseReference newRef = usersReference.child("Challenges");
-            Map<String, Challenge> challenges = new HashMap<>();
-            challenges.put(incoming.getChallengeTitle(), incoming);
-            newRef.push().setValue(challenges);
-            increaseChallengeCount();
-        } catch (Exception e) {
-            Log.e("EROOOOR AT ADDING", e.getMessage());
-        }
-
-    }
 
 
     public void updateCarData(final Car car){
@@ -361,7 +214,7 @@ public class MyFirebaseDatabase {
             @Override
             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
                 if (!task.isSuccessful()) {
-                    throw task.getException();
+                    throw Objects.requireNonNull(task.getException());
                 }
                 return picsRef.getDownloadUrl();
             }
@@ -388,7 +241,7 @@ public class MyFirebaseDatabase {
             @Override
             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
                 if (!task.isSuccessful()) {
-                    throw task.getException();
+                    throw Objects.requireNonNull(task.getException());
                 }
                 return picsRef.getDownloadUrl();
             }
@@ -426,6 +279,16 @@ public class MyFirebaseDatabase {
         });
 
     }
+
+
+
+
+
+
+
+
+
+
     public CurrentUser getUserFromPreferences(){
         Gson gson = new Gson();
       SharedPreferences  sharedPreferences = activity.getSharedPreferences("currentUserPref",Context.MODE_PRIVATE);
@@ -433,7 +296,7 @@ public class MyFirebaseDatabase {
         return  gson.fromJson(json, CurrentUser.class);
     }
 
-    public void getFriendsFromDatabase(){
+    public void setUserFriendsToPreferences(){
         final ArrayList<String> friendEmails = new ArrayList<>();
         friendsReference = database.getReference().child("Friends").child(user.getEmail().replace(".",","));
         friendsReference.addValueEventListener(new ValueEventListener() {
@@ -442,7 +305,7 @@ public class MyFirebaseDatabase {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     friendEmails.add(snapshot.getKey());
                 }
-                changeRequestsToObjects(friendEmails,false);
+                changeFriendRequestsToObjects(friendEmails,false);
 
             }
 
@@ -458,7 +321,7 @@ public class MyFirebaseDatabase {
 
 
 
-    public void getFriendRequestFromDatabase(){
+    public void setUserFriendRequestsToPreferences(){
         final ArrayList<String> requestFriendEmails = new ArrayList<>();
         friendRequestReference = database.getReference().child("FriendRequests").child(user.getEmail().replace(".",","));
         friendRequestReference.addValueEventListener(new ValueEventListener() {
@@ -474,7 +337,7 @@ public class MyFirebaseDatabase {
 
 
                 }
-                changeRequestsToObjects(requestFriendEmails,true);
+                changeFriendRequestsToObjects(requestFriendEmails,true);
             }
 
             @Override
@@ -484,8 +347,7 @@ public class MyFirebaseDatabase {
         });
 
     }
-
-    public void changeRequestsToObjects(ArrayList<String>arrayList, final boolean requestOrFriends){
+    public void changeFriendRequestsToObjects(ArrayList<String>arrayList, final boolean requestOrFriends){
         final Gson gson = new Gson();
         final SharedPreferences sharedPreferences = activity.getSharedPreferences("currentUserPref", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -499,86 +361,40 @@ public class MyFirebaseDatabase {
         }
 
         for(String emails:arrayList){
-           usersReference = database.getReference().child("Users").child(emails.replace(".",","));
-           usersReference.addValueEventListener(new ValueEventListener() {
-               @Override
-               public void onDataChange(DataSnapshot dataSnapshot) {
-                   CurrentUser currentUser = dataSnapshot.getValue(CurrentUser.class);
-                   JsonArray jsonArray = new JsonArray();
-                   String json;
-
-                   if(requestOrFriends)
-                        json = sharedPreferences.getString("currentUserRequest", "");
-                   else
-                        json = sharedPreferences.getString("currentUserFriends", "");
-
-
-                   if(!json.isEmpty() || !json.equals("")){
-
-                       jsonArray = (JsonArray) new JsonParser().parse(json);
-                       JsonObject object1 = (JsonObject)new JsonParser().parse(gson.toJson(currentUser));
-                       jsonArray.add(object1);
-                   }
-                   else{
-                       JsonObject object1 = (JsonObject)new JsonParser().parse(gson.toJson(currentUser));
-                       jsonArray.add(object1);
-                   }
-
-
-
-
-                   if(requestOrFriends)
-                   editor.putString("currentUserRequest",jsonArray.toString());
-                   else
-                       editor.putString("currentUserFriends",jsonArray.toString());
-
-                   editor.apply();
-
-               }
-
-               @Override
-               public void onCancelled(DatabaseError databaseError) {
-
-               }
-           });
-        }
-    }
-
-    /** Will be in next iteration */
-    public void getChallengeRequestsFromDatabase(){
-        final HashMap<String,String> challengeRequests=new HashMap<>();
-        final ArrayList<String> challengeTypes = new ArrayList<>();
-        friendsReference = database.getReference().child("ChallengeRequests").child(user.getEmail().replace(".",","));
-        friendsReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    challengeRequests.put(snapshot.getKey(),snapshot.getValue(String.class));
-                }
-                changeChallengesToObjects(challengeRequests);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-    public void changeChallengesToObjects(HashMap<String,String> challengeRequest){
-        final Gson gson = new Gson();
-        final SharedPreferences sharedPreferences = activity.getSharedPreferences("currentUserPref", Context.MODE_PRIVATE);
-        final SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove("currentUserChallengeRequests");
-        editor.apply();
-        for(Map.Entry<String,String> entry : challengeRequest.entrySet()){
-            final HashMap<String,String> jsonMap = new HashMap<>();
-
-            usersReference = database.getReference().child("Users").child(entry.getKey().replace(".",","));
+            usersReference = database.getReference().child("Users").child(emails.replace(".",","));
             usersReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     CurrentUser currentUser = dataSnapshot.getValue(CurrentUser.class);
+                    JsonArray jsonArray = new JsonArray();
+                    String json;
+
+                    if(requestOrFriends)
+                        json = sharedPreferences.getString("currentUserRequest", "");
+                    else
+                        json = sharedPreferences.getString("currentUserFriends", "");
+
+
+                    if(!json.isEmpty() || !json.equals("")){
+
+                        jsonArray = (JsonArray) new JsonParser().parse(json);
+                        JsonObject object1 = (JsonObject)new JsonParser().parse(gson.toJson(currentUser));
+                        jsonArray.add(object1);
+                    }
+                    else{
+                        JsonObject object1 = (JsonObject)new JsonParser().parse(gson.toJson(currentUser));
+                        jsonArray.add(object1);
+                    }
+
+
+
+
+                    if(requestOrFriends)
+                        editor.putString("currentUserRequest",jsonArray.toString());
+                    else
+                        editor.putString("currentUserFriends",jsonArray.toString());
+
+                    editor.apply();
 
                 }
 
@@ -588,7 +404,6 @@ public class MyFirebaseDatabase {
                 }
             });
         }
-
     }
 
 
@@ -620,6 +435,9 @@ public class MyFirebaseDatabase {
         return currentUsers;
     }
 
+
+
+
     public ArrayList<CurrentUser> getFriendsFromPreferences(){
         ArrayList<CurrentUser> friends=new ArrayList<>();
         Gson gson = new GsonBuilder().setLenient().create();
@@ -636,6 +454,40 @@ public class MyFirebaseDatabase {
             e.printStackTrace();
         }
         return  friends;
+    }
+    public void setUserChallengesToPreferences(){
+        challengeList = new ArrayList<>();
+        usersReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
+        SharedPreferences sharedPreferences = activity.getSharedPreferences("currentUserPref", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
+        usersReference.child("Challenges").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                try{
+                    Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                    for(DataSnapshot childrenShot : children){
+                        Iterable<DataSnapshot>innerChildren = childrenShot.getChildren();
+                        for (DataSnapshot challengeShot : innerChildren){
+                            Challenge challenge =challengeShot.getValue(Challenge.class);
+                            challengeList.add(challenge);
+                        }
+                    }
+                    Gson gson = new Gson();
+                    editor.putString("currentUserChallenges",gson.toJson(challengeList));
+                    editor.apply();
+
+                }catch (Exception e){
+                    Log.e("ERRORRR",e.getMessage());
+                    // e.printStackTrace();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+
     }
 
     public void setChallengeInfoToPreferences(){
@@ -666,8 +518,14 @@ public class MyFirebaseDatabase {
 
             }
         });
+    }
 
-
+    public ArrayList<Challenge> getUserChallengesFromPreferences(){
+        Gson gson = new Gson();
+        SharedPreferences  sharedPreferences = activity.getSharedPreferences("currentUserPref",Context.MODE_PRIVATE);
+        String json = sharedPreferences.getString("currentUserChallenges", "");
+        TypeToken<ArrayList<Challenge>> token = new TypeToken<ArrayList<Challenge>>() {};
+        return  gson.fromJson(json, token.getType());
     }
     public ArrayList<Challenge> getChallengesFromPreferences(){
         Gson gson = new Gson();
@@ -702,25 +560,7 @@ public class MyFirebaseDatabase {
             }
         });
     }
-    public void levelUp() {
-        if(isLevelUp()){
-            View popupView = activity.getLayoutInflater().inflate(R.layout.popup_level_up, null);
-            popupView.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.anim_popup_levelup));
-            TextView textView = (TextView) popupView.findViewById(R.id.level_up_description);
-            textView.setText(getAfterLevel());
-            final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            popupWindow.showAtLocation(popupView, Gravity.CENTER, 10, 10);
-            FloatingActionButton floatingActionButton = (FloatingActionButton) popupView.findViewById(R.id.closeLevelUp);
-            floatingActionButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    popupWindow.dismiss();
-                }
-            });
-        }
 
-
-    }
 
 
     public ArrayList<Rank> getRankingFromPreferences(){
@@ -887,10 +727,339 @@ public class MyFirebaseDatabase {
     }
 
 
+    public void sendChallengeRequest(final Challenge challenge, final CurrentUser currentUser){
+        challengeRequestReference.child(user.getEmail().replace(".",","))
+                .child(currentUser.getEmail().replace(".",","))
+                .child("challenge_type")
+                .setValue(challenge.getChallengeTitle()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+            if(task.isSuccessful()) {
+                challengeRequestReference.child(user.getEmail().replace(".",","))
+                        .child(currentUser.getEmail().replace(".",","))
+                        .child("request_type").setValue("sent");
+
+
+                challengeRequestReference.child(currentUser.getEmail().replace(".",","))
+                        .child(user.getEmail().replace(".",","))
+                        .child("challenge_type")
+                        .setValue(challenge.getChallengeTitle()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        challengeRequestReference.child(currentUser.getEmail().replace(".",","))
+                                .child(user.getEmail().replace(".",","))
+                                .child("request_type").setValue("received");
+                        Toast.makeText(activity, "Challenge Request Send!", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                }
+            else
+                    Toast.makeText(activity, "Failed sending Friend Request", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+    }
+
+
+
+
+
+    public void setChallengeRequestsToPreferences(){
+        final HashMap<String,String> challengeRequests=new HashMap<>();
+        challengeRequestReference = database.getReference().child("ChallengeRequests").child(user.getEmail().replace(".",","));
+        challengeRequestReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String request_type = snapshot.child("request_type").getValue(String.class);
+                        if(request_type.equals("received")){
+                            challengeRequests.put(snapshot.getKey(),snapshot.child("challenge_type").getValue(String.class));
+                    }
+                }
+                changeChallengeRequestsToObjects(challengeRequests);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    public void changeChallengeRequestsToObjects(HashMap<String,String> challengeRequest){
+        final Gson gson = new Gson();
+        final SharedPreferences sharedPreferences = activity.getSharedPreferences("currentUserPref", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("currentUserChallengeRequestsUsers");
+        editor.remove("currentUserChallengeTypes");
+        editor.apply();
+
+        for(HashMap.Entry<String,String> entry : challengeRequest.entrySet()){
+
+            usersReference = database.getReference().child("Users").child(entry.getKey().replace(".",","));
+            usersReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    CurrentUser currentUser = dataSnapshot.getValue(CurrentUser.class);
+                    Gson gson = new Gson();
+                    editor.putString("currentUserChallengeRequestsUsers",gson.toJson(currentUser));
+                    editor.apply();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            challengesReference.child(entry.getValue()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Challenge challenge = dataSnapshot.getValue(Challenge.class);
+                    editor.putString("currentUserChallengeTypes",gson.toJson(challenge));
+                    editor.apply();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
+        }
+
+    }
+
+
+    public ArrayList<Challenge> getChallengeRequestFromPreferences(){
+        ArrayList<Challenge> challengeArrayList = new ArrayList<>();
+        Gson gson = new GsonBuilder().setLenient().create();
+        SharedPreferences  sharedPreferences = activity.getSharedPreferences("currentUserPref",Context.MODE_PRIVATE);
+        String userJson = sharedPreferences.getString("currentUserChallengeRequestsUsers", "");
+        String userChallengeJson = sharedPreferences.getString("currentUserChallengeTypes", "");
+
+        if(!userJson.isEmpty() || !userJson.equals("")){
+            if(!userChallengeJson.isEmpty() || !userChallengeJson.equals("")){
+
+
+
+            try {
+
+                CurrentUser currentUser = gson.fromJson(userJson,CurrentUser.class);
+                Challenge challenge = gson.fromJson(userChallengeJson,Challenge.class);
+                challenge.setFriendNickName(currentUser.getNickName());
+                challenge.setFriendEmail(currentUser.getEmail());
+                challenge.setFriendPictureURI(currentUser.getPictureURI());
+                challengeArrayList.add(challenge);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            }
+        }
+
+        return challengeArrayList;
+
+
+    }
+
+    public void acceptChallenge(CurrentUser currentUser,Challenge challenge){
+        increasePoints(challenge);
+        increaseChallengeCount();
+        setRankingToPreferences();
+        challenge.setFriendPictureURI(currentUser.getPictureURI());
+        challenge.setFriendEmail(currentUser.getEmail());
+        challenge.setFriendNickName(currentUser.getNickName());
+        addChallengeToDatabase(challenge.getChallengeTitle(),challenge);
+        setUserInfoToPreferences();
+        setUserChallengesToPreferences();
+        deleteChallengeRequest(currentUser,challenge);
+
+    }
+
+    public void rejectChallenge(CurrentUser currentUser,Challenge challenge){
+        reducePoints();
+        setRankingToPreferences();
+        deleteChallengeRequest(currentUser,challenge);
+
+
+    }
+    public void deleteChallengeRequest(final CurrentUser currentUser, Challenge challenge){
+        if(!currentUser.getEmail().equals(user.getEmail())){
+            challengeRequestReference.child(user.getEmail().replace(".",","))
+                    .child(currentUser.getEmail().replace(".",",")).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull final Task<Void> task) {
+                    if(task.isSuccessful()){
+                        challengeRequestReference.child(currentUser.getEmail().replace(".",","))
+                                .child(user.getEmail().replace(".",",")).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                              //  Toast.makeText(activity,"Friend Request Canceled!",Toast.LENGTH_LONG).show();
+
+                            }
+                        });
+                    }
+                    else{
+                        Log.e(TAG,task.getException().toString());
+
+                    }
+                }
+            });
+        }
+
+
+    }
+
+    public void increasePoints(final Challenge challenge){
+        usersReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
+        usersReference.addListenerForSingleValueEvent(new ValueEventListener(){
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long point = (long) dataSnapshot.child("Points").getValue();
+                point += challenge.getPoints();
+                dataSnapshot.getRef().child("Points").setValue(point);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        leaderboardReference.child(user.getEmail().replace(".",",")).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long point = (long) dataSnapshot.child("points").getValue();
+                point += challenge.getPoints();
+                dataSnapshot.getRef().child("points").setValue(point);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+    public void reducePoints() {
+        usersReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
+        usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            //       mRef.child(LoginActivity.user_full_name).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long points = (long) dataSnapshot.child("Points").getValue();
+                points = points - 1000;
+                dataSnapshot.getRef().child("Points").setValue(points);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        leaderboardReference.child(user.getEmail().replace(".",",")).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long point = (long) dataSnapshot.child("points").getValue();
+                point= point -1000;
+                dataSnapshot.getRef().child("points").setValue(point);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
+
+
+    public void increaseChallengeCount() {
+        usersReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
+        usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+               long challengeCount = (long) dataSnapshot.child("ChallengeCount").getValue();
+                challengeCount = challengeCount + 1;
+                dataSnapshot.getRef().child("ChallengeCount").setValue(challengeCount);
+                dataSnapshot.getRef().child("Level").setValue(setLevelName(challengeCount));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+    public String setLevelName(long challengeCount){
+        if(challengeCount%5==0)
+            levelUp();
+        if(challengeCount>5 && challengeCount<10)
+            return "Star";
+        if(challengeCount>10 && challengeCount<15)
+            return "Master";
+        if(challengeCount>20)
+            return "Grandmaster";
+
+
+        return "Newbie";
+    }
 
 
 
 
 
 
-}
+    public void addChallengeToDatabase(String title,Challenge incomingChallenge) {
+        try {
+            usersReference = database.getReference().child("Users").child(user.getEmail().replace(".", ","));
+            DatabaseReference newRef = usersReference.child("Challenges");
+            Map<String, Challenge> challenges = new HashMap<>();
+            challenges.put(title, incomingChallenge);
+            newRef.child(title).setValue(challenges);
+            setUserInfoToPreferences();
+        } catch (Exception e) {
+            Log.e("EROOOOR AT ADDING", e.getMessage());
+        }
+
+    }
+
+    public void levelUp() {
+
+            View popupView = activity.getLayoutInflater().inflate(R.layout.popup_level_up, null);
+            popupView.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.anim_popup_levelup));
+            TextView textView = (TextView) popupView.findViewById(R.id.level_up_description);
+            textView.setText("Level Up");
+            final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            popupWindow.showAtLocation(popupView, Gravity.CENTER, 10, 10);
+            FloatingActionButton floatingActionButton = (FloatingActionButton) popupView.findViewById(R.id.closeLevelUp);
+            floatingActionButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWindow.dismiss();
+                }
+            });
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

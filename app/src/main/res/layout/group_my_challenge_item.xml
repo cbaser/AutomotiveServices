@@ -20,7 +20,7 @@
             android:background="@color/white">
 
             <LinearLayout
-                android:id="@+id/profileLinear1"
+                android:id="@+id/group_my_challenge_user_linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
@@ -29,52 +29,52 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txtTime1"
+                    android:id="@+id/group_my_challenge_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1 day left"
+                    android:text="@string/popup_challenge_time"
                     android:textColor="@android:color/black" />
 
                 <ImageView
-                    android:id="@+id/profPic_challenge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/group_my_challenge_profile_picture"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_can"
+                    android:src="@drawable/profile_picture"
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/txtFriendName1"
+                    android:id="@+id/group_my_challenge_friend_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Can Türker"
+                    android:text="@string/popup_challenge_friend_name"
                     android:textColor="@color/black"
                     android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/descriptionLinear1"
+                android:id="@+id/group_my_challenge_description_linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_toEndOf="@+id/profileLinear1"
+                android:layout_toEndOf="@+id/group_my_challenge_user_linearLayout"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txtDescription1"
+                    android:id="@+id/group_my_challenge_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bree_serif"
-                    android:text="Get a 5 star rating on your next trip to REWE"
+                    android:text="@string/popup_challenge_description"
                     android:textAllCaps="false"
                     android:textColor="@color/fbutton_color_midnight_blue"
                     tools:fontFamily="@font/bree_serif" />
 
                 <TextView
-                    android:id="@+id/txtwin"
+                    android:id="@+id/group_my_challenge_winning"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -84,13 +84,30 @@
 
 
                 <Button
-                    android:id="@+id/expandableButton1"
-                    android:layout_width="150dp"
+                    android:id="@+id/group_my_challenge_more_info_button"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/button_with_shape"
                     android:text="See more Details"
                     tools:text="See more Details" />
+<LinearLayout
+    android:id="@+id/group_my_challenge_buttonLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/group_my_challenge_respond_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_change_clicked"
+        android:text="@string/popup_respond_button" />
+
+</LinearLayout>
+
             </LinearLayout>
 
         </RelativeLayout>

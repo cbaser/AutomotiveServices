@@ -157,6 +157,10 @@ public class FragmentProfile extends Fragment {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
             Uri filePath = data.getData();
+            Intent editIntent = new Intent(Intent.ACTION_EDIT);
+            editIntent.setDataAndType(filePath, "image/*");
+            editIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(Intent.createChooser(editIntent, null));
             Log.e(TAG, filePath.getEncodedPath());
             try {
                 InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());

@@ -16,6 +16,39 @@ public class CurrentUser implements Serializable{
     private String NickName;
     private String Level;
     private String Password;
+
+    public void setCar(com.gameco.cakin.automotiveservices.datamodel.Car car) {
+        Car = car;
+    }
+
+    public void setChallengeCount(int challengeCount) {
+        ChallengeCount = challengeCount;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public void setNickName(String nickName) {
+        NickName = nickName;
+    }
+
+    public void setLevel(String level) {
+        Level = level;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    public void setPictureURI(String pictureURI) {
+        PictureURI = pictureURI;
+    }
+
+    public void setPoints(int points) {
+        Points = points;
+    }
+
     private String PictureURI;
     private String CarURI;
     private int Points;
