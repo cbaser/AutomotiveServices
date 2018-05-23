@@ -24,7 +24,6 @@ private BackendHelper backendHelper;
 private static Activity activity;
 private String TAG = "ProgressActivity";
 private ProgressBar progressBar;
-private myUserUpdateInfoController userUpdateInfoController;
   private Handler handler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,7 @@ private myUserUpdateInfoController userUpdateInfoController;
         progressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.fbutton_color_midnight_blue), PorterDuff.Mode.MULTIPLY);
         firebaseDatabase = new MyFirebaseDatabase(this);
         backendHelper = new BackendHelper();
-        userUpdateInfoController = new myUserUpdateInfoController(this);
+        myUserUpdateInfoController   userUpdateInfoController = new myUserUpdateInfoController(this);
 
         try{
         userUpdateInfoController.startUpdate();
@@ -49,7 +48,7 @@ private myUserUpdateInfoController userUpdateInfoController;
         new Thread(new Runnable() {
             public void run() {
                 try{
-                    Thread.sleep(3000);
+                    Thread.sleep(5000);
                     Car  car = backendHelper.tryTelematics("Telematics");
                     firebaseDatabase.updateCarData(car);
                 }

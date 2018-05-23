@@ -75,18 +75,18 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:fontFamily="@font/source_sans_pro"
-                        android:text="User Search"
+                        android:text="Friend Search"
                         android:textColor="@color/colorLeaGreen"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/editSearch"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_height="39dp"
                         android:layout_below="@id/textView"
                         android:background="@drawable/search_layout"
-                        android:hint="Search by email or nick name"
+                        android:hint="Search by email "
                         android:textColor="@color/black"
                         android:textColorHint="@color/black" />
 
@@ -94,8 +94,8 @@
                         android:id="@+id/invitePeopleBtn"
                         android:layout_width="150dp"
                         android:layout_height="30dp"
+                        android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
-                        android:layout_below="@+id/editSearch"
                         android:layout_gravity="left"
                         android:background="@drawable/button_change_clicked"
                         android:fontFamily="@font/bree_serif"
@@ -106,8 +106,8 @@
 
                     <android.support.design.widget.FloatingActionButton
                         android:id="@+id/search_button"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:clickable="true"

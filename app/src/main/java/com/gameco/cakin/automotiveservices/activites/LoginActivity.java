@@ -56,9 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         /** Starting to initialization*/
 
         emailtxt = (EditText) findViewById(R.id.email_edit);
-        emailtxt.setText("c.akinbaser@hotmail.com");
         passwordtxt = (EditText) findViewById(R.id.password_edit);
-        passwordtxt.setText("12345678");
+
 
         ImageView backView = (ImageView) findViewById(R.id.backButton);
         backView.setOnClickListener(new View.OnClickListener() {
@@ -107,23 +106,6 @@ public class LoginActivity extends AppCompatActivity {
         myFacebookLoginController.initialize();
       // if(!myFacebookLoginController.checkLoggedIn())
         myFacebookLoginController.startLogin();
-
-
-
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.gameco.cakin.automotiveservices",
-                    PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.e("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-
-        } catch (NoSuchAlgorithmException e) {
-
-        }
 
     }
     public void doEmailLogin(String email,String password) {

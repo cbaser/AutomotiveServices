@@ -41,7 +41,7 @@
                     android:layout_below="@+id/profPic_Profile"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/source_sans_pro"
-                    android:text="@string/fullName"
+                    android:text="Cagatay Akin Baser"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:textColor="@color/black"
                     android:textSize="18sp" />

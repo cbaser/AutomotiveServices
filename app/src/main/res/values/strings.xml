@@ -11,12 +11,7 @@
     <string name="email">E-Mail</string>
     <string name="VIN">Vehicle Identification Number</string>
     <string name="title_activity_singup">SingupActivity</string>
-    <string name="fullName">Cagatay Akin Baser</string>
-    <string name="canName">Can Türker</string>
-    <string name="canLevel">Level : Master</string>
-    <string name="canPoints">Score : 19334</string>
-    <string name="companyName">BMW</string>
-    <string name="department">Connected Drive</string>
+
     <string name="navigation_carStatus">Vehicle Status</string>
     <string name="navigation_myDriving">My Driving</string>
     <string name="navigation_highScores">High Scores</string>

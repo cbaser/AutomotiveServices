@@ -111,10 +111,8 @@ public class myFacebookLoginController extends myLoginController {
 
     @Override
   public  void signOut() {
-        if(accessToken != null){
-            accessToken = null;
-            LoginManager.getInstance().logOut();
-        }
+        LoginManager.getInstance().logOut();
+
 
     }
 
@@ -158,7 +156,7 @@ public class myFacebookLoginController extends myLoginController {
                 try {
                     Profile profile = Profile.getCurrentProfile();
                     if (profile != null) {
-                        startRegistration(object.getString("email"), object.getString("name"), profile.getProfilePictureUri(100, 100).toString());
+                        startRegistration(object.getString("email"), object.getString("name"), profile.getProfilePictureUri(100, 100).toString(),true);
                         //  myFirebaseDatabase.createAccountInFirebaseDatabase((String)object.getString("email"),"Provided by 3rd Party", (String) object.getString("name"),VIN, profile.getProfilePictureUri(100, 100).toString());
                     }
                     else{

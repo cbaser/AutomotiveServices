@@ -29,9 +29,9 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
    private TextView txtName,txtPoints;
    private ImageView profPic;
    private MyFirebaseDatabase myFirebaseDatabase;
-   private ImageButton acceptBtn,rejectBtn;
+   private ImageButton acceptBtn,rejectBtn,addBtn;
    private String current_friend_state="not_friends";
-   private boolean requestType;
+   private String requestType="";
    private myNotificationController myNotificationController;
 
     public class FriendsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -42,12 +42,18 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
             txtName = relativeLayout.findViewById(R.id.group_friend_profile_name);
             txtPoints = relativeLayout.findViewById(R.id.group_friend_profile_points);
             profPic = relativeLayout.findViewById(R.id.group_friend_profile_icon);
-            if(requestType){
+
+            if(requestType.equals("friend_request")){
                  acceptBtn = relativeLayout.findViewById(R.id.group_friend_profile_acceptBtn);
                 acceptBtn.setVisibility(View.VISIBLE);
 
                  rejectBtn = relativeLayout.findViewById(R.id.group_friend_profile_rejectBtn);
                 rejectBtn.setVisibility(View.VISIBLE);
+            }
+            if(requestType.equals("friend_search")){
+                addBtn = relativeLayout.findViewById(R.id.group_friend_profile_addFriendBtn);
+                addBtn.setVisibility(View.VISIBLE);
+
             }
         }
 
@@ -77,30 +83,42 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
         txtName.setText(currentUser.getNickName());
         txtPoints.setText(String.valueOf(currentUser.getPoints()));
         myFirebaseDatabase.getFriendsProfileImage(profPic,currentUser);
-        if(acceptBtn != null){
-            acceptBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    myFirebaseDatabase.addFriend(currentUser.getEmail());
-                    currentUsers.remove(currentUser);
-                    notifyDataSetChanged();
-                }
-            });
-            if(rejectBtn != null){
-                rejectBtn.setOnClickListener(new View.OnClickListener() {
+
+        if(requestType.equals("friend_request")){
+            if(acceptBtn != null){
+                acceptBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        myFirebaseDatabase.cancelFriendRequest(currentUser.getEmail());
+                        myFirebaseDatabase.addFriend(currentUser.getEmail());
+                        currentUsers.remove(currentUser);
+                        notifyDataSetChanged();
                     }
                 });
+                if(rejectBtn != null){
+                    rejectBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            myFirebaseDatabase.cancelFriendRequest(currentUser.getEmail());
+                        }
+                    });
+                }
+
             }
 
+        }
+        if(requestType.equals("friend_search")){
+            addBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    myFirebaseDatabase.sendFriendRequest(currentUser.getEmail());
+                }
+            });
         }
 
 
 
     }
-    public void setRequestType(boolean type){
+    public void setRequestType(String type){
         this.requestType = type;
     }
 
@@ -121,7 +139,7 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
         ImageView imageView = popupView.findViewById(R.id.popup_friend_profpic);
         if(myFirebaseDatabase.isCurrentUser(currentUser.getEmail()))
             addFriends.setVisibility(View.INVISIBLE);
-        if(!requestType)
+        if(!requestType.equals("friends"))
             addFriends.setVisibility(View.INVISIBLE);
 
         tvName.setText(currentUser.getNickName());

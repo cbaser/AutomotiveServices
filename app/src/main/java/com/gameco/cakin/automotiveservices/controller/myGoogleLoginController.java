@@ -114,7 +114,7 @@ public class myGoogleLoginController extends myLoginController {
                                 OneSignal.sendTag("User_ID", firebaseAuth.getCurrentUser().getEmail());
                                 startMainActivity();
                             } else {
-                                startRegistration(googleSignInAccount.getEmail(),googleSignInAccount.getDisplayName(),googleSignInAccount.getPhotoUrl().toString());
+                                startRegistration(googleSignInAccount.getEmail(),googleSignInAccount.getDisplayName(),googleSignInAccount.getPhotoUrl().toString(),false);
                             }
                         } else {
                             Toast.makeText(appCompatActivity, "Something Went Wrong", Toast.LENGTH_LONG).show();

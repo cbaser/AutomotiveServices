@@ -102,6 +102,7 @@ public class FragmentFriendlist extends Fragment {
         searchRecyclerView.setLayoutManager(mLayoutManager);
         searchRecyclerView.addItemDecoration(new DividerItemDecoration(searchRecyclerView.getContext(),DividerItemDecoration.VERTICAL));
         FriendsListAdapter friendsListAdapter = new FriendsListAdapter(this.getActivity(),currentUsers);
+        friendsListAdapter.setRequestType("friend_search");
         searchRecyclerView.setAdapter(friendsListAdapter);
         friendsListAdapter.notifyDataSetChanged();
 
@@ -112,7 +113,7 @@ public class FragmentFriendlist extends Fragment {
         friendsRankRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         friendsRankRecyclerView.addItemDecoration(new DividerItemDecoration(friendsRankRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
         FriendsListAdapter friendsListAdapter = new FriendsListAdapter(this.getActivity(),friends);
-        friendsListAdapter.setRequestType(false);
+        friendsListAdapter.setRequestType("friends");
         friendsRankRecyclerView.setAdapter(friendsListAdapter);
         friendsListAdapter.notifyDataSetChanged();
     }
@@ -126,7 +127,7 @@ public class FragmentFriendlist extends Fragment {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
         searchRecyclerView.setLayoutManager(mLayoutManager);
         FriendsListAdapter friendsListAdapter = new FriendsListAdapter(this.getActivity(),friendRequests);
-        friendsListAdapter.setRequestType(true);
+        friendsListAdapter.setRequestType("friend_request");
         searchRecyclerView.setAdapter(friendsListAdapter);
         friendsListAdapter.notifyDataSetChanged();
     }

@@ -99,7 +99,7 @@ public class MyFirebaseDatabase {
          usersReference.child("Points").setValue(0);
          usersReference.child("ChallengeCount").setValue(0);
          usersReference.child("PictureURI").setValue(Uri+"_profile");
-         usersReference.child("CarURI").setValue(Uri+"_car");
+         usersReference.child("CarURI").setValue("No Picture");
         Rank rank = new Rank();
         rank.setNickName(nickname);
         rank.setPoints(0);
@@ -280,15 +280,6 @@ public class MyFirebaseDatabase {
 
     }
 
-
-
-
-
-
-
-
-
-
     public CurrentUser getUserFromPreferences(){
         Gson gson = new Gson();
       SharedPreferences  sharedPreferences = activity.getSharedPreferences("currentUserPref",Context.MODE_PRIVATE);
@@ -317,9 +308,6 @@ public class MyFirebaseDatabase {
 
 
     }
-
-
-
 
     public void setUserFriendRequestsToPreferences(){
         final ArrayList<String> requestFriendEmails = new ArrayList<>();
@@ -378,12 +366,18 @@ public class MyFirebaseDatabase {
                     if(!json.isEmpty() || !json.equals("")){
 
                         jsonArray = (JsonArray) new JsonParser().parse(json);
-                        JsonObject object1 = (JsonObject)new JsonParser().parse(gson.toJson(currentUser));
-                        jsonArray.add(object1);
+                        if(currentUser!=null){
+                            JsonObject object1 = (JsonObject)new JsonParser().parse(gson.toJson(currentUser));
+                            jsonArray.add(object1);
+                        }
+
                     }
                     else{
-                        JsonObject object1 = (JsonObject)new JsonParser().parse(gson.toJson(currentUser));
-                        jsonArray.add(object1);
+                        if(currentUser!=null){
+                            JsonObject object1 = (JsonObject)new JsonParser().parse(gson.toJson(currentUser));
+                            jsonArray.add(object1);
+                        }
+
                     }
 
 

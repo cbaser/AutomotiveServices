@@ -1,5 +1,6 @@
 package com.gameco.cakin.automotiveservices.controller;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -55,16 +56,22 @@ public abstract class myLoginController {
 
 
      }
-     void startRegistration(String email, final String name, final String photoUri){
+     void startRegistration(String email, final String name, final String photoUri, final boolean facebookOrGoogle){
          View popupView = appCompatActivity.getLayoutInflater().inflate(R.layout.popup_registration, null);
          final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-         Button registerButton;
+         Button registerButton,backButton;
          final EditText emailEdit,nameEdit,vinEdit;
          emailEdit = popupView.findViewById(R.id.popup_registration_email_edit);
          nameEdit  = popupView.findViewById(R.id.popup_registration_username_edit);
          vinEdit = popupView.findViewById(R.id.popup_registration_vin_edit);
          registerButton = popupView.findViewById(R.id.popup_registration_button);
-
+         backButton = popupView.findViewById(R.id.popup_registration_button_back);
+         backButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 deletePreferences(facebookOrGoogle);
+             }
+         });
          emailEdit.setText(email);
          nameEdit.setText(name);
 
@@ -93,7 +100,26 @@ public abstract class myLoginController {
          popupWindow.setFocusable(true);
          popupWindow.update();
 
+
+
      }
+     public void deletePreferences(boolean facebookOrGoogle){
+        if(facebookOrGoogle){
+            sharedPreferences = appCompatActivity.getSharedPreferences("facebookPrefs", Context.MODE_PRIVATE);
+        }else{
+            sharedPreferences = appCompatActivity.getSharedPreferences("googlePrefs", Context.MODE_PRIVATE);
+        }
+
+         if(sharedPreferences.contains("initialized")){
+             editor = sharedPreferences.edit();
+             editor.putBoolean("initialized", false);
+             editor.apply();
+
+         }
+
+
+     }
+
    abstract   boolean checkPreferences();
   abstract    void startLogin();
   abstract    void activityResult(int requestCode, int resultCode, Intent data);

@@ -44,6 +44,15 @@
             android:textSize="12sp" />
 
         <ImageButton
+            android:id="@+id/group_friend_profile_addFriendBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_change_clicked"
+            android:src="@drawable/ic_add_friend"
+            android:visibility="invisible" />
+        <ImageButton
             android:id="@+id/group_friend_profile_acceptBtn"
             android:layout_width="40dp"
             android:layout_height="40dp"

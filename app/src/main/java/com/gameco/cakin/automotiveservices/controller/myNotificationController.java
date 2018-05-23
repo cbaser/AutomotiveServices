@@ -134,19 +134,17 @@ public class myNotificationController {
 
 
     private void startChallengeToFriend(Challenge challenge){
-        ArrayList<CurrentUser> friends = initializeFriends();
+        ArrayList<CurrentUser> friends = myFirebaseDatabase.getFriendsFromPreferences();
         initializeFriendsScreen(challenge,friends);
 
-    }
-    private ArrayList<CurrentUser> initializeFriends(){
-        return myFirebaseDatabase.getFriendsFromPreferences();
     }
 
 
     public void initializeFriendsScreen(final Challenge challenge, final ArrayList<CurrentUser> friends){
-        final View friendView = View.inflate(activity,R.layout.popup_select_friend, null);
+        LayoutInflater layoutInflater = activity.getLayoutInflater();
+        final View friendView = layoutInflater.inflate(R.layout.popup_select_friend, null);
         final PopupWindow friendWindow = new PopupWindow(friendView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
+        friendWindow.showAtLocation(friendView , Gravity.CENTER, 0, 0);
           TextView txtTime =  friendView.findViewById(R.id.txtSelectFriendTime);
         txtTime.setText(activity.getString(R.string.popup_challenge_time,challenge.getTime()));
         TextView txtPoint = friendView.findViewById(R.id.txtSelectFriendPoint);
@@ -232,12 +230,6 @@ public class myNotificationController {
         return finalObject.toString();
     }
 
-
-
-    private String challengeToJson(Challenge challenge){
-        Gson gson = new Gson();
-        return gson.toJson(challenge);
-    }
     private String userToJson(CurrentUser currentUser){
         JSONObject finalObject = new JSONObject();
         try{
