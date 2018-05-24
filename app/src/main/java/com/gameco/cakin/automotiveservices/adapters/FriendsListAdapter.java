@@ -117,6 +117,7 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
             addBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    myNotificationController.sendFriendRequest(currentUser);
                     myFirebaseDatabase.sendFriendRequest(currentUser.getEmail());
                 }
             });
@@ -146,6 +147,7 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
         TextView tvPoints = popupView.findViewById(R.id.popup_friend_points);
         final Button addFriends = popupView.findViewById(R.id.popup_friend_addFriend);
         ImageView imageView = popupView.findViewById(R.id.popup_friend_profpic);
+        addFriends.setVisibility(View.VISIBLE);
         if(myFirebaseDatabase.isCurrentUser(currentUser.getEmail()))
             addFriends.setVisibility(View.INVISIBLE);
         if(!requestType.equals("friends"))

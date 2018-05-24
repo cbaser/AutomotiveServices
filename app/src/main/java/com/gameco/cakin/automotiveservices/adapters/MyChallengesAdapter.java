@@ -87,7 +87,7 @@ public class MyChallengesAdapter extends RecyclerView.Adapter<MyChallengesAdapte
         final Challenge challenge = challengeList.get(position);
 
         txtTime.setText(activity.getString(R.string.popup_challenge_time,challenge.getTime()));
-        txtFriendName.setText(activity.getString(R.string.popup_challenge_friend_name,challenge.getFriendNickName()));
+        txtFriendName.setText(activity.getString(R.string.popup_challenge_friend_name,challenge.getFriendEmail()));
         txtTitle.setText(activity.getString(R.string.popup_challenge_description,challenge.getDescription()));
         buttonsLinear.setVisibility(View.INVISIBLE);
         final CurrentUser currentUser = new CurrentUser();

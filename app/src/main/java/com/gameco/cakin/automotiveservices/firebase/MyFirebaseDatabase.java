@@ -457,6 +457,8 @@ public class MyFirebaseDatabase {
         usersReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
         SharedPreferences sharedPreferences = activity.getSharedPreferences("currentUserPref", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("currentUserChallenges");
+        editor.commit();
         usersReference.child("Challenges").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -728,34 +730,52 @@ public class MyFirebaseDatabase {
         challengeRequestReference.child(user.getEmail().replace(".",","))
                 .child(currentUser.getEmail().replace(".",","))
                 .child("challenge_type")
-                .setValue(challenge.getChallengeTitle()).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-            if(task.isSuccessful()) {
-                challengeRequestReference.child(user.getEmail().replace(".",","))
-                        .child(currentUser.getEmail().replace(".",","))
-                        .child("request_type").setValue("sent");
+                .setValue(challenge.getChallengeTitle());
+        challengeRequestReference.child(user.getEmail().replace(".",","))
+                .child(currentUser.getEmail().replace(".",","))
+                .child("request_type")
+                .setValue("sent");
+        challengeRequestReference.child(currentUser.getEmail().replace(".",","))
+                .child(user.getEmail().replace(".",","))
+                .child("challenge_type")
+                .setValue(challenge.getChallengeTitle());
+        challengeRequestReference.child(currentUser.getEmail().replace(".",","))
+                .child(user.getEmail().replace(".",","))
+                .child("request_type")
+                .setValue("received");
 
 
-                challengeRequestReference.child(currentUser.getEmail().replace(".",","))
-                        .child(user.getEmail().replace(".",","))
-                        .child("challenge_type")
-                        .setValue(challenge.getChallengeTitle()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        challengeRequestReference.child(currentUser.getEmail().replace(".",","))
-                                .child(user.getEmail().replace(".",","))
-                                .child("request_type").setValue("received");
-                        Toast.makeText(activity, "Challenge Request Send!", Toast.LENGTH_LONG).show();
-                    }
-                });
-
-                }
-            else
-                    Toast.makeText(activity, "Failed sending Friend Request", Toast.LENGTH_LONG).show();
-
-            }
-        });
+//        challengeRequestReference.child(user.getEmail().replace(".",","))
+//                .child(currentUser.getEmail().replace(".",","))
+//                .child("challenge_type")
+//                .setValue(challenge.getChallengeTitle()).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//            if(task.isSuccessful()) {
+//                challengeRequestReference.child(user.getEmail().replace(".",","))
+//                        .child(currentUser.getEmail().replace(".",","))
+//                        .child("request_type").setValue("sent");
+//
+//
+//                challengeRequestReference.child(currentUser.getEmail().replace(".",","))
+//                        .child(user.getEmail().replace(".",","))
+//                        .child("challenge_type")
+//                        .setValue(challenge.getChallengeTitle()).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        challengeRequestReference.child(currentUser.getEmail().replace(".",","))
+//                                .child(user.getEmail().replace(".",","))
+//                                .child("request_type").setValue("received");
+//                        Toast.makeText(activity, "Challenge Request Send!", Toast.LENGTH_LONG).show();
+//                    }
+//                });
+//
+//                }
+//            else
+//                    Toast.makeText(activity, "Failed sending Friend Request", Toast.LENGTH_LONG).show();
+//
+//            }
+//        });
 
     }
 
@@ -766,17 +786,27 @@ public class MyFirebaseDatabase {
     public void setChallengeRequestsToPreferences(){
         final HashMap<String,String> challengeRequests=new HashMap<>();
         challengeRequestReference = database.getReference().child("ChallengeRequests").child(user.getEmail().replace(".",","));
+        final SharedPreferences sharedPreferences = activity.getSharedPreferences("currentUserPref", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("currentUserChallengeRequestsUsers");
+        editor.remove("currentUserChallengeTypes");
+        editor.commit();
         challengeRequestReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    try{
                         String request_type = snapshot.child("request_type").getValue(String.class);
-                        if(request_type.equals("received")){
-                            challengeRequests.put(snapshot.getKey(),snapshot.child("challenge_type").getValue(String.class));
+                        if(request_type.equals("received")) {
+                            challengeRequests.put(snapshot.getKey(), snapshot.child("challenge_type").getValue(String.class));
+                            changeChallengeRequestsToObjects(challengeRequests);
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
                     }
                 }
-                changeChallengeRequestsToObjects(challengeRequests);
-            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -786,14 +816,11 @@ public class MyFirebaseDatabase {
     }
     public void changeChallengeRequestsToObjects(HashMap<String,String> challengeRequest){
         final Gson gson = new Gson();
-        final SharedPreferences sharedPreferences = activity.getSharedPreferences("currentUserPref", Context.MODE_PRIVATE);
-        final SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove("currentUserChallengeRequestsUsers");
-        editor.remove("currentUserChallengeTypes");
-        editor.apply();
+
 
         for(HashMap.Entry<String,String> entry : challengeRequest.entrySet()){
-
+            final SharedPreferences sharedPreferences = activity.getSharedPreferences("currentUserPref", Context.MODE_PRIVATE);
+            final SharedPreferences.Editor editor = sharedPreferences.edit();
             usersReference = database.getReference().child("Users").child(entry.getKey().replace(".",","));
             usersReference.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -862,13 +889,14 @@ public class MyFirebaseDatabase {
     }
 
     public void acceptChallenge(CurrentUser currentUser,Challenge challenge){
-        increasePoints(challenge);
-        increaseChallengeCount();
-        setRankingToPreferences();
         challenge.setFriendPictureURI(currentUser.getPictureURI());
         challenge.setFriendEmail(currentUser.getEmail());
         challenge.setFriendNickName(currentUser.getNickName());
-        addChallengeToDatabase(challenge.getChallengeTitle(),challenge);
+        increasePoints(currentUser,challenge);
+        increaseChallengeCount(currentUser);
+        setRankingToPreferences();
+
+        addChallengeToDatabase(currentUser,challenge.getChallengeTitle(),challenge);
         setUserInfoToPreferences();
         setUserChallengesToPreferences();
         deleteChallengeRequest(currentUser,challenge);
@@ -883,33 +911,15 @@ public class MyFirebaseDatabase {
 
     }
     public void deleteChallengeRequest(final CurrentUser currentUser, Challenge challenge){
-        if(!currentUser.getEmail().equals(user.getEmail())){
-            challengeRequestReference.child(user.getEmail().replace(".",","))
-                    .child(currentUser.getEmail().replace(".",",")).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull final Task<Void> task) {
-                    if(task.isSuccessful()){
-                        challengeRequestReference.child(currentUser.getEmail().replace(".",","))
-                                .child(user.getEmail().replace(".",",")).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                              //  Toast.makeText(activity,"Friend Request Canceled!",Toast.LENGTH_LONG).show();
-
-                            }
-                        });
-                    }
-                    else{
-                        Log.e(TAG,task.getException().toString());
-
-                    }
-                }
-            });
-        }
+        challengeRequestReference.child(user.getEmail().replace(".",","))
+                .child(currentUser.getEmail().replace(".",",")).removeValue();
+        challengeRequestReference.child(currentUser.getEmail().replace(".",","))
+                .child(user.getEmail().replace(".",",")).removeValue();
 
 
     }
 
-    public void increasePoints(final Challenge challenge){
+    public void increasePoints(final CurrentUser currentUser,final Challenge challenge){
         usersReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
         usersReference.addListenerForSingleValueEvent(new ValueEventListener(){
             @Override
@@ -924,7 +934,36 @@ public class MyFirebaseDatabase {
 
             }
         });
+        DatabaseReference reference = database.getReference().child("Users").child(currentUser.getEmail().replace(".",","));
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long point = (long) dataSnapshot.child("Points").getValue();
+                point += challenge.getPoints();
+                dataSnapshot.getRef().child("Points").setValue(point);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
         leaderboardReference.child(user.getEmail().replace(".",",")).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long point = (long) dataSnapshot.child("points").getValue();
+                point += challenge.getPoints();
+                dataSnapshot.getRef().child("points").setValue(point);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        leaderboardReference.child(currentUser.getEmail().replace(".",",")).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 long point = (long) dataSnapshot.child("points").getValue();
@@ -975,12 +1014,27 @@ public class MyFirebaseDatabase {
 
 
 
-    public void increaseChallengeCount() {
+    public void increaseChallengeCount(CurrentUser currentUser) {
         usersReference = database.getReference().child("Users").child(user.getEmail().replace(".",","));
         usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                long challengeCount = (long) dataSnapshot.child("ChallengeCount").getValue();
+                challengeCount = challengeCount + 1;
+                dataSnapshot.getRef().child("ChallengeCount").setValue(challengeCount);
+                dataSnapshot.getRef().child("Level").setValue(setLevelName(challengeCount));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        DatabaseReference reference = database.getReference().child("Users").child(currentUser.getEmail().replace(".",","));
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long challengeCount = (long) dataSnapshot.child("ChallengeCount").getValue();
                 challengeCount = challengeCount + 1;
                 dataSnapshot.getRef().child("ChallengeCount").setValue(challengeCount);
                 dataSnapshot.getRef().child("Level").setValue(setLevelName(challengeCount));
@@ -1012,13 +1066,29 @@ public class MyFirebaseDatabase {
 
 
 
-    public void addChallengeToDatabase(String title,Challenge incomingChallenge) {
+    public void addChallengeToDatabase(CurrentUser currentUser,String title,Challenge incomingChallenge) {
         try {
             usersReference = database.getReference().child("Users").child(user.getEmail().replace(".", ","));
+            DatabaseReference friendsReference = database.getReference().child("Users").child(currentUser.getEmail().replace(".",","));
             DatabaseReference newRef = usersReference.child("Challenges");
             Map<String, Challenge> challenges = new HashMap<>();
+            incomingChallenge.setFriendEmail(currentUser.getEmail());
+            incomingChallenge.setFriendNickName(currentUser.getNickName());
+            incomingChallenge.setFriendPictureURI(currentUser.getPictureURI());
             challenges.put(title, incomingChallenge);
             newRef.child(title).setValue(challenges);
+
+            newRef = friendsReference.child("Challenges");
+            challenges = new HashMap<>();
+            challenges.put(title, incomingChallenge);
+            CurrentUser user = getUserFromPreferences();
+            incomingChallenge.setFriendEmail(user.getEmail());
+            incomingChallenge.setFriendPictureURI(user.getPictureURI());
+            incomingChallenge.setFriendNickName(user.getNickName());
+
+            newRef.child(title).setValue(challenges);
+
+
             setUserInfoToPreferences();
         } catch (Exception e) {
             Log.e("EROOOOR AT ADDING", e.getMessage());
