@@ -54,10 +54,6 @@ public class SingupActivity extends AppCompatActivity {
         nicknameField = (EditText) findViewById(R.id.nickname_edit);
         eMailField = (EditText) findViewById(R.id.email_edit);
         VINField = (EditText) findViewById(R.id.vin_edit);
-        VINField.setText("WBAUD91090P381103");
-        eMailField.setText("c.akinbaser@hotmail.com");
-        nicknameField.setText("cgtybsr");
-        passwordField.setText("12345678");
 
 
         signupBtn = (Button) findViewById(R.id.signup_button);

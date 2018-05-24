@@ -438,12 +438,15 @@ public class MyFirebaseDatabase {
         SharedPreferences  sharedPreferences = activity.getSharedPreferences("currentUserPref",Context.MODE_PRIVATE);
         String json = sharedPreferences.getString("currentUserFriends", "");
         try {
-            JSONArray jsonArray = new JSONArray(json);
-            for(int i=0;i<jsonArray.length();i++){
-                JSONObject object = jsonArray.getJSONObject(i);
-                CurrentUser friend = gson.fromJson(object.toString(),CurrentUser.class);
-                friends.add(friend);
+            if(!json.equals("") && !json.isEmpty()){
+                JSONArray jsonArray = new JSONArray(json);
+                for(int i=0;i<jsonArray.length();i++){
+                    JSONObject object = jsonArray.getJSONObject(i);
+                    CurrentUser friend = gson.fromJson(object.toString(),CurrentUser.class);
+                    friends.add(friend);
+                }
             }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -51,6 +51,7 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
                 rejectBtn.setVisibility(View.VISIBLE);
             }
             if(requestType.equals("friend_search")){
+
                 addBtn = relativeLayout.findViewById(R.id.group_friend_profile_addFriendBtn);
                 addBtn.setVisibility(View.VISIBLE);
 
@@ -91,6 +92,7 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
                     public void onClick(View view) {
                         myFirebaseDatabase.addFriend(currentUser.getEmail());
                         currentUsers.remove(currentUser);
+                        myFirebaseDatabase.setChallengeRequestsToPreferences();
                         notifyDataSetChanged();
                     }
                 });
@@ -99,6 +101,10 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
                         @Override
                         public void onClick(View view) {
                             myFirebaseDatabase.cancelFriendRequest(currentUser.getEmail());
+                            currentUsers.remove(currentUser);
+                            myFirebaseDatabase.setChallengeRequestsToPreferences();
+                            notifyDataSetChanged();
+
                         }
                     });
                 }
@@ -107,12 +113,15 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
 
         }
         if(requestType.equals("friend_search")){
+            if(!myFirebaseDatabase.isCurrentUser(currentUser.getEmail()))
             addBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     myFirebaseDatabase.sendFriendRequest(currentUser.getEmail());
                 }
             });
+            else
+                addBtn.setVisibility(View.INVISIBLE);
         }
 
 

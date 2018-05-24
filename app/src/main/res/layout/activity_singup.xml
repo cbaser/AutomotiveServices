@@ -47,17 +47,6 @@
                 android:textColor="@color/colorLeaGreen"
                 android:textColorHint="@color/colorLeaGreen"
                 android:textSize="16sp" />
-<!--
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="35dp"
-                android:textColor="@color/colorLeaGreen"
-                android:textSize="16sp"
-                android:padding="16dp"
-                android:layout_marginStart="22dp"/>
--->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -74,8 +63,8 @@
                 android:background="#0000"
                 android:fontFamily="@font/source_sans_pro"
                 android:hint="@string/VIN"
-                android:inputType="text"
                 android:padding="16dp"
+                android:inputType="textCapCharacters"
                 android:textColor="@color/colorLeaGreen"
                 android:textColorHint="@color/colorLeaGreen"
                 android:textSize="16sp"/>

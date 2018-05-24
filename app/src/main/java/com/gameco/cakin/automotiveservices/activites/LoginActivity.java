@@ -10,6 +10,7 @@ import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
@@ -21,6 +22,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.controller.myGoogleLoginController;
@@ -81,6 +83,8 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!validateForm())
+                    return;
                 String email = emailtxt.getText().toString().trim();
                 String password = passwordtxt.getText().toString().trim();
                 doEmailLogin(email, password);
@@ -127,6 +131,24 @@ public class LoginActivity extends AppCompatActivity {
         Intent it = new Intent(LoginActivity.this, OpeningActivity.class);
         startActivity(it);
 
+    }
+    private boolean validateForm(){
+        boolean valid =true;
+        String email = emailtxt.getText().toString();
+        if(TextUtils.isEmpty(email)){
+            emailtxt.setError("Required");
+            valid =false;
+        }
+        else
+            emailtxt.setError(null);
+        String password =passwordtxt.getText().toString();
+        if(TextUtils.isEmpty(password)){
+            passwordtxt.setError("Required");
+            valid =false;
+        }
+        else
+            passwordtxt.setError(null);
+        return valid;
     }
 
 
