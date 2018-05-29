@@ -8,8 +8,8 @@ import com.gameco.cakin.automotiveservices.datamodel.Car;
 
 public class BackendHelper {
     private String jsonString;
-    BackendController backendController;
-    myJSONParser jsonParser;
+    private BackendController backendController;
+    private myJSONParser jsonParser;
     public BackendHelper(){
          backendController = new BackendController();
          jsonParser = new myJSONParser();
@@ -31,9 +31,9 @@ public class BackendHelper {
         }
         return  jsonParser.convertToCarData();
     }
-    public void setJsonString(String jsonString){
-        this.jsonString = jsonString;
-    }
+//    public void setJsonString(String jsonString){
+//        this.jsonString = jsonString;
+//    }
 
 
 

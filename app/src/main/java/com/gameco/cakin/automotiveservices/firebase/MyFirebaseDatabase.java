@@ -43,6 +43,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+import com.onesignal.OneSignal;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -71,9 +72,6 @@ public class MyFirebaseDatabase {
     private StorageReference picsRef;
     private ArrayList<Challenge> challengeList;
     private ArrayList<Rank> rankList;
-
-    private boolean upper_level;
-    private String afterLevel;
     private String TAG = "MyFirebaseDatabase";
 
 

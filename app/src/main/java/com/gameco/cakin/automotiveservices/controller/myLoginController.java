@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -57,19 +58,29 @@ public abstract class myLoginController {
 
      }
      void startRegistration(String email, final String name, final String photoUri, final boolean facebookOrGoogle){
-         View popupView = appCompatActivity.getLayoutInflater().inflate(R.layout.popup_registration, null);
+         final View popupView = appCompatActivity.getLayoutInflater().inflate(R.layout.popup_registration, null);
          final PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
          Button registerButton,backButton;
          final EditText emailEdit,nameEdit,vinEdit;
+         final FloatingActionButton exitFAB;
          emailEdit = popupView.findViewById(R.id.popup_registration_email_edit);
          nameEdit  = popupView.findViewById(R.id.popup_registration_username_edit);
          vinEdit = popupView.findViewById(R.id.popup_registration_vin_edit);
          registerButton = popupView.findViewById(R.id.popup_registration_button);
+         exitFAB = popupView.findViewById(R.id.exitFAB);
          backButton = popupView.findViewById(R.id.popup_registration_button_back);
          backButton.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
                  deletePreferences(facebookOrGoogle);
+                 popupWindow.dismiss();
+             }
+         });
+         exitFAB.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 deletePreferences(facebookOrGoogle);
+                 popupWindow.dismiss();
              }
          });
          emailEdit.setText(email);

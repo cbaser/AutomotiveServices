@@ -1,26 +1,11 @@
 package com.gameco.cakin.automotiveservices.backend;
 
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 
-import com.gameco.cakin.automotiveservices.activites.LoginActivity;
-import com.gameco.cakin.automotiveservices.activites.MainActivity;
 import com.gameco.cakin.automotiveservices.activites.ProgressActivity;
 import com.gameco.cakin.automotiveservices.datamodel.BMWCarData;
-import com.gameco.cakin.automotiveservices.datamodel.CarVINs;
 import com.gameco.cakin.automotiveservices.datamodel.Car;
-import com.gameco.cakin.automotiveservices.datamodel.CurrentUser;
 import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

@@ -7,7 +7,6 @@ import android.graphics.PorterDuff;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -22,16 +21,15 @@ public class ProgressActivity extends AppCompatActivity {
 private MyFirebaseDatabase firebaseDatabase;
 private BackendHelper backendHelper;
 private static Activity activity;
-private String TAG = "ProgressActivity";
 private ProgressBar progressBar;
   private Handler handler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
-        activity = ProgressActivity.this;
          progressBar = findViewById(R.id.progressBar_activity);
         progressBar.setIndeterminate(true);
+        activity = this;
         progressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.fbutton_color_midnight_blue), PorterDuff.Mode.MULTIPLY);
         firebaseDatabase = new MyFirebaseDatabase(this);
         backendHelper = new BackendHelper();

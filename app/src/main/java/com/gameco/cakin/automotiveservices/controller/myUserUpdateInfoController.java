@@ -6,9 +6,7 @@ import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
 
 public class myUserUpdateInfoController {
     private MyFirebaseDatabase firebaseDatabase;
-    private Activity activity;
     public myUserUpdateInfoController(Activity activity){
-        this.activity = activity;
         firebaseDatabase = new MyFirebaseDatabase(activity);
     }
 

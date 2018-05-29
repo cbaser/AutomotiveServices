@@ -1,15 +1,10 @@
 package com.gameco.cakin.automotiveservices.activites;
 
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -18,34 +13,28 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.VideoView;
-
-
 import com.gameco.cakin.automotiveservices.R;
-import com.gameco.cakin.automotiveservices.adapters.SlideViewPagerAdapter;
 
 
 public class OpeningActivity extends AppCompatActivity{
     private long backPressedTime = 0;
     private VideoView videoView;
-    private Button signup;
-    private Button singin;
     private ImageView mainIcon;
 
 
-    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opening);
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.anim_from_bottom_bounce);
-        mainIcon = (ImageView) findViewById(R.id.mainIcon);
+        mainIcon =  findViewById(R.id.mainIcon);
         mainIcon.setAnimation(animation);
 
-        singin = (Button) findViewById(R.id.signin_button);
-        signup = (Button) findViewById(R.id.signup_button);
+        Button singin =  findViewById(R.id.signin_button);
+        Button signup =  findViewById(R.id.signup_button);
 
-        viewPager = (ViewPager) findViewById(R.id.activity_opening_pager);
-        videoView = (VideoView) findViewById(R.id.videoView);
+       // ViewPager viewPager = findViewById(R.id.activity_opening_pager);
+        videoView =  findViewById(R.id.videoView);
 
         try {
             videoView.setMediaController(null);
@@ -113,11 +102,11 @@ public class OpeningActivity extends AppCompatActivity{
             OpeningActivity.this.finish();
         }
     }
-    private void setupViewPager(){
-        String [] titles = new String[]{"Reduce Fuel Consumption","Get Benefits","Play with your friends"};
-        String [] descriptions = new String[]{"Earn money","Get free coffee","Challenge to your friends"};
-        SlideViewPagerAdapter slideViewPagerAdapter = new SlideViewPagerAdapter(this,titles,descriptions);
-        viewPager.setAdapter(slideViewPagerAdapter);
-
-    }
+//    private void setupViewPager(){
+//        String [] titles = new String[]{"Reduce Fuel Consumption","Get Benefits","Play with your friends"};
+//        String [] descriptions = new String[]{"Earn money","Get free coffee","Challenge to your friends"};
+//        SlideViewPagerAdapter slideViewPagerAdapter = new SlideViewPagerAdapter(this,titles,descriptions);
+//        viewPager.setAdapter(slideViewPagerAdapter);
+//
+//    }
 }

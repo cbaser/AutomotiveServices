@@ -2,9 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/fbutton_color_midnight_blue"
     android:padding="16dp">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/exitFAB"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:clickable="true"
+        android:layout_gravity="right"
+        app:backgroundTint="@color/fbutton_color_midnight_blue"
+        app:srcCompat="@android:drawable/ic_delete" />
 
     <TextView
         android:id="@+id/sure_title"
@@ -69,6 +81,7 @@
         android:focusableInTouchMode="true"
         android:clickable="true"
         android:inputType="text" />
+
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">

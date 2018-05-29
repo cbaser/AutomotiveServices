@@ -14,50 +14,38 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.facebook.FacebookSdk;
 import com.gameco.cakin.automotiveservices.R;
 import com.gameco.cakin.automotiveservices.backend.BackendHelper;
-import com.gameco.cakin.automotiveservices.datamodel.Car;
 import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 public class SingupActivity extends AppCompatActivity {
-    private Button signupBtn;
     private EditText passwordField,nicknameField,eMailField,VINField;
     private FirebaseAuth firebaseAuth;
     private BackendHelper backendHelper;
     private ProgressBar progressBar;
-
-    private StorageReference picsRef;
     private MyFirebaseDatabase myFirebaseDatabase;
     private RelativeLayout layout;
-    private String[] tmp;
-    private boolean response;
     private static final String TAG = "SignUpActivity";
-    private ImageView sback;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
         myFirebaseDatabase = new MyFirebaseDatabase(this);
         setContentView(R.layout.activity_singup);
         backendHelper = new BackendHelper();
         firebaseAuth = FirebaseAuth.getInstance();
-        passwordField = (EditText) findViewById(R.id.password_edit);
-        nicknameField = (EditText) findViewById(R.id.nickname_edit);
-        eMailField = (EditText) findViewById(R.id.email_edit);
-        VINField = (EditText) findViewById(R.id.vin_edit);
+        passwordField =  findViewById(R.id.password_edit);
+        nicknameField = findViewById(R.id.nickname_edit);
+        eMailField = findViewById(R.id.email_edit);
+        VINField = findViewById(R.id.vin_edit);
 
 
-        signupBtn = (Button) findViewById(R.id.signup_button);
-        sback=(ImageView) findViewById(R.id.backButton);
+        Button signupBtn = findViewById(R.id.signup_button);
+        ImageView sback =  findViewById(R.id.backButton);
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,12 +57,7 @@ public class SingupActivity extends AppCompatActivity {
                 layout.addView(progressBar,params);
 
                 Log.d(TAG, "createAccount:" + eMailField.getText().toString());
-                if (!validateForm()) {
-                    return;
-                }
-
-
-                else
+                if (validateForm())
                     createAccount();
      }
         });
@@ -88,7 +71,7 @@ public class SingupActivity extends AppCompatActivity {
     }
 
     private void createAccount(){
-        tmp = new String[2];
+        String[] tmp = new String[2];
         tmp[0] = "VIN";
         tmp[1] = VINField.getText().toString();
         progressBar.setVisibility(View.VISIBLE);

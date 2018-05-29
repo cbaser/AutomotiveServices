@@ -15,19 +15,8 @@ import java.net.URL;
 
 public class BackendController extends AsyncTask<String,Void,String>{
     private String response="";
-    private String login_website = "http://vmkrcmar20.informatik.tu-muenchen.de/login.php";
-    private String register_website ="http://vmkrcmar20.informatik.tu-muenchen.de/saveVinToDatabase.php";
-    private String telematic_website = "http://vmkrcmar20.informatik.tu-muenchen.de/getTelematicKeys.php";
-
-
-    public String getResponse(){
-        return response;
-    }
-    public void setResponse(String response){
-
-
+    private void setResponse(String response){
         this.response= response;
-
     }
 
     private HttpURLConnection establishConnection(String website){
@@ -72,7 +61,9 @@ public class BackendController extends AsyncTask<String,Void,String>{
                 .appendQueryParameter("VIN",VIN);
 
         try{
-            HttpURLConnection connection = this.establishConnection(this.register_website+"?VIN="+VIN);
+            String register_website = "http://vmkrcmar20.informatik.tu-muenchen.de/saveVinToDatabase.php";
+            HttpURLConnection connection = this.establishConnection(register_website +"?VIN="+VIN);
+            assert connection != null;
             connection.setRequestMethod("GET");
             connection.setDoInput(true);
             connection.connect();
@@ -104,11 +95,13 @@ public class BackendController extends AsyncTask<String,Void,String>{
 
             try{
                 StringBuilder stringBuilder = new StringBuilder();
-                HttpURLConnection connection = this.establishConnection(this.telematic_website);
+                String telematic_website = "http://vmkrcmar20.informatik.tu-muenchen.de/getTelematicKeys.php";
+                HttpURLConnection connection = this.establishConnection(telematic_website);
+                assert connection != null;
                 connection.connect();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 while ((jsonTelematics =bufferedReader.readLine()) != null){
-                    stringBuilder.append(jsonTelematics+"\n");
+                    stringBuilder.append(jsonTelematics).append("\n");
                 }
                 return stringBuilder.toString().trim();
 

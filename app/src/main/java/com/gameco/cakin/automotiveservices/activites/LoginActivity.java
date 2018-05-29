@@ -39,8 +39,8 @@ import java.security.NoSuchAlgorithmException;
 public class LoginActivity extends AppCompatActivity {
     private EditText emailtxt, passwordtxt;
 
-    private myGoogleLoginController myGoogleLoginController;
-    private myFacebookLoginController myFacebookLoginController;
+    private myGoogleLoginController googleLoginController;
+    private myFacebookLoginController facebookLoginController;
     private static final String TAG = "LoginActivity";
 
     @Override
@@ -93,27 +93,30 @@ public class LoginActivity extends AppCompatActivity {
 
         /**Google Sign In Part */
         com.google.android.gms.common.SignInButton googleSignInButton = findViewById(R.id.sign_in_button_google);
-        myGoogleLoginController = new myGoogleLoginController(this);
-        myGoogleLoginController.initialize();
-        googleSignInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myGoogleLoginController.startLogin();
-            }
-        });
-
-
-
+        googleLoginController = new myGoogleLoginController(this);
+        googleLoginController.initialize();
+        if(!googleLoginController.checkLoggedIn()){
+            googleSignInButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    googleLoginController.startLogin();
+                }
+            });
+        }
+        else
+            googleLoginController.startLoggedInProcess();
 
         /** Facebook Sign In Part*/
-        myFacebookLoginController = new myFacebookLoginController(this);
-        myFacebookLoginController.initialize();
-      // if(!myFacebookLoginController.checkLoggedIn())
-        myFacebookLoginController.startLogin();
+        facebookLoginController = new myFacebookLoginController(this);
+        facebookLoginController.initialize();
+       if(!facebookLoginController.checkLoggedIn())
+           facebookLoginController.startLogin();
+        else
+           facebookLoginController.startLoggedInProcess();
 
     }
     public void doEmailLogin(String email,String password) {
-     myFacebookLoginController.emailLogin(email,password);
+        facebookLoginController.emailLogin(email,password);
     }
 
 
@@ -121,8 +124,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        myGoogleLoginController.activityResult(requestCode,resultCode,data);
-        myFacebookLoginController.activityResult(requestCode,resultCode,data);
+        googleLoginController.activityResult(requestCode,resultCode,data);
+        facebookLoginController.activityResult(requestCode,resultCode,data);
     }
 
     @Override

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">GamECO</string>
+    <string name="onesignal_app_id">4a5d1740&#8211;b98b&#8211;4569&#8211;9107&#8211;2de771ddc07d</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="sign_in">Sıgn In</string>

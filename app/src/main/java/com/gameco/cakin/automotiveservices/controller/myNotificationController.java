@@ -127,6 +127,7 @@ public class myNotificationController {
         NotificationManager notificationManager = (NotificationManager)
                 activity.getSystemService(Context.NOTIFICATION_SERVICE);
 
+        assert notificationManager != null;
         notificationManager.notify(1, notification);
     }
 

@@ -21,8 +21,6 @@ import com.gameco.cakin.automotiveservices.controller.myActivityController;
 import com.gameco.cakin.automotiveservices.controller.myUserUpdateInfoController;
 import com.gameco.cakin.automotiveservices.datamodel.Car;
 import com.gameco.cakin.automotiveservices.firebase.MyFirebaseDatabase;
-import com.gameco.cakin.automotiveservices.onesignal.NotificationOpenedHandler;
-import com.gameco.cakin.automotiveservices.onesignal.NotificationReceivedHandler;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.gameco.cakin.automotiveservices.controller.myFacebookLoginController;
@@ -31,21 +29,17 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import com.google.firebase.iid.FirebaseInstanceId;
 
-import com.onesignal.OneSignal;
-
-
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private long backPressedTime = 0;
     private myFacebookLoginController myFacebookLoginController;
     private myGoogleLoginController myGoogleLoginController;
-    private myActivityController activityController;
     private MyFirebaseDatabase myFirebaseDatabase;
     private myUserUpdateInfoController myUserUpdateInfoController;
 
-    /**Save App to Database code : scp -r gameco.apk MSP@vmkrcmar20.informatik.tu-muenchen.de:/var/www/html/uploads*/
-    /** Download app Link : http://vmkrcmar20.informatik.tu-muenchen.de/uploads/gameco.apk*/
+    // Save App to Database code : scp -r gameco.apk MSP@vmkrcmar20.informatik.tu-muenchen.de:/var/www/html/uploads */
+    // Download app Link : http://vmkrcmar20.informatik.tu-muenchen.de/uploads/gameco.apk */
 
 
     @Override
@@ -57,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
         myFirebaseDatabase =new MyFirebaseDatabase(this);
 
 
-
-        activityController = new myActivityController(this);
+        myActivityController activityController = new myActivityController(this);
         setContentView(R.layout.activity_main);
         setTitle("");
         activityController.setUpTabs();
@@ -97,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {

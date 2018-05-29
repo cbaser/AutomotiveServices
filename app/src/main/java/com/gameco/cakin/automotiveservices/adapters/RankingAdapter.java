@@ -20,12 +20,10 @@ import java.util.List;
 public class RankingAdapter extends BaseAdapter{
     private LayoutInflater layoutInflater;
     private List<Rank> rankList;
-    private Activity activity;
 
     public RankingAdapter( Activity activity,List<Rank> rankList) {
 
         this.rankList = rankList;
-        this.activity = activity;
         layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);}
 
     @Override
@@ -46,9 +44,9 @@ public class RankingAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = layoutInflater.inflate(R.layout.group_ranking,null);
-        TextView tvNick = (TextView) view.findViewById(R.id.textViewNick);
-        TextView tvPoint = (TextView) view.findViewById(R.id.textViewPoints);
-        TextView tvPos =(TextView) view.findViewById(R.id.textViewPosition);
+        TextView tvNick = view.findViewById(R.id.textViewNick);
+        TextView tvPoint =  view.findViewById(R.id.textViewPoints);
+        TextView tvPos =view.findViewById(R.id.textViewPosition);
 
 
         Rank rank = rankList.get(position);
